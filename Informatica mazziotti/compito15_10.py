@@ -8,7 +8,7 @@ class Salvadanaio:
         if somma > 0:
             self.totale += somma
         else:
-            messagebox.showerror("Errore", "La somma deve essere positiva.")
+            messagebox.showerror("Errore:", "La somma deve essere positiva.")
     def mostra_saldo(self):
         return self.totale
     def svuota(self):
