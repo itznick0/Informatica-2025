@@ -34,7 +34,7 @@ def crea_finestra_salvadanaio(root, salvadanaio, titolo, posizione):
     label_saldo = tk.Label(finestra, text=f"Saldo: {salvadanaio.mostra_saldo()}€", bg="#f0f0f0", font=("Arial", 10))
     label_saldo.pack(pady=10)
     def aggiorna_label():
-        label_saldo.config(text=f"Saldo: {salvadanaio.mostra_saldo()}€")
+        label_saldo.config(text=f"Saldo: €{salvadanaio.mostra_saldo()}")
     def metti_soldi():
         try:
             somma = int(entry.get())
