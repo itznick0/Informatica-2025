@@ -75,7 +75,7 @@
     .sottolineato { text-decoration: underline !important; }
     .barrato { text-decoration: line-through !important; }
     .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
-    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .grande { font-size: 1.5rem !important; line-height: 1.6; }
     .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
 
     /* Sezione immagini */
@@ -185,49 +185,38 @@
     margin: 0;
     line-height: 1.5;
   }
-  #pdf-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 14px 28px;
-      background: linear-gradient(to right, #1976d2, #42a5f5);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-
-    #pdf-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
-    }
-
-    /* Nascondi il bottone in stampa */
-    @media print {
-      #pdf-button {
-        display: none !important;
-      }
-    }
   </style>
 </head>
 <body>
-    <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
   <div class="container">
     <div class="header">
-      <h1>Titolo del Documento</h1>
+      <h1>The World’s Most Famous Prisons and San Vittore</h1>
       <div class="meta">
-        <p class="date">15 Ottobre 2025</p>
-        <p class="subject">Materia: Italiano</p>
+        <p class="date">16 Ottobre 2025</p>
+        <p class="subject">Materia: English</p>
       </div>
     </div>
 
     <div class="content">
-      <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi -->
+      <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi, immaginedidascalia, didascalia-->
+       <div>
+<p class="grande grassetto">Some prisons are famous not just for the criminals that were locked in it, but because they have an important story.</p>
+<p></p>
+<p class="sottolineato corsivo">1. Alcatraz (USA)</p>
+<p>Alcatraz is a prison on an island near San Francisco. It was very tough and almost no one ever escaped. Famous gangsters like Al Capone were locked in it. Today it’s closed and it became a museum for the tourists.</p>
+<p></p>
+<p class="sottolineato corsivo">2. Robben Island (South Africa)</p>
+<p>Nelson Mandela was locked in it for 18 years during the apartheid (a time when black people in South Africa were treated unfairly). Today it's a symbol of freedom and justice.</p>
+<p></p>
+<p class="sottolineato corsivo">3. The Bastille (France)</p>
+<p>This was a fortress-prison in Paris and, in 1789, the people attacked and destroyed it and that became the start of the French Revolution. The Bastille is now destroyed, but it still be a simbol of the fight against unfair power.</p>
+<p></p>
+<p class="sottolineato corsivo">4. Eastern State Penitentiary (USA)</p>
+<p>It's locate in Philadelphia and this prison was known for keeping inmates alone in silence to make they  think about their crimes . Al Capone was also locked in it. Today it’s a museum.</p>
+<p></p>
+<p class="sottolineato corsivo">San Vittore (Italy)</p>
+<p>Finally this is the most well-known prison in Italy (more precisely in Milan). It has held mafia members, terrorists and famous people. It’s still in use today but it’s not too much famous around the world and also in Itlay but however it's helding around 1044 prigioniers.</p>
+</div>
     </div>
 
     <!-- Sezione immagini -->
@@ -236,13 +225,16 @@
       <div class="images-container">
         <!-- Aggiungi qui le tue immagini -->
         <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+         <div id="immaginedidascalia">
+            <img src="1/1.png" alt="Al Capone">
+            <p class="didascalia">Alphonse Gabriel, called "Al Capone" (also known as "Scarface"), was a famous american gangster of italian origin who operated during the Prohibition era (a period in U.S. history from 1920 to 1933 when the production, transportation and sale of alcoholic beverages were illegal).</p>
+         </div>
       </div>
     </div>
   </div>
 
   <script>
     console.log("Documento con stili personalizzati caricato!");
-
     // Genera un colore pastello/morbido casuale (non fluo, non primari puri)
   function generaColoreMorbido() {
     // Usiamo una palette di tonalità tenui: grigi azzurri, verdi salvia, beige, lavanda, ecc.
@@ -272,3 +264,7 @@
   </script>
 </body>
 </html>
+
+
+
+
