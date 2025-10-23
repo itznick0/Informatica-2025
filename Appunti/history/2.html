@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    /* ✨ NUOVO: DUE COLONNE */
+    .due-colonne {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .colonna-sinistra,
+    .colonna-destra {
+      flex: 1;
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+    }
+
+    .colonna-sinistra h3,
+    .colonna-destra h3 {
+      margin-bottom: 14px;
+      color: #2d3b4a;
+      font-size: 1.3rem;
+    }
+
+    .colonna-sinistra p,
+    .colonna-destra p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive: su mobile le colonne vanno in verticale */
+    @media (max-width: 768px) {
+      .due-colonne {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>L’incontro tra Cortés e Montezuma</h1>
+      <div class="meta">
+        <p class="date">23 Ottobre 2025</p>
+        <p class="subject">Materia: Storia</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <div>
+<p id="titoloparagrafo">Per la comprensione del testo</p>
+<p class="sottolineato corsivo">1 Come avviene l’incontro tra Cortés e Montezuma e quali doni si scambiano?</p>
+<p class="sottolineato corsivo">2 Perché, nel racconto di Cortés, Montezuma accetta senza problemi il dominio spagnolo e quindi si sottomette agli spagnoli?</p>
+
+<div>
+    <p id="titoloparagrafo">Risposte</p>
+<p>1. Montezuma va incontro a Cortés con duecento nobili schierati lungo una strada larga e dritta. Cammina al centro, scortato da due signori, ed è l’unico calzato. Cortés scende da cavallo per abbracciarlo, ma viene trattenuto; i nobili compiono la cerimonia di “baciare la terra”. Si scambiano doni: Cortés dà a Montezuma una collana di perle e “diamanti di vetro”; Montezuma gli mette al collo due collane di gusci colorati con otto gamberi d’oro ciascuna.</p>
+<p></p>
+<p>2. Montezuma crede che gli spagnoli siano i discendenti di un antico signore da cui, secondo la tradizione azteca, discende la sua stirpe. Poiché Cortés arriva da oriente (dove sorge il sole), come predetto, Montezuma lo riconosce come inviato del suo “naturale signore” e si sottomette spontaneamente, offrendogli obbedienza e tutti i suoi beni.</p>
+</div>
+</div>
+<p></p>
+    </div>
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Testo</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+         <div id="allinea">
+<p class="grande grassetto">Hérnan Cortés</p>
+<p class="corsivo evidenziato">L’incontro tra Cortés e Montezuma</p>
+<p class="piccolo">L’hidalgo spagnolo Hérnan Cortés (1485-1547), protagonista della conquista dell’impero azteco, scrisse negli anni 1519-1526 all’imperatore Carlo V di Spagna cinque Cartas de relación per informarlo dei progressi nella conquista del Messico. Proponiamo qui un brano tratto dalla seconda di queste relazioni. Passato questo ponte venne ad accoglierci quel signore, Muteczuma, con circa duecento signori, tutti scalzi e vestiti di un’altra livrea a modo d’abito, anch’essa molto ricca secondo i loro costumi, e più di quella d’altri; e venivano in due file, molto addossati ai margini della strada, che è molto bella, larga e diritta, tutta uguale dal principio alla fine, con bellissime e grandi case da ambedue le parti, sia abitazioni sia moschee. Il detto Muteczuma camminava in mezzo alla strada, avendo a destra e sinistra due signori, uno dei quali era quello che era venuto a parlarmi, come ho detto, in una portantina, e l’altro era fratello del detto Muteczuma, signore di quella città di Iztapalapa da cui ero partito quella mattina; tutti e tre vestiti allo stesso modo, eccetto che Muteczuma era calzato e gli altri due scalzi; ognuno lo teneva per un braccio. Arrivati vicino, io scesi di cavallo e andai solo per abbracciarlo, ma i due signori che erano con lui mi trattennero con le mani perché non lo toccassi; ed essi ed altri fecero la solita cerimonia di baciar la terra, e fatto questo egli ordinò a quel suo fratello che l’accompagnava di stare con me e condurmi a braccio mentre egli con l’altro mi precedeva di poco. Parlato che ebbe egli con me, vennero a parlarmi anche gli altri signori che procedevano in due file, in ordine l’uno dopo l’altro, e rientravano poi nella fila. Quando io parlai con detto Muteczuma mi tolsi una collana che portavo, di perle e diamanti di vetro, ed egli se la mise al collo; e proceduto che ebbimo alquanto per la via, venne un suo servo con due collane di gamberi, avvolte in una stoffa, fatte di gusci di chiocciole coloriti, che essi apprezzano molto; e da ogni collana pendevano otto gamberi d’oro, di molta perfezione, lunghi quasi un palmo; ed egli prese le collane al servo, me le mise al collo, e continuò la strada nel modo già descritto fino a giungere a una grandissima e bella casa che era stata preparata per noi. Ivi mi prese per mano, mi condusse in un grande salone che si apriva su un cortile in cui entrammo, e mi fece sedere su una ricca poltrona, che aveva fatto fabbricare per sé, e dicendomi di aspettarlo se ne andò; e poco dopo, essendo già stata alloggiata tutta la gente della mia compagnia, tornò con molti e vari gioielli d’oro e d’argento e di piume, e con circa cinque o seimila vestiti di cotone, molto ricchi e variamente tessuti e ricamati. E dopo avermeli dati, si sedette su un’altra poltrona che era stata portata vicino a quella in cui ero io, e così parlò: «Da molto tempo abbiamo notizia dai nostri antenati, attraverso le nostre scritture, che né io né quelli che abitano questa regione siamo oriundi di essa, bensì stranieri e venuti in essa da parti molto remote; e sappiamo anche che trasse qui la nostra stirpe un signore di cui tutti erano vassalli, il quale tornò alla sua stirpe, e dopo molto tempo ricomparve; tanto che i suoi discendenti si erano già sposati con donne della regione e avevano avuto molti figli e costruito paesi in cui vivevano, sicché, volendo egli portarli seco, non vollero seguirlo né riconoscerlo come signore, e pertanto se ne andò. E sempre abbiamo saputo che i discendenti di lui sarebbero venuti a dominare questa terra e a far di noi dei vassalli loro. Data dunque la parte da cui dite di venire, che è quella da cui nasce il sole, e le cose che dite di codesto gran re o signore che qui vi mandò, crediamo e abbiamo per certo essere lui il nostro naturale signore, tanto più che dite aver egli notizia di noi da molto tempo. Siate dunque sicuro che noi vi obbediremo e vi considereremo rappresentante di codesto gran signore che dite, e che in ciò non vi era errore né inganno alcuno. Potete dunque comandare a piacer vostro su tutta la terra, intendo dire quella che io ho in mia signoria, e sarà obbedito ed eseguito; e quanto noi abbiamo è a vostra disposizione ed arbitrio. Poiché vi trovate qui presso la vostra razza e a casa vostra, riposate a vostro agio dalle fatiche e guerre che avete avuto lungo il cammino; ché ben conosco quanto avete fatto da Puntunchàn in qua e so che quelli di Cempoal e di Tascaltecal vi hanno detto molto male di me; ma non dovete credere se non a ciò che vedrete coi vostri occhi, non già ai miei nemici, alcuni dei quali erano miei vassalli e si sono ribellati approfittando della vostra venuta, e ve l’hanno detto per rendersi a voi ben visti. So anche che essi vi hanno detto che io ho le case con le pareti d’oro, e che le stuoie delle mie stanze ed altre cose del mio servizio sono anche d’oro, che io ero e mi facevo passare per Dio, ed altre cose molte. Ora, le case vedete bene che sono di pietra e calce e terra, e quanto a me, – e qui si alzò le vesti e mi mostrò il suo corpo, – vedete che sono di carne e ossa come voi, e come tutti, e che sono mortale e palpabile».</p>
+<p class="corsivo">(da H. Cortés, La conquista del Messico, a cura di C. Vian, De Agostini, Novara 1965)</p>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+  </script>
+</body>
+</html>
