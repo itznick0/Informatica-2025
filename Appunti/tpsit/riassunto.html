@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    /* ✨ NUOVO: DUE COLONNE */
+    .due-colonne {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .colonna-sinistra,
+    .colonna-destra {
+      flex: 1;
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+    }
+
+    .colonna-sinistra h3,
+    .colonna-destra h3 {
+      margin-bottom: 14px;
+      color: #2d3b4a;
+      font-size: 1.3rem;
+    }
+
+    .colonna-sinistra p,
+    .colonna-destra p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive: su mobile le colonne vanno in verticale */
+    @media (max-width: 768px) {
+      .due-colonne {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Titolo documento</h1>
+      <div class="meta">
+        <p class="date">15 Ottobre 2025</p>
+        <p class="subject">Materia: Italiano</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+      <!-- Lezione 1 -->
+      <h2 id="titoloparagrafo">Lezione 1 – Generalità sui Sistemi Operativi</h2>
+
+      <p><span class="grassetto">Accensione del PC</span></p>
+      <ul>
+        <li>All’accensione, viene eseguito il programma di <span class="grassetto">bootstrap</span> (caricato dalla ROM).</li>
+        <li>La prima istruzione è all’indirizzo <code>0xFFFFFFF0</code> e si chiama <span class="grassetto">IPL</span> (Initial Program Loader).</li>
+        <li>Viene eseguito il <span class="grassetto">POST</span> (Power On Self Test) per verificare l’hardware.</li>
+        <li>Nei PC IBM, il POST è parte del <span class="grassetto">BIOS</span> (Basic Input-Output System), un tipo di firmware.</li>
+      </ul>
+
+      <p><span class="grassetto">Cos’è il Sistema Operativo (SO)?</span></p>
+      <ul>
+        <li>Gruppo di programmi che gestisce le risorse hardware e fornisce un’interfaccia all’utente.</li>
+        <li>Fa parte del software di base, insieme a:
+          <ul>
+            <li>Editor</li>
+            <li>Compilatori/Traduttori</li>
+            <li>Linker</li>
+            <li>Loader</li>
+            <li>Debugger</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Architettura a “buccia di cipolla” (onion skin)</span></p>
+      <p>Livelli (dall’interno all’esterno):</p>
+      <ol>
+        <li>Kernel (nucleo)</li>
+        <li>Gestore della memoria centrale</li>
+        <li>Gestore delle periferiche</li>
+        <li>File system</li>
+        <li>Interfaccia utente</li>
+        <li>Programmi applicativi</li>
+      </ol>
+
+      <p><span class="grassetto">Kernel</span></p>
+      <ul>
+        <li>Parte centrale del SO.</li>
+        <li>Opera in modalità <span class="grassetto">supervisore/kernel mode</span>.</li>
+        <li>Gestisce:
+          <ul>
+            <li>Assegnazione della CPU</li>
+            <li>Sincronizzazione tra processi</li>
+            <li>Comunicazione con l’ambiente esterno</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Shell</span></p>
+      <ul>
+        <li>Interfaccia utente per accedere ai servizi del kernel.</li>
+        <li>Due tipi:
+          <ul>
+            <li><span class="grassetto">CUI</span> (Command User Interface): es. MS-DOS, Unix, Linux</li>
+            <li><span class="grassetto">GUI</span> (Graphical User Interface): es. Windows, macOS, Linux moderno</li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Lezione 2 -->
+      <h2 id="titoloparagrafo">Lezione 2 – Evoluzione dei Sistemi Operativi</h2>
+
+      <p><span class="grassetto">Fasi storiche</span></p>
+      <ol>
+        <li><span class="grassetto">Sistemi dedicati (1945–1955)</span>
+          <ul>
+            <li>Esempi: MARK I, ENIAC, UNIVAC I (primo computer commerciale, 1951)</li>
+            <li>Programmazione manuale, I/O con nastri perforati</li>
+            <li>Nessun sistema operativo vero e proprio</li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Gestione a lotti – Batch (1955–1965)</span>
+          <ul>
+            <li>Programmi inseriti tramite schede perforate</li>
+            <li>Ogni job delimitato da <code>$JOB</code> e <code>$END</code></li>
+            <li>Linguaggio di controllo: JCL (Job Control Language)</li>
+            <li>Caratteristiche:
+              <ul>
+                <li>SO sempre residente (monitor)</li>
+                <li>Un solo job in memoria alla volta</li>
+                <li>Nessuna interazione utente-job</li>
+                <li>Bassa efficienza (CPU inattiva durante I/O)</li>
+              </ul>
+            </li>
+            <li>Tecniche introdotte:
+              <ul>
+                <li><span class="grassetto">Buffering</span>: area di memoria temporanea per I/O</li>
+                <li><span class="grassetto">Spooling</span>: uso di dischi virtuali per I/O simultaneo</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Sistemi interattivi (1965–1980)</span>
+          <ul>
+            <li>Introduzione di canali I/O e DMA (Direct Memory Access)</li>
+            <li><span class="grassetto">Multiprogrammazione</span>: più job in memoria, CPU assegnata a chi non è in attesa</li>
+            <li><span class="grassetto">Time sharing</span>: ogni utente ha una porzione di tempo CPU (time slice)</li>
+            <li>Se il job non termina nel time slice, viene sospeso</li>
+            <li>Esempi: CTSS, MULTICS</li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Home computing (anni ’70–’80)</span>
+          <ul>
+            <li>Diffusione di home computer (Atari, Commodore, Sinclair)</li>
+            <li>MS-DOS (1982) per PC IBM</li>
+            <li>MacOS (1984): primo SO con GUI diffusa</li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Sistemi odierni e futuri</span>
+          <ul>
+            <li>Tipologie attuali:
+              <ul>
+                <li>SO per server</li>
+                <li>SO in tempo reale</li>
+                <li>SO embedded (es. IoT)</li>
+                <li>SO per smart card</li>
+                <li>SO per smartphone (Android, iOS)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <!-- Lezione 3 -->
+      <h2 id="titoloparagrafo">Lezione 3 – La gestione del processore</h2>
+
+      <p><span class="grassetto">Processo</span></p>
+      <ul>
+        <li>Entità logica in evoluzione, composta da:
+          <ul>
+            <li>Codice (istruzioni)</li>
+            <li>Dati:
+              <ul>
+                <li>Variabili globali</li>
+                <li>Stack (variabili locali)</li>
+                <li>Heap (allocazione dinamica)</li>
+                <li>Registri (variabili temporanee)</li>
+              </ul>
+            </li>
+            <li>Contesto del processo: insieme di tutti i dati + valore del Program Counter (PC)</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Stati di un processo</span></p>
+      <ol>
+        <li>Nuovo (New)</li>
+        <li>Pronto (Ready)</li>
+        <li>In esecuzione (Running)</li>
+        <li>In attesa (Waiting)</li>
+        <li>Terminato (Terminated)</li>
+      </ol>
+
+      <p><span class="grassetto">Descrittore di processo (PCB – Process Control Block)</span></p>
+      <p>Contiene:</p>
+      <ul>
+        <li>Stato del processo</li>
+        <li>Program Counter</li>
+        <li>Registri CPU</li>
+        <li>Informazioni di scheduling</li>
+        <li>Stack pointer</li>
+        <li>Informazioni di memoria</li>
+      </ul>
+
+      <p><span class="grassetto">Scheduling</span></p>
+      <ul>
+        <li><span class="grassetto">Job scheduler</span>: decide quali processi caricare in memoria (long-term)</li>
+        <li><span class="grassetto">CPU scheduler</span>: decide chi usa la CPU (short-term)</li>
+        <li><span class="grassetto">Dispatcher</span>: esegue il cambio di contesto</li>
+      </ul>
+
+      <p><span class="grassetto">Modalità di esecuzione</span></p>
+      <ul>
+        <li><span class="grassetto">User mode</span>: esecuzione di programmi utente (privilegi limitati)</li>
+        <li><span class="grassetto">Kernel mode</span>: esecuzione di codice del SO (privilegi completi)</li>
+      </ul>
+
+      <p><span class="grassetto">Obiettivi dello scheduling</span></p>
+      <ul>
+        <li>Massimizzare utilizzo CPU e throughput</li>
+        <li>Minimizzare tempi di risposta e attesa</li>
+        <li>Equità, bilanciamento, rispetto delle scadenze (in sistemi real-time)</li>
+      </ul>
+
+      <div class="due-colonne">
+        <div class="colonna-sinistra">
+          <h3>Algoritmi di scheduling</h3>
+          <ul>
+            <li><span class="grassetto">FCFS (First-Come First-Served)</span>: FIFO – Semplice – Effetto convoglio, alto tempo di attesa</li>
+            <li><span class="grassetto">SJF (Shortest Job First)</span>: Esegue il job più breve – Minimizza tempo di attesa – Richiede stima del burst</li>
+            <li><span class="grassetto">Priorità</span>: Ogni processo ha una priorità – Flessibile – Possibile starvation</li>
+          </ul>
+        </div>
+        <div class="colonna-destra">
+          <h3>Altri algoritmi</h3>
+          <ul>
+            <li><span class="grassetto">Round Robin (RR)</span>: Time slice fisso, coda circolare – Equo, nessuna starvation – Overhead se time slice piccolo</li>
+            <li><span class="grassetto">MLFQ (Multiple Level Feedback Queues)</span>: Code a priorità + RR/FCFS – Adattivo – Complesso</li>
+          </ul>
+        </div>
+      </div>
+
+      <p><span class="grassetto">Starvation</span></p>
+      <ul>
+        <li>Processi a bassa priorità mai eseguiti perché arrivano sempre processi a priorità più alta.</li>
+        <li>Soluzione: <span class="grassetto">invecchiamento (aging)</span> – aumentare priorità col tempo</li>
+      </ul>
+
+      <p><span class="grassetto">Confronto tra SO</span></p>
+      <ul>
+        <li><span class="grassetto">Windows</span>: 32 livelli, RR con boost per foreground</li>
+        <li><span class="grassetto">Linux</span>: 140 livelli, RR per utente, FCFS/RR per real-time</li>
+        <li><span class="grassetto">macOS</span>: 128 livelli, MLFQ + RR, basato su kernel XNU (Mach + BSD)</li>
+      </ul>
+
+      <p><span class="grassetto">Sincronizzazione tra processi</span></p>
+      <ul>
+        <li>Processi indipendenti: non comunicano</li>
+        <li>Processi cooperanti: scambiano dati (es. produttore-consumatore)</li>
+        <li>Problemi:
+          <ul>
+            <li>Deadlock (abbraccio mortale)</li>
+            <li>Starvation</li>
+            <li>Race condition</li>
+          </ul>
+        </li>
+        <li>Esempio classico: “I filosofi a cena” (Dijkstra)</li>
+      </ul>
+
+      <!-- Lezione 4 -->
+      <h2 id="titoloparagrafo">Lezione 4 – La gestione della memoria</h2>
+
+      <p><span class="grassetto">Memoria centrale (RAM)</span></p>
+      <ul>
+        <li>Risorsa limitata e volatile</li>
+        <li>Obiettivo del SO: renderla “infinita” tramite memoria virtuale</li>
+      </ul>
+
+      <p><span class="grassetto">Gerarchia di memoria</span></p>
+      <p>Registri → Cache → RAM → Disco → Nastro<br>
+        (Velocità ↓ / Capacità ↑ / Costo ↓)</p>
+
+      <p><span class="grassetto">Caricamento del programma</span></p>
+      <ul>
+        <li>Da eseguibile (disco) → processo (RAM)</li>
+        <li>Indirizzi logici (relativi) → indirizzi fisici (assoluti)</li>
+        <li>Codice rilocabile: può essere caricato in qualsiasi posizione di memoria</li>
+      </ul>
+
+      <p><span class="grassetto">Rilocazione</span></p>
+      <ul>
+        <li>Statica: al caricamento</li>
+        <li>Dinamica: durante l’esecuzione, con registro base (RL) e registro limite</li>
+      </ul>
+
+      <p><span class="grassetto">Address Binding</span></p>
+      <p>Associazione indirizzo logico → fisico<br>
+        Fasi possibili:
+        <ul>
+          <li>Compile time</li>
+          <li>Load time</li>
+          <li>Execution time (richiede MMU)</li>
+        </ul>
+      </p>
+
+      <p><span class="grassetto">MMU (Memory Management Unit)</span></p>
+      <ul>
+        <li>Hardware che traduce indirizzi virtuali → fisici</li>
+      </ul>
+
+      <p><span class="grassetto">Tecniche di gestione della memoria</span></p>
+      <ol>
+        <li>Swapping: spostare processi tra RAM e disco</li>
+        <li>Caricamento dinamico: caricare solo quando serve</li>
+        <li>Overlay: sovrapporre parti di programma (obsoleto)</li>
+        <li>Partizionamento:
+          <ul>
+            <li>Fisso: partizioni predefinite → frammentazione interna/esterna</li>
+            <li>Variabile: partizioni create al bisogno → solo frammentazione esterna</li>
+          </ul>
+        </li>
+      </ol>
+
+      <p><span class="grassetto">Strategie di allocazione (partizionamento variabile)</span></p>
+      <ul>
+        <li>First-fit: primo blocco libero adatto</li>
+        <li>Best-fit: blocco libero più piccolo adatto</li>
+        <li>Worst-fit: blocco libero più grande</li>
+        <li>Next-fit: come first-fit, ma parte dall’ultimo punto cercato</li>
+      </ul>
+
+      <p><span class="grassetto">Memory compaction</span></p>
+      <ul>
+        <li>Spostare processi per unire spazi liberi → ridurre frammentazione esterna</li>
+      </ul>
+
+      <p><span class="grassetto">Memoria virtuale</span></p>
+      <ul>
+        <li>Permette di eseguire programmi più grandi della RAM</li>
+        <li>Basata su principio di località:
+          <ul>
+            <li>Spaziale: accesso a indirizzi vicini</li>
+            <li>Temporale: accesso ripetuto a stessi indirizzi</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Paginazione</span></p>
+      <ul>
+        <li>Memoria divisa in frame (fisici) e programma in pagine (logiche), stessa dimensione</li>
+        <li>Vantaggi:
+          <ul>
+            <li>Nessuna frammentazione esterna</li>
+            <li>Caricamento parziale (solo pagine necessarie)</li>
+          </ul>
+        </li>
+        <li>Tabella delle pagine: mappa pagina logica → frame fisico</li>
+        <li>Bit di validità: 1 = in memoria, 0 = su disco</li>
+        <li>Page fault: pagina non in memoria → SO la carica</li>
+      </ul>
+
+      <p><span class="grassetto">Segmentazione</span></p>
+      <ul>
+        <li>Suddivisione logica del programma (codice, dati, stack...)</li>
+        <li>Ogni segmento ha dimensione variabile</li>
+        <li>Vantaggi:
+          <ul>
+            <li>Condivisione segmenti</li>
+            <li>Protezione per tipo</li>
+          </ul>
+        </li>
+        <li>Svantaggio: frammentazione esterna</li>
+      </ul>
+
+      <p><span class="grassetto">Segmentazione con paginazione</span></p>
+      <ul>
+        <li>Combina vantaggi di entrambe:
+          <ul>
+            <li>Ogni segmento è diviso in pagine</li>
+            <li>Indirizzo logico: [segmento][pagina][offset]</li>
+            <li>Nessuna frammentazione esterna + condivisione + protezione</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Algoritmi di sostituzione (Page Replacement)</span></p>
+      <ul>
+        <li><span class="grassetto">FIFO</span>: Sostituisce la pagina caricata da più tempo</li>
+        <li><span class="grassetto">LRU (Least Recently Used)</span>: Sostituisce la pagina usata meno di recente</li>
+        <li><span class="grassetto">NRU (Not Recently Used)</span>: Approssimazione LRU con bit di riferimento</li>
+        <li><span class="grassetto">LFU/MFU</span>: Basati su frequenza di accesso</li>
+      </ul>
+
+      <p><span class="grassetto">Dirty bit</span>: indica se la pagina è stata modificata → evita scrittura su disco se non necessario</p>
+
+      <!-- Lezione 5 -->
+      <h2 id="titoloparagrafo">Lezione 5 – La memoria secondaria: il File System</h2>
+
+      <p><span class="grassetto">File System</span></p>
+      <ul>
+        <li>Parte del SO che gestisce memoria secondaria (dischi, SSD...)</li>
+        <li>Obiettivi:
+          <ul>
+            <li>Memorizzazione permanente</li>
+            <li>Accesso veloce</li>
+            <li>Condivisione tra processi</li>
+            <li>Supporto a grandi quantità di dati</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">File</span></p>
+      <ul>
+        <li>Per l’utente: insieme di dati con nome univoco</li>
+        <li>Per il SO: sequenza di byte (strutturata o meno)</li>
+        <li>Descrittore del file contiene:
+          <ul>
+            <li>Nome, tipo, locazione, dimensione</li>
+            <li>Data/ora creazione/modifica</li>
+            <li>Proprietario, permessi (in SO multiutente)</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Directory</span></p>
+      <ul>
+        <li>Struttura che contiene descrittori di file e sottodirectory</li>
+        <li>Organizzazione ad albero:
+          <ul>
+            <li>Root (directory radice)</li>
+            <li>Percorso assoluto: da root</li>
+            <li>Percorso relativo: dalla directory corrente</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Partizioni e volumi</span></p>
+      <ul>
+        <li>Disco suddiviso in partizioni (volumi indipendenti)</li>
+        <li>MBR (Master Boot Record): primo settore, contiene tabella partizioni</li>
+        <li>Ogni partizione ha una directory del dispositivo</li>
+      </ul>
+
+      <p><span class="grassetto">Allocazione dei file su disco</span></p>
+      <ul>
+        <li><span class="grassetto">Contigua</span>: Blocchi consecutivi – Accesso veloce – Frammentazione esterna</li>
+        <li><span class="grassetto">Linkata</span>: Ogni blocco punta al successivo – Nessuna frammentazione – Accesso solo sequenziale</li>
+        <li><span class="grassetto">Indicizzata</span>: Tabella di indici nel descrittore – Accesso diretto, flessibile – Overhead per tabella</li>
+      </ul>
+
+      <p><span class="grassetto">Operazioni sui file</span></p>
+      <p>Creazione, lettura, scrittura, cancellazione, rinomina, copia, spostamento, troncamento, accodamento<br>
+        Apertura/chiusura: ottimizza accesso mantenendo descrittori in memoria</p>
+
+      <p><span class="grassetto">Metodi di accesso</span></p>
+      <ol>
+        <li>Sequenziale: record uno dopo l’altro</li>
+        <li>Diretto: accesso per posizione (record a dimensione fissa)</li>
+        <li>A indice: ricerca tramite chiave in struttura indice</li>
+      </ol>
+
+      <p><span class="grassetto">Protezione e diritti</span></p>
+      <ul>
+        <li>ACL (Access Control List): elenco utenti + permessi</li>
+        <li>Versione semplificata (Unix-like):
+          <ul>
+            <li>Proprietario</li>
+            <li>Gruppo</li>
+            <li>Universo (altri)</li>
+            <li>Per ognuno: lettura (r), scrittura (w), esecuzione (x) → 3 bit</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Modello client-server</span></p>
+      <ul>
+        <li>Server: fornisce risorse (es. file condivisi)</li>
+        <li>Client: richiede risorse</li>
+        <li>Ogni nodo di rete = host</li>
+      </ul>
+    </div>
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    /* ✨ NUOVO: DUE COLONNE */
+    .due-colonne {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .colonna-sinistra,
+    .colonna-destra {
+      flex: 1;
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+    }
+
+    .colonna-sinistra h3,
+    .colonna-destra h3 {
+      margin-bottom: 14px;
+      color: #2d3b4a;
+      font-size: 1.3rem;
+    }
+
+    .colonna-sinistra p,
+    .colonna-destra p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive: su mobile le colonne vanno in verticale */
+    @media (max-width: 768px) {
+      .due-colonne {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+    /* ✨ Stile per elenco con pallini usando <p> */
+.elenco p {
+  position: relative;
+  padding-left: 24px; /* spazio per il pallino */
+  margin-bottom: 1px; /* meno spazio rispetto ai 20px originali */
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+/* Pallino personalizzato */
+.elenco p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4f6df5; /* colore del pallino (coerente con il tuo tema) */
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Sicurezza sul Lavoro-2</h1>
+      <div class="meta">
+        <p class="date">23 Ottobre 2025</p>
+        <p class="subject">Materia: Att. Agg.</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <p id="titoloparagrafo">Recap lezione 1+ Lezione 2</p>
+    <p class="grande grassetto">Infortunio sul lavoro:</p>
+    <p> -Inabili permanentemente</p>
+    <p> -Inabili temporaneamente(almeno 3 settimane)</p>
+    <p> -Morte</p>
+    <p class="grande grassetto">Malattie professionali (patologie conseguenti il lavoro):</p>
+    <p> -Medico competente (nominato dal datore di lavoro)</p>
+    <p> -Sorveglianza sanitaria (visite mediche periodiche)</p>
+    <p></p>
+    <p class="evidenziato">! Il datore di lavoro nomina anche l'RSPP !</p>
+    <p class="grande grassetto">Lavoratore</p>
+    <p></p>
+    <p>Non solo le persone che vengono pagate sono considerate lavoratori. Anche gli studenti che fanno PCTO o anche le persone che fanno stage sono considerati lavoratori.</p>
+    <p>Ogni azienda deve avere il DIR</p>
+    <p class="grassetto">Cos'è il DIR?</p>
+    <p>Il DIR (Documento di Valutazione del Rischio) è un documento che ogni azienda deve presentare per assumere stagisti (anche i ragazzi di PCTO). Inoltre se non comprende una parte relativa di stagisti, non si può fare la convenzione.</p>
+    <p class="grassetto">Codice ATECO</p>
+    <p>Il codice ATECO è un codice che identifica l'attività economica svolta dall'azienda. Ogni azienda ha un codice ATECO diverso in base al settore in cui opera.</p>
+    <p>Il codice ATECO è importante perché determina le misure di sicurezza che l'azienda deve adottare per garantire la sicurezza dei lavoratori.</p>
+    <p class="grassetto grande">Ambiente di lavoro</p>
+    <p>Deve essere sicuro, salubre e confortevole, deve essere conforme alle normative vigenti in materia di sicurezza sul lavoro e viene considerato qualsiasi area alla quale accede il lavoratore anche solo eccezionalmente.</p>
+    <p class="sottolineato corsivo">Rischi da ambienti di lavoro: </p>
+    <div class="elenco">
+        <p>Stabilità dell'edificio</p>
+        <p>Architettura del luogo di lavoro</p>
+        <p>Presenza di impianti</p>
+        <p>Logistica delle merci</p>
+        <p>Trasporti</p>
+        <p>Scale, pareti, ringhiere,...</p>
+    </div>
+    <p></p>
+    <p class="grande corsivo">Esempio</p>
+    <p>A un concerto di Sfera in un luogo chiuso un ragazzo ha spruzzato lo sprai al peperoncino, tutti sono cercati di uscire il prima possibile solo che le uscite di emergenza non erano presenti e quindi tutti si sono ammassati dalla porta che non era idonea per il numero di occupanti e diversa gente è morta.</p>
+    <p class="sottolineato">In questo caso non solo il ragazzo è andato nei guai ma anche anche il dirigente di quel locale a causa delle normative di idoneità non rispettate.</p>
+    <p></p>
+    <p class="grande grassetto">Microclima</p>
+    <p>Il microclima è l'insieme delle condizioni climatiche che caratterizzano un ambiente di lavoro. Queste condizioni possono influire sulla salute e sul benessere dei lavoratori.</p>
+    <p>Il microclima è determinato da diversi fattori, tra cui:</p>
+    <div class="elenco">
+        <p>Temperatura (stress termico=> Colpo di calore/Ipotermia)</p>
+        <p>Umidità</p>
+        <p>Velocità dell'aria</p>
+        <p>Radiazioni termiche</p>
+    </div>
+    <p>Per garantire un microclima adeguato, le aziende devono adottare misure per controllare questi fattori, come l'installazione di sistemi di riscaldamento, ventilazione e condizionamento dell'aria.</p>
+    <p class="grassetto grande">Stress termico</p>
+    <p>Se troppo caldo => Rischio di Colpo di calore</p>
+    <p>Se troppo fredo => Rischio di ipotermia</p>
+    <p>Indice WBGT => Determiana in base alla temperatura quanta percentuale di tempo bisogna lavorare e quanta no.</p>
+    <p class="grande grassetto">Illuminazione</p>
+    <p class="grande grassetto">Altri fattori di rischio</p>
+    <div class="elenco">
+        <p>Genere</p>
+        <p>Età</p>
+        <p>Stato di salute</p>
+        <p>Nazionalità</p>
+    </div>
+    <p id="titoloparagrafo">Videoterminali</p>
+    <p>Dispositivi elettronici con schermo utilizzati per l'immissione e la visualizzazione di dati.</p>
+    <p>Possono causare affaticamento visivo, disturbi muscoloscheletrici e stress.</p>
+    <p>Misure preventive:</p>
+    <div class="elenco">
+        <p>Regolare l'altezza e l'inclinazione dello schermo</p>
+        <p>Mantenere una distanza adeguata dallo schermo</p>
+        <p>Fare pause regolari per riposare gli occhi e il corpo</p>
+    </div>
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+         <div id="immaginedidascalia">
+          <img src="2/1.png" alt="Indice WBGT">
+          <p class="didascalia">Una delle diverse tabelle con indice WBGT.</p>
+      </div>
+      <div id="immaginedidascalia">
+          <img src="2/2.png" alt="Postura al PC">
+          <p class="didascalia">Immagine rappresentativa della giusta postura alla scrivania davanti al PC.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+  </script>
+</body>
+</html>
