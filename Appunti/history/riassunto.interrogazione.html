@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    /* ✨ NUOVO: DUE COLONNE */
+    .due-colonne {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .colonna-sinistra,
+    .colonna-destra {
+      flex: 1;
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+    }
+
+    .colonna-sinistra h3,
+    .colonna-destra h3 {
+      margin-bottom: 14px;
+      color: #2d3b4a;
+      font-size: 1.3rem;
+    }
+
+    .colonna-sinistra p,
+    .colonna-destra p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive: su mobile le colonne vanno in verticale */
+    @media (max-width: 768px) {
+      .due-colonne {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Riassunti storia</h1>
+      <div class="meta">
+        <p class="date">30 Ottobre 2025</p>
+        <p class="subject">Materia: Storia</p>
+      </div>
+    </div>
+
+    <div class="content">
+<div>
+<p id="titoloparagrafo">1. Trascrizione integrale del contenuto</p>
+<p></p>
+<p>Le scoperte geografiche: gli europei esplorano il globo</p>
+<p></p>
+<p>Gli europei del Quattrocento erano consapevoli di vivere nella parte occidentale di una massa continentale che giungeva fino alla Cina; Marco Polo li aveva informati, in aggiunta, che ancora più a est sorgeva il Giappone.</p>
+<p>L’Africa era ben conosciuta nella sua fascia a nord del Sahara, ma era ignoto fin dove essa si estendesse a sud e se l’Oceano Indiano fosse raggiungibile via mare dall’Atlantico.</p>
+<p></p>
+<p>Per aggirare gli intermediari, la via di esplorazione passava per il mare. Ma fino al XV secolo le limitate competenze nautiche e conoscenze geografiche consentivano alle imbarcazioni europee di navigare solo costeggiando la terraferma.</p>
+<p></p>
+<p>La navigazione in mare aperto fu stimolata dall’introduzione di nuovi strumenti, quali la bussola, il quadrante e l’astrolabio, nonché dalla messa a punto di un’imbarcazione nuova, la caravella.</p>
+<p></p>
+<p>Sia nell’applicazione dell’astronomia alla navigazione, sia nell’evoluzione della cantieristica nautica, il maggiore contributo d’innovazione venne dal Portogallo. Il piccolo regno si espandeva verso la fascia atlantica dell’Africa, sognando di trovare la via per l’Asia.</p>
+<p></p>
+<p>Nel corso del XV secolo i navigatori portoghesi raggiunsero località mai toccate prima (Madera, le Azzorre, il fiume Senegal, l’arcipelago di Capo Verde, il Golfo di Guinea, le foci del fiume Congo), andando a ripopolare isole sino ad allora disabitate e impiantando un’economia di piantagione.</p>
+<p></p>
+<p>Tra il 1487 e il 1488 Bartolomeu Dias riuscì a circumnavigare l’Africa aprendo una via diretta con l’Oceano Indiano. Dieci anni dopo, Vasco da Gama ripercorse la rotta inaugurata da Dias puntando verso l’India, per ritornare a Lisbona (1499) con un importante carico di spezie.</p>
+<p></p>
+<p>Da quel momento, il Portogallo impose la sua presenza nell’Oceano Indiano, monopolizzando il commercio europeo di alcuni prodotti (seta, gommalacca, spezie). Le sue armi vincenti furono la potenza dei cannoni e l’uso spregiudicato della violenza, ma anche la disinvoltura nel cercare alleanze con potenze locali indù.</p>
+<p></p>
+<p>L’insieme dei possedimenti portoghesi in Africa orientale e in Asia prese il nome di Estado da Índia: governato da un viceré o da un governatore con sede a Goa, era abitato in pianta stabile da poche migliaia di lusitani e da un numero molto maggiore di persone native di quei luoghi.</p>
+<p></p>
+<p>I portoghesi detenevano basi fortificate sul Golfo Persico, in India, Sri Lanka e Malesia e giunsero a commerciare fino in Cina e in Giappone. L’Impero moghul occupava buona parte degli attuali Pakistan e India settentrionale.</p>
+<p></p>
+<p>Intenzionato a cercare una nuova via per raggiungere le Indie e anche sulla base dei calcoli sulla circonferenza terrestre prodotti da Paolo dal Pozzo Toscanelli, il navigatore genovese Cristoforo Colombo si convinse che fosse possibile raggiungere l’Oriente navigando verso occidente.</p>
+<p></p>
+<p>Dopo aver presentato, senza successo, la sua idea al re del Portogallo, trovò accoglienza presso Isabella di Castiglia. Poté quindi salpare da Palos il 3 agosto del 1492 con tre navi e raggiungere le Bahamas il 14 ottobre successivo.</p>
+<p></p>
+<p>Colombo non abbandonò il disegno di portare a termine l’impresa e mettere davvero piede in Asia. Nel corso dei suoi quattro viaggi, Colombo esplorò altre terre e iniziò a sospettare che queste non fossero appendici delle Indie, ma che si trattasse di un nuovo continente.</p>
+<p></p>
+<p>Fu Amerigo Vespucci, che si spinse più a sud del suo predecessore, a diffondere l’idea e la convinzione che quelle terre fossero un «nuovo mondo». In suo onore, esso fu battezzato America, benché ancora a lungo ci si riferì a quei luoghi indicandoli con il nome di Indie occidentali.</p>
+<p></p>
+<p>Già prima dei viaggi di Colombo, Isabella di Castiglia e il re del Portogallo si erano accordati per dividere l’Oceano Atlantico in rispettive zone di influenza. Con la scoperta di nuove terre molto più a ovest, si dovette ridefinire la questione. I sovrani spagnoli interpellarono papa Alessandro VI, castigliano, che nel 1492 stabilì che tutto ciò che sarebbe stato scoperto oltre una linea immaginaria fissata a ovest delle Azzorre e di Capo Verde dovesse appartenere ai re spagnoli, mentre ciò che restava a est sarebbe appartenuto alla monarchia portoghese.</p>
+<p></p>
+<p>Il Trattato di Tordesillas del 1494 stabilì una linea di separazione (chiamata raya) che delimitava i territori spettanti alla Spagna (a ovest) e quelli spettanti al Portogallo (a est).</p>
+<p></p>
+<p>Magellano, partito da Siviglia nel 1519, raggiunse l’estremo sud del nuovo continente e arrivò nell’Oceano poi battezzato Pacifico. Raggiunto l’arcipelago delle Filippine (1521), morì nel corso di uno scontro con popolazioni indigene e la sua spedizione fece ritorno in Spagna, completando il primo viaggio intorno al mondo.</p>
+<p></p>
+<p>L’America prima degli europei</p>
+<p></p>
+<p>I tre principali imperi precolombiani:</p>
+<p></p>
+<p>l’Impero maya;</p>
+<p>l’Impero azteco;</p>
+<p>l’Impero inca.</p>
+<p>Nell’area dell’attuale Messico centro-meridionale, gli aztechi, dopo i maya e i toltechi, imposero il loro dominio. La loro cultura religiosa imponeva sacrifici umani e al vertice del loro sistema politico vi era la figura di un signore, dotato di poteri sacerdotali.</p>
+<p></p>
+<p>Nell’area delle Ande peruviane, si era invece affermato il potente Impero inca (prendeva il nome dalla famiglia regnante), al cui vertice c’era un imperatore, ritenuto discendente del dio sole.</p>
+<p></p>
+<p>I conquistadores</p>
+<p></p>
+<p>Nel 1519, gli spagnoli iniziarono l’occupazione del Messico. Protagonista fu Hernán Cortés, il quale era stato inviato dal governatore di Cuba a esplorare la penisola dello Yucatán. Cortés andò oltre il mandato e da qui proseguì verso la capitale azteca.</p>
+<p></p>
+<p>Gli spagnoli furono accolti come ospiti dal tlatoani Montezuma, ma all’iniziale cortesia presto subentrarono tensioni sempre più forti. Infine scoppiò una violenta rivolta popolare, durante la quale Montezuma stesso venne ucciso.</p>
+<p></p>
+<p>Gli spagnoli riuscirono a imporsi grazie alle armi da fuoco, ai cavalli, sconosciuti in quelle terre, e al vaiolo di cui erano portatori. La capitale azteca Tenochtitlán fu ribattezzata Città del Messico e Cortés divenne governatore della cosiddetta Nuova Spagna.</p>
+<p></p>
+<p>La penetrazione spagnola nel Sudamerica seguì uno schema simile. Francisco Pizarro iniziò l’esplorazione della costa pacifica e successivamente avviò la conquista dell’Impero inca, entrando nella capitale Cuzco nel 1533. Dopo la conquista di Cuzco, Pizarro fondò la città di Lima.</p>
+<p></p>
+<p>Le lacerazioni provocate da una cruenta guerra dinastica ai vertici dell’impero avevano indebolito il potere inca. Inoltre gli inca non sapevano nulla di quanto avvenuto agli aztechi e Atahualpa sottovalutò il contingente spagnolo.</p>
+<p></p>
+<p>Gli spagnoli in America</p>
+<p></p>
+<p>Gli spagnoli si trovarono a dover governare territori immensi, molto lontani dalla madrepatria. Siviglia fu l’unico porto autorizzato per i viaggi transoceanici e, dal 1503, fu sede della Casa de Contratación.</p>
+<p>Dall’altra parte dell’oceano, Città del Messico e Lima divennero le capitali dei due vicereami in cui la monarchia spagnola organizzò i possedimenti nel Nuovo Mondo. I viceré, nominati dal re, sarebbero stati scelti fra i membri di illustri casate aristocratiche, e ciò avrebbe causato tensioni con i discendenti dei conquistadores.</p>
+<p></p>
+<p>Gli indios erano formalmente sudditi della corona e non schiavi, tuttavia si ricorreva al loro sistematico sfruttamento per i lavori agricoli e per estrarre l’argento dalle miniere. Erano affidati a un signore spagnolo, che, di fatto, li trattava come schiavi (encomienda).</p>
+<p></p>
+<p>Nel giro di pochi decenni, le popolazioni native subirono un crollo demografico, causato, oltre che dallo sfruttamento sistematico e violento, anche dall’impatto che su di loro ebbero le malattie portate dagli spagnoli (come il vaiolo, il morbillo o l’influenza). Alla fine del Cinquecento, si stima che la popolazione indigena fosse ridotta a un quinto dei livelli antecedenti all’arrivo degli europei. Gli indigeni delle Antille scomparvero quasi del tutto.</p>
+<p></p>
+<p>La condizione in cui versavano gli indios non mancò di suscitare aspre critiche, specialmente tra i frati domenicani. Il più tenace accusatore del trattamento riservato agli indigeni fu il domenicano Bartolomé de Las Casas, un sacerdote che aveva rinunciato alle sue encomiendas ed era entrato in convento.</p>
+<p></p>
+<p>Lo scambio colombiano</p>
+<p></p>
+<p>L’incontro/scontro tra culture mise in moto uno scambio di piante e animali tra Europa e «nuovo mondo», che modificò abitudini alimentari e lo stesso paesaggio agrario del continente americano.</p>
+</div>
+
+      <p id="titoloparagrafo">2. Schema riassuntivo</p>
+
+      <p><span class="grassetto">Contesto iniziale</span></p>
+      <ul>
+        <li>Gli europei conoscevano Europa, Nord Africa, Asia (grazie a Marco Polo).</li>
+        <li>Obiettivo: raggiungere le Indie (Asia) per il commercio di spezie, evitando intermediari (arabi, veneziani).</li>
+      </ul>
+
+      <p><span class="grassetto">Strumenti e innovazioni</span></p>
+      <ul>
+        <li>Nuovi strumenti: bussola, astrolabio, quadrante.</li>
+        <li>Nuova imbarcazione: caravella.</li>
+        <li>Navigazione in alto mare → espansione possibile.</li>
+      </ul>
+
+      <p><span class="grassetto">Portogallo: pioniere delle esplorazioni</span></p>
+      <ul>
+        <li>Esplorazioni lungo la costa africana (XV sec.).</li>
+        <li>Bartolomeu Dias (1488): circumnaviga Capo di Buona Speranza.</li>
+        <li>Vasco da Gama (1498): raggiunge l’India.</li>
+        <li>Creazione dell’<span class="grassetto">Estado da Índia</span> con base a Goa.</li>
+        <li>Monopolio commerciale nell’Oceano Indiano.</li>
+      </ul>
+
+      <p><span class="grassetto">Spagna e la scoperta dell’America</span></p>
+      <ul>
+        <li>Colombo (1492): cerca una via occidentale per l’Asia → scopre le Americhe.</li>
+        <li>Amerigo Vespucci: definisce il “Nuovo Mondo” → nome “America”.</li>
+        <li>Trattato di Tordesillas (1494): divisione del mondo tra Spagna (ovest) e Portogallo (est).</li>
+      </ul>
+
+      <p><span class="grassetto">Prima circumnavigazione del globo</span></p>
+      <ul>
+        <li>Ferdinando Magellano (1519–1522): attraversa Sudamerica, scopre Oceano Pacifico, muore nelle Filippine.</li>
+        <li>La spedizione torna in Spagna → primo giro del mondo.</li>
+      </ul>
+
+      <p><span class="grassetto">Imperi precolombiani</span></p>
+      <ul>
+        <li>Maya, Aztechi (Messico), Incas (Perù).</li>
+        <li>Società complesse, religione con sacrifici umani, imperatori divinizzati.</li>
+      </ul>
+
+      <p><span class="grassetto">Conquista spagnola</span></p>
+      <ul>
+        <li>Hernán Cortés: conquista l’Impero azteco (1519–1521).</li>
+        <li>Francisco Pizarro: conquista l’Impero inca (1532–1533).</li>
+        <li>Fattori di successo: armi da fuoco, cavalli, malattie (vaiolo), divisioni interne.</li>
+      </ul>
+
+      <p><span class="grassetto">Organizzazione coloniale spagnola</span></p>
+      <ul>
+        <li>Due vicereami: Nuova Spagna (Messico) e Perù (Lima).</li>
+        <li>Casa de Contratación a Siviglia.</li>
+        <li>Sistema delle <span class="grassetto">encomiendas</span>: sfruttamento forzato degli indigeni.</li>
+      </ul>
+
+      <p><span class="grassetto">Conseguenze demografiche e culturali</span></p>
+      <ul>
+        <li>Crollo demografico degli indigeni (fino all’80% di morti).</li>
+        <li>Critiche da parte di religiosi (es. Bartolomé de Las Casas).</li>
+        <li>Scambio colombiano: trasferimento di piante (mais, patata, pomodoro → Europa; grano, caffè, zucchero → America) e animali (cavalli, maiali → America).</li>
+      </ul>
+
+      <p><span id="titoloparagrafo">3. Riassunto discorsivo</span></p>
+
+      <p>Tra il XIV e il XVI secolo, l’Europa intraprese un’epoca di grandi esplorazioni geografiche, spinta dal desiderio di raggiungere direttamente le ricche terre d’Oriente per il commercio di spezie, seta e altre merci pregiate. Fino ad allora, questi beni arrivavano in Europa attraverso lunghe catene di intermediari, soprattutto arabi e veneziani.</p>
+
+      <p>L’avvento di nuovi strumenti di navigazione (bussola, astrolabio) e l’introduzione della caravella permisero ai navigatori europei di affrontare viaggi in mare aperto.</p>
+
+      <p>Il Portogallo fu il primo a lanciarsi in questa impresa, esplorando progressivamente la costa occidentale dell’Africa fino a quando Bartolomeu Dias, nel 1488, doppiò il Capo di Buona Speranza. Pochi anni dopo, Vasco da Gama raggiunse l’India, aprendo una rotta marittima diretta. Il Portogallo consolidò così un impero commerciale nell’Oceano Indiano, con basi in India, Sri Lanka, Malesia e persino contatti con Cina e Giappone.</p>
+
+      <p>Parallelamente, la Spagna finanziò il viaggio di Cristoforo Colombo, che nel 1492, cercando una via occidentale per l’Asia, approdò accidentalmente in America. Inizialmente credette di essere giunto alle Indie, ma presto si capì che si trattava di un continente sconosciuto agli europei. Amerigo Vespucci contribuì a diffondere questa idea, e il nuovo continente fu battezzato “America” in suo onore.</p>
+
+      <p>Per evitare conflitti, Spagna e Portogallo firmarono il <span class="grassetto">Trattato di Tordesillas</span> (1494), che divideva il mondo in due sfere d’influenza. Poco dopo, la spedizione di Magellano (1519–1522) compì il primo giro del mondo, dimostrando definitivamente la sfericità della Terra e l’esistenza di un oceano immenso tra America e Asia: il Pacifico.</p>
+
+      <p>Nel Nuovo Mondo, gli spagnoli incontrarono civiltà avanzate come gli Aztechi e gli Incas. Grazie a superiorità tecnologica (armi da fuoco, cavalli), alle malattie infettive (vaiolo) e alle divisioni interne agli imperi indigeni, i conquistadores come Cortés e Pizarro riuscirono rapidamente a sottomettere questi imperi. Le colonie furono organizzate in due grandi vicereami, con capitali a Città del Messico e Lima.</p>
+
+      <p>Lo sfruttamento degli indigeni attraverso il sistema delle <span class="grassetto">encomiendas</span> e le epidemie provocarono un drammatico crollo demografico. Questa situazione suscitò critiche, soprattutto da parte di religiosi come Bartolomé de Las Casas, che denunciò le crudeltà della conquista.</p>
+
+      <p>Infine, il contatto tra Vecchio e Nuovo Mondo diede vita allo <span class="grassetto">scambio colombiano</span>: un trasferimento globale di piante, animali, culture e malattie che trasformò profondamente entrambi i continenti.</p>
+    <p></p>
+    <p id="titoloparagrafo">1. Riassunto schematico – Cap. 12: Il Mediterraneo e i nuovi imperi tra XIV e XV secolo</p>
+
+      <p><span class="grassetto">Contesto generale</span></p>
+      <ul>
+        <li>Caduta dell’Impero mongolo dopo la morte di Qubilai Khan (1294): frammentazione in khanati indipendenti.</li>
+        <li>Tamerlano (fine XIV sec.): tenta di rifondare l’impero mongolo → conquista Persia, Mesopotamia, Siria, sconfigge gli ottomani ad Ankara (1402).</li>
+        <li>Conseguenza: blocco della Via della Seta settentrionale → crisi dei commerci Europa-Asia.</li>
+      </ul>
+
+      <p><span class="grassetto">Nascita di nuovi imperi</span></p>
+      <ul>
+        <li>Impero ottomano: espansione nei Balcani e in Anatolia; conquista di Costantinopoli (1453) da parte di Mehmed II → fine dell’Impero bizantino.</li>
+        <li>Impero safavide (Persia) e moghul (India).</li>
+        <li>Impero russo: affermazione del principato di Mosca.</li>
+        <li>Cina: dinastia Ming, periodo di grande potenza.</li>
+      </ul>
+
+      <p><span class="grassetto">L’Impero ottomano</span></p>
+      <ul>
+        <li><span class="grassetto">Organizzazione:</span>
+          <ul>
+            <li>Sultano: autorità assoluta.</li>
+            <li>Gran visir + “divano” (consiglio).</li>
+            <li>Esercito: timarioti (cavalieri feudali) e giannizzeri (fanteria di élite, reclutati tra i cristiani convertiti).</li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Politica religiosa:</span>
+          <ul>
+            <li>Tolleranza verso cristiani ed ebrei (pagamento della jizya, tassa sui non musulmani).</li>
+            <li>Custodia dei luoghi santi dell’islam dopo la conquista dell’Egitto (Selim I).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">La Spagna cattolica</span></p>
+      <ul>
+        <li>Unione dinastica tra Isabella di Castiglia e Ferdinando d’Aragona (1469) → base dell’unità spagnola.</li>
+        <li>1492: caduta dell’Emirato di Granada → fine della Reconquista.</li>
+        <li>Inquisizione spagnola (1478): controllo delle conversioni, espulsione degli ebrei sefarditi (1492).</li>
+      </ul>
+
+      <p><span class="grassetto">Nuovi equilibri nel Mediterraneo</span></p>
+      <ul>
+        <li>Scomparsa di Bisanzio.</li>
+        <li>Affermazione di Spagna e Ottomani.</li>
+        <li>Venezia e Genova: ancora attive, ma in declino relativo.</li>
+        <li>Presenza aragonese in Sicilia, Sardegna, Baleari.</li>
+      </ul>
+
+      <!-- SECONDA SEZIONE: non può usare id="titoloparagrafo" -->
+      <p><span id="titoloparagrafo">2. Riassunto schematico – La Penisola Italiana tra XIV e XV secolo: Signorie, Principati, Pace di Lodi</span></p>
+
+      <p><span class="grassetto">Crisi dei Comuni e affermazione delle signorie</span></p>
+      <ul>
+        <li>Frammentazione politica → lotte interne (Popolo vs aristocrazia).</li>
+        <li>Emergenza di “uomini forti” con cariche a lungo termine (podestà, capitano del popolo).</li>
+        <li>Legittimazione imperiale: titolo di vicario imperiale.</li>
+        <li>Nascita delle signorie cittadine (es. Scaligeri a Verona, Visconti a Milano).</li>
+      </ul>
+
+      <p><span class="grassetto">Casi particolari</span></p>
+      <ul>
+        <li><span class="grassetto">Firenze:</span>
+          <ul>
+            <li>Mantiene struttura repubblicana.</li>
+            <li>Governo oligarchico del “Popolo grasso”.</li>
+            <li>Ascesa degli Albizzi (1382–1430s), poi dei Medici con Cosimo il Vecchio (dal 1434).</li>
+          </ul>
+        </li>
+        <li><span class="grassetto">Venezia:</span>
+          <ul>
+            <li>Repubblica aristocratica stabile.</li>
+            <li>Maggior Consiglio chiuso (dal 1297): nasce il patriziato.</li>
+            <li>Doge con potere limitato da consigli.</li>
+            <li>Espansione territoriale: Stato da terra (entroterra) e Stato da mar (Mediterraneo orientale).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span class="grassetto">Formazione di Stati sovracittadini</span></p>
+      <ul>
+        <li>Milano: espansione con i Visconti → Gian Galeazzo Visconti diventa duca (1395).</li>
+        <li>Massima estensione: Lombardia, Emilia, Toscana.</li>
+        <li>Crisi dopo la morte (1402) → ripresa con Filippo Maria Visconti.</li>
+        <li>Verona: dominio degli Scaligeri (1311–1387).</li>
+        <li>Napoli e Sicilia:
+          <ul>
+            <li>Divisione tra Angioini (Napoli) e Aragonesi (Sicilia, detta “Regno di Trinacria”).</li>
+            <li>Riunificazione sotto Alfonso d’Aragona (1442), poi nuova divisione (1458).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p><span id="grassetto">Pace di Lodi (1454)</span></p>
+      <ul>
+        <li>Stipulata tra Milano, Venezia, Firenze, Stato Pontificio, Napoli.</li>
+        <li>Obiettivo: equilibrio di potere → Italia pacifica per 40 anni.</li>
+        <li>Nascita della diplomazia moderna (ambasciatori stabili, negoziati).</li>
+      </ul>
+
+      <!-- TERZA SEZIONE -->
+      <p><span class="titoloparagrafo">3. Riassunto schematico – Umanesimo e Rinascimento</span></p>
+
+      <p><span class="grassetto">Definizioni e contesto</span></p>
+      <ul>
+        <li>Umanesimo: movimento culturale dal Trecento, centrato sull’uomo e sugli autori classici.</li>
+        <li>Rinascimento: periodo di fioritura artistica, scientifica e letteraria (XV–XVI sec.).</li>
+        <li>I termini sono stati coniati nel XIX secolo.</li>
+      </ul>
+
+      <p><span class="grassetto">Caratteri dell’Umanesimo</span></p>
+      <ul>
+        <li>Riscoperta dei classici: studio diretto di testi latini e greci, senza filtro medievale.</li>
+        <li>Filologia: metodo critico → es. Lorenzo Valla smaschera il Dono di Costantino come falso.</li>
+        <li>Studi umanistici: grammatica, retorica, storia, poesia, morale (le <em>studia humanitatis</em>).</li>
+        <li>Esaltazione dell’uomo: capacità di autodeterminazione (es. Pico della Mirandola, <em>De hominis dignitate</em>).</li>
+      </ul>
+
+      <p><span class="grassetto">Umanesimo civico</span></p>
+      <ul>
+        <li>Valorizzazione della partecipazione politica (ispirata alla Repubblica romana).</li>
+        <li>Centro: Firenze → es. Leonardo Bruni, Niccolò Machiavelli.</li>
+        <li>Machiavelli: nel <em>Principe</em> (1532) analizza il potere in modo realistico, non morale.</li>
+      </ul>
+
+      <p><span class="grassetto">Rivoluzione della stampa</span></p>
+      <ul>
+        <li>Gutenberg (metà ‘400): invenzione della stampa a caratteri mobili.</li>
+        <li>Diffusione dei libri: calo dei costi, aumento dei lettori.</li>
+        <li>Aldo Manuzio (Venezia): editore umanista → diffonde classici greci e latini.</li>
+      </ul>
+
+      <p><span class="grassetto">Arte del Rinascimento</span></p>
+      <ul>
+        <li>Obiettivi: realismo, proporzione, prospettiva, studio anatomico.</li>
+        <li>Tecniche: prospettiva lineare (Brunelleschi), chiaroscuro (Masaccio).</li>
+        <li>Artisti chiave:
+          <ul>
+            <li>Prima generazione: Brunelleschi, Donatello, Masaccio, Piero della Francesca.</li>
+            <li>Alta stagione: Leonardo, Raffaello, Michelangelo.</li>
+          </ul>
+        </li>
+        <li>Comittenza: corti (Sforza, Medici), Chiesa, papi → arte come strumento di prestigio.</li>
+      </ul>
+
+      <p><span class="grassetto">Visione del mondo</span></p>
+      <ul>
+        <li>Interesse per natura, scienza, matematica, ma anche astrologia e magia.</li>
+        <li>Fondamenti dell’approccio empirico moderno.</li>
+      </ul>
+
+    
+    
+    </div>
+
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+  </script>
+</body>
+</html>

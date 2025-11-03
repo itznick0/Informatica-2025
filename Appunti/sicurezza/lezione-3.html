@@ -77,6 +77,7 @@
     .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
     .grande { font-size: 1.4rem !important; line-height: 1.6; }
     .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+    .titolocolonne { margin-bottom: 10px;}
 
     /* 🔥 TITOLO APPARISCENTE */
     #titoloparagrafo {
@@ -107,7 +108,7 @@
       margin: 8px 0;
     }
 
-/* ✨ DUE COLONNE 50% - 50% */
+ /* ✨ DUE COLONNE 50% - 50% */
 .due-colonne {
   display: flex;
   gap: 30px;
@@ -170,7 +171,6 @@
     gap: 20px;
   }
 }
-
     /* Sezione immagini */
     .images-section {
       margin-top: 40px;
@@ -303,16 +303,62 @@
 
   <div class="container">
     <div class="header">
-      <h1>Titolo documento</h1>
+      <h1>Lezione 3</h1>
       <div class="meta">
-        <p class="date">15 Ottobre 2025</p>
-        <p class="subject">Materia: Italiano</p>
+        <p class="date">30 Ottobre 2025</p>
+        <p class="subject">Materia: Att. agg</p>
       </div>
     </div>
 
 <div class="content">
 <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
-    <p id="titoloparagrafo"></p>
+    <p id="titoloparagrafo">Attrezzatura di lavoro</p>
+    <div class="elenco">
+        <p>Macchine</p>
+        <p>Apparecchi</p>
+        <p>Utensili</p>
+        <p>Impianti</p>
+    </div>
+    <p class="evidenziato">Devono essere tutti forniti di appositi dispositivi di sicurezza</p>
+
+    <p class="grassetto">D. I. gs. 81/08 prevede:</p>
+    <div class="elenco">
+        <p>Attrezzatura a norma</p>
+        <p>Manutenzione e verifiche</p>
+        <p>Operatore formato</p>
+    </div>
+    <p></p>
+    <p class="grassetto grande">Obblighi del datore di lavoro</p>
+    <div class="elenco">
+        <p>Valutare e considerare i rischi nella scelta dell'attrezzatura</p>
+        <p>Valutare i rischi nel suo utilizzo</p>
+        <p>Provedere all'attività di formazione</p>
+        <p>Intervenire per il layout per le macchine semoventi</p>
+        <p>Abilitare all'utilizzo dei macchinari</p>
+    </div>
+    <p class="evidenziato">Tutti devono essere conformi alle Normative Europee (CE)</p>
+    <p></p>
+    <p class="grassetto">Quando si adattano i DPI</p>
+    <p>Dispositivi di protezione individuale devono essere impiegati quando i rischi non possono essere evitati o sufficiemente ridotti da misure tecniche </p>
+    <p class="titolocolonne corsivo">Categorie di DPI</p>
+    <div class="due-colonne-25-75">
+  <div class="colonna-sinistra">
+    <p><span class="grassetto">cat</span></p>
+    <p>I</p>
+    <p>II</p>
+    <p>III</p>
+  </div>
+  <div class="colonna-destra">
+    <p><span class="grassetto">Protezione</span></p>
+    <p>Protegge da rischi minimi</p>
+    <p>protegge da rischi diversi dalla categoria 1 e 3 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+    <p>Protegge da rischi con danni irreversibili</p>
+  </div>
+</div>
+
+
+
+
     </div>
 
     <!-- Sezione immagini -->
@@ -321,6 +367,10 @@
       <div class="images-container">
         <!-- Aggiungi qui le tue immagini -->
         <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+         <div id="immaginedidascalia">
+            <img src="3/1.png" alt="Marchio CE">
+            <p class="didascalia">Marchio CE => Verificare sempre che il logo sia quello reale e non fittizio</p>
+        </div>
       </div>
     </div>
   </div>
