@@ -12,19 +12,15 @@ try:
     banca = Banca("BancaMain")
     if os.path.isfile("banca_dati.pkl"):
         banca.carica_dati("banca_dati.pkl")
-        # Istanziamento di SportelloBancomat con l'istanza di banca
         sportello = SportelloBancomat(banca) 
-        # Aggiunta di un check per evitare IndexError nel caso non ci siano clienti dopo il caricamento
         if banca.clienti:
-            # Stampa delle credenziali di accesso (solo a scopo di test)
             if len(banca.clienti) >= 2:
                 print(banca.clienti[0].carta.codice_carta, banca.clienti[0].carta.pin, banca.clienti[1].carta.codice_carta, banca.clienti[1].carta.pin)
             else:
                 print(banca.clienti[0].carta.codice_carta, banca.clienti[0].carta.pin)
     else:
-        # Creazione di clienti di esempio se il file non esiste
-        cliente1 = Persona("Mario", "Rossi")
-        cliente2 = Persona("Anna", "Verdi")
+        cliente1 = Persona("A", "B")
+        cliente2 = Persona("C", "D")
         banca.aggiungi_cliente(cliente1)
         banca.aggiungi_cliente(cliente2)
         print(f"Creato cliente: {cliente1.nome} {cliente1.cognome}, Carta: {cliente1.carta.codice_carta}, PIN: {cliente1.carta.pin}")
