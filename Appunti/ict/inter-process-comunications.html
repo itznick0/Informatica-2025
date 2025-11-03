@@ -312,7 +312,108 @@
 
 <div class="content">
 <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
-    <p id="titoloparagrafo"></p>
+    <p id="titoloparagrafo">3. Inter-Process Communication (IPC).</p>
+    <div>
+<p>3.2. esempio compilazione - esecuzione</p>
+<p>import os</p>
+<p>import subprocess</p>
+<p>import sys</p>
+<p></p>
+<p># Stampa la cartella da cui parte Python</p>
+<p>print(f"Python sta partendo da: {os.getcwd()}")</p>
+<p></p>
+<p># Il percorso file .java</p>
+<p>cartella_del_java = "./progetti/lettura/src"</p>
+<p></p>
+<p># Stampa il percorso assoluto che sta cercando di usare</p>
+<p>percorso_reale_java = os.path.abspath(cartella_del_java)</p>
+<p>print(f"Sto cercando la cartella Java in: {percorso_reale_java}")</p>
+<p></p>
+<p>#  COMPIILARE ---</p>
+<p> comando_compilazione = ["javac", "-d", "../bin", "App.java"]</p>
+<p>#"javac": È il comando per avviare il compilatore Java.</p>
+<p>#"-d": È un'opzione (un flag) per javac che sta per "directory". Indica dove salvare i file compilati (i file .class)."</p>
+<p>#../bin": È l'argomento dell'opzione -d. Specifica che i file .class devono essere salvati nella cartella bin, situata un livello sopra (../) rispetto alla cartella in cui verrà eseguito il comando (presumibilmente la cartella src definita prima).</p>
+<p>#"App.java": È il file sorgente Java che si desidera compilare.</p>
+<p></p>
+<p></p>
+<p># text=True: Converte l'output da "bytes" a testo normale (stringa)'output non appare sul terminale, ma viene invece salvato all'interno dell'oggetto risultato_java,</p>
+<p>#catturare tutto ciò che il comando Java (comando_esecuzione) scrive sui suoi canali di output standard</p>
+<p></p>
+<p>processo_compilazione = subprocess.run(</p>
+<p>            comando_compilazione, </p>
+<p>            cwd=cartella_del_java,</p>
+<p>            capture_output=True,</p>
+<p>            text=True </p>
+<p>        )</p>
+<p></p>
+<p># 'returncode' è 0 se tutto è OK, altrimenti indica un errore</p>
+<p>if processo_compilazione.returncode != 0:</p>
+<p>    print(" La compilazione Java è fallita.")</p>
+<p>    print("Controlla il file java per errori.")</p>
+<p>    sys.exit() # Esce dallo script Python</p>
+<p></p>
+<p>print("Compilazione Java riuscita")</p>
+<p></p>
+<p># ESEGUIRE IL JAVA (E CATTURARE L'OUTPUT) ---</p>
+<p></p>
+<p> cartella_del_class = "./progetti/scrittura/bin" </p>
+<p> # Passiamo i dati a Java come parametri</p>
+<p> comando_esecuzione = ["java", "App", nome, cognome, eta]</p>
+<p># Eseguiamo il programma Java</p>
+<p></p>
+<p># text=True: Converte l'output da "bytes" a testo normale (stringa)'output non appare sul terminale, ma viene invece salvato all'interno dell'oggetto risultato_java,</p>
+<p>#catturare tutto ciò che il comando Java (comando_esecuzione) scrive sui suoi canali di output standard</p>
+<p>risultato_java = subprocess.run(</p>
+<p>            comando_esecuzione,</p>
+<p>            cwd=cartella_del_class,</p>
+<p>            capture_output=True, text=True</p>
+<p>        )</p>
+<p></p>
+<p>print("\n--- Output catturato da Java ---")</p>
+<p># L'output normale (System.out.println) finisce in 'stdout'</p>
+<p>print("--- Output catturato da Java ---")</p>
+<p>print(risultato_java.stdout)</p>
+<p>        # Mostra l'output nella textarea</p>
+<p>        self.movimenti_textarea.insert(tk.END, "--- Risultato Esecuzione ---\n")</p>
+<p>        self.movimenti_textarea.insert(tk.END, risultato_java.stdout + "\n")</p>
+<p># Se Java avesse stampato un errore (System.err.println),</p>
+<p># lo troveremmo in 'stderr'</p>
+<p>if risultato_java.stderr:</p>
+<p>    print("--- Errori catturati da Java ---")</p>
+<p>    print(risultato_java.stderr)</p>
+<p></p>
+<p></p>
+<p>file java collegato:</p>
+<p>import java.io.FileWriter;</p>
+<p>import java.io.IOException;</p>
+<p>import java.io.PrintWriter;</p>
+<p>import java.util.Scanner;</p>
+<p>public class App {</p>
+<p>    public static void main(String[] args) throws Exception {</p>
+<p>        Scanner in = new Scanner(System.in);</p>
+<p>       </p>
+<p>        if (args.length > 0) {</p>
+<p>           </p>
+<p>           </p>
+<p>              try (FileWriter fr = new FileWriter("../../dati/parole.csv", true);</p>
+<p>                    PrintWriter pr = new PrintWriter(fr)) {</p>
+<p>                   </p>
+<p>                         pr.println(args[0]+";"+args[1]+";"+args[2]);</p>
+<p>                       </p>
+<p></p>
+<p>             } catch (IOException e) {</p>
+<p></p>
+<p>               System.out.println("Errore durante la scrittura sul file: " + e.getMessage());</p>
+<p></p>
+<p>           }</p>
+<p>           </p>
+<p>        } else {</p>
+<p>            System.out.println("Nessun parametro ricevuto.");</p>
+<p>        }</p>
+<p>       in.close();</p>
+<p>    }</p>
+</div>
     </div>
 
     <!-- Sezione immagini -->
@@ -321,6 +422,7 @@
       <div class="images-container">
         <!-- Aggiungi qui le tue immagini -->
         <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+         
       </div>
     </div>
   </div>
