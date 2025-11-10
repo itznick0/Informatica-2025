@@ -306,272 +306,6 @@
   line-height: 1.4;
 }
 
-
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-⌄
-/* ✨ Tabella a 3 colonne */
-.tabella-3-colonne {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 30px 0;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-}
-
-.tabella-3-colonne th,
-.tabella-3-colonne td {
-  padding: 16px 20px;
-  text-align: left;
-  border-bottom: 1px solid #edf2f7;
-}
-
-/* Intestazione */
-.tabella-3-colonne th {
-  background: linear-gradient(to bottom, #eef4ff, #dbe9ff);
-  color: #1a3a5f;
-  font-weight: 600;
-  font-size: 1.15rem;
-  position: sticky;
-  top: 0;
-}
-
-/* Righe pari/dispari per leggibilità */
-.tabella-3-colonne tbody tr:nth-child(even) {
-  background-color: #fafcff;
-}
-
-.tabella-3-colonne tbody tr:hover {
-  background-color: #f0f7ff;
-  transition: background-color 0.2s;
-}
-
-/* Ultima riga: rimuovi il bordo inferiore */
-.tabella-3-colonne tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Responsive: su mobile la tabella diventa a colonne verticali */
-@media (max-width: 600px) {
-  .tabella-3-colonne,
-  .tabella-3-colonne thead,
-  .tabella-3-colonne tbody,
-  .tabella-3-colonne th,
-  .tabella-3-colonne td,
-  .tabella-3-colonne tr {
-    display: block;
-  }
-
-  .tabella-3-colonne thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  .tabella-3-colonne tr {
-    border: 1px solid #edf2f7;
-    margin-bottom: 16px;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-
-  .tabella-3-colonne td {
-    border: none;
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-  }
-
-  .tabella-3-colonne td::before {
-    content: attr(data-label) ": ";
-    position: absolute;
-    left: 16px;
-    width: 45%;
-    font-weight: 600;
-    color: #2c5aa0;
-  }
-}
-
-/* ✨ Griglia 3x3 immagini — stile coerente con il sito */
-.griglia-3x3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 30px 0;
-}
-
-.immagine-didascalia {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.immagine-didascalia:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.immagine-didascalia img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  display: block;
-  /* Opzionale: se vuoi un bordo sottile sull’immagine */
-  /* border: 1px solid #edf2f7; */
-}
-
-.immagine-didascalia .didascalia {
-  font-size: 1.05rem;
-  color: #2d3748;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ✨ Colore casuale di sfondo (come nel tuo script) */
-.immagine-didascalia.sfondo-colorato {
-  /* lo script JS imposterà background-color */
-}
-
-/* ✨ Responsive: coerente con il tuo media query */
-@media (max-width: 768px) {
-  .griglia-3x3 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-}
-
-@media (max-width: 600px) {
-  .griglia-3x3 {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .immagine-didascalia {
-    padding: 18px;
-  }
-}
-
-/* ✨ Stile per le parole con nota */
-.nota {
-  position: relative;
-  cursor: help;
-  border-bottom: 1px dashed #4f6df5;
-  color: #2c5aa0;
-  font-weight: 500;
-}
-
-.nota:hover {
-  background-color: rgba(79, 109, 245, 0.05);
-}
-
-/* ✨ Tooltip (nota esplicativa) */
-.nota .tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  width: 280px;
-  background: white;
-  border-radius: 12px;
-  padding: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s, transform 0.25s;
-  pointer-events: none;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #2d3748;
-}
-
-/* Mostra la nota al passaggio del mouse */
-.nota:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-12px);
-}
-
-/* Freccetta sotto la nota (opzionale ma elegante) */
-.nota .tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px 6px 0 6px;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-}
-
-/* ✨ Stile per immagine nella nota (opzionale) */
-.nota .tooltip img {
-  width: 100%;
-  max-height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 8px 0;
-  display: block;
-}
-
-/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
-.nota.right-edge .tooltip {
-  left: auto;
-  right: 0;
-  transform: translateY(-12px);
-}
-
-.nota.right-edge .tooltip::after {
-  left: 16px;
-}
-
-/* ✨ Footer elegante */
-.footer-sito {
-  margin-top: 60px;
-  padding: 24px 0;
-  text-align: center;
-  color: #64748b;
-  font-size: 0.95rem;
-  border-top: 1px solid #edf2f7;
-}
-
-.footer-sito p {
-  margin: 6px 0;
-  line-height: 1.5;
-}
-
-.footer-sito p:first-child {
-  font-weight: 600;
-  color: #475569;
-}
-
-/* Opzionale: un tocco di separazione visiva */
-.footer-sito::before {
-  content: '';
-  display: block;
-  width: 600px;
-  height: 2px;
-  background: linear-gradient(to right, transparent, #55585d, transparent);
-  margin: 0 auto 16px;
-}
-
 /* ✨ Stile per le parole con nota */
 .nota {
   position: relative;
@@ -652,16 +386,36 @@
 
   <div class="container">
     <div class="header">
-      <h1>Titolo documento</h1>
+      <h1>Torquato Tasso</h1>
       <div class="meta">
-        <p class="date">15 Ottobre 2025</p>
+        <p class="date">05 Novembre 2025</p>
         <p class="subject">Materia: Italiano</p>
       </div>
     </div>
 
 <div class="content">
 <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
-    <p id="titoloparagrafo"></p>
+    <p id="titoloparagrafo">Torquato Tasso</p>
+    <p class="grande">Elementi caratterizzanti</p>
+    <div class="elenco">
+        <p>Nasce a Sorrento nel 1544 e muore nel 1595</p>
+        <p>Desiderio di gloria vs incapacità di realizzare il suo desiderio</p>
+        <p>Dramma familiare (morte di sua mamma dopo due anni che Tasso va via da lei)</p>
+        <p>Sviluppo dell'<span class="nota">edonismo rinascimentale<span class="tooltip">Ricerca del piacere nel medioevo (non in senso sessuale ma di pace, svago, divertimento)</span></span>.</p>
+    </div>
+    <p class="grande grassetto">L'arrivo a Ferrara</p>
+    <p>Nel 1565 Tasso arriva a Ferrara, dove entra in contatto con la corte degli Estensi e con il duca Alfonso II d'Este, che lo nomina poeta di corte. Qui inizia a lavorare alla sua opera più famosa, la Gerusalemme Liberata.</p>
+
+    <p class="grassetto grande">Qualcosa si incrina</p>
+    <p>Nell'estate conclude la sua opera più famosa: la Gerusalemme liberata</p>
+    <p>Per questa opera si aspetta il successo incontrastato e gloria incondizionata. Invece, gli vengono fatte critiche meschine (frutto di invidia da parte di uomini di cultura e di chiesa)</p>
+    <p>In seguito, pensieri/dubbi/sospetti maniacali, iniziarono a invadere la sua mente: SI SOTTOPONE VOLONTARIALMENTE AL GIUDIZIO DELLA SANTA INQUISIZIONE DI FERRARA</p>
+    <p>Nonostante il successo iniziale, Tasso inizia a mostrare segni di instabilità mentale. La sua ossessione per la perfezione e la paura del giudizio lo portano a comportamenti sempre più eccentrici. Nel 1577, durante un viaggio a Roma, Tasso viene arrestato con l'accusa di aver complottato contro il papa, anche se le prove sono scarse.</p>
+    <p>Nel 1577 vieni inoltre rinchiuso da Alfonso II in un conento e considerato matto e pericoloso.</p>
+    <p>Viene rinchiuso nel manicomio di Sant'Anna a Ferrara, dove rimane per circa sette anni. Durante questo periodo, Tasso continua a scrivere, ma la sua salute mentale peggiora ulteriormente.</p>
+    <p></p>
+    <p class="titoloparagrafo">La ricerca affanosa di una nuova sistemazione</p>
+    <p>Roma, Urbino, Mantova, Torino</p>
     </div>
 
     <!-- Sezione immagini -->
@@ -673,37 +427,27 @@
       </div>
     </div>
   </div>
-<footer class="footer-sito">
-  <p>© 2025 — Tutti i diritti riservati</p>
-  <p>Sito realizzato da Nicola Manzi • 3P</p>
-</footer>
+
   <script>
     console.log("Documento con stili personalizzati caricato!");
 
     function generaColoreMorbido() {
-  const colori = [
-    "#dbe9ff", // azzurro cielo più intenso
-    "#e6f7ee", // verde menta più vivo
-    "#fef9f0", // crema calda (più contrasto del beige)
-    "#f8f2fc", // lilla tenue ma visibile
-    "#f0f5ff", // blu notte chiaro
-    "#faf8f0", // avorio dorato
-    "#e6f0fa", // celeste classico (già presente, ma utile)
-    "#f9f3f8", // rosa polvere delicato
-    "#f0f9f4", // verde salvia morbido
-    "#f0f8ff"  // azzurro latte, molto leggibile
-  ];
-  return colori[Math.floor(Math.random() * colori.length)];
-}
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
-  const blocchi = document.querySelectorAll(".immagine-didascalia");
-  blocchi.forEach(blocco => {
-    blocco.style.backgroundColor = generaColoreMorbido();
-  });
-});
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
 
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     // Aggiusta il posizionamento delle note vicino al bordo destro
     const note = document.querySelectorAll(".nota");
     note.forEach(el => {

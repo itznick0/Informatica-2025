@@ -1,28 +1,5 @@
-When Spanish Conquistadors arrived more than 500 years ago in the area that is now
-Mexico, they encountered native people venerating the dead. During this annual ritual,
-now known as Día delos Muertos, or Day of the Dead, natives believed that the souls of
-deceased relatives returned to offer protection to the loved ones they left behind.
-
-The Spaniards, who viewed death as the end of earthly life, believed the rite was
-sacrilegious. They tried to eradicate the ritual during their attempts to convert the
-natives to Catholicism, but their efforts were in vain. The natives, believing that life
-continued after death, were hard-pressed to do away with a ritual that had been so
-deeply woven into their culture for more than 3,000 years.
-
-The Day of the Dead festival used to take place over one month's time during the ninth
-month of the Aztec solar calendar, which coincides with August. Today it is celebrated
-on November 2, a date chosen by the Spaniards in an effort to keep the festival
-associated with the Christian holidays of All Saints Day and All Souls Day. The holiday
--- celebrated in Mexico, as well as in parts of the United States and Central and South
-America-- is one example of how Mexican culture has been incorporated into the U.S.
-
-The traditions associated with this day differ, depending on where it is celebrated. In
-general, it is more of a cultural event in urban areas, and more of a religious one in rural
-Mexican areas. Common to both is the practice of offering food and other objects to
-deceased loved ones. In rural parts of Mexico, people spend the day in the cemeteries
-where their relatives are buried. They bring ofrendas (offerings) such as flowers,toys
-and food to place on the tombstones. Those who choose not to visit the cemeteries
-often build altars, including food, flowers, prayer candles, and photos of the deceased,
-in their homes. The use of the skull, one of the basic elements of the Aztec ritual,
-continues to be incorporated into today's rituals. There are skull masks, chocolate- or
-sugar-shaped skulls and skull-shaped pan de los muertos (sweetened bread).
+A   |    B   |    C    |   S
+0   |    0   |    OFF  |   OFF
+0   |    1   |    ON   |   OFF
+1   |    0   |    ON   |   OFF
+1   |    1   |    OFF  |   ON

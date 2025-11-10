@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+/* ✨ DUE COLONNE 50% - 50% */
+.due-colonne {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne > div {
+  flex: 1;
+}
+
+/* ✨ DUE COLONNE 25% - 75% */
+.due-colonne-25-75 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-25-75 > div:first-child {
+  flex: 1;
+}
+
+.due-colonne-25-75 > div:last-child {
+  flex: 3;
+}
+
+/* ✨ DUE COLONNE 75% - 25% */
+.due-colonne-75-25 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-75-25 > div:first-child {
+  flex: 3;
+}
+
+.due-colonne-75-25 > div:last-child {
+  flex: 1;
+}
+
+/* ✨ Stile comune per tutte le colonne (opzionale ma consigliato) */
+.due-colonne > div,
+.due-colonne-25-75 > div,
+.due-colonne-75-25 > div {
+  background: #fafcff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #edf2f7;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2d3b4a;
+}
+
+/* ✨ Responsive: su mobile tutte le colonne diventano verticali */
+@media (max-width: 768px) {
+  .due-colonne,
+  .due-colonne-25-75,
+  .due-colonne-75-25 {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+        /* ✨ Stile per elenco con pallini usando <p> */
+.elenco p {
+  position: relative;
+  padding-left: 24px; /* spazio per il pallino */
+  margin-bottom: 1px; /* meno spazio rispetto ai 20px originali */
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+/* Pallino personalizzato */
+.elenco p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4f6df5; /* colore del pallino (coerente con il tuo tema) */
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.sottotitolo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #2c5aa0;
+  margin: 18px 0 12px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Lezione 4</h1>
+      <div class="meta">
+        <p class="date">06 Novembre 2025</p>
+        <p class="subject">Materia: Att. agg.</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <p id="titoloparagrafo">Cadute dall'alto</p>
+    <p class="grassetto">DPI di terza categoria (bisogna essere addestrati ad usarli)</p>
+    <div class="elenco">
+    <p>Lavori su pali o tralicci</p>
+    <p>Presso gronde e cornicioni</p>
+    <p>Su tetti e coperture di edifici</p>
+    <p>Su scale</p>
+    <p>Su ponteggi</p>
+    <p>Su piattaforme mobili in elevazione</p>
+    <p>Montaggio di elementi prefabbricati</p>
+    </div>
+    <p></p>
+    <p class="sottolineato"><span class="grassetto">Ponteggi: </span>Devono avere delle ringhiere, essere coperti e i lavoratori agganciati con imbragature a norma</p>
+    <p>Ci sono anche altri tipi di infortuni come rimanere a penzoloni e danneggiare la fascia addominale</p>
+    <p class="grassetto">Rischi susseguenti alla caduta</p>
+    <p>Oscillazione del corpo e urto contro ostacoli</p>
+    <p>Arresto del moto di caduta per effeto delle sollecitazioni trasmesse dall'imbracatura sul corpo</p>
+    <p>Sospensioni inerte del corpo dell'utilizzatore che resta appeso al dispositivo di arresto caduta e tempo di permanenza in tale posizione</p>
+    <p class="grassetto">Perchè si cade dall'alto?</p>
+    <p>Problemi con i DPI</p>
+    <p>Problemi di natura meccanica, termica, chimica, elettrica, atmosferica</p>
+    <p class="grassetto">Lavori in profondità</p>
+    <p>No contatto diretto con aria e luce (spazio confinato)</p>
+    <p>Qualcuno non deve mai entrare nei luoghi dove si sta lavorando, deve restare li in caso accada qualcosa</p>
+</div>
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+  </script>
+</body>
+</html>

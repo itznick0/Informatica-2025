@@ -1,30 +1,7 @@
 <div id="allinea">
-<p>When Spanish Conquistadors arrived more than 500 years ago in the area that is now</p>
-<p>Mexico, they encountered native people venerating the dead. During this annual ritual,</p>
-<p>now known as Día delos Muertos, or Day of the Dead, natives believed that the souls of</p>
-<p>deceased relatives returned to offer protection to the loved ones they left behind.</p>
-<p></p>
-<p>The Spaniards, who viewed death as the end of earthly life, believed the rite was</p>
-<p>sacrilegious. They tried to eradicate the ritual during their attempts to convert the</p>
-<p>natives to Catholicism, but their efforts were in vain. The natives, believing that life</p>
-<p>continued after death, were hard-pressed to do away with a ritual that had been so</p>
-<p>deeply woven into their culture for more than 3,000 years.</p>
-<p></p>
-<p>The Day of the Dead festival used to take place over one month's time during the ninth</p>
-<p>month of the Aztec solar calendar, which coincides with August. Today it is celebrated</p>
-<p>on November 2, a date chosen by the Spaniards in an effort to keep the festival</p>
-<p>associated with the Christian holidays of All Saints Day and All Souls Day. The holiday</p>
-<p>-- celebrated in Mexico, as well as in parts of the United States and Central and South</p>
-<p>America-- is one example of how Mexican culture has been incorporated into the U.S.</p>
-<p></p>
-<p>The traditions associated with this day differ, depending on where it is celebrated. In</p>
-<p>general, it is more of a cultural event in urban areas, and more of a religious one in rural</p>
-<p>Mexican areas. Common to both is the practice of offering food and other objects to</p>
-<p>deceased loved ones. In rural parts of Mexico, people spend the day in the cemeteries</p>
-<p>where their relatives are buried. They bring ofrendas (offerings) such as flowers,toys</p>
-<p>and food to place on the tombstones. Those who choose not to visit the cemeteries</p>
-<p>often build altars, including food, flowers, prayer candles, and photos of the deceased,</p>
-<p>in their homes. The use of the skull, one of the basic elements of the Aztec ritual,</p>
-<p>continues to be incorporated into today's rituals. There are skull masks, chocolate- or</p>
-<p>sugar-shaped skulls and skull-shaped pan de los muertos (sweetened bread).</p>
+<p>A   |    B   |    C    |   S</p>
+<p>0   |    0   |    OFF  |   OFF</p>
+<p>0   |    1   |    ON   |   OFF</p>
+<p>1   |    0   |    ON   |   OFF</p>
+<p>1   |    1   |    OFF  |   ON</p>
 </div>

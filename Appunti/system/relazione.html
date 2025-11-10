@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Documento Personalizzato</title>
+  <title>Relazione 1 Sistemi e reti</title>
   <style>
     * {
       margin: 0;
@@ -571,114 +571,139 @@
   background: linear-gradient(to right, transparent, #55585d, transparent);
   margin: 0 auto 16px;
 }
-
-/* ✨ Stile per le parole con nota */
-.nota {
-  position: relative;
-  cursor: help;
-  border-bottom: 1px dashed #4f6df5;
-  color: #2c5aa0;
-  font-weight: 500;
-}
-
-.nota:hover {
-  background-color: rgba(79, 109, 245, 0.05);
-}
-
-/* ✨ Tooltip (nota esplicativa) */
-.nota .tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  width: 280px;
-  background: white;
-  border-radius: 12px;
-  padding: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s, transform 0.25s;
-  pointer-events: none;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #2d3748;
-}
-
-/* Mostra la nota al passaggio del mouse */
-.nota:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-12px);
-}
-
-/* Freccetta sotto la nota (opzionale ma elegante) */
-.nota .tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px 6px 0 6px;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-}
-
-/* ✨ Stile per immagine nella nota (opzionale) */
-.nota .tooltip img {
-  width: 100%;
-  max-height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 8px 0;
-  display: block;
-}
-
-/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
-.nota.right-edge .tooltip {
-  left: auto;
-  right: 0;
-  transform: translateY(-12px);
-}
-
-.nota.right-edge .tooltip::after {
-  left: 16px;
-}
-  </style>
+</style>
 </head>
 <body>
   <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
 
   <div class="container">
     <div class="header">
-      <h1>Titolo documento</h1>
+      <h1>Relazione prova: Somma di 2 bit</h1>
       <div class="meta">
-        <p class="date">15 Ottobre 2025</p>
-        <p class="subject">Materia: Italiano</p>
+        <p class="date">10 Novembre 2025</p>
+        <p class="subject">Materia: Sistemi e reti</p>
       </div>
     </div>
 
 <div class="content">
 <!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
-    <p id="titoloparagrafo"></p>
+    <p id="titoloparagrafo">Problema o Obiettivo dell’Esperienza</p>
+        <p class="corsivo">L’obiettivo di questa esperienza è quello di realizzare un circuito che sommi 2 bit utilizzando porte logiche sulla breadboard. Il circuito deve essere in grado di sommare due bit binari (A e B) e produrre due uscite visto che, sommando A e B entrambi con valore uno, il risultato non dovrebbe essere 1 ma 0 e 1. Le due uscite sono:</p>
+        <p></p>
+    <div class="elenco">
+        <p>S (Sum): il risultato della somma (cifra a destra)</p>
+        <p>C (Carry): il riporto (cifra a sinistra)</p>
+    </div>
+    <p class="evidenziato">Le porte logiche consentite erano: AND, OR e NOT</p>
+    <p class="grassetto">I possibili riultati attesi sono: 0 e 0, 0 e 1, 1 e 0</p>
+    <p></p>
+    <p id="titoloparagrafo">Lista dei componenti utilizzati sulla breadboard</p>
+    <div class="elenco">
+        <p>1x Breadboard</p>
+        <p>1x Alimentatore (5V)</p>
+        <p>1x componente con 4 Interruttori (per A e B, useremo 1 e 2)</p>
+        <p>2x LED (rosso per S e giallo per C)</p>
+        <p>4x Resistenze da 1kΩ (per limitare la corrente agli interruttori)</p>
+        <p>2x Resistenze da 220Ω (per limitare la corrente ai LED)</p>
+        <p>1x Porta AND (74HC08)</p>
+        <p>1x Porta OR (74HC32)</p>
+        <p>1x Porta NOT (74HC04)</p>
+        <p>2x Cavi per collegamento alimentatore-circuito (banana-coccodrillo)</p>
+        <p>q.b. Cavetti di collegamento</p>
+    </div>
+    <p></p>
+    <p class="evidenziato sottolineato">ATTENZIONE: I codici delle 3 porte logiche non corrispondono a quelle fisiche ma a quelle di Tinkercad.</p>
+    <p id="titoloparagrafo">Fase risolutiva comprensiva di immagini (Schema porte logiche & Circuito fisico + Digitale)</p>
+    <p class="grande grassetto">1. Simulazione del circuito in Tinkercad</p>
+    <p>Prima della realizzazione fisica, abbiamo testato il circuito in digitale, su Tinkercad. Osservandolo abbiamo potuto osservare che tutti i componenti erano assemblati correttamente e che il risultato del circuito (visualizzato grazie alle lampadine) corrispondeva a quello trovato teoricamente con la tabella di verità.</p>
+    <div id="allinea">
+        <p>A       |        B   |    C    |   S</p>
+        <p>0       |        0   |    OFF  |   OFF</p>
+        <p>0       |        1   |    ON   |   OFF</p>
+        <p>1       |        0   |    ON   |   OFF</p>
+        <p>1       |        1   |    OFF  |   ON</p>
+    </div>
+    <p class="grande grassetto">2. Montaggio del circuito sulla breadboard</p>
+    <p>Il circuito è stato poi realizzato fisicamente seguendo la struttura della simulazione su Tinkercad.</p>
+    <p class="grande grassetto">3. Test del circuito</p>
+    <p>Dopo il montaggio, sono stati effettuati i test con tutte le combinazioni di ingresso, e il funzionamento del circuito è stato verificato grazie ai LED che hanno restituito i risultati attesi.</p>
+    <p></p>
+    <div class="griglia-3x3">
+    <!-- RIGA 1 -->
+    <div class="immagine-didascalia">
+      <img src="1/1.png" alt="Immagine 1">
+      <p class="didascalia">Circuito fisico (0:0)</p>
+    </div>
+    <div class="immagine-didascalia">
+      <img src="1/2.png" alt="Immagine 2">
+      <p></p>
+      <p class="didascalia">Circuito fisico (1:0)</p>
+    </div>
+    <div class="immagine-didascalia">
+      <img src="1/3.png" alt="Immagine 3">
+      <p class="didascalia">Circuito fisico (0:1)</p>
     </div>
 
-    <!-- Sezione immagini -->
-    <div class="images-section">
-      <h2>Immagini</h2>
-      <div class="images-container">
-        <!-- Aggiungi qui le tue immagini -->
-        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
-      </div>
+    <!-- RIGA 2 -->
+    <div class="immagine-didascalia">
+      <img src="1/7.png" alt="Immagine 4">
+      <p class="didascalia">Circuito Tinkercad (0:0)</p>
     </div>
+    <div class="immagine-didascalia">
+      <img src="1/8.png" alt="Immagine 5">
+      <p class="didascalia">Circuito Tinkercad (1:0)</p>
+    </div>
+    <div class="immagine-didascalia">
+      <img src="1/9.png" alt="Immagine 6">
+      <p class="didascalia">Circuito Tinkercad (0:1)</p>
+    </div>
+
+    <!-- RIGA 3 -->
+    <div class="immagine-didascalia">
+      <img src="1/4.png" alt="Immagine 7">
+      <p class="didascalia">Schema porte logiche (0:0)</p>
+    </div>
+    <div class="immagine-didascalia">
+      <img src="1/5.png" alt="Immagine 8">
+      <p class="didascalia">Schema porte logiche (1:0)</p>
+    </div>
+    <div class="immagine-didascalia">
+      <img src="1/6.png" alt="Immagine 9">
+      <p class="didascalia">Schema porte logiche (0:1)</p>
+    </div>
+</div>
+    <p></p>
+    <p id="titoloparagrafo">Risultato ottenuto</p>
+    <p>Il circuito ha funzionato correttamente producendo i risultati attesi per tutte le combinazioni di ingresso. I LED si sono accesi in modo coerente con la tabella di verità confermando che il circuito somma correttamente i due bit. Non si sono verificati danneggiamenti nei componenti e non si è verificata alcuna sorta di discrepanza tra risultati, ne tra teorici e pratici, ne tra personali e quelli dei compagni.</p>
+    <p></p>
+    <p id="titoloparagrafo">Commento personale</p>
+    <p>Questa esperienza mi è piaciuta parecchio visto che mi piace molto lavorare con le mani e la parte pratica fisica degli esperimenti. Non l'ho trovata complicata sopprattutto grazie al fatto che abbiamo prima valutato lo schema logico per il corretto funzionamento del circuito (c=A and B; s=(¬A and B) or (A and ¬B)) e poi abbiamo simulato il tutto su Tinkercad per essere sicuri che tutto funzionasse correttamente. Infine, la parte più divertente è stata quella di montare il circuito fisico sulla breadboard e testarlo con gli interruttori e i LED. L'unica parte che mi ha creato qualche difficoltà è stata nel montare la breadboard che con tutti i cavi ogni tanto mi confondevo sul dove metterli e talvolta non capivo più a cosa servivano.</p>
+    <!-- Sezione immagini -->
+    
   </div>
-<footer class="footer-sito">
+  <footer class="footer-sito">
   <p>© 2025 — Tutti i diritti riservati</p>
   <p>Sito realizzato da Nicola Manzi • 3P</p>
 </footer>
   <script>
     console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+      const colori = [
+        "#e6f0fa", "#f0f7ee", "#fdf6f0", "#f8f4fa",
+        "#f2f5f9", "#f9f7f2", "#f0f4f8", "#f5f0f6",
+        "#f1f8e9", "#e8f5f2"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("immaginedidascalia");
+      if (container) {
+        container.style.backgroundColor = generaColoreMorbido();
+      }
+    });
+
 
     function generaColoreMorbido() {
   const colori = [
@@ -702,25 +727,6 @@
     blocco.style.backgroundColor = generaColoreMorbido();
   });
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Aggiusta il posizionamento delle note vicino al bordo destro
-    const note = document.querySelectorAll(".nota");
-    note.forEach(el => {
-      el.addEventListener("mouseenter", () => {
-        const rect = el.getBoundingClientRect();
-        const tooltip = el.querySelector(".tooltip");
-        if (tooltip) {
-          // Se la nota è troppo a destra (>80% dello schermo), allinea a sinistra
-          if (rect.right > window.innerWidth * 0.8) {
-            el.classList.add("right-edge");
-          } else {
-            el.classList.remove("right-edge");
-          }
-        }
-      });
-    });
-  });
   </script>
 </body>
 </html>

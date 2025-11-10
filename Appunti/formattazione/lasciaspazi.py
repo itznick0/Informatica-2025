@@ -1,5 +1,5 @@
 import os
-
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def converti_poesia():
     # Percorso della cartella dove si trova lo script
     script_dir = os.path.dirname(os.path.abspath(__file__))
