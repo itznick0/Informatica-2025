@@ -1,5 +1,5 @@
-A   |    B   |    C    |   S
-0   |    0   |    OFF  |   OFF
-0   |    1   |    ON   |   OFF
-1   |    0   |    ON   |   OFF
-1   |    1   |    OFF  |   ON
+Carry=(A⋅B)+(A⋅C1)+(B⋅C1)   funziona togliere xor 3 ingressi e or 3 ingressi
+carry=(A⋅B)+
+
+
+Sum=A+B+C
