@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📚 Indice delle Materie</title>
+  <title>📚 Indice degli Appunti</title>
+  <link rel="icon" href="./logo.png" type="image/png">
   <style>
     * {
       margin: 0;
@@ -17,13 +18,43 @@
       min-height: 100vh;
       padding: 40px 20px;
       color: #1a3a5f;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1 {
+    /* TITOLO CON LOGO */
+    .header {
       text-align: center;
-      font-size: 2.4rem;
       margin-bottom: 40px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .header-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+      background: white;
+    }
+
+    .header-title {
+      font-size: 2.6rem;
+      font-weight: 800;
       color: #0d47a1;
+      text-shadow: 0 2px 6px rgba(100, 181, 246, 0.3);
+      letter-spacing: -0.5px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     .materie-grid {
@@ -32,6 +63,7 @@
       gap: 30px;
       max-width: 1200px;
       margin: 0 auto;
+      flex: 1;
     }
 
     .materia-box {
@@ -84,11 +116,24 @@
       transform: translateX(4px);
     }
 
-    /* Responsive: 2 colonne su tablet, 1 su mobile */
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.95rem;
+      color: #546e7a;
+      font-weight: 500;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    /* Responsive */
     @media (max-width: 900px) {
       .materie-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .header-title { font-size: 2.2rem; }
+      .header-logo { width: 56px; height: 56px; }
     }
 
     @media (max-width: 600px) {
@@ -96,23 +141,27 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .materia-titolo {
-        font-size: 1.4rem;
-      }
+      .header-content { flex-direction: column; }
+      .header-title { font-size: 2rem; }
+      .header-logo { width: 72px; height: 72px; }
     }
   </style>
 </head>
 <body>
-  <h1>📖 Indice degli Appunti</h1>
-
+  <div class="header">
+    <div class="header-content">
+      <img src="./logo.png" alt="Logo NM Digital Lab" class="header-logo">
+      <h1 class="header-title">📖 Indice degli Appunti</h1>
+    </div>
+  </div>
+  
   <div class="materie-grid" id="materieContainer">
     <!-- Le materie saranno generate qui -->
   </div>
+
+  <footer>
+    © 2025 NM Digital Lab – All Rights Reserved
+  </footer>
 
   <script>
     // 🔧 CONFIGURAZIONE: definisci le materie e i loro argomenti (nomi dei file SENZA .html)
@@ -123,16 +172,27 @@
         argomenti: [
           "Altra poesia dei doni",
           "Angelica in fuga",
-          "Casa di Ludovico Ariosto",
-          "Torquato Tasso"
+          "Casa Ariosto",
+          "Torquato Tasso",
+          "Il vecchio e il mare",
+          "Proemio della Gerusalemme Liberata",
+        ]
+      },{
+        nome: "Orlando Furioso",
+        cartella: "orlandofurioso",
+        argomenti: [
+          "Canto 1",
+          "Canto 2",
+          "Canto 3",
         ]
       },
       {
         nome: "Sistemi e reti",
         cartella: "system",
         argomenti: [
-          "Relazione 1",
-          "Somma di due Bit"
+          "Relazione",
+          "Somma di due Bit",
+          "Lezione 11 novembre",
         ]
       },
       {
@@ -147,7 +207,9 @@
         cartella: "telecom",
         argomenti: [
           "Compiti 4 Novembre",
-          "Resistenze"
+          "Resistenze",
+          "Appunti verifica",
+          "Onde sinusoidali"
         ]
       },
       {
@@ -165,7 +227,8 @@
           "Lezione 1",
           "Lezione 2",
           "Lezione 3",
-          "Lezione 4"
+          "Lezione 4",
+          "Lezione 5"
         ]
       },
       {
@@ -175,7 +238,8 @@
           "Prisons",
           "Paraphrasing",
           "Safety Issues at School",
-          "Exercise 5 page 29"
+          "Exercise 5 page 29",
+          "Podcast NO Game NO Life"
         ]
       },
       {
@@ -192,45 +256,53 @@
           "Riassunto",
           "Struttura Presentazioni"
         ]
+      },
+      {
+        nome: "Educazione civica",
+        cartella: "ec",
+        argomenti: [
+          "Parco Massari",
+          "Casa di Ludovico Ariosto"
+        ]
       }
     ];
 
-  // ✨ Funzione che converte "Testo Leggibile" → "testo-leggibile"
-  function generaNomeFile(testo) {
-    return testo
-      .toLowerCase()          // tutto minuscolo
-      .replace(/\s+/g, '-')   // spazi → trattini
-      .replace(/[^\w\-]/g, ''); // rimuove punteggiatura non valida (opzionale)
-  }
-
-  // Genera l'HTML
-  const container = document.getElementById("materieContainer");
-
-  materie.forEach(materia => {
-    const box = document.createElement("div");
-    box.className = "materia-box";
-
-    let argomentiHtml = "";
-    if (materia.argomenti.length > 0) {
-      argomentiHtml = `
-        <ul class="argomenti-lista">
-          ${materia.argomenti.map(nomeArgomento => {
-            const nomeFile = generaNomeFile(nomeArgomento);
-            return `<li><a href="${materia.cartella}/${nomeFile}.html">${nomeArgomento}</a></li>`;
-          }).join("")}
-        </ul>
-      `;
-    } else {
-      argomentiHtml = "<p style='text-align:center; color:#999;'>Nessun argomento</p>";
+    // ✨ Funzione che converte "Testo Leggibile" → "testo-leggibile"
+    function generaNomeFile(testo) {
+      return testo
+        .toLowerCase()          // tutto minuscolo
+        .replace(/\s+/g, '-')   // spazi → trattini
+        .replace(/[^\w\-]/g, ''); // rimuove punteggiatura non valida (es. '(', ')', '.')
     }
 
-    box.innerHTML = `
-      <div class="materia-titolo">${materia.nome}</div>
-      ${argomentiHtml}
-    `;
+    // Genera l'HTML
+    const container = document.getElementById("materieContainer");
 
-    container.appendChild(box);
-  });
+    materie.forEach(materia => {
+      const box = document.createElement("div");
+      box.className = "materia-box";
+
+      let argomentiHtml = "";
+      if (materia.argomenti.length > 0) {
+        argomentiHtml = `
+          <ul class="argomenti-lista">
+            ${materia.argomenti.map(nomeArgomento => {
+              const nomeFile = generaNomeFile(nomeArgomento);
+              return `<li><a href="${materia.cartella}/${nomeFile}.html">${nomeArgomento}</a></li>`;
+            }).join("")}
+          </ul>
+        `;
+      } else {
+        argomentiHtml = "<p style='text-align:center; color:#999;'>Nessun argomento</p>";
+      }
+
+      box.innerHTML = `
+        <div class="materia-titolo">${materia.nome}</div>
+        ${argomentiHtml}
+      `;
+
+      container.appendChild(box);
+    });
   </script>
 </body>
 </html>

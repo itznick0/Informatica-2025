@@ -1,60 +1,110 @@
-import tkinter as tk
-from tkinter import messagebox
+import os
+import sys
 import subprocess
+import tkinter as tk
 
-#funzionina onos
-def salva_utente():
-    nome = entry_nome.get().strip()
-    cognome = entry_cognome.get().strip()
-    eta = entry_eta.get().strip()
+    
+class interfaccia:
+    def __init__(self, root):
+        self.root = root
+        self.root.geometry("320x330")
+        self_frame = tk.Frame(self.root, padx=10, pady=10)
+        self_frame.pack()
+        self.name_label = tk.Label(self_frame, text="Nome")
+        self.name_label.pack(pady=5)
+        self.name_entry = tk.Entry(self_frame, width=30)
+        self.name_entry.pack(pady=5)
+        self.sname_label = tk.Label(self_frame, text="Cognome")
+        self.sname_label.pack(pady=5)
+        self.sname_entry = tk.Entry(self_frame, width=30)
+        self.sname_entry.pack(pady=5)
+        self.age_label = tk.Label(self_frame, text="Età")
+        self.age_label.pack(pady=5)
+        self.age_entry = tk.Entry(self_frame, width=30)
+        self.age_entry.pack(pady=5)
+        self.add_button = tk.Button(self_frame, text="Aggiungi Utente", command=self.add)
+        self.add_button.pack(pady=10)
+        self.show_button = tk.Button(self_frame, text="Mostra Utenti", command=self.show)
+        self.show_button.pack(pady=10)
+        self.output_text = tk.Label(self_frame, text="")
+        self.output_text.pack(pady=5)
 
-    if not nome or not cognome or not eta:
-        messagebox.showwarning("Attenzione", "Compila tutti i campi!")
-        return
+    def add(self):
+        name = self.name_entry.get()
+        sname = self.sname_entry.get()
+        age = self.age_entry.get()
+        java_w(name, sname, age)
+    
+    def show(self):
+        result = java_r()
+        if result:
+            formatted_result = ""
+            lines = result.strip().split('\n')
+            for line in lines:
+                parts = line.split(';')
+                if len(parts) == 3:
+                    formatted_result += f"Nome: {parts[0]}, Cognome: {parts[1]}, Età: {parts[2]}\n"
+            self.output_text.config(text=formatted_result)
+        else:
+            self.output_text.config(text='Errore')
 
-    try:
-        risultato = subprocess.run(
-            ["java", "-cp", "progetti/scrittura/src", "App", nome, cognome, eta],
-            capture_output=True,
-            text=True
-        )
-        text_area.insert(tk.END, risultato.stdout + "\n")
-        if risultato.stderr:
-            text_area.insert(tk.END, "Errore: " + risultato.stderr + "\n")
-    except Exception as e:
-        text_area.insert(tk.END, f"Errore di esecuzione: {e}\n")
+def java_r():
+    java_path = "./lettura/src"
+    # compile using UTF-8 encoding to handle accented characters
+    compile = ["javac", "-encoding", "UTF-8", "-d", "../bin", "App.java"]
+    compile_process = subprocess.run(
+        compile,
+        cwd=java_path,
+        capture_output=True,
+        text=True
+    )
+    class_path = "./lettura/bin"
+    if compile_process.returncode != 0:
+        print("Compilation failed")
+        sys.exit()
+    result = ["java", "App"]
+    result_process = subprocess.run(
+        result,
+        cwd=class_path,
+        capture_output=True,
+        text=True
+    )
 
-#interfacciosa
-finestra = tk.Tk()
-finestra.title("Gestione Anagrafica (Python + Java)")
-finestra.geometry("500x400")
-finestra.resizable(False, False)
+    if result_process.stdout:
+        return result_process.stdout
 
-frame_input = tk.Frame(finestra)
-frame_input.pack(pady=10)
+def java_w(arg1, arg2, arg3):
+    java_path = "./scrittura/src"
+    # compile using UTF-8 encoding to handle accented characters
+    compile = ["javac", "-encoding", "UTF-8", "-d", "../bin", "App.java"]
+    compile_process = subprocess.run(
+        compile,
+        cwd=java_path,
+        capture_output=True,
+        text=True
+    )
+    class_path = "./scrittura/bin"
+    if compile_process.returncode != 0:
+        print("Compilation failed")
+        sys.exit()
+    if arg1 and arg2 and arg3 :
+        result = ["java", "App", arg1, arg2, arg3]
+    else:
+        result = ["java", "App"]
 
-tk.Label(frame_input, text="Nome:").grid(row=0, column=0, padx=5, pady=5)
-entry_nome = tk.Entry(frame_input)
-entry_nome.grid(row=0, column=1, padx=5)
+    result_process = subprocess.run(
+        result,
+        cwd=class_path,
+        capture_output=True,
+        text=True
+    )
+    if result_process.stdout:
+        return result_process.stdout
 
-tk.Label(frame_input, text="Cognome:").grid(row=1, column=0, padx=5, pady=5)
-entry_cognome = tk.Entry(frame_input)
-entry_cognome.grid(row=1, column=1, padx=5)
 
-tk.Label(frame_input, text="Età:").grid(row=2, column=0, padx=5, pady=5)
-entry_eta = tk.Entry(frame_input)
-entry_eta.grid(row=2, column=1, padx=5)
+def main():
+    root = tk.Tk()
+    app = interfaccia(root)
+    root.mainloop()
 
-frame_bottoni = tk.Frame(finestra)
-frame_bottoni.pack(pady=10)
-
-btn_salva = tk.Button(frame_bottoni, text="Salva Utente", command=salva_utente)
-btn_salva.grid(row=0, column=0, padx=10)
-
-btn_mostra = tk.Button(frame_bottoni, text="Mostra Utenti", command=mostra_utenti)
-btn_mostra.grid(row=0, column=1, padx=10)
-
-text_area = tk.Text(finestra, height=12, width=60)
-text_area.pack(pady=10)
-
-finestra.mainloop()
+main()

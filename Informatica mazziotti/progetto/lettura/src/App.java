@@ -1,18 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 public class App {
-    public static void main(String[] args) {
-        String filePath = "progetti/utenti.csv";
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                System.out.println(linea);
-            }
-        } catch (IOException e) {
-            System.out.println("Errore durante la lettura del file: " + e.getMessage());
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("Informatica mazziotti\\progetto\\utenti.csv"));
+        while (scanner.hasNextLine()) {
+            String riga = scanner.nextLine();
+            System.out.println(riga);
         }
     }
 }

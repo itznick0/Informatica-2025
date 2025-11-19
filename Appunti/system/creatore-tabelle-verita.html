@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogicSim Pro — Simulatori Circuiti Logici</title>
+    <!-- jsPDF per esportare PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a3a5f;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input, select, button, textarea {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 8px;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        button.secondary { background: #95a5a6; }
+        button.success { background: #2ecc71; }
+        button.danger { background: #e74c3c; }
+        button.warning { background: #f39c12; }
+        button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .io-group {
+            margin-top: 15px;
+        }
+
+        .io-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: #fafafa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        .io-item:hover {
+            background: #f1f8ff;
+        }
+
+        .io-item.output {
+            border-left-color: #2ecc71;
+        }
+
+        .io-item input[type="text"] {
+            width: 120px;
+            margin: 0 8px;
+        }
+
+        .switch-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .switch-btn {
+            width: 60px;
+            font-weight: bold;
+        }
+
+        .switch-btn.on { background: #2ecc71; }
+        .switch-btn.off { background: #e74c3c; }
+
+        .bulb {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            margin: 0 10px;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .bulb.on {
+            background: #f1c40f;
+            box-shadow: 
+                inset 0 0 10px rgba(0,0,0,0.3),
+                0 0 16px rgba(241, 196, 15, 0.8);
+        }
+
+        .expression {
+            flex: 1;
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+        }
+
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .truth-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #1a3a5f;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fbfcfd;
+        }
+
+        tr.active {
+            background-color: #e3f2fd !important;
+            font-weight: 600;
+        }
+
+        .input-cell {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        .output-cell {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .error { background: #fdf2f2; border-left: 3px solid #e74c3c; color: #e74c3c; }
+        .success { background: #f2fdf5; border-left: 3px solid #27ae60; color: #27ae60; }
+
+        .port-hint {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        .config-panel {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .file-drop {
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #f8fbff;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file-drop:hover, .file-drop.dragover {
+            background: #e3f2fd;
+            border-color: #2980b9;
+        }
+
+        .file-drop i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        textarea#configJson {
+            width: 100%;
+            height: 120px;
+            font-family: monospace;
+            font-size: 13px;
+            resize: vertical;
+        }
+
+        @media (max-width: 768px) {
+            .io-item {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .action-bar button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LogicSim Pro</h1>
+        <p class="subtitle">Simulatore completo di circuiti logici • Adatto a scuole e sviluppatori</p>
+
+        <div class="panel">
+            <div class="section">
+                <div class="section-title">⚙️ Configurazione ingressi</div>
+                <div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
+                    <div>
+                        <label for="numInputs">Numero di ingressi (1–6):</label>
+                        <select id="numInputs">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                    <button id="applyInputs">Applica</button>
+                    <button id="addInput" class="secondary">+ Ingresso</button>
+                </div>
+            </div>
+
+            <div class="section" id="inputsSection">
+                <label>Ingressi:</label>
+                <div id="inputsList"></div>
+            </div>
+
+            <div class="section" id="outputsSection">
+                <label>Uscite (lampadine):</label>
+                <div id="outputsList"></div>
+                <button id="addOutput">+ Aggiungi uscita</button>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💾 Gestione configurazione</div>
+                <div class="config-panel">
+                    <div class="file-drop" id="dropZone">
+                        <div>📥 Trascina qui un file <strong>.json</strong><br>oppure clicca per cercare</div>
+                        <input type="file" id="fileInput" accept=".json" style="display:none;">
+                    </div>
+                    <div style="flex:1;">
+                        <label>Configurazione (JSON manuale):</label>
+                        <textarea id="configJson" placeholder="Usa 'Salva' o trascina un file..."></textarea>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <button id="saveConfig" class="success">✅ Salva</button>
+                    <button id="loadConfig" class="secondary">📤 Carica</button>
+                    <button id="copyConfig">📋 Copia</button>
+                    <button id="exportJson" class="warning">📤 Esporta .json</button>
+                    <button id="exportPdf" class="warning">🖨️ Esporta PDF</button>
+                </div>
+                <div class="message" id="configMessage"></div>
+                <div class="port-hint">
+                    <strong>Porte supportate:</strong> AND, OR, NOT, XOR, NAND, NOR, XNOR<br>
+                    <strong>Esempi:</strong> <code>A NAND B</code>, <code>NOT (A XOR B)</code>, <code>(A NOR B) XNOR C</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="truth-table">
+            <h2 style="padding: 16px 20px; margin: 0; background: #1a3a5f; color: white;">📊 Tabella di Verità</h2>
+            <div style="overflow-x: auto;">
+                <table id="truthTable">
+                    <thead>
+                        <tr id="headerRow"></tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carica jsPDF dinamicamente
+        const { jsPDF } = window.jspdf;
+
+        // Stato globale
+        let inputs = [
+            { name: "A", value: 0 },
+            { name: "B", value: 0 }
+        ];
+        let outputs = [
+            { name: "Y", expr: "A OR B" }
+        ];
+
+        const maxInputs = 6;
+
+        // Cache DOM
+        const numInputsSelect = document.getElementById('numInputs');
+        const applyInputsBtn = document.getElementById('applyInputs');
+        const addInputBtn = document.getElementById('addInput');
+        const addOutputBtn = document.getElementById('addOutput');
+        const inputsList = document.getElementById('inputsList');
+        const outputsList = document.getElementById('outputsList');
+        const headerRow = document.getElementById('headerRow');
+        const tableBody = document.getElementById('tableBody');
+        const configJson = document.getElementById('configJson');
+        const saveConfigBtn = document.getElementById('saveConfig');
+        const loadConfigBtn = document.getElementById('loadConfig');
+        const copyConfigBtn = document.getElementById('copyConfig');
+        const exportJsonBtn = document.getElementById('exportJson');
+        const exportPdfBtn = document.getElementById('exportPdf');
+        const configMessage = document.getElementById('configMessage');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        // Inizializza
+        renderInputs();
+        renderOutputs();
+        updateTruthTable();
+
+        // Event listeners
+        applyInputsBtn.addEventListener('click', () => {
+            const n = parseInt(numInputsSelect.value);
+            if (n < 1 || n > maxInputs) return;
+            resetInputs(n);
+        });
+
+        addInputBtn.addEventListener('click', () => {
+            if (inputs.length >= maxInputs) {
+                showMessage(`✅ Massimo ${maxInputs} ingressi raggiunti.`, 'success');
+                return;
+            }
+            const nextLetter = getNextAvailableName(inputs.map(i => i.name));
+            inputs.push({ name: nextLetter, value: 0 });
+            sanitizeOutputExpressions();
+            renderInputs();
+            updateTruthTable();
+        });
+
+        addOutputBtn.addEventListener('click', () => {
+            const id = outputs.length + 1;
+            const name = getNextAvailableName(outputs.map(o => o.name), 'Y');
+            outputs.push({ name, expr: getDefaultExpr() });
+            renderOutputs();
+            updateTruthTable();
+        });
+
+        saveConfigBtn.addEventListener('click', saveConfiguration);
+        loadConfigBtn.addEventListener('click', loadConfiguration);
+        copyConfigBtn.addEventListener('click', copyToClipboard);
+        exportJsonBtn.addEventListener('click', exportJsonFile);
+        exportPdfBtn.addEventListener('click', exportPdf);
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Drag & drop
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        // Funzioni principali
+        function resetInputs(n) {
+            inputs = Array.from({ length: n }, (_, i) => ({
+                name: String.fromCharCode(65 + i),
+                value: 0
+            }));
+            sanitizeOutputExpressions();
+            renderInputs();
+            updateTruthTable();
+            showMessage(`✅ Impostati ${n} ingressi.`, 'success');
+        }
+
+        function renderInputs() {
+            inputsList.innerHTML = '';
+            inputs.forEach((inp, i) => {
+                const div = document.createElement('div');
+                div.className = 'io-item';
+                div.innerHTML = `
+                    <span style="width:40px; font-weight:bold;">In ${i+1}</span>
+                    <input type="text" class="input-name" maxlength="10" value="${escapeHtml(inp.name)}" data-index="${i}" placeholder="Nome">
+                    <div class="switch-group">
+                        <button class="switch-btn off" data-index="${i}" data-value="0">OFF</button>
+                        <button class="switch-btn on" data-index="${i}" data-value="1">ON</button>
+                    </div>
+                    <button class="remove-btn" data-index="${i}" title="Elimina ingresso">×</button>
+                `;
+                inputsList.appendChild(div);
+
+                // Nome
+                const nameInput = div.querySelector('.input-name');
+                nameInput.addEventListener('input', (e) => {
+                    let newName = e.target.value.trim();
+                    newName = newName.substring(0, 10).replace(/[^a-zA-Z0-9_\-]/g, '');
+                    if (newName === '') newName = inp.name;
+                    inp.name = newName;
+                    sanitizeOutputExpressions();
+                    renderOutputs();
+                    updateTruthTable();
+                });
+
+                // Switch
+                div.querySelectorAll('.switch-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.dataset.index);
+                        const val = parseInt(btn.dataset.value);
+                        inputs[idx].value = val;
+                        updateTruthTable();
+                    });
+                });
+
+                // Rimuovi
+                const removeBtn = div.querySelector('.remove-btn');
+                removeBtn.addEventListener('click', () => {
+                    inputs.splice(i, 1);
+                    sanitizeOutputExpressions();
+                    renderInputs();
+                    renderOutputs();
+                    updateTruthTable();
+                    showMessage(`🗑️ Ingresso rimosso.`, 'success');
+                });
+            });
+        }
+
+        function renderOutputs() {
+            outputsList.innerHTML = '';
+            outputs.forEach((out, i) => {
+                const div = document.createElement('div');
+                div.className = 'io-item output';
+                const placeholder = getDefaultExpr();
+                div.innerHTML = `
+                    <span style="width:40px; font-weight:bold;">Out ${i+1}</span>
+                    <input type="text" class="output-name" maxlength="10" value="${escapeHtml(out.name)}" data-index="${i}" placeholder="Nome">
+                    <div class="bulb" id="bulb-${i}"></div>
+                    <input type="text" class="expression" value="${escapeHtml(out.expr)}" data-index="${i}" 
+                        placeholder="${placeholder}" title="Es: A NAND B, NOT (A XOR C)">
+                    <button class="remove-btn" data-index="${i}" title="Elimina uscita">×</button>
+                `;
+                outputsList.appendChild(div);
+
+                // Nome output
+                const nameInput = div.querySelector('.output-name');
+                nameInput.addEventListener('input', (e) => {
+                    let newName = e.target.value.trim();
+                    newName = newName.substring(0, 10).replace(/[^a-zA-Z0-9_\-]/g, '');
+                    if (newName === '') newName = out.name;
+                    out.name = newName;
+                    updateTruthTable();
+                });
+
+                // Espressione
+                const exprInput = div.querySelector('.expression');
+                exprInput.addEventListener('input', (e) => {
+                    out.expr = e.target.value;
+                    updateTruthTable();
+                });
+
+                // Rimuovi
+                const removeBtn = div.querySelector('.remove-btn');
+                removeBtn.addEventListener('click', () => {
+                    outputs.splice(i, 1);
+                    renderOutputs();
+                    updateTruthTable();
+                    showMessage(`🗑️ Uscita rimossa.`, 'success');
+                });
+            });
+        }
+
+        function updateTruthTable() {
+            headerRow.innerHTML = '';
+            inputs.forEach(inp => {
+                const th = document.createElement('th');
+                th.textContent = inp.name;
+                th.className = 'input-cell';
+                headerRow.appendChild(th);
+            });
+            outputs.forEach(out => {
+                const th = document.createElement('th');
+                th.textContent = out.name;
+                th.className = 'output-cell';
+                headerRow.appendChild(th);
+            });
+
+            const n = inputs.length;
+            const rows = n === 0 ? 1 : (1 << n);
+            tableBody.innerHTML = '';
+
+            for (let i = 0; i < rows; i++) {
+                const tr = document.createElement('tr');
+                const inputValues = {};
+
+                for (let j = 0; j < n; j++) {
+                    const bit = (i >> (n - 1 - j)) & 1;
+                    inputValues[inputs[j].name] = bit;
+                    const td = document.createElement('td');
+                    td.textContent = bit;
+                    td.className = 'input-cell';
+                    tr.appendChild(td);
+                }
+
+                outputs.forEach((out, idx) => {
+                    let result = 0;
+                    let error = null;
+                    try {
+                        result = evaluateExpression(out.expr, inputValues);
+                    } catch (e) {
+                        error = "Err";
+                    }
+
+                    const td = document.createElement('td');
+                    td.textContent = error || result;
+                    td.className = 'output-cell';
+                    if (!error && isRowActive(inputValues)) {
+                        const bulb = document.getElementById(`bulb-${idx}`);
+                        if (bulb) bulb.className = `bulb ${result ? 'on' : ''}`;
+                    }
+                    tr.appendChild(td);
+                });
+
+                if (isRowActive(getManualInputValues())) {
+                    tr.classList.add('active');
+                }
+
+                tableBody.appendChild(tr);
+            }
+        }
+
+        // Logica avanzata
+        function evaluateExpression(expr, vars) {
+            if (!expr || expr.trim() === '') return 0;
+
+            let code = expr
+                .toUpperCase()
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            const replacements = [
+                [/XNOR/g, ' EQV '],
+                [/NAND/g, ' NAND '],
+                [/NOR/g, ' NOR '],
+                [/XOR/g, ' ^ '],
+                [/AND/g, ' && '],
+                [/OR/g, ' || '],
+                [/NOT\s+/g, ' !'],
+                [/TRUE/g, '1'],
+                [/FALSE/g, '0']
+            ];
+
+            replacements.forEach(([regex, repl]) => {
+                code = code.replace(regex, repl);
+            });
+
+            Object.keys(vars).forEach(key => {
+                const val = vars[key] ? '1' : '0';
+                const regex = new RegExp(`\\b${key}\\b`, 'g');
+                code = code.replace(regex, val);
+            });
+
+            // Operatori custom
+            code = code.replace(/(\(?.*?\)?)\s+NAND\s+(\(?.*?\)?)/g, (_, a, b) => `(!(${a} && ${b}))`);
+            code = code.replace(/(\(?.*?\)?)\s+NOR\s+(\(?.*?\)?)/g, (_, a, b) => `(!(${a} || ${b}))`);
+            code = code.replace(/(\(?.*?\)?)\s+EQV\s+(\(?.*?\)?)/g, (_, a, b) => `(!(${a} ^ ${b}))`);
+
+            code = code
+                .replace(/\s+/g, ' ')
+                .replace(/\(\s+/g, '(')
+                .replace(/\s+\)/g, ')')
+                .trim();
+
+            if (/^[01]$/.test(code)) return parseInt(code);
+
+            try {
+                const fn = new Function(...Object.keys(vars), `return (${code}) ? 1 : 0;`);
+                const args = Object.values(vars);
+                let res = fn(...args);
+                return res ? 1 : 0;
+            } catch (e) {
+                return 0;
+            }
+        }
+
+        // Utilità
+        function getManualInputValues() {
+            const obj = {};
+            inputs.forEach(inp => obj[inp.name] = inp.value);
+            return obj;
+        }
+
+        function isRowActive(rowValues) {
+            const manual = getManualInputValues();
+            return inputs.every(inp => manual[inp.name] === rowValues[inp.name]);
+        }
+
+        function getDefaultExpr() {
+            if (inputs.length === 0) return "0";
+            if (inputs.length === 1) return inputs[0].name;
+            return `${inputs[0].name} AND ${inputs[1].name}`;
+        }
+
+        function sanitizeOutputExpressions() {
+            const validNames = inputs.map(i => i.name);
+            outputs.forEach(out => {
+                const regex = /\b[A-Z0-9_\-]+\b/g;
+                out.expr = out.expr.replace(regex, match => {
+                    return validNames.includes(match) ? match : '';
+                }).replace(/\s{2,}/g, ' ').trim();
+            });
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, m => ({
+                '&': '&amp;',
+                '<': '<',
+                '>': '>',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[m]));
+        }
+
+        function getNextAvailableName(existing, prefix = 'X') {
+            if (existing.length === 0) return prefix;
+            for (let i = 1; ; i++) {
+                const name = prefix + (i === 1 ? '' : i);
+                if (!existing.includes(name)) return name;
+            }
+        }
+
+        // Salvataggio/Caricamento
+        function saveConfiguration() {
+            try {
+                const config = {
+                    version: "2.0",
+                    app: "LogicSim Pro",
+                    inputs: inputs.map(i => ({ name: i.name })),
+                    outputs: outputs.map(o => ({ name: o.name, expr: o.expr })),
+                    timestamp: new Date().toISOString()
+                };
+                const json = JSON.stringify(config, null, 2);
+                configJson.value = json;
+                showMessage("✅ Configurazione salvata in memoria.", "success");
+            } catch (e) {
+                showMessage("❌ Errore durante il salvataggio: " + e.message, "error");
+            }
+        }
+
+        function loadConfiguration() {
+            try {
+                const json = configJson.value.trim();
+                if (!json) throw new Error("JSON vuoto");
+                const config = JSON.parse(json);
+                restoreFromConfig(config);
+                showMessage("✅ Configurazione caricata!", "success");
+            } catch (e) {
+                showMessage("❌ JSON non valido: " + e.message, "error");
+            }
+        }
+
+        function restoreFromConfig(config) {
+            if (!config.inputs || !Array.isArray(config.inputs)) throw new Error("Dati ingressi mancanti");
+            if (!config.outputs || !Array.isArray(config.outputs)) throw new Error("Dati uscite mancanti");
+            if (config.inputs.length > maxInputs) throw new Error(`Troppi ingressi (max ${maxInputs})`);
+
+            inputs = config.inputs.map(inp => ({
+                name: String(inp.name || 'X').substring(0,10).replace(/[^a-zA-Z0-9_\-]/g, '') || 'X',
+                value: 0
+            }));
+
+            outputs = config.outputs.map(out => ({
+                name: String(out.name || 'Y').substring(0,10).replace(/[^a-zA-Z0-9_\-]/g, '') || 'Y',
+                expr: String(out.expr || '')
+            }));
+
+            renderInputs();
+            renderOutputs();
+            updateTruthTable();
+        }
+
+        function copyToClipboard() {
+            configJson.select();
+            try {
+                document.execCommand('copy');
+                showMessage("✅ Copiata negli appunti!", "success");
+            } catch (err) {
+                showMessage("❌ Impossibile copiare.", "error");
+            }
+        }
+
+        function exportJsonFile() {
+            try {
+                const config = {
+                    version: "2.0",
+                    app: "LogicSim Pro",
+                    inputs: inputs.map(i => ({ name: i.name })),
+                    outputs: outputs.map(o => ({ name: o.name, expr: o.expr })),
+                    exportedAt: new Date().toISOString()
+                };
+                const json = JSON.stringify(config, null, 2);
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `logicsim_config_${new Date().toISOString().slice(0,10)}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showMessage("✅ File .json esportato!", "success");
+            } catch (e) {
+                showMessage("❌ Errore esportazione: " + e.message, "error");
+            }
+        }
+
+        function exportPdf() {
+            try {
+                if (inputs.length === 0 && outputs.length === 0) {
+                    showMessage("⚠️ Nessun dato da esportare.", "error");
+                    return;
+                }
+
+                const doc = new jsPDF();
+                doc.setFontSize(18);
+                doc.text("Tabella di Verità — LogicSim Pro", 14, 20);
+                doc.setFontSize(10);
+                doc.text(`Generato il: ${new Date().toLocaleString('it-IT')}`, 14, 26);
+
+                // Prepara dati tabella
+                const headers = [...inputs.map(i => i.name), ...outputs.map(o => o.name)];
+                const data = [];
+                const n = inputs.length;
+                const rows = n === 0 ? 1 : (1 << n);
+
+                for (let i = 0; i < rows; i++) {
+                    const row = [];
+                    const inputValues = {};
+                    for (let j = 0; j < n; j++) {
+                        const bit = (i >> (n - 1 - j)) & 1;
+                        inputValues[inputs[j].name] = bit;
+                        row.push(bit);
+                    }
+                    outputs.forEach(out => {
+                        try {
+                            row.push(evaluateExpression(out.expr, inputValues));
+                        } catch {
+                            row.push('Err');
+                        }
+                    });
+                    data.push(row);
+                }
+
+                // Aggiungi tabella
+                doc.autoTable({
+                    head: [headers],
+                    body: data,
+                    startY: 35,
+                    theme: 'grid',
+                    headStyles: { fillColor: [26, 58, 95] },
+                    alternateRowStyles: { fillColor: [245, 247, 250] }
+                });
+
+                // Scarica
+                doc.save(`tabella_verita_${new Date().toISOString().slice(0,10)}.pdf`);
+                showMessage("✅ PDF esportato con successo!", "success");
+            } catch (e) {
+                console.error(e);
+                showMessage("❌ Errore generazione PDF: " + (e.message || 'Sconosciuto'), "error");
+            }
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) handleFile(file);
+        }
+
+        function handleFile(file) {
+            if (!file.name.endsWith('.json')) {
+                showMessage("⚠️ Seleziona un file .json", "error");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const json = e.target.result;
+                    const config = JSON.parse(json);
+                    restoreFromConfig(config);
+                    configJson.value = json;
+                    showMessage(`✅ Configurazione caricata da ${file.name}`, "success");
+                } catch (e) {
+                    showMessage("❌ File non valido: " + e.message, "error");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function showMessage(text, type = "info") {
+            configMessage.textContent = text;
+            configMessage.className = `message ${type}`;
+            configMessage.style.display = "block";
+            setTimeout(() => {
+                if (configMessage.textContent === text) {
+                    configMessage.style.display = "none";
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

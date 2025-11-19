@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appunti di Elettrotecnica</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    .due-colonne,
+    .due-colonne-25-75,
+    .due-colonne-75-25 {
+      display: flex;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .due-colonne > div { flex: 1; }
+    .due-colonne-25-75 > div:first-child { flex: 1; }
+    .due-colonne-25-75 > div:last-child { flex: 3; }
+    .due-colonne-75-25 > div:first-child { flex: 3; }
+    .due-colonne-75-25 > div:last-child { flex: 1; }
+
+    .due-colonne > div,
+    .due-colonne-25-75 > div,
+    .due-colonne-75-25 > div {
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2d3b4a;
+    }
+
+    @media (max-width: 768px) {
+      .due-colonne,
+      .due-colonne-25-75,
+      .due-colonne-75-25 {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+    .elenco p {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 1px;
+      line-height: 1.6;
+      font-size: 1.15rem;
+      color: #333;
+    }
+
+    .elenco p::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #4f6df5;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+
+    .sottotitolo {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #2c5aa0;
+      margin: 18px 0 12px 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.4;
+    }
+
+    .tabella-3-colonne {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .tabella-3-colonne th,
+    .tabella-3-colonne td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .tabella-3-colonne th {
+      background: linear-gradient(to bottom, #eef4ff, #dbe9ff);
+      color: #1a3a5f;
+      font-weight: 600;
+      font-size: 1.15rem;
+      position: sticky;
+      top: 0;
+    }
+
+    .tabella-3-colonne tbody tr:nth-child(even) {
+      background-color: #fafcff;
+    }
+
+    .tabella-3-colonne tbody tr:hover {
+      background-color: #f0f7ff;
+      transition: background-color 0.2s;
+    }
+
+    .tabella-3-colonne tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 600px) {
+      .tabella-3-colonne,
+      .tabella-3-colonne thead,
+      .tabella-3-colonne tbody,
+      .tabella-3-colonne th,
+      .tabella-3-colonne td,
+      .tabella-3-colonne tr {
+        display: block;
+      }
+
+      .tabella-3-colonne thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      .tabella-3-colonne tr {
+        border: 1px solid #edf2f7;
+        margin-bottom: 16px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+
+      .tabella-3-colonne td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+      }
+
+      .tabella-3-colonne td::before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 16px;
+        width: 45%;
+        font-weight: 600;
+        color: #2c5aa0;
+      }
+    }
+
+    .griglia-3x3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .immagine-didascalia {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .immagine-didascalia:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .immagine-didascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .immagine-didascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .immagine-didascalia.sfondo-colorato {
+    }
+
+    @media (max-width: 768px) {
+      .griglia-3x3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .griglia-3x3 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .immagine-didascalia {
+        padding: 18px;
+      }
+    }
+
+    .nota {
+      position: relative;
+      cursor: help;
+      border-bottom: 1px dashed #4f6df5;
+      color: #2c5aa0;
+      font-weight: 500;
+    }
+
+    .nota:hover {
+      background-color: rgba(79, 109, 245, 0.05);
+    }
+
+    .nota .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #2d3748;
+    }
+
+    .nota:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-12px);
+    }
+
+    .nota .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px 6px 0 6px;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+    }
+
+    .nota .tooltip img {
+      width: 100%;
+      max-height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 8px 0;
+      display: block;
+    }
+
+    .nota.right-edge .tooltip {
+      left: auto;
+      right: 0;
+      transform: translateY(-12px);
+    }
+
+    .nota.right-edge .tooltip::after {
+      left: 16px;
+    }
+
+    .footer-sito {
+      margin-top: 60px;
+      padding: 24px 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.95rem;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .footer-sito p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+
+    .footer-sito p:first-child {
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .footer-sito::before {
+      content: '';
+      display: block;
+      width: 600px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #55585d, transparent);
+      margin: 0 auto 16px;
+    }
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Appunti di Elettrotecnica</h1>
+      <div class="meta">
+        <p class="date">Settembre–Ottobre 2025</p>
+        <p class="subject">Materia: Elettrotecnica – Corso Base</p>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Lezione 1 -->
+      <p id="titoloparagrafo">🔹 Martedì 9 Settembre 2025</p>
+
+      <p class="sottotitolo">Il Generatore e la Separazione delle Cariche</p>
+      <div class="elenco">
+        <p>Un <span class="grassetto">generatore</span> è un sistema capace di separare cariche elettriche, creando una differenza di potenziale tra i suoi due poli.</p>
+        <p><span class="grassetto">Simbolo del generatore DC</span>: <code>E +|-</code></p>
+        <p><span class="grassetto">Forza Elettromotrice (f.e.m.)</span>, indicata con <code>E</code>, è la forza che genera la tensione sufficiente a muovere gli elettroni. Unità di misura: <span class="grassetto">Volt (V)</span>.</p>
+        <p><span class="grassetto">Esempi di generatori</span>: batterie, pile.</p>
+      </div>
+
+      <p class="sottotitolo">Corrente Elettrica</p>
+      <div class="elenco">
+        <p>La corrente elettrica è un flusso ordinato di elettroni all’interno di un circuito.</p>
+        <p>In un circuito base: il generatore <code>E</code> alimenta un utilizzatore (es. lampadina <code>L</code>), e la corrente <code>I</code> è misurata in <span class="grassetto">Ampere (A)</span>.</p>
+        <p><span class="grassetto">Convenzione sul verso della corrente</span>: convenzionalmente va da <span class="grassetto">+ a –</span>, ma in realtà gli elettroni si muovono da <span class="grassetto">– a +</span>.</p>
+      </div>
+
+      <p class="sottotitolo">Resistenze Elettriche</p>
+      <div class="elenco">
+        <p>La resistenza si oppone al passaggio della corrente.</p>
+        <p><span class="grassetto">Simbolo</span>: <code>—/\/\/—</code>, <span class="grassetto">lettera</span>: <code>R</code>, <span class="grassetto">unità</span>: <span class="grassetto">Ohm (Ω)</span>.</p>
+      </div>
+
+      <p class="sottotitolo">Unità di Misura (Prefissi)</p>
+      <table class="tabella-3-colonne">
+        <thead>
+          <tr>
+            <th>Potenza di 10</th>
+            <th>Prefisso</th>
+            <th>Simbolo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>10¹²</td><td>Tera</td><td>T</td></tr>
+          <tr><td>10⁹</td><td>Giga</td><td>G</td></tr>
+          <tr><td>10⁶</td><td>Mega</td><td>M</td></tr>
+          <tr><td>10³</td><td>Kilo</td><td>k</td></tr>
+          <tr><td>10⁻³</td><td>Milli</td><td>m</td></tr>
+          <tr><td>10⁻⁶</td><td>Micro</td><td>μ</td></tr>
+          <tr><td>10⁻⁹</td><td>Nano</td><td>n</td></tr>
+          <tr><td>10⁻¹²</td><td>Pico</td><td>p</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Lezione 2 -->
+      <p id="titoloparagrafo">🔹 Martedì 16 Settembre 2025</p>
+
+      <p class="sottotitolo">Prima Legge di Ohm</p>
+      <div class="elenco">
+        <p><span class="grassetto">Tensione elettrica</span> (<span class="nota">V<sub>AB</sub><span class="tooltip">Differenza di potenziale tra due punti A e B.</span></span>) è l’energia potenziale delle cariche. Unità: <span class="grassetto">Volt (V)</span>.</p>
+        <p><span class="grassetto">Enunciato</span>: «L’intensità di corrente è direttamente proporzionale alla tensione e inversamente proporzionale alla resistenza».</p>
+      </div>
+
+      <div class="due-colonne">
+        <div>
+          <p class="sottotitolo">Formule</p>
+          <div class="elenco">
+            <p><code>I = V<sub>AB</sub> / R</code></p>
+            <p><code>V<sub>AB</sub> = I · R</code></p>
+            <p><code>R = V<sub>AB</sub> / I</code></p>
+          </div>
+        </div>
+        <div>
+          <p class="sottotitolo">Intensità di Corrente</p>
+          <div class="elenco">
+            <p><code>I = Q / t</code></p>
+            <p><code>Q</code> = carica in <span class="grassetto">Coulomb (C)</span>, dove 1 C = 6,25 × 10¹⁸ e⁻</p>
+            <p><code>t</code> = tempo in secondi (s)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laboratorio -->
+      <p id="titoloparagrafo">🔹 Sabato 13 Settembre 2025 — Laboratorio</p>
+
+      <p class="sottotitolo">Misure con il Tester</p>
+      <div class="elenco">
+        <p>Per misurare <code>R</code>, <code>V</code>, <code>I</code> si usa un tester. Si usano cavi banana-coccodrillo per breadboard.</p>
+      </div>
+
+      <div class="due-colonne-25-75">
+        <div>
+          <p class="sottotitolo">Resistenza (Ω)</p>
+          <div class="elenco">
+            <p>Ohmetro</p>
+            <p>Misurare a circuito <span class="grassetto">scollegato</span>.</p>
+          </div>
+        </div>
+        <div>
+          <p class="sottotitolo">Tensione (V)</p>
+          <div class="elenco">
+            <p>Voltmetro</p>
+            <p>Collegare in <span class="grassetto">parallelo</span>.</p>
+            <p>Resistenza interna molto alta → non altera il circuito.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="due-colonne-25-75">
+        <div>
+          <p class="sottotitolo">Corrente (A)</p>
+          <div class="elenco">
+            <p>Amperometro</p>
+            <p>Inserire in <span class="grassetto">serie</span>.</p>
+            <p>⚠️ Mai in parallelo (rischio corto circuito).</p>
+          </div>
+        </div>
+        <div>
+          <p class="sottotitolo">Attenzione!</p>
+          <div class="elenco">
+            <p>Fusibile nel tester: brucia oltre 2 A.</p>
+            <p>Alimentatore: parte destra = <span class="grassetto">Master</span>, sinistra = <span class="grassetto">Slave</span>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Potenza ed Energia -->
+      <p id="titoloparagrafo">🔹 Martedì 16 Settembre 2025 (continua)</p>
+
+      <p class="sottotitolo">Potenza Elettrica</p>
+      <div class="elenco">
+        <p>È l’energia fornita nel tempo. Unità: <span class="grassetto">Watt (W)</span>.</p>
+        <p><code>P = V · I</code> &nbsp; | &nbsp; <code>P = R · I²</code> &nbsp; | &nbsp; <code>P = V² / R</code></p>
+      </div>
+
+      <p class="sottotitolo">Energia Elettrica</p>
+      <div class="elenco">
+        <p><code>W = P · t</code></p>
+        <p>Unità: Joule (J), Wattora (Wh), Kilowattora (kWh).</p>
+      </div>
+
+      <!-- Resistenze in Serie -->
+      <p id="titoloparagrafo">🔹 Martedì 23 Settembre 2025</p>
+
+      <p class="sottotitolo">Resistenze in Serie</p>
+      <div class="elenco">
+        <p>Due resistenze sono in serie quando collegate con un solo terminale comune, formando un unico percorso.</p>
+        <p><span class="grassetto">Resistenza equivalente</span>: <code>Req = R₁ + R₂ + … + Rₙ</code></p>
+        <p><span class="grassetto">Corrente</span>: uguale per tutte le resistenze.</p>
+        <p><span class="grassetto">Tensione</span>: si ripartisce: <code>V<sub>TOT</sub> = V₁ + V₂ + …</code></p>
+      </div>
+
+      <p class="sottotitolo">Esempio di Calcolo</p>
+      <div class="due-colonne-75-25">
+        <div>
+          <div class="elenco">
+            <p>Dati: <code>R₁ = 50 Ω</code>, <code>R₂ = 100 Ω</code>, <code>R₃ = 10 Ω</code>, <code>E = 80 V</code></p>
+            <p><code>Req = 50 + 100 + 10 = 160 Ω</code></p>
+            <p><code>I = 80 / 160 = 0,5 A</code></p>
+            <p><code>V₁ = 50·0,5 = 25 V</code>, <code>V₂ = 100·0,5 = 50 V</code>, <code>V₃ = 10·0,5 = 5 V</code></p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #2c5aa0; font-weight: bold;">
+          ✅ Verifica:<br>25 + 50 + 5 = 80 V
+        </div>
+      </div>
+
+      <!-- Resistenze in Parallelo -->
+      <p id="titoloparagrafo">🔹 Martedì 30 Settembre 2025</p>
+
+      <p class="sottotitolo">Resistenze in Parallelo</p>
+      <div class="elenco">
+        <p>Hanno entrambi i morsetti collegati a due nodi comuni.</p>
+        <p><span class="grassetto">Resistenza equivalente</span>:</p>
+        <p style="padding-left: 40px;"><code>1/Req = 1/R₁ + 1/R₂ + … + 1/Rₙ</code></p>
+        <p style="padding-left: 40px;"><code>Req = (R₁·R₂) / (R₁ + R₂)</code> (solo per due resistenze)</p>
+      </div>
+
+      <p class="sottotitolo">Caratteristiche</p>
+      <div class="elenco">
+        <p><span class="grassetto">Tensione</span>: uguale su tutte le resistenze (<code>V₁ = V₂ = E</code>).</p>
+        <p><span class="grassetto">Corrente</span>: si divide nei nodi: <code>I<sub>TOT</sub> = I₁ + I₂ + …</code></p>
+        <p>Le correnti sono <span class="grassetto">inversamente proporzionali</span> alle resistenze.</p>
+      </div>
+
+      <!-- Partitori -->
+      <p id="titoloparagrafo">🔹 Martedì 24 Ottobre 2025</p>
+
+      <div class="due-colonne">
+        <div>
+          <p class="sottotitolo">Partitore di Tensione</p>
+          <div class="elenco">
+            <p>Usato per resistenze in <span class="grassetto">serie</span>.</p>
+            <p>Esempio (3 resistenze):</p>
+            <p><code>V₁ = E · R₁ / (R₁+R₂+R₃)</code></p>
+            <p><code>V₂ = E · R₂ / (R₁+R₂+R₃)</code></p>
+            <p><code>V₃ = E · R₃ / (R₁+R₂+R₃)</code></p>
+          </div>
+        </div>
+        <div>
+          <p class="sottotitolo">Partitore di Corrente</p>
+          <div class="elenco">
+            <p>Usato per resistenze in <span class="grassetto">parallelo</span> (2 sole).</p>
+            <p><code>I₁ = I<sub>TOT</sub> · R₂ / (R₁ + R₂)</code></p>
+            <p><code>I₂ = I<sub>TOT</sub> · R₁ / (R₁ + R₂)</code></p>
+            <p style="margin-top: 8px;"><span class="piccolo">⚠️ Nota: la corrente si “sceglie” il ramo con meno resistenza.</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sezione immagini (opzionale, commentata per ora) -->
+    <!--
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <img src="https://via.placeholder.com/250x150/eef4ff/1a3a5f?text=Circuito+Serie" alt="Circuito in serie">
+        <img src="https://via.placeholder.com/250x150/e6f7ee/1a5a3f?text=Circuito+Parallelo" alt="Circuito in parallelo">
+        <img src="https://via.placeholder.com/250x150/f8f2fc/5a2a5a?text=Partitore+Tensione" alt="Partitore di tensione">
+      </div>
+    </div>
+    -->
+<footer class="footer-sito">
+    <p>© 2025 — Tutti i diritti riservati</p>
+    <p>Sito realizzato da Nicola Manzi • Classe 3P</p>
+  </footer>
+  </div>
+
+  
+
+  <script>
+    function generaColoreMorbido() {
+      const colori = [
+        "#dbe9ff", "#e6f7ee", "#fef9f0", "#f8f2fc",
+        "#f0f5ff", "#faf8f0", "#e6f0fa", "#f9f3f8",
+        "#f0f9f4", "#f0f8ff"
+      ];
+      return colori[Math.floor(Math.random() * colori.length)];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const blocchi = document.querySelectorAll(".immagine-didascalia");
+      blocchi.forEach(blocco => {
+        blocco.style.backgroundColor = generaColoreMorbido();
+      });
+
+      const note = document.querySelectorAll(".nota");
+      note.forEach(el => {
+        el.addEventListener("mouseenter", () => {
+          const rect = el.getBoundingClientRect();
+          const tooltip = el.querySelector(".tooltip");
+          if (tooltip) {
+            if (rect.right > window.innerWidth * 0.8) {
+              el.classList.add("right-edge");
+            } else {
+              el.classList.remove("right-edge");
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

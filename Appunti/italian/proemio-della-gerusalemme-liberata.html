@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+/* ✨ DUE COLONNE 50% - 50% */
+.due-colonne {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne > div {
+  flex: 1;
+}
+
+/* ✨ DUE COLONNE 25% - 75% */
+.due-colonne-25-75 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-25-75 > div:first-child {
+  flex: 1;
+}
+
+.due-colonne-25-75 > div:last-child {
+  flex: 3;
+}
+
+/* ✨ DUE COLONNE 75% - 25% */
+.due-colonne-75-25 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-75-25 > div:first-child {
+  flex: 3;
+}
+
+.due-colonne-75-25 > div:last-child {
+  flex: 1;
+}
+
+/* ✨ Stile comune per tutte le colonne (opzionale ma consigliato) */
+.due-colonne > div,
+.due-colonne-25-75 > div,
+.due-colonne-75-25 > div {
+  background: #fafcff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #edf2f7;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2d3b4a;
+}
+
+/* ✨ Responsive: su mobile tutte le colonne diventano verticali */
+@media (max-width: 768px) {
+  .due-colonne,
+  .due-colonne-25-75,
+  .due-colonne-75-25 {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+        /* ✨ Stile per elenco con pallini usando <p> */
+.elenco p {
+  position: relative;
+  padding-left: 24px; /* spazio per il pallino */
+  margin-bottom: 1px; /* meno spazio rispetto ai 20px originali */
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+/* Pallino personalizzato */
+.elenco p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4f6df5; /* colore del pallino (coerente con il tuo tema) */
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.sottotitolo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #2c5aa0;
+  margin: 18px 0 12px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+/* ✨ Tabella a 3 colonne */
+.tabella-3-colonne {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.tabella-3-colonne th,
+.tabella-3-colonne td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* Intestazione */
+.tabella-3-colonne th {
+  background: linear-gradient(to bottom, #eef4ff, #dbe9ff);
+  color: #1a3a5f;
+  font-weight: 600;
+  font-size: 1.15rem;
+  position: sticky;
+  top: 0;
+}
+
+/* Righe pari/dispari per leggibilità */
+.tabella-3-colonne tbody tr:nth-child(even) {
+  background-color: #fafcff;
+}
+
+.tabella-3-colonne tbody tr:hover {
+  background-color: #f0f7ff;
+  transition: background-color 0.2s;
+}
+
+/* Ultima riga: rimuovi il bordo inferiore */
+.tabella-3-colonne tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive: su mobile la tabella diventa a colonne verticali */
+@media (max-width: 600px) {
+  .tabella-3-colonne,
+  .tabella-3-colonne thead,
+  .tabella-3-colonne tbody,
+  .tabella-3-colonne th,
+  .tabella-3-colonne td,
+  .tabella-3-colonne tr {
+    display: block;
+  }
+
+  .tabella-3-colonne thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .tabella-3-colonne tr {
+    border: 1px solid #edf2f7;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .tabella-3-colonne td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .tabella-3-colonne td::before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 16px;
+    width: 45%;
+    font-weight: 600;
+    color: #2c5aa0;
+  }
+}
+
+/* ✨ Griglia 3x3 immagini — stile coerente con il sito */
+.griglia-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.immagine-didascalia {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.immagine-didascalia:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.immagine-didascalia img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+  /* Opzionale: se vuoi un bordo sottile sull’immagine */
+  /* border: 1px solid #edf2f7; */
+}
+
+.immagine-didascalia .didascalia {
+  font-size: 1.05rem;
+  color: #2d3748;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ✨ Colore casuale di sfondo (come nel tuo script) */
+.immagine-didascalia.sfondo-colorato {
+  /* lo script JS imposterà background-color */
+}
+
+/* ✨ Responsive: coerente con il tuo media query */
+@media (max-width: 768px) {
+  .griglia-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .griglia-3x3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .immagine-didascalia {
+    padding: 18px;
+  }
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+
+/* ✨ Footer elegante */
+.footer-sito {
+  margin-top: 60px;
+  padding: 24px 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.footer-sito p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.footer-sito p:first-child {
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Opzionale: un tocco di separazione visiva */
+.footer-sito::before {
+  content: '';
+  display: block;
+  width: 600px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #55585d, transparent);
+  margin: 0 auto 16px;
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Proemio della Gerusalemme liberata</h1>
+      <div class="meta">
+        <p class="date">19 Novembre 2025</p>
+        <p class="subject">Materia: Italiano</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <div>
+        <p>CANTO PRIMO.</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>Canto l’arme pietose, e ’l Capitano</p>
+        <p>Che ’l gran sepolcro liberò di Cristo.</p>
+        <p>Molto egli oprò col senno e con la mano;</p>
+        <p>Molto soffrì nel glorioso acquisto:</p>
+        <p>E invan l’Inferno a lui s’oppose; e invano</p>
+        <p>s’armò d’Asia e di Libia il popol misto:</p>
+        <p>Chè ’l Ciel gli diè favore, e sotto ai santi</p>
+        <p>Segni ridusse i suoi compagni erranti.</p>
+        <p></p>
+        <p></p>
+        <p>II.</p>
+        <p></p>
+        <p></p>
+        <p>     O Musa, tu, che di caduchi allori</p>
+        <p>Non circondi la fronte in Elicona,</p>
+        <p>Ma su nel Cielo infra i beati cori</p>
+        <p>Hai di stelle immortali aurea corona;</p>
+        <p>Tu spira al petto mio celesti ardori,</p>
+        <p>Tu rischiara il mio canto, e tu perdona</p>
+        <p>S’intesso fregj al ver, s’adorno in parte</p>
+        <p>D’altri diletti, che de’ tuoi le carte.</p>
+        <p></p>
+        <p></p>
+        <p>III.</p>
+        <p></p>
+        <p></p>
+        <p>     Sai che là corre il mondo, ove più versi</p>
+        <p>Di sue dolcezze il lusinghier Parnaso;</p>
+        <p>E che ’l vero condito in molli versi,</p>
+        <p>I più schivi allettando ha persuaso.</p>
+        <p>Così all’egro fanciul porgiamo aspersi</p>
+        <p>Di soavi licor gli orli del vaso:</p>
+        <p>Succhi amari, ingannato, intanto ei beve,</p>
+        <p>E dall’inganno suo vita riceve.</p>
+        <p></p>
+        <p></p>
+        <p>IV.</p>
+        <p></p>
+        <p></p>
+        <p>     Tu magnanimo Alfonso, il qual ritogli</p>
+        <p>Al furor di fortuna, e guidi in porto</p>
+        <p>Me peregrino errante, e fra gli scoglj,</p>
+        <p>E fra l’onde agitato, e quasi assorto;</p>
+        <p>Queste mie carte in lieta fronte accogli,</p>
+        <p>Che quasi in voto a te sacrate i’ porto.</p>
+        <p>Forse un dì fia, che la presaga penna</p>
+        <p>Osi scriver di te quel ch’or n’accenna.</p>
+        <p></p>
+        <p></p>
+        <p>V.</p>
+        <p></p>
+        <p></p>
+        <p>     È ben ragion, (s’egli averrà che ’n pace</p>
+        <p>Il buon popol di Cristo unqua si veda,</p>
+        <p>E con navi e cavalli al fero Trace</p>
+        <p>Cerchi ritor la grande ingiusta preda,)</p>
+        <p>Ch’a te lo scettro in terra o, se ti piace</p>
+        <p>L’alto imperio de’ mari a te conceda.</p>
+        <p>Emulo di Goffredo, i nostri carmi</p>
+        <p>Intanto ascolta, e t’apparecchia a l’armi.</p>
+        <p></p>
+        <p></p>
+        <p>VI.</p>
+        <p></p>
+        <p></p>
+        <p>     Già ’l sesto anno volgea, che ’n Oriente</p>
+        <p>Passò il campo Cristiano a l’alta impresa;</p>
+        <p>E Nicea per assalto, e la potente</p>
+        <p>Antiochia con arte avea già presa.</p>
+        <p>L’avea poscia in battaglia incontra gente</p>
+        <p>Di Persia innumerabile difesa,</p>
+        <p>E Tortosa espugnata; indi a la rea</p>
+        <p>Stagion diè loco, e ’l novo anno attendea.</p>
+        <p></p>
+        <p></p>
+        <p>VII.</p>
+        <p></p>
+        <p></p>
+        <p>     E ’l fine omai di quel piovoso inverno,</p>
+        <p>Che fea l’arme cessar, lunge non era;</p>
+        <p>Quando da l’alto soglio il Padre eterno,</p>
+        <p>Ch’è ne la parte più del Ciel sincera,</p>
+        <p>E quanto è da le stelle al basso inferno,</p>
+        <p>Tanto è più in su de la stellata spera,</p>
+        <p>Gli occhi in giù volse, e in un sol punto e in una</p>
+        <p>Vista mirò ciò che ’n se il mondo aduna.</p>
+        <p></p>
+        <p></p>
+        <p>VIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Mirò tutte le cose, ed in Soría</p>
+        <p>S’affissò poi ne’ Principi Cristiani;</p>
+        <p>E con quel guardo suo ch’addentro spia</p>
+        <p>Nel più secreto lor gli affetti umani,</p>
+        <p>Vede Goffredo che scacciar desia</p>
+        <p>Dalla santa Città gli empj Pagani:</p>
+        <p>E pien di fè, di zelo, ogni mortale</p>
+        <p>Gloria, impero, tesor mette in non cale.</p>
+        <p></p>
+        <p></p>
+        <p>IX.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma vede in Baldovin cupido ingegno</p>
+        <p>Ch’all’umane grandezze intento aspira:</p>
+        <p>Vede Tancredi aver la vita a sdegno,</p>
+        <p>Tanto un suo vano amor l’ange e martira!</p>
+        <p>E fondar Boemondo al novo regno</p>
+        <p>Suo d’Antiochia alti principj mira;</p>
+        <p>E leggi imporre, ed introdur costume,</p>
+        <p>Ed arti, e culto di verace nume.</p>
+        <p></p>
+        <p></p>
+        <p>X.</p>
+        <p></p>
+        <p></p>
+        <p>     E cotanto internarsi in tal pensiero,</p>
+        <p>Ch’altra impresa non par che più rammenti.</p>
+        <p>Scorge in Rinaldo ed animo guerriero,</p>
+        <p>E spirti di riposo impazienti.</p>
+        <p>Non cupidigia in lui d’oro o d’impero,</p>
+        <p>Ma d’onor brame immoderate, ardenti.</p>
+        <p>Scorge che dalla bocca intento pende</p>
+        <p>Di Guelfo, e i chiari antichi esempj apprende.</p>
+        <p></p>
+        <p></p>
+        <p>XI.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma poich’ebbe di questi, e d’altri cori</p>
+        <p>Scorti gl’intimi sensi il Re del mondo;</p>
+        <p>Chiama a se da gli angelici splendori</p>
+        <p>Gabriel, che ne’ primi era secondo.</p>
+        <p>È tra Dio, questi, e l’anime migliori</p>
+        <p>Interprete fedel, nunzio giocondo:</p>
+        <p>Giù i decreti del Ciel porta, ed al Cielo</p>
+        <p>Riporta de’ mortali i preghi, e ’l zelo.</p>
+        <p></p>
+        <p></p>
+        <p>XII.</p>
+        <p></p>
+        <p></p>
+        <p>     Disse al suo nunzio Dio: Goffredo trova,</p>
+        <p>E in mio nome dì lui; perchè si cessa?</p>
+        <p>Perchè la guerra omai non si rinnova,</p>
+        <p>A liberar Gerusalemme oppressa?</p>
+        <p>Chiami i Duci a consiglio, e i tardi mova</p>
+        <p>All’alta impresa: ei capitan fia d’essa.</p>
+        <p>Io quì l’eleggo, e ’l faran gli altri in terra,</p>
+        <p>Già suoi compagni, or suoi ministri in guerra.</p>
+        <p></p>
+        <p></p>
+        <p>XIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Così parlogli; e Gabriel s’accinse</p>
+        <p>Veloce ad esequir l’imposte cose.</p>
+        <p>La sua forma invisibil d’aria cinse,</p>
+        <p>Ed al senso mortal la sottopose.</p>
+        <p>Umane membra, aspetto uman si finse,</p>
+        <p>Ma di celeste maestà il compose.</p>
+        <p>Tra giovane e fanciullo età confine</p>
+        <p>Prese, ed ornò di raggi il biondo crine.</p>
+        <p></p>
+        <p></p>
+        <p>XIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Ali bianche vestì c’han d’or le cime,</p>
+        <p>Infaticabilmente agili e preste.</p>
+        <p>Fende i venti e le nubi, e va sublime</p>
+        <p>Sovra la terra, e sovra il mar con queste.</p>
+        <p>Così vestito, indirizzossi all’ime</p>
+        <p>Parti del mondo il messaggier celeste:</p>
+        <p>Pria sul Libano monte ei si ritenne,</p>
+        <p>E si librò sull’adeguate penne.</p>
+        <p></p>
+        <p></p>
+        <p>XV.</p>
+        <p></p>
+        <p></p>
+        <p>     E ver le piagge di Tortosa poi</p>
+        <p>Drizzò, precipitando, il volo in giuso.</p>
+        <p>Sorgeva il nuovo sol dai lidi Eoi,</p>
+        <p>Parte già fuor, ma ’l più nell’onde chiuso:</p>
+        <p>E porgea mattutini i preghi suoi</p>
+        <p>Goffredo a Dio, come egli avea per uso;</p>
+        <p>Quando a paro col sol, ma più lucente,</p>
+        <p>L’Angelo gli apparì dall’Oriente.</p>
+        <p></p>
+        <p></p>
+        <p>XVI.</p>
+        <p></p>
+        <p></p>
+        <p>     E gli disse; Goffredo, ecco opportuna</p>
+        <p>Già la stagion ch’al guerreggiar s’aspetta:</p>
+        <p>Perchè dunque trapor dimora alcuna</p>
+        <p>A liberar Gerusalem soggetta?</p>
+        <p>Tu i Principi a consiglio omai raguna:</p>
+        <p>Tu al fin dell’opra i neghittosi affretta.</p>
+        <p>Dio per lor duce già t’elegge; ed essi</p>
+        <p>Sopporran volontarj a te se stessi.</p>
+        <p></p>
+        <p></p>
+        <p>XVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Dio messaggier mi manda: io ti rivelo</p>
+        <p>La sua mente in suo nome. Oh quanta spene</p>
+        <p>Aver d’alta vittoria, oh quanto zelo</p>
+        <p>Dell’oste a te commessa or ti conviene!</p>
+        <p>Tacque; e sparito, rivolò del Cielo</p>
+        <p>Alle parti più eccelse e più serene.</p>
+        <p>Resta Goffredo ai detti, allo splendore,</p>
+        <p>D’occhj abbagliato, attonito di core.</p>
+        <p></p>
+        <p></p>
+        <p>XVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma poi che si riscuote, e che discorre</p>
+        <p>Chi venne, chi mandò, chè gli fu detto,</p>
+        <p>Se già bramava, or tutto arde d’imporre</p>
+        <p>Fine alla guerra, ond’egli è duce eletto.</p>
+        <p>Non che ’l vedersi agli altri in Ciel preporre</p>
+        <p>D’aura d’ambizion gli gonfi il petto;</p>
+        <p>Ma il suo voler più nel voler s’infiamma</p>
+        <p>Del suo signor, come favilla in fiamma.</p>
+        <p></p>
+        <p></p>
+        <p>XIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Dunque gli Eroi compagni, i quai non lunge</p>
+        <p>Erano sparsi, a ragunarsi invita.</p>
+        <p>Lettere a lettre, e messi a messi aggiunge:</p>
+        <p>Sempre al consiglio è la preghiera unita.</p>
+        <p>Ciò ch’alma generosa alletta e punge,</p>
+        <p>Ciò che può risvegliar virtù sopita,</p>
+        <p>Tutto par che ritrovi; e in efficace</p>
+        <p>Modo l’adorna sì, che sforza e piace.</p>
+        <p></p>
+        <p></p>
+        <p>XX.</p>
+        <p></p>
+        <p></p>
+        <p>     Vennero i Duci, e gli altri anco seguiro;</p>
+        <p>E Boemondo sol quì non convenne.</p>
+        <p>Parte fuor s’attendò, parte nel giro,</p>
+        <p>E tra gli alberghi suoi Tortosa tenne.</p>
+        <p>I grandi dell’esercito s’uniro</p>
+        <p>(Glorioso senato!) in dì solenne.</p>
+        <p>Quì il pio Goffredo incominciò tra loro,</p>
+        <p>Augusto in volto, ed in sermon sonoro:</p>
+        <p></p>
+        <p></p>
+        <p>XXI.</p>
+        <p></p>
+        <p></p>
+        <p>     Guerrier di Dio, ch’a ristorare i danni</p>
+        <p>Della sua fede il Re del Cielo elesse:</p>
+        <p>E securi fra l’arme, e fra gl’inganni</p>
+        <p>Della terra e del mar, vi scorse e resse;</p>
+        <p>Sicch’abbiam tante e tante in sì pochi anni</p>
+        <p>Ribellanti provincie a lui sommesse:</p>
+        <p>E fra le genti debellate e dome,</p>
+        <p>Stese l’insegne sue vittrici, e ’l nome;</p>
+        <p></p>
+        <p></p>
+        <p>XXII.</p>
+        <p></p>
+        <p></p>
+        <p>     Già non lasciammo i dolci pegni, e ’l nido</p>
+        <p>Nativo noi (se ’l creder mio non erra)</p>
+        <p>Nè la vita esponemmo al mare infido,</p>
+        <p>Ed a’ periglj di lontana guerra,</p>
+        <p>Per acquistar di breve suono un grido</p>
+        <p>Volgare, e posseder barbara terra;</p>
+        <p>Chè proposto ci avremmo angusto e scarso</p>
+        <p>Premio, e in danno dell’alme il sangue sparso.</p>
+        <p></p>
+        <p></p>
+        <p>XXIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma fu de’ pensier nostri ultimo segno</p>
+        <p>Espugnar di Sion le nobil mura;</p>
+        <p>E sottrarre i Cristiani al giogo indegno</p>
+        <p>Di servitù così spiacente e dura:</p>
+        <p>Fondando in Palestina un novo regno,</p>
+        <p>Ov’abbia la pietà sede sicura:</p>
+        <p>Nè sia chi neghi al peregrin devoto</p>
+        <p>D’adorar la gran tomba, e sciorre il voto.</p>
+        <p>     </p>
+        <p></p>
+        <p>XXIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Dunque il fatto sin ora al rischio è molto,</p>
+        <p>Più che molto al travaglio, all’onor poco,</p>
+        <p>Nulla al disegno; ove o si fermi, o volto</p>
+        <p>Sia l’impeto dell’arme in altro loco.</p>
+        <p>Che gioverà l’aver d’Europa accolto</p>
+        <p>Sì grande sforzo, e posto in Asia il foco,</p>
+        <p>Quando sia poi di sì gran moti il fine,</p>
+        <p>Non fabbriche di regni, ma ruine?</p>
+        <p>     </p>
+        <p></p>
+        <p>XXV.</p>
+        <p></p>
+        <p></p>
+        <p>     Non edifica quei che vuol gl’imperi</p>
+        <p>Su fondamenti fabricar mondani:</p>
+        <p>Ove ha pochi di patria e fè stranieri,</p>
+        <p>Fra gl’infiniti popoli Pagani:</p>
+        <p>Ove ne’ Greci non convien che speri,</p>
+        <p>E i favor d’Occidente ha sì lontani;</p>
+        <p>Ma ben move ruine, ond’egli oppresso,</p>
+        <p>Sol construtto un sepolcro abbia a se stesso.</p>
+        <p></p>
+        <p></p>
+        <p>XXVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Turchi, Persi, Antiochia (illustre suono,</p>
+        <p>E di nome magnifico e di cose!)</p>
+        <p>Opre nostre non già; ma del Ciel dono</p>
+        <p>Furo, e vittorie in ver maravigliose.</p>
+        <p>Or, se da noi rivolte, e torte sono</p>
+        <p>Contra quel fin che ’l donator dispose;</p>
+        <p>Temo cen privi; e favola alle genti</p>
+        <p>Quel sì chiaro rimbombo alfin diventi.</p>
+        <p></p>
+        <p></p>
+        <p>XXVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ah non sia alcun, per Dio, che sì graditi</p>
+        <p>Doni in uso sì reo perda, e diffonda.</p>
+        <p>A quei che sono alti principj orditi,</p>
+        <p>Di tutta l’opra il filo, e ’l fin risponda.</p>
+        <p>Ora che i passi liberi e spediti,</p>
+        <p>Ora che la stagione abbiam seconda,</p>
+        <p>Chè non corriamo alla città ch’è meta</p>
+        <p>D’ogni nostra vittoria? e chè più ’l vieta?</p>
+        <p></p>
+        <p></p>
+        <p>XXVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Principi, io vi protesto (i miei protesti</p>
+        <p>Udrà il mondo presente, udrà il futuro:</p>
+        <p>L’odono or su nel Ciel anco i celesti)</p>
+        <p>Il tempo dell’impresa è già maturo.</p>
+        <p>Men divien opportun, più che si resti:</p>
+        <p>Incertissimo fia quel che è sicuro.</p>
+        <p>Presago son, s’è lento il nostro corso,</p>
+        <p>Ch’avrà d’Egitto il Palestin soccorso.</p>
+        <p></p>
+        <p></p>
+        <p>XXIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Disse: e ai detti seguì breve bisbiglio;</p>
+        <p>Ma sorse poscia il solitario Piero,</p>
+        <p>Che, privato, fra’ Principi a consiglio</p>
+        <p>Sedea, del gran passaggio autor primiero.</p>
+        <p>Ciò ch’esorta Goffredo, ed io consiglio:</p>
+        <p>Nè loco a dubbio v’ha, sì certo è il vero,</p>
+        <p>E per se noto; ei dimostrollo a lungo,</p>
+        <p>Voi l’approvate: io questo sol v’aggiungo:</p>
+        <p>     </p>
+        <p></p>
+        <p>XXX.</p>
+        <p></p>
+        <p></p>
+        <p>     Se ben raccolgo le discordie e l’onte</p>
+        <p>Quasi a prova da voi fatte e patite,</p>
+        <p>I ritrosi pareri, e le non pronte,</p>
+        <p>E in mezzo all’esequire opre impedite;</p>
+        <p>Reco ad un’alta originaria fonte</p>
+        <p>La cagion d’ogni indugio e d’ogni lite:</p>
+        <p>A quella autorità, che in molti e varj</p>
+        <p>D’opinion, quasi librata, è pari.</p>
+        <p>     </p>
+        <p></p>
+        <p>XXXI.</p>
+        <p></p>
+        <p></p>
+        <p>     Ove un sol non impera, onde i giudícj</p>
+        <p>Pendano poi de’ premj, e delle pene,</p>
+        <p>Onde sian compartite opre, ed uficj;</p>
+        <p>Ivi errante il governo esser conviene.</p>
+        <p>Deh fate un corpo sol di membri amici:</p>
+        <p>Fate un capo che gli altri indrizzi e frene:</p>
+        <p>Date ad un sol lo scettro, e la possanza,</p>
+        <p>E sostenga di Re vece, e sembianza.</p>
+        <p>     </p>
+        <p></p>
+        <p>XXXII.</p>
+        <p></p>
+        <p></p>
+        <p>     Qui tacque il veglio. Or quai pensier, quai petti</p>
+        <p>Son chiusi a te, sant’aura, e divo ardore?</p>
+        <p>Inspiri tu dell’Eremita i detti,</p>
+        <p>E tu gl’imprimi ai cavalier nel core:</p>
+        <p>Sgombri gl’inserti, anzi gl’innati affetti</p>
+        <p>Di sovrastar, di libertà, d’onore:</p>
+        <p>Sicchè Guglielmo e Guelfo, i più sublimi,</p>
+        <p>Chiamar Goffredo per lor Duce i primi.</p>
+        <p></p>
+        <p></p>
+        <p>XXXIII.</p>
+        <p></p>
+        <p></p>
+        <p>     L’approvar gli altri. Esser sue parti denno</p>
+        <p>Deliberare, e comandare altrui.</p>
+        <p>Imponga ai vinti legge egli a suo senno:</p>
+        <p>Porti la guerra, e quando vuole, e a cui.</p>
+        <p>Gli altri, già pari, ubbidienti al cenno</p>
+        <p>Siano or ministri de gl’imperj sui.</p>
+        <p>Concluso ciò, fama ne vola, e grande</p>
+        <p>Per le lingue degli uomini si spande.</p>
+        <p></p>
+        <p></p>
+        <p>XXXIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Ei si mostra ai soldati: e ben lor pare</p>
+        <p>Degno dell’alto grado ove l’han posto;</p>
+        <p>E riceve i saluti, e ’l militare</p>
+        <p>Applauso, in volto placido e composto.</p>
+        <p>Poich’alle dimostranze umili e care</p>
+        <p>D’amor, d’ubbidienza ebbe risposto,</p>
+        <p>Impon che ’l dì seguente, in un gran campo,</p>
+        <p>Tutto si mostri a lui schierato il Campo.</p>
+        <p></p>
+        <p></p>
+        <p>XXXV.</p>
+        <p></p>
+        <p></p>
+        <p>     Facea nell’Oriente il Sol ritorno,</p>
+        <p>Sereno e luminoso oltre l’usato;</p>
+        <p>Quando co’ raggj uscì del novo giorno</p>
+        <p>Sotto l’insegne ogni guerriero armato:</p>
+        <p>E si mostrò quanto potè più adorno</p>
+        <p>Al pio Buglion, girando il largo prato.</p>
+        <p>S’era egli fermo, e si vedea davanti</p>
+        <p>Passar distinti i cavalieri e i fanti.</p>
+        <p></p>
+        <p></p>
+        <p>XXXVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Mente, degli anni, e dell’obblio nemica,</p>
+        <p>Delle cose custode, e dispensiera,</p>
+        <p>Vagliami tua ragion, sicch’io ridica</p>
+        <p>Di quel campo ogni Duce, ed ogni schiera:</p>
+        <p>Suoni e risplenda la lor fama antica,</p>
+        <p>Fatta dagli anni omai tacita e nera;</p>
+        <p>Tolto da’ tuoi tesori, orni mia lingua</p>
+        <p>Ciò ch’ascolti ogni età, nulla l’estingua.</p>
+        <p></p>
+        <p></p>
+        <p>XXXVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Prima i Franchi mostrarsi: il Duce loro</p>
+        <p>Ugone esser solea, del Re fratello.</p>
+        <p>Nell’Isola di Francia eletti foro</p>
+        <p>Fra quattro fiumi, ampio paese e bello.</p>
+        <p>Poscia ch’Ugon morì, de’ Giglj d’oro</p>
+        <p>Seguì l’usata insegna il fier drappello</p>
+        <p>Sotto Clotareo capitano egregio,</p>
+        <p>A cui, se nulla manca, è il nome regio.</p>
+        <p></p>
+        <p></p>
+        <p>XXXVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Mille son di gravissima armatura:</p>
+        <p>Sono altrettanti i cavalier seguenti,</p>
+        <p>Di disciplina ai primi, e di natura,</p>
+        <p>E d’arme e di sembianza indifferenti;</p>
+        <p>Normandi tutti, e gli ha Roberto in cura,</p>
+        <p>Ch’è principe natío di quelle genti.</p>
+        <p>Poi duo pastor di popoli spiegaro</p>
+        <p>Le squadre lor, Guglielmo, ed Ademaro.</p>
+        <p></p>
+        <p></p>
+        <p>XXXIX.</p>
+        <p></p>
+        <p></p>
+        <p>     L’uno e l’altro di lor, che ne’ divini</p>
+        <p>Uficj già trattò pio ministero,</p>
+        <p>Sotto l’elmo premendo i lunghi crini,</p>
+        <p>Esercita dell’arme or l’uso fero:</p>
+        <p>Dalla Città d’Orange, e dai confini</p>
+        <p>Quattrocento guerrier scelse il primiero.</p>
+        <p>Ma guida quei di Poggio in guerra l’altro,</p>
+        <p>Numero egual, nè men nell’arme scaltro.</p>
+        <p></p>
+        <p></p>
+        <p>XL.</p>
+        <p></p>
+        <p></p>
+        <p>     Baldovin poscia in mostra addur si vede</p>
+        <p>Co’ Bolognesi suoi quei del germano:</p>
+        <p>Che le sue genti il pio fratel gli cede</p>
+        <p>Or ch’ei de’ Capitani è Capitano.</p>
+        <p>Il conte de’ Carnuti indi succede,</p>
+        <p>Potente di consiglio, e pro’ di mano.</p>
+        <p>Van con lui quattrocento: e triplicati</p>
+        <p>Conduce Baldovino in sella armati.</p>
+        <p></p>
+        <p></p>
+        <p>XLI.</p>
+        <p></p>
+        <p></p>
+        <p>     Occupa Guelfo il campo a lor vicino,</p>
+        <p>Uom che all’alta fortuna agguaglia il merto.</p>
+        <p>Conta costui per genitor Latino</p>
+        <p>Degli avi Estensi un lungo ordine e certo.</p>
+        <p>Ma German di cognome e di domíno,</p>
+        <p>Nella gran casa de’ Guelfoni è inserto.</p>
+        <p>Regge Carintia, e presso l’Istro e ’l Reno</p>
+        <p>Ciò che i prischi Suevi e i Reti avieno.</p>
+        <p></p>
+        <p></p>
+        <p>XLII.</p>
+        <p></p>
+        <p></p>
+        <p>     A questo, che retaggio era materno,</p>
+        <p>Acquisti ei giunse gloriosi e grandi.</p>
+        <p>Quindi gente traea che prende a scherno</p>
+        <p>D’andar contra la morte, ov’ei comandi:</p>
+        <p>Usa a temprar ne’ caldi alberghi il verno,</p>
+        <p>E celebrar con lieti inviti i prandi.</p>
+        <p>Fur cinquemila alla partenza; e appena</p>
+        <p>(De’ Persi avanzo) il terzo or quì ne mena.</p>
+        <p></p>
+        <p></p>
+        <p>XLIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Seguia la gente poi candida e bionda,</p>
+        <p>Che tra i Franchi, e i Germani, e ’l mar si giace,</p>
+        <p>Ove la Mosa, ed ove il Reno inonda,</p>
+        <p>Terra di biade e d’animai ferace:</p>
+        <p>E gl’Insulani lor, che d’alta sponda</p>
+        <p>Riparo fansi all’Ocean vorace:</p>
+        <p>L’Ocean, che non pur le merci e i legni,</p>
+        <p>Ma intere inghiotte le cittadi, e i regni.</p>
+        <p></p>
+        <p></p>
+        <p>XLIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Gli uni e gli altri son mille: e tutti vanno</p>
+        <p>Sotto un altro Roberto insieme a stuolo.</p>
+        <p>Maggior alquanto è lo squadron Britanno:</p>
+        <p>Guglielmo il regge al Re minor figliuolo.</p>
+        <p>Sono gl’Inglesi sagittarj, ed hanno</p>
+        <p>Gente con lor, ch’è più vicina al polo.</p>
+        <p>Questi dall’alte selve irsuti manda</p>
+        <p>La divisa dal mondo ultima Irlanda.</p>
+        <p></p>
+        <p></p>
+        <p>XLV.</p>
+        <p></p>
+        <p></p>
+        <p>     Vien poi Tancredi; e non è alcun fra tanti</p>
+        <p>(Tranne Rinaldo) o feritor maggiore,</p>
+        <p>O più bel di maniere e di sembianti,</p>
+        <p>O più eccelso ed intrepido di core.</p>
+        <p>S’alcun’ombra di colpa i suoi gran vanti</p>
+        <p>Rende men chiari, è sol follia d’amore:</p>
+        <p>Nato fra l’arme, amor di breve vista,</p>
+        <p>Che si nutre d’affanni, e forza acquista.</p>
+        <p></p>
+        <p></p>
+        <p>XLVI.</p>
+        <p></p>
+        <p></p>
+        <p>     È fama che quel dì che glorioso</p>
+        <p>Fe’ la rotta de’ Persi il popol Franco:</p>
+        <p>Poichè Tancredi alfin vittorioso</p>
+        <p>I fuggitivi di seguir fu stanco;</p>
+        <p>Cercò di refrigerio, e di riposo</p>
+        <p>All’arse labbia, al travagliato fianco:</p>
+        <p>E trasse, ove invitollo al rezzo estivo,</p>
+        <p>Cinto di verdi seggj, un fonte vivo.</p>
+        <p></p>
+        <p></p>
+        <p>XLVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Quivi a lui d’improvviso una donzella,</p>
+        <p>Tutta, fuor che la fronte, armata apparse.</p>
+        <p>Era Pagana, e là venuta anch’ella</p>
+        <p>Per l’istessa cagion di ristorarse.</p>
+        <p>Egli mirolla, ed ammirò la bella</p>
+        <p>Sembianza, e d’essa si compiacque, e n’arse.</p>
+        <p>Oh maraviglia! Amor ch’appena è nato,</p>
+        <p>Già grande vola, e già trionfa armato.</p>
+        <p></p>
+        <p></p>
+        <p>XLVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ella d’elmo coprissi, e se non era</p>
+        <p>Ch’altri quivi arrivar, ben l’assaliva.</p>
+        <p>Partì dal vinto suo la donna altera,</p>
+        <p>Ch’è per necessità sol fuggitiva;</p>
+        <p>Ma l’immagine sua bella e guerriera</p>
+        <p>Tale ei serbò nel cor, qual’essa è viva.</p>
+        <p>E sempre ha nel pensiero e l’atto e ’l loco,</p>
+        <p>In che la vide, esca continua al foco.</p>
+        <p></p>
+        <p></p>
+        <p>XLIX.</p>
+        <p></p>
+        <p></p>
+        <p>     E ben nel volto suo la gente accorta</p>
+        <p>Legger potria: questi arde, e fuor di spene;</p>
+        <p>Così vien sospiroso, e così porta</p>
+        <p>Basse le ciglia, e di mestizia piene.</p>
+        <p>Gli ottocento a cavallo, a cui fa scorta,</p>
+        <p>Lasciar le piagge di campagna amene;</p>
+        <p>Pompa maggior della Natura, e i colli</p>
+        <p>Che vagheggia il Tirren fertili e molli.</p>
+        <p></p>
+        <p></p>
+        <p>L.</p>
+        <p></p>
+        <p></p>
+        <p>     Venian dietro ducento in Grecia nati,</p>
+        <p>Che son quasi di ferro in tutto scarchi:</p>
+        <p>Pendon spade ritorte all’un de’ lati:</p>
+        <p>Suonano al tergo lor faretre ed archi:</p>
+        <p>Asciutti hanno i cavalli al corso usati,</p>
+        <p>Alla fatica invitti, al cibo parchi:</p>
+        <p>Nell’assalir son pronti, e nel ritrarsi;</p>
+        <p>E combatton fuggendo erranti e sparsi.</p>
+        <p></p>
+        <p></p>
+        <p>LI.</p>
+        <p></p>
+        <p></p>
+        <p>     Tazio regge la schiera; e sol fu questi</p>
+        <p>Che, Greco, accompagnò l’arme Latine.</p>
+        <p>Oh vergogna, o misfatto! or non avesti</p>
+        <p>Tu Grecia quelle guerre a te vicine?</p>
+        <p>E pur quasi a spettacolo sedesti,</p>
+        <p>Lenta aspettando de’ grand’atti il fine.</p>
+        <p>Or se tu sei vil serva, è il tuo servaggio</p>
+        <p>(Non ti lagnar) giustizia, e non oltraggio.</p>
+        <p></p>
+        <p></p>
+        <p>LII.</p>
+        <p></p>
+        <p></p>
+        <p>     Squadra d’ordine estrema ecco vien poi,</p>
+        <p>Ma d’onor prima, e di valore e d’arte.</p>
+        <p>Son quì gli avventurieri invitti eroi,</p>
+        <p>Terror dell’Asia, e folgori di Marte.</p>
+        <p>Taccia Argo i Mini, e taccia Artù que’ suoi</p>
+        <p>Erranti, che di sogni empion le carte:</p>
+        <p>Ch’ogni antica memoria appo costoro</p>
+        <p>Perde: or qual duce fia degno di loro?</p>
+        <p></p>
+        <p></p>
+        <p>LIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Dudon di Consa è il duce; e perchè duro</p>
+        <p>Fu il giudicar di sangue e di virtute,</p>
+        <p>Gli altri sopporsi a lui concordi furo,</p>
+        <p>Ch’avea più cose fatte, e più vedute.</p>
+        <p>Ei di virilità grave e maturo</p>
+        <p>Mostra in fresco vigor chiome canute.</p>
+        <p>Mostra, quasi d’onor vestigj degni,</p>
+        <p>Di non brutte ferite impressi segni.</p>
+        <p></p>
+        <p></p>
+        <p>LIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Eustazio è poi fra’ primi: e i proprj pregj</p>
+        <p>Illustre il fanno, e più il fratel Buglione.</p>
+        <p>Gernando v’è, nato di Re Norvegi,</p>
+        <p>Che scettri vanta, e titoli, e corone.</p>
+        <p>Ruggier di Balnavilla infra gli egregj,</p>
+        <p>La vecchia fama, ed Engerlan ripone.</p>
+        <p>E celebrati son fra’ più gagliardi</p>
+        <p>Un Gentonio, un Rambaldo e duo Gherardi.</p>
+        <p></p>
+        <p></p>
+        <p>LV.</p>
+        <p></p>
+        <p></p>
+        <p>     Son fra lodati Ubaldo anco, e Rosmondo,</p>
+        <p>Del gran Ducato di Lincastro erede.</p>
+        <p>Non fia ch’Obizo il Tosco aggravi al fondo</p>
+        <p>Chi fa delle memorie avare prede:</p>
+        <p>Nè i tre fratei Lombardi al chiaro mondo</p>
+        <p>Involi, Achille, Sforza, e Palamede:</p>
+        <p>O ’l forte Otton, che conquistò lo scudo,</p>
+        <p>In cui dall’angue esce il fanciullo ignudo.</p>
+        <p></p>
+        <p></p>
+        <p>LVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Nè Guasco, nè Ridolfo addietro lasso:</p>
+        <p>Nè l’un nè l’altro Guido, ambo famosi.</p>
+        <p>Non Eberardo, e non Gernier trapasso</p>
+        <p>Sotto silenzio ingratamente ascosi.</p>
+        <p>Ove voi me, di numerar già lasso,</p>
+        <p>Gildippe, ed Odoardo amanti e sposi</p>
+        <p>Rapite? o nella guerra anco consorti,</p>
+        <p>Non sarete disgiunti, ancor che morti.</p>
+        <p></p>
+        <p></p>
+        <p>LVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Nelle scuole d’Amor che non s’apprende?</p>
+        <p>Ivi si fe’ costei guerriera ardita.</p>
+        <p>Va sempre affissa al caro fianco, e pende</p>
+        <p>Da un fato solo l’una e l’altra vita.</p>
+        <p>Colpo ch’ad un sol noccia unqua non scende,</p>
+        <p>Ma indiviso è il dolor d’ogni ferita.</p>
+        <p>E spesso è l’un ferito, e l’altro langue:</p>
+        <p>E versa l’alma quel, se questa il sangue.</p>
+        <p></p>
+        <p></p>
+        <p>LVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma il fanciullo Rinaldo e sovra questi,</p>
+        <p>E sovra quanti in mostra eran condutti,</p>
+        <p>Dolcemente feroce alzar vedresti</p>
+        <p>La regal fronte, e in lui mirar sol tutti.</p>
+        <p>L’età precorse, e la speranza: e presti</p>
+        <p>Pareano i fior, quando n’usciro i frutti.</p>
+        <p>Se ’l miri fulminar nell’arme avvolto,</p>
+        <p>Marte lo stimi: Amor, se scopre il volto.</p>
+        <p></p>
+        <p></p>
+        <p>LIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Lui nella riva d’Adige produsse</p>
+        <p>A Bertoldo Sofia, Sofia la bella</p>
+        <p>A Bertoldo il possente: e pria che fusse</p>
+        <p>Tolto quasi il bambin dalla mammella,</p>
+        <p>Matilda il volle, e nutricollo, e instrusse</p>
+        <p>Nell’arti regie; e sempre ei fu con ella,</p>
+        <p>Sin ch’invaghì la giovinetta mente</p>
+        <p>La tromba che s’udia dall’Oriente.</p>
+        <p></p>
+        <p></p>
+        <p>LX.</p>
+        <p></p>
+        <p></p>
+        <p>     Allor (nè pur tre lustri avea finiti)</p>
+        <p>Fuggì soletto, e corse strade ignote:</p>
+        <p>Varcò l’Egeo, passò di Grecia i liti,</p>
+        <p>Giunse nel campo in region remote.</p>
+        <p>Nobilissima fuga, e che l’imiti</p>
+        <p>Ben degna alcun magnanimo nipote.</p>
+        <p>Tre anni son ch’è in guerra: e intempestiva</p>
+        <p>Molle piuma del mento appena usciva.</p>
+        <p></p>
+        <p></p>
+        <p>LXI.</p>
+        <p></p>
+        <p></p>
+        <p>     Passati i cavalieri, in mostra viene</p>
+        <p>La gente a piedi, ed è Raimondo avanti.</p>
+        <p>Reggea Tolosa, e scelse infra Pirene,</p>
+        <p>E fra Garona, e l’Ocean suoi fanti.</p>
+        <p>Son quattromila, e ben armati, e bene</p>
+        <p>Instrutti, usi al disagio, e tolleranti.</p>
+        <p>Buona è la gente, e non può da più dotta,</p>
+        <p>O da più forte guida esser condotta.</p>
+        <p></p>
+        <p></p>
+        <p>LXII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma cinquemila Stefano d’Ambuosa</p>
+        <p>E di Blesse, e di Turs in guerra adduce.</p>
+        <p>Non è gente robusta o faticosa,</p>
+        <p>Sebben tutta di ferro ella riluce.</p>
+        <p>La terra molle e lieta e dilettosa,</p>
+        <p>Simili a se gli abitator produce.</p>
+        <p>Impeto fan nelle battaglie prime;</p>
+        <p>Ma di leggier poi langue, e si reprime.</p>
+        <p></p>
+        <p></p>
+        <p>LXIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Alcasto il terzo vien, qual presso a Tebe</p>
+        <p>Già Capaneo, con minaccioso volto.</p>
+        <p>Sei mila Elvezj, audace e fiera plebe,</p>
+        <p>Dagli Alpini castelli avea raccolto:</p>
+        <p>Che ’l ferro uso a far solchi, e franger glebe,</p>
+        <p>In nove forme, e in più degne opre ha volto,</p>
+        <p>E con la man, che guardò rozzi armenti,</p>
+        <p>Par che i Regi sfidar nulla paventi.</p>
+        <p></p>
+        <p></p>
+        <p>LXIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Vedi appresso spiegar l’alto vessillo</p>
+        <p>Col diadema di Piero, e con le chiavi.</p>
+        <p>Quì settemila aduna il buon Cammillo</p>
+        <p>Pedoni, d’arme rilucenti e gravi:</p>
+        <p>Lieto, ch’a tanta impresa il ciel sortillo,</p>
+        <p>Ove rinnovi il prisco onor degli avi:</p>
+        <p>O mostri almen ch’alla virtù Latina,</p>
+        <p>O nulla manca, o sol la disciplina.</p>
+        <p></p>
+        <p></p>
+        <p>LXV.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma già tutte le squadre eran con bella</p>
+        <p>Mostra passate, e l’ultima fu questa:</p>
+        <p>Quando Goffredo i maggior duci appella,</p>
+        <p>E la sua mente a lor fa manifesta.</p>
+        <p>Come appaja diman l’alba novella</p>
+        <p>Vuo’ che l’oste s’invii leggiera e presta:</p>
+        <p>Sicch’ella giunga alla città sacrata,</p>
+        <p>Quanto è possibil più, meno aspettata.</p>
+        <p></p>
+        <p></p>
+        <p>LXVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Preparatevi dunque ed al viaggio</p>
+        <p>Ed alla pugna, e alla vittoria ancora.</p>
+        <p>Questo ardito parlar d’uom così saggio</p>
+        <p>Sollecita ciascuno, e l’avvalora.</p>
+        <p>Tutti d’andar son pronti al novo raggio,</p>
+        <p>E impazienti in aspettar l’aurora.</p>
+        <p>Ma ’l provvido Buglion senza ogni tema</p>
+        <p>Non è però, benchè nel cor la prema.</p>
+        <p></p>
+        <p></p>
+        <p>LXVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Perch’egli avea certe novelle intese,</p>
+        <p>Che s’è d’Egitto il Re già posto in via</p>
+        <p>In verso Gaza, bello e forte arnese</p>
+        <p>Da fronteggiare i regni di Soria.</p>
+        <p>Nè creder può, che l’uomo, a fere imprese</p>
+        <p>Avvezzo sempre, or lento in ozio stia;</p>
+        <p>Ma d’averlo, aspettando, aspro nemico,</p>
+        <p>Parla al fedel suo messaggiero Enrico:</p>
+        <p></p>
+        <p></p>
+        <p>LXVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Sovra una lieve saettía, tragitto</p>
+        <p>Vuo’ che tu faccia nella Greca terra.</p>
+        <p>Ivi giunger dovea (così m’ha scritto</p>
+        <p>Chi mai per uso in avvisar non erra)</p>
+        <p>Un giovine regal, d’animo invitto,</p>
+        <p>Ch’a farsi vien nostro compagno in guerra:</p>
+        <p>Prence è de’ Dani, e mena un grande stuolo</p>
+        <p>Sin dai paesi sottoposti al polo.</p>
+        <p></p>
+        <p></p>
+        <p>LXIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma perchè ’l Greco Imperator fallace</p>
+        <p>Seco forse userà le solite arti,</p>
+        <p>Per far ch’o torni indietro, o ’l corso audace</p>
+        <p>Torca in altre da noi lontane parti;</p>
+        <p>Tu, nunzio mio, tu, consiglier verace,</p>
+        <p>In mio nome il disponi a ciò che parti</p>
+        <p>Nostro e suo bene: e dì che tosto vegna;</p>
+        <p>Chè di lui fora ogni tardanza indegna.</p>
+        <p></p>
+        <p></p>
+        <p>LXX.</p>
+        <p></p>
+        <p></p>
+        <p>     Non venir seco tu; ma resta appresso</p>
+        <p>Al Re de’ Greci a procurar l’ajuto;</p>
+        <p>Che già più d’una volta a noi promesso,</p>
+        <p>È per ragion di patto anco dovuto.</p>
+        <p>Così parla, e l’informa; e poichè ’l messo</p>
+        <p>Le lettre ha di credenza, e di saluto;</p>
+        <p>Toglie, affrettando il suo partir, congedo:</p>
+        <p>E tregua fa co’ suoi pensier Goffredo.</p>
+        <p></p>
+        <p></p>
+        <p>LXXI.</p>
+        <p></p>
+        <p></p>
+        <p>     Il dì seguente, allor ch’aperte sono</p>
+        <p>Del lucido Oriente al Sol le porte,</p>
+        <p>Di trombe udissi, e di tamburi un suono,</p>
+        <p>Ond’al cammino ogni guerrier s’esorte.</p>
+        <p>Non è sì grato ai caldi giorni il tuono,</p>
+        <p>Che speranza di pioggia al mondo apporte,</p>
+        <p>Come fu caro alle feroci genti</p>
+        <p>L’altero suon de’ bellici instrumenti.</p>
+        <p></p>
+        <p></p>
+        <p>LXXII.</p>
+        <p></p>
+        <p></p>
+        <p>     Tosto ciascun, da gran desio compunto,</p>
+        <p>Veste le membra delle usate spoglie:</p>
+        <p>E tosto appar di tutte l’arme in punto:</p>
+        <p>Tosto sotto i suoi Duci ogn’uom s’accoglie.</p>
+        <p>E l’ordinato esercito congiunto</p>
+        <p>Tutte le sue bandiere al vento scioglie;</p>
+        <p>E nel vessillo imperiale e grande</p>
+        <p>La trionfante Croce al ciel si spande.</p>
+        <p></p>
+        <p></p>
+        <p>LXXIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Intanto il Sol, che de’ celesti campi</p>
+        <p>Va più sempre avanzando, e in alto ascende,</p>
+        <p>L’armi percote, e ne trae fiamme e lampi</p>
+        <p>Tremuli e chiari, onde le viste offende.</p>
+        <p>L’aria par di faville intorno avvampi,</p>
+        <p>E quasi d’alto incendio in forma splende;</p>
+        <p>E co’ feri nitriti il suono accorda</p>
+        <p>Del ferro scosso, e le campagne assorda.</p>
+        <p></p>
+        <p></p>
+        <p>LXXIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Il Capitan, che da’ nemici agguati</p>
+        <p>Le schiere sue d’assicurar desia,</p>
+        <p>Molti a cavallo leggiermente armati</p>
+        <p>A scoprir il paese intorno invia.</p>
+        <p>E innanzi i guastatori avea mandati,</p>
+        <p>Da cui si debba agevolar la via,</p>
+        <p>E i voti luoghi empire, e spianar gli erti:</p>
+        <p>E da cui siano i chiusi passi aperti.</p>
+        <p></p>
+        <p></p>
+        <p>LXXV.</p>
+        <p></p>
+        <p></p>
+        <p>     Non è gente Pagana insieme accolta,</p>
+        <p>Non muro cinto di profonda fossa,</p>
+        <p>Non gran torrente, o monte alpestre, o folta</p>
+        <p>Selva, che ’l lor viaggio arrestar possa.</p>
+        <p>Così degli altri fiumi il Re talvolta,</p>
+        <p>Quando superbo oltra misura ingrossa,</p>
+        <p>Sovra le sponde ruinoso scorre:</p>
+        <p>Nè cosa è mai che gli s’ardisca opporre.</p>
+        <p></p>
+        <p></p>
+        <p>LXXVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Sol di Tripoli il Re, che ’n ben guardate</p>
+        <p>Mura, genti, tesori, ed arme serra,</p>
+        <p>Forse le schiere Franche avria tardate;</p>
+        <p>Ma non osò di provocarle in guerra.</p>
+        <p>Lor con messi, e con doni anco placate</p>
+        <p>Ricettò volontario entro la terra:</p>
+        <p>E ricevè condizion di pace,</p>
+        <p>Siccome imporle al pio Goffredo piace.</p>
+        <p></p>
+        <p></p>
+        <p>LXXVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Quì del Monte Seir, ch’alto e sovrano</p>
+        <p>Dall’Oriente alla Cittade è presso,</p>
+        <p>Gran turba scese di fedeli al piano,</p>
+        <p>D’ogni età mescolata, e d’ogni sesso.</p>
+        <p>Portò suoi doni al vincitor Cristiano:</p>
+        <p>Godea in mirarlo, e in ragionar con esso:</p>
+        <p>Stupia dell’armi peregrine: e guida</p>
+        <p>Ebbe da lor Goffredo amica e fida.</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>Gran turba scese di Fedeli al piano,</p>
+        <p>D’ogni età mescolata, e d’ogni sesso.</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>LXXVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Conduce ei sempre alle marittime onde</p>
+        <p>Vicino il campo per diritte strade;</p>
+        <p>Sapendo ben che le propinque sponde</p>
+        <p>L’amica armata costeggiando rade:</p>
+        <p>La qual può far che tutto il campo abbonde</p>
+        <p>De’ necessarj arnesi; e che le biade</p>
+        <p>Ogn’isola de’ Greci a lui sol mieta:</p>
+        <p>E Scio pietrosa gli vendemmi, e Creta.</p>
+        <p></p>
+        <p></p>
+        <p>LXXIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Geme il vicino mar sotto l’incarco</p>
+        <p>Dell’alte navi, e de’ più levi pini:</p>
+        <p>Sicchè non s’apre omai sicuro varco</p>
+        <p>Nel mar Mediterraneo ai Saracini.</p>
+        <p>Ch’oltre a quei c’ha Giorgio armati, e Marco</p>
+        <p>Ne’ Viniziani, e Liguri confini;</p>
+        <p>Altri Inghilterra, e Francia, ed altri Olanda,</p>
+        <p>E la fertil Sicilia altri ne manda.</p>
+        <p></p>
+        <p></p>
+        <p>LXXX.</p>
+        <p></p>
+        <p></p>
+        <p>     E questi che son tutti insieme uniti</p>
+        <p>Con saldissimi laccj in un volere,</p>
+        <p>S’eran carchi, e provvisti in varj liti</p>
+        <p>Di ciò ch’è d’uopo alle terrestri schiere:</p>
+        <p>Le quai trovando liberi e sforniti</p>
+        <p>I passi de’ nemici alle frontiere;</p>
+        <p>In corso velocissimo sen vanno</p>
+        <p>Là ’ve Cristo soffrì mortale affanno.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXI.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma precorsa è la fama apportatrice</p>
+        <p>De’ veraci romori, e de’ bugiardi:</p>
+        <p>Ch’unito è il campo vincitor felice:</p>
+        <p>Che già s’è mosso, e che non è chi ’l tardi:</p>
+        <p>Quante e quai sian le squadre ella ridice:</p>
+        <p>Narra il nome, e ’l valor de’ più gagliardi:</p>
+        <p>Narra i lor vanti, e con terribil faccia</p>
+        <p>Gli usurpatori di Sion minaccia.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXII.</p>
+        <p></p>
+        <p></p>
+        <p>     E l’aspettar del male è mal peggiore,</p>
+        <p>Forse, che non parrebbe il mal presente;</p>
+        <p>Pende ad ogn’aura incerta di romore</p>
+        <p>Ogni orecchia sospesa, ed ogni mente:</p>
+        <p>E un confuso bisbiglio, entro e di fuore,</p>
+        <p>Trascorre i campi, e la città dolente.</p>
+        <p>Ma il vecchio Re ne’ già vicin periglj</p>
+        <p>Volge nel dubbio cor feri consiglj.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Aladin detto è il Re, che di quel regno</p>
+        <p>Novo signor, vive in continua cura.</p>
+        <p>Uom già crudel; ma ’l suo feroce ingegno</p>
+        <p>Pur mitigato avea l’età matura.</p>
+        <p>Egli, che de’ Latini udì il disegno</p>
+        <p>C’han d’assalir di sua città le mura,</p>
+        <p>Giunge al vecchio timor novi sospetti;</p>
+        <p>E de’ nemici pave, e de’ soggetti.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXIV.</p>
+        <p></p>
+        <p></p>
+        <p>     Perocchè dentro a una città commisto</p>
+        <p>Popolo alberga, di contraria fede,</p>
+        <p>La debil parte e la minore in Cristo,</p>
+        <p>La grande e forte in Macometto crede:</p>
+        <p>Ma quando il Re fe’ di Sion l’acquisto,</p>
+        <p>E vi cercò di stabilir la sede,</p>
+        <p>Scemò i publici pesi a’ suoi Pagani;</p>
+        <p>Ma più gravonne i miseri Cristiani.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXV.</p>
+        <p></p>
+        <p></p>
+        <p>     Questo pensier, la ferità nativa</p>
+        <p>Che dagli anni sopita, e fredda langue,</p>
+        <p>Irritando inasprisce, e la ravviva</p>
+        <p>Sì, ch’assetata è più che mai di sangue.</p>
+        <p>Tal fero torna alla stagione estiva</p>
+        <p>Quel che parve nel giel piacevol angue:</p>
+        <p>Così leon domestico riprende</p>
+        <p>L’innato suo furor, s’altri l’offende.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXVI.</p>
+        <p></p>
+        <p></p>
+        <p>     Veggio (dicea) della letizia nova</p>
+        <p>Veraci segni in questa turba infida.</p>
+        <p>Il danno universal solo a lei giova:</p>
+        <p>Sol nel pianto comun par ch’ella rida.</p>
+        <p>E forse insidie e tradimenti or cova,</p>
+        <p>Rivolgendo fra sè come m’uccida:</p>
+        <p>O come al mio nemico, e suo consorte</p>
+        <p>Popolo, occultamente apra le porte.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXVII.</p>
+        <p></p>
+        <p></p>
+        <p>     Ma nol farà; prevenirò questi empj</p>
+        <p>Disegni loro, e sfogherommi appieno.</p>
+        <p>Gli ucciderò, faronne acerbi scempj:</p>
+        <p>Svenerò i figlj alle lor madri in seno:</p>
+        <p>Arderò loro alberghi, e insieme i tempj.</p>
+        <p>Questi i debiti roghi ai morti fieno,</p>
+        <p>E su quel lor sepolcro, in mezzo ai voti,</p>
+        <p>Vittime pria farò de’ Sacerdoti.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXVIII.</p>
+        <p></p>
+        <p></p>
+        <p>     Così l’iniquo fra suo cor ragiona;</p>
+        <p>Pur non segue pensier sì mal concetto.</p>
+        <p>Ma s’a quegli innocenti egli perdona,</p>
+        <p>È di viltà, non di pietade effetto.</p>
+        <p>Chè s’un timor a incrudelir lo sprona,</p>
+        <p>Il ritien più potente altro sospetto:</p>
+        <p>Troncar le vie d’accordo, e de’ nemici</p>
+        <p>Troppo teme irritar l’arme vittrici.</p>
+        <p></p>
+        <p></p>
+        <p>LXXXIX.</p>
+        <p></p>
+        <p></p>
+        <p>     Tempra dunque il fellon la rabbia insana:</p>
+        <p>Anzi altrove pur cerca ove la sfoghi;</p>
+        <p>I rustici edifizj abbatte e spiana,</p>
+        <p>E dà in preda alle fiamme i culti luoghi;</p>
+        <p>Parte alcuna non lascia integra o sana,</p>
+        <p>Ove il Franco si pasca, ove s’alloghi.</p>
+        <p>Turba le fonti e i rivi, e le pure onde</p>
+        <p>Di veneni mortiferi confonde.</p>
+        <p>     </p>
+        <p></p>
+        <p>XC.</p>
+        <p></p>
+        <p></p>
+        <p>     Spietatamente è cauto: e non obblia</p>
+        <p>Di rinforzar Gerusalem frattanto.</p>
+        <p>Da tre lati fortissima era pria:</p>
+        <p>Sol verso Borea è men sicura alquanto.</p>
+        <p>Ma da’ primi sospetti ei le munia</p>
+        <p>D’alti ripari il suo men forte canto;</p>
+        <p>E v’accogliea gran quantitade, in fretta,</p>
+        <p>Di gente mercenaria e di soggetta.</p>
+    </div>
+    </div>
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div><footer class="footer-sito">
+  <p>© 2025 — Tutti i diritti riservati</p>
+  <p>Sito realizzato da Nicola Manzi • 3P</p>
+</footer>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+  const colori = [
+    "#dbe9ff", // azzurro cielo più intenso
+    "#e6f7ee", // verde menta più vivo
+    "#fef9f0", // crema calda (più contrasto del beige)
+    "#f8f2fc", // lilla tenue ma visibile
+    "#f0f5ff", // blu notte chiaro
+    "#faf8f0", // avorio dorato
+    "#e6f0fa", // celeste classico (già presente, ma utile)
+    "#f9f3f8", // rosa polvere delicato
+    "#f0f9f4", // verde salvia morbido
+    "#f0f8ff"  // azzurro latte, molto leggibile
+  ];
+  return colori[Math.floor(Math.random() * colori.length)];
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const blocchi = document.querySelectorAll(".immagine-didascalia");
+  blocchi.forEach(blocco => {
+    blocco.style.backgroundColor = generaColoreMorbido();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Aggiusta il posizionamento delle note vicino al bordo destro
+    const note = document.querySelectorAll(".nota");
+    note.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        const rect = el.getBoundingClientRect();
+        const tooltip = el.querySelector(".tooltip");
+        if (tooltip) {
+          // Se la nota è troppo a destra (>80% dello schermo), allinea a sinistra
+          if (rect.right > window.innerWidth * 0.8) {
+            el.classList.add("right-edge");
+          } else {
+            el.classList.remove("right-edge");
+          }
+        }
+      });
+    });
+  });
+  </script>
+</body>
+</html>

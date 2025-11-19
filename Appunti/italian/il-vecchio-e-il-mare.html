@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+/* ✨ DUE COLONNE 50% - 50% */
+.due-colonne {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne > div {
+  flex: 1;
+}
+
+/* ✨ DUE COLONNE 25% - 75% */
+.due-colonne-25-75 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-25-75 > div:first-child {
+  flex: 1;
+}
+
+.due-colonne-25-75 > div:last-child {
+  flex: 3;
+}
+
+/* ✨ DUE COLONNE 75% - 25% */
+.due-colonne-75-25 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-75-25 > div:first-child {
+  flex: 3;
+}
+
+.due-colonne-75-25 > div:last-child {
+  flex: 1;
+}
+
+/* ✨ Stile comune per tutte le colonne (opzionale ma consigliato) */
+.due-colonne > div,
+.due-colonne-25-75 > div,
+.due-colonne-75-25 > div {
+  background: #fafcff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #edf2f7;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2d3b4a;
+}
+
+/* ✨ Responsive: su mobile tutte le colonne diventano verticali */
+@media (max-width: 768px) {
+  .due-colonne,
+  .due-colonne-25-75,
+  .due-colonne-75-25 {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+        /* ✨ Stile per elenco con pallini usando <p> */
+.elenco p {
+  position: relative;
+  padding-left: 24px; /* spazio per il pallino */
+  margin-bottom: 1px; /* meno spazio rispetto ai 20px originali */
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+/* Pallino personalizzato */
+.elenco p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4f6df5; /* colore del pallino (coerente con il tuo tema) */
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.sottotitolo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #2c5aa0;
+  margin: 18px 0 12px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+/* ✨ Tabella a 3 colonne */
+.tabella-3-colonne {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.tabella-3-colonne th,
+.tabella-3-colonne td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* Intestazione */
+.tabella-3-colonne th {
+  background: linear-gradient(to bottom, #eef4ff, #dbe9ff);
+  color: #1a3a5f;
+  font-weight: 600;
+  font-size: 1.15rem;
+  position: sticky;
+  top: 0;
+}
+
+/* Righe pari/dispari per leggibilità */
+.tabella-3-colonne tbody tr:nth-child(even) {
+  background-color: #fafcff;
+}
+
+.tabella-3-colonne tbody tr:hover {
+  background-color: #f0f7ff;
+  transition: background-color 0.2s;
+}
+
+/* Ultima riga: rimuovi il bordo inferiore */
+.tabella-3-colonne tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive: su mobile la tabella diventa a colonne verticali */
+@media (max-width: 600px) {
+  .tabella-3-colonne,
+  .tabella-3-colonne thead,
+  .tabella-3-colonne tbody,
+  .tabella-3-colonne th,
+  .tabella-3-colonne td,
+  .tabella-3-colonne tr {
+    display: block;
+  }
+
+  .tabella-3-colonne thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .tabella-3-colonne tr {
+    border: 1px solid #edf2f7;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .tabella-3-colonne td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .tabella-3-colonne td::before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 16px;
+    width: 45%;
+    font-weight: 600;
+    color: #2c5aa0;
+  }
+}
+
+/* ✨ Griglia 3x3 immagini — stile coerente con il sito */
+.griglia-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.immagine-didascalia {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.immagine-didascalia:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.immagine-didascalia img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+  /* Opzionale: se vuoi un bordo sottile sull’immagine */
+  /* border: 1px solid #edf2f7; */
+}
+
+.immagine-didascalia .didascalia {
+  font-size: 1.05rem;
+  color: #2d3748;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ✨ Colore casuale di sfondo (come nel tuo script) */
+.immagine-didascalia.sfondo-colorato {
+  /* lo script JS imposterà background-color */
+}
+
+/* ✨ Responsive: coerente con il tuo media query */
+@media (max-width: 768px) {
+  .griglia-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .griglia-3x3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .immagine-didascalia {
+    padding: 18px;
+  }
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+
+/* ✨ Footer elegante */
+.footer-sito {
+  margin-top: 60px;
+  padding: 24px 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.footer-sito p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.footer-sito p:first-child {
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Opzionale: un tocco di separazione visiva */
+.footer-sito::before {
+  content: '';
+  display: block;
+  width: 600px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #55585d, transparent);
+  margin: 0 auto 16px;
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Titolo documento</h1>
+      <div class="meta">
+        <p class="date">15 Ottobre 2025</p>
+        <p class="subject">Materia: Italiano</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <div id="allinea">
+        <p id="titoloparagrafo">IL VECCHIO E IL MARE</p>
+        <p class="grassetto">Ernest Hemingway</p>
+        <p>MONDADORI</p>
+        <p>Era un vecchio che pescava da solo su una barca a vela nella Corrente del Golfo ed erano ottantaquattro giorni ormai che non prendeva un pesce. Nei primi quaranta giorni lo aveva accompagnato un ragazzo, ma dopo quaranta giorni passati senza che prendesse neanche un pesce, i genitori del ragazzo gli avevano detto che il vecchio ormai era decisamente e definitivamente salao, che è la peggior forma di sfortuna, e il ragazzo li aveva ubbiditi andando in un'altra barca che prese tre bei pesci nella prima settimana. Era triste per il ragazzo veder arrivare ogni giorno il vecchio con la barca vuota e scendeva sempre ad aiutarlo a trasportare o le lenze addugliate o la gaffa1 e la fiocina e la vela serrata all'albero. La vela era rattoppata con sacchi da farina e quand'era serrata pareva la bandiera di una sconfitta perenne.</p>
+        <p>Il vecchio era magro e scarno e aveva rughe profonde alla nuca. Sulle guance aveva le chiazze del cancro della pelle, provocato dai riflessi del sole sul mare tropicale. Le chiazze scendevano lungo i due lati del viso e le mani avevano cicatrici profonde che gli erano venute trattenendo con le lenze i pesci pesanti. Ma nessuna di queste cicatrici era fresca. Erano tutte antiche come erosioni di un deserto senza pesci.</p>
+        <p>Tutto in lui era vecchio tranne gli occhi che avevano lo stesso colore del mare ed erano allegri e indomiti.</p>
+        <p>“Santiago” gli disse il ragazzo mentre risalivano la riva dal punto sul quale era stata sistemata la barca. “Potrei ritornare con te. Abbiamo guadagnato un po' di quattrini.”</p>
+        <p>Il vecchio aveva insegnato a pescare al ragazzo e il ragazzo gli voleva bene.</p>
+        <p>“No” disse il vecchio. “Sei su una barca che ha fortuna. Resta con loro.”</p>
+        <p>“Ma ricordati quella volta che sei rimasto ottantasette giorni senza prendere pesci e poi ne abbiamo presi di enormi tutti i giorni per tre settimane di seguito.”</p>
+        <p>“Ricordo” disse il vecchio. “Lo so che non è perché dubitavi di me, che mi hai lasciato.”</p>
+        <p>“È stato papà, che mi ha costretto a lasciarti. Sono un ragazzo e devo ubbidire.”</p>
+        <p>“Lo so” disse il vecchio. “È assolutamente normale.”</p>
+        <p>“Lui non ha molta fiducia.”</p>
+        <p>“No” disse il vecchio. “Ma noi sì. Vero?”</p>
+        <p>“Sì” disse il ragazzo. “Posso offrirti una birra alla Terrazza? e poi portiamo la roba a casa.”</p>
+        <p>“Perché no?” disse il vecchio. “Tra pescatori.”</p>
+        <p>1 La gaffa è un ferro a due ganci che serve per avvicina- re un'imbarcazione all'approdo. [N.d.T.]</p>
+        <p>1</p>
+        <p>Sedettero sulla terrazza e parecchi pescatori canzonarono il vecchio e lui non si offese. Altri, pescatori più vecchi, lo guardarono e si sentirono tristi. Ma non lo mostrarono e parlarono con garbo della corrente e a che profondità avevano gettato le lenze e del bel tempo stazionario e di ciò che avevano visto. I pescatori fortunati di quel giorno erano già rientrati e avevano già squartato i loro marlin;2 e li avevano trasportati distesi su due assi, con due uomini barcollanti all'estremità di ogni asse, al magazzino dei pesci dove aspettavano l'autocarro frigorifero che li portasse al mercato all'Avana. Coloro che avevano preso pescecani li avevano portati allo stabilimento sull'altra riva della baia dove li avevano issati alle carrucole per togliere il fegato, tagliare le pinne e scuoiare le pelli e ridurre la carne a strisce per metterla sotto sale.</p>
+        <p>Quando il vento veniva da est, dallo stabilimento giungeva l'odore attraverso il porto; ma oggi lo si sentiva soltanto vagamente perché il vento era indietreggiato a nord e poi si era smorzato e sulla terrazza si stava bene e c'era il sole.</p>
+        <p>“Santiago” disse il ragazzo.</p>
+        <p>“Sì” disse il vecchio. Stava stringendo il bicchiere fra le mani e pensava a tanti anni fa.</p>
+        <p>“Posso andare a cercarti le sardine per domani?”</p>
+        <p>“No. Va a giocare al baseball. Sono ancora in grado di remare e Rogelio getterà la rete.”</p>
+        <p>“Andrei volentieri. Se non posso pescare con te vorrei almeno esserti utile in qualche modo.”</p>
+        <p>“Mi hai comprato una birra” disse il vecchio. “Sei già un uomo.”</p>
+        <p>“Quanti anni avevo la prima volta che mi hai preso sulla barca?”</p>
+        <p>“Cinque, e a momenti venivi ucciso perché ho issato il pesce troppo presto e lui ha quasi fatto a pezzi la barca. Ricordi?”</p>
+        <p>“Ricordo la coda che sbatteva e rintronava e il banco che si è spaccato e il frastuono delle mazzate. Ricordo che mi hai gettato a prua tra le lenze addugliate fradicie e ho sentito tutta la barca rabbrividire e il frastuono che facevi mentre lo prendevi a mazzate come quando si abbatte un albero, e l'odore dolce del sangue che avevo addosso.”</p>
+        <p>“Te lo ricordi davvero o è perché te l'ho raccontato?”</p>
+        <p>“Ricordo tutto, dalla prima volta che siamo andati insieme.”</p>
+        <p>Il vecchio lo guardò con gli occhi bruciati dal sole, pieni di fiducia e di affetto.</p>
+        <p>“Se tu fossi mio figlio ti porterei fuori a tentare” disse. “Ma sei figlio di tuo padre e di tua madre e hai trovato una barca fortunata.”</p>
+        <p>“Posso procurarti le sardine? So anche dove potrei procurarti quattro esche.”</p>
+        <p>“Mi sono avanzate quelle di oggi. Le metterò nel sale nella scatola.”</p>
+        <p>“Lascia che te ne dia quattro fresche.”</p>
+        <p>“Una” disse il vecchio. La speranza e la fiducia non l'avevano mai lasciato. Ma ora si rafforzavano come quando sorge il vento.</p>
+        <p>“Due” disse il ragazzo.</p>
+        <p>2 Pesce spada del genere Makaira, che frequenta le coste atlantiche.</p>
+        <p>2</p>
+        <p>“Due” acconsentì il vecchio. “Non le hai rubate, vero?”</p>
+        <p>“Avevo voglia di farlo” disse il ragazzo. “Ma queste le ho comprate.”</p>
+        <p>“Grazie” disse il vecchio. Era troppo semplice per chiedersi quando avesse raggiunto l'umiltà. Ma sapeva di averla raggiunta e sapeva che questo non era indecoroso e non comportava la perdita del vero orgoglio.</p>
+        <p>“Domani sarà una giornata buona, con questa corrente” disse.</p>
+        <p>“Dove andrai?” chiese il ragazzo.</p>
+        <p>“Al largo, per rientrare quando cambia il vento. Voglio esser fuori prima di giorno.”</p>
+        <p>“Cercherò di far venire anche lui al largo” disse il ragazzo. “Così, se prendi qualcosa di molto grosso possiamo venire ad aiutarti.”</p>
+        <p>“Non gli piace lavorare troppo al largo.”</p>
+        <p>“No” disse il ragazzo. “Ma vedrò qualcosa che lui non riesce a vedere, magari un gabbiano al lavoro, e lo farò venir fuori dietro a un delfino.”</p>
+        <p>“Ha gli occhi così mal ridotti?”</p>
+        <p>“È quasi cieco.”</p>
+        <p>“Strano” disse il vecchio. “Non è mai andato a caccia di tartarughe. È questo che uccide gli occhi.”</p>
+        <p>“Ma tu sei andato a caccia di tartarughe per anni e anni, lungo la Mosquito Coast, eppure hai gli occhi buoni.”</p>
+        <p>“Io sono un vecchio strano.”</p>
+        <p>“Ma sei forte abbastanza, adesso, per un pesce proprio grosso?”</p>
+        <p>“Credo di sì. E ci sono molti trucchi.”</p>
+        <p>“Portiamo a casa la roba” disse il ragazzo. “Così posso prendere il giacchio e andare in cerca di sardine.”</p>
+        <p>Raccolsero l'attrezzatura della barca. Il vecchio si mise l'albero in spalla e il ragazzo portò la tinozza di legno con le brune lenze ben ritorte addugliate, la gaffa3 e la fiocina con la sua asta. La tinozza con le esche era a poppa con la mazza che serviva a domare i pesci grossi quando venivano rimorchiati. Nessuno avrebbe mai derubato il vecchio, ma era meglio portare a casa la vela e le lenze pesanti perché la rugiada poteva rovinarle, e pur essendo certo che nessuna persona del posto l'avrebbe mai derubato, il vecchio riteneva che fosse inutile lasciare in una barca una gaffa e una fiocina a far nascere tentazioni.</p>
+        <p>Risalirono insieme la strada fino alla capanna del vecchio, ed entrarono per la porta spalancata. Il vecchio appoggiò alla parete l'albero con la vela serrata e il ragazzo posò accanto a esso la tinozza e il resto dell'attrezzatura. L'albero era lungo quasi quanto l'unica stanza che costituiva la capanna. La capanna era costruita con scaglie dure di palma reale, quelle che chiamano guano, e dentro vi era un letto, una tavola, una sedia e una zona sul pavimento di terriccio dove cucinare con la carbonella. Sulle pareti brune fatte con le foglie piatte, sovrapposte, del guano resistente e fibroso, vi era una fotografia a colori del Sacro Cuore di Gesù e un'altra</p>
+        <p>3 Rete tonda sottile e fitta che, gettata dal pescatore in acqua, si apre e giunta sul fondo si chiude, rinserrando dentro i pesci che, cadendo, essa ha potuto coprire. [N.d.T.]</p>
+        <p>3</p>
+        <p>della Vergine di Cobra. Erano ricordi della moglie. Una volta sulla parete c'era la fotografia sbiadita della moglie, ma il vecchio l'aveva tolta perché si sentiva troppo solo a vederla, e l'aveva messa su un angolo della mensola sotto la camicia pulita.</p>
+        <p>“Che cos'hai da mangiare?” chiese il ragazzo.</p>
+        <p>“Una pentola di riso giallo e pesci. Ne vuoi un po'?”</p>
+        <p>“No. Mangerò a casa. Vuoi che ti accenda il fuoco?”</p>
+        <p>“No. Lo accenderò più tardi. O magari mangio il riso freddo.”</p>
+        <p>“Posso prendere il giacchio?”</p>
+        <p>“Certo.”</p>
+        <p>Il giacchio non c'era, e il ragazzo ricordava il giorno in cui l'avevano venduto. Ma recitavano questa commedia ogni giorno. Non c'erano pentole di riso giallo e pesci, e anche questo il ragazzo lo sapeva.</p>
+        <p>“Ottantacinque è un numero che porta fortuna” disse il vecchio. “Ti piacerebbe vedermene portare a casa uno da mezza tonnellata?”</p>
+        <p>“Ora prendo il giacchio e vado in cerca di sardine. Ti siedi al sole sulla porta?”</p>
+        <p>“Sì. Ho qui il giornale di ieri e voglio leggere il baseball.”</p>
+        <p>Il ragazzo non sapeva se anche quella del giornale di ieri fosse un'invenzione. Ma il vecchio lo prese di sotto il letto.</p>
+        <p>“Me l'ha dato Perico alla bodega” spiegò.</p>
+        <p>“Ritorno appena ho trovato le sardine. Le terrò sul ghiaccio insieme, le tue e le mie, e domattina ce le dividiamo. Quando ritorno mi racconti del baseball.”</p>
+        <p>“Non è possibile che gli Yankees4 perdano”</p>
+        <p>“Ma ho paura degli Indians di Cleveland.”</p>
+        <p>“Abbi fede negli Yankees, figlio mio. Pensa al grande Di Maggio.”</p>
+        <p>“Ho paura dei Tigers di Detroit e degli Indians di Cleveland.”</p>
+        <p>“Stai attento, se no avrai paura anche dei Reds di Cincinnati e dei White Socks di Chicago.”</p>
+        <p>“Tu studia la situazione, così quando ritorno me la racconti.”</p>
+        <p>“Cosa ne dici di comprare un biglietto della lotteria col numero ottantacinque? Domani è l'ottantacinquesimo giorno.”</p>
+        <p>“Perché no” disse il ragazzo. “Ma, e l'ottantasette del tuo grande primato?”</p>
+        <p>“Non può succedere due volte. Credi che riuscirai a trovare un ottantacinque?”</p>
+        <p>“Posso ordinarlo.”</p>
+        <p>“Un biglietto. Costa due dollari e mezzo. Da chi ce li potremmo far prestare?”</p>
+        <p>“E facile. Io trovo sempre chi mi presta due dollari e mezzo.”</p>
+        <p>“Forse ci riuscirei anch'io. Ma cerco di non farmi prestare mai niente. Prima si chiede in prestito. Poi si chiede l'elemosina.”</p>
+        <p>“Stai coperto, vecchio” disse il ragazzo. “Ricordati che siamo in settembre.”</p>
+        <p>“Il mese in cui arrivano i pesci grossi” disse il vecchio. “Chiunque sa fare il pescatore, di maggio.”</p>
+        <p>“Ora vado per le sardine” disse il ragazzo. “Ricordati che siamo in settembre.”</p>
+        <p>4 La squadra di baseball di New York, in cui giocava l'italo-americano Joe D i Maggio. [N. d. T. ]</p>
+        <p>4</p>
+        <p>Quando il ragazzo ritornò il vecchio si era addormentato sulla sedia e il sole era calato. Il ragazzo tolse la vecchia coperta militare dal letto e la stese sul dorso della seggiola e sulle spalle del vecchio. Erano spalle strane, ancora forti per quanto molto vecchie, e anche il collo era ancora robusto e le rughe non erano molto visibili quando il vecchio dormiva e aveva la testa piegata in avanti. La camicia era stata rattoppata tante volte che pareva la vela e le toppe erano state sbiadite dal sole in numerose gradazioni. Però la testa del vecchio era molto vecchia e quando aveva gli occhi chiusi il viso era senza vita. Il giornale gli giaceva sulle ginocchia e il peso del braccio lo tratteneva dal vento della sera. Era scalzo.</p>
+        <p>Il ragazzo lo lasciò come si trovava e quando ritornò il vecchio dormiva ancora</p>
+        <p>“Svegliati, vecchio” disse il ragazzo. E gli posò la mano su un ginocchio.</p>
+        <p>Il vecchio aprì gli occhi e per un attimo parve ritornare da lontano. Poi sorrise.</p>
+        <p>“Che cos'hai portato?” chiese.</p>
+        <p>“La cena” disse il ragazzo. “Ora ceniamo.”</p>
+        <p>“Non ho molta fame.”</p>
+        <p>“Su, vieni a mangiare. Non si può andare a pesca senza mangiare.”</p>
+        <p>“Sì, che si può” disse il vecchio alzandosi e raccogliendo il giornale e piegandolo. Poi si mise a piegare la coperta.</p>
+        <p>“Tienti la coperta addosso” disse il ragazzo. “Non andrai a pesca senza mangiare finché sono vivo io.”</p>
+        <p>“Allora vivi a lungo e riguardati” disse il vecchio. “Che cosa si mangia?”</p>
+        <p>“Riso e fagioli, banane fritte e un po' di stufato.”</p>
+        <p>Il ragazzo aveva portato questa roba dalla Terrazza in un portavivande di metallo a due piani. In tasca aveva le due serie di coltelli, forchette e cucchiai, avvolte in tovagliolini di carta.</p>
+        <p>“Chi ti ha dato questa roba?”</p>
+        <p>“Martin. Il padrone.”</p>
+        <p>“Bisogna che lo ringrazi.”</p>
+        <p>“L'ho già ringraziato io” disse il ragazzo. “Non c'è bisogno che lo ringrazi tu.”</p>
+        <p>“Gli darò la pancia di un bel pesce” disse il vecchio. “L'ha già fatto altre volte?”</p>
+        <p>“Eh, sì.”</p>
+        <p>“Allora devo dargli qualcosa di più della pancia. È molto cortese, con noi.”</p>
+        <p>“Ha mandato anche due birre.”</p>
+        <p>“A me piace di più la birra nelle lattine.”</p>
+        <p>“Lo so. Ma questa è in bottiglia, è birra Hatuey, e devo portare indietro le bottiglie.”</p>
+        <p>“È gentile da parte tua” disse il vecchio. “Vogliamo mangiare?”</p>
+        <p>“Te l'ho già chiesto” disse il ragazzo con garbo. “Non volevo aprire il portavivande finché non eri pronto.”</p>
+        <p>“Ora sono pronto” disse il vecchio. “Dovevo soltanto lavarmi.”</p>
+        <p>"Dove ti sei lavato?" pensò il ragazzo. La dotazione d'acqua del villaggio era alla seconda traversa della discesa. "Devo portargli qui dell'acqua" pensò il ragazzo</p>
+        <p>5</p>
+        <p>"e un po' di sapone e un bell'asciugamano. Perché sono così sbadato? Devo procurargli un'altra camicia e un giaccone per l'inverno e un paio di scarpe e un'altra coperta."</p>
+        <p>“Lo stufato è squisito” disse il vecchio.</p>
+        <p>“Parlami del baseball” gli disse il ragazzo.</p>
+        <p>“Nella Lega americana, gli Yankees, come ho detto” disse soddisfatto il vecchio. “Oggi hanno perduto” disse il ragazzo.</p>
+        <p>“Questo non vuol dir nulla. Il grande Di Maggio ha ritrovato se stesso.”</p>
+        <p>“Ci sono altri uomini nella squadra.”</p>
+        <p>“Si capisce. Ma tutto dipende da lui. Nell'altra Lega, tra Brooklyn e Philadelphia sceglierei Brooklyn. Ma poi ripenso a Dick Sisler.”</p>
+        <p>“Non c'è mai più stato niente del genere. Colpisce le palle più lunghe che mi sia mai capitato di vedere.”</p>
+        <p>“Ricordi quando veniva alla Terrazza? Avrei voluto portarlo a pescare, ma ero troppo timido per chiederglielo. Allora ti ho chiesto di chiederglielo tu, ma anche tu sei stato troppo timido.”</p>
+        <p>“Lo so. È stato un grande errore. Forse sarebbe venuto con noi. Così ci sarebbe rimasto questo per tutta la vita.”</p>
+        <p>“Mi piacerebbe portare a pesca il grande Di Maggio” disse il vecchio. “Dicono che suo padre era un pescatore. Forse era povero come noi e potrebbe capire.”</p>
+        <p>“Il padre del grande Sisler non è mai stato povero, e giocava nelle grandi Leghe, lui, il padre, quando aveva la mia età.”</p>
+        <p>“Io quando avevo la tua età, mi trovavo davanti all'albero di una nave a vele quadre che andava in Africa e la sera ho visto i leoni sulle spiagge.”</p>
+        <p>“Lo so. Me l'hai detto.”</p>
+        <p>“Dobbiamo parlare dell'Africa o del baseball?”</p>
+        <p>“Del baseball, direi” disse il ragazzo. “Dimmi del grande John J. McGraw.” Disse Jota invece di I lungo.</p>
+        <p>“Anche lui ogni tanto veniva alla Terrazza, una volta. Ma era sgarbato e villano e difficile, quando aveva bevuto. Si interessava di cavalli oltre che di baseball. Almeno si portava sempre in tasca qualche elenco di cavalli e spesso diceva i nomi dei cavalli al telefono.”</p>
+        <p>“Era un bravo allenatore” disse il ragazzo. “Mio padre dice che era il più bravo di tutti.”</p>
+        <p>“Perché veniva sempre qui” disse il vecchio. “Se fosse stato Durocher a continuare a venir qui tutti gli anni, tuo padre avrebbe pensato che era lui l'allenatore più bravo di tutti.”</p>
+        <p>“Ma in realtà, chi è il più bravo allenatore, Luque o Mike Gonzales?”</p>
+        <p>“Secondo me sono pari.”</p>
+        <p>“E il pescatore più bravo di tutti sei tu.”</p>
+        <p>“No. Ne conosco di migliori.”</p>
+        <p>“Qué va” disse il ragazzo. “Ci sono molti pescatori bravi e alcuni grandi. Ma come te ci sei soltanto tu.”</p>
+        <p>6</p>
+        <p>“Grazie. Mi rendi felice. Spero che non mi capiti un pesce così grosso da dimostrarci che hai torto.”</p>
+        <p>“Non esiste un pesce così, se sei ancora forte come dici.”</p>
+        <p>“Può darsi che non sia forte come credo” disse il vecchio. “Ma conosco molti trucchi e sono ostinato.”</p>
+        <p>“Ora dovresti andartene a letto, in modo da essere fresco domattina. Riporterò io la roba alla Terrazza.”</p>
+        <p>“Allora buona notte. Domattina vengo a svegliarti.”</p>
+        <p>“Tu sei la mia sveglia” disse il ragazzo.</p>
+        <p>“La mia sveglia è l'età” disse il vecchio. “Perché i vecchi si svegliano così presto? Sarà perché la giornata duri più a lungo?”</p>
+        <p>“Non lo so” disse il ragazzo. “So soltanto che i ragazzi dormono fino a tardi e sodo.”</p>
+        <p>“Mi ricordo” disse il vecchio. “Ti sveglierò a tempo.”</p>
+        <p>“Non mi piace che sia lui a svegliarmi. È come se fossi meno di lui.”</p>
+        <p>“Lo so.”</p>
+        <p>“Dormi bene, vecchio.”</p>
+        <p>Il ragazzo uscì. Avevano mangiato senza luce sulla tavola e il vecchio si tolse i calzoni e andò a letto al buio. Arrotolò i calzoni per farsi il guanciale, mettendovi dentro il giornale. Si arrotolò nella coperta e dormì sugli altri giornali vecchi che coprivano le molle del letto.</p>
+        <p>Si addormentò presto e sognò l'Africa quand'era ragazzo e le lunghe spiagge dorate e le spiagge bianche, così bianche da far male agli occhi, e i promontori alti e le grandi montagne brune. Ora viveva tutte le notti lungo quella costa e nel sogno udiva il fragore dei frangenti e vedeva le barche indigene che li fendevano. Mentre dormiva sentiva l'odore del catrame e della stoppa del ponte e sentiva l'odore dell'Africa recato al mattino dal vento di terra.</p>
+        <p>Di solito quando sentiva l'odore del vento di terra si svegliava e si vestiva per andare a svegliare il ragazzo. Ma stanotte l'odore del vento di terra giunse molto presto e nel sogno capì che era troppo presto e continuò a sognare per vedere i picchi bianchi delle isole che sorgevano dal mare e poi sognò i porti e le rade delle Isole Canarie.</p>
+        <p>Non sognava più tempeste, né donne, né grandi avvenimenti, né grossi pesci, né zuffe, né gare di forza e neanche di sua moglie. Ora sognava soltanto luoghi, e i leoni sulla spiaggia. Giocavano come gattini nel crepuscolo e gli piacevano come gli piaceva il ragazzo. Non sognava mai il ragazzo. Si svegliò, guardò la luna attraverso la porta aperta e srotolò i calzoni e li indossò. Orinò fuori della capanna e poi risalì la strada per svegliare il ragazzo. Il freddo del mattino lo fece rabbrividire. Ma il vecchio sapeva che rabbrividendo si sarebbe scaldato e che presto avrebbe dovuto remare.</p>
+        <p>La porta della casa dove dormiva il ragazzo non era chiusa a chiave, e il vecchio l'aprì ed entrò in silenzio a piedi scalzi. Il ragazzo dormiva su un lettino nella prima stanza, e il vecchio lo vide distintamente alla luce della luna morente. Gli prese</p>
+        <p>7</p>
+        <p>con garbo un piede e lo strinse finché il ragazzo si svegliò e si voltò a guardarlo. Il vecchio gli fece un cenno col capo, e il ragazzo prese i calzoni dalla sedia accanto al letto e li infilò restando seduto sul letto.</p>
+        <p>Il vecchio uscì e il ragazzo gli andò dietro. Aveva sonno, e il vecchio gli cinse le spalle col braccio e disse: “Mi dispiace”.</p>
+        <p>“Qué va” disse il ragazzo. “È quello che deve fare un uomo.”</p>
+        <p>Scesero la strada verso la capanna del vecchio e lungo tutta la strada, nel buio, si muovevano uomini scalzi, che portavano in spalla l'albero della loro barca.</p>
+        <p>Quando giunsero alla capanna del vecchio, il ragazzo prese la cesta con le lenze e la fiocina e la gaffa, e il vecchio si mise in spalla l'albero con la vela serrata.</p>
+        <p>“Vuoi un po' di caffè?” chiese il ragazzo. “Mettiamo le attrezzature in barca e poi andiamo a prenderlo.”</p>
+        <p>Bevettero il caffè da lattine di latte condensato in un locale aperto il mattino presto per i pescatori.</p>
+        <p>“Come hai dormito, vecchio?” chiese il ragazzo. Si stava svegliando adesso, anche se gli riusciva ancora difficile uscire dal sonno.</p>
+        <p>“Benissimo, Manolin” disse il vecchio. “Ho molta fiducia, quest'oggi.”</p>
+        <p>“Anch'io” disse il ragazzo. “Ora devo andare a prendere le nostre sardine e le tue esche fresche. Lui si porta l'attrezzatura da sé. Non permette mai a nessuno di portargli niente.”</p>
+        <p>“Per noi è diverso” disse il vecchio “Ti lasciavo portare le cose quando avevi cinque anni.”</p>
+        <p>“Lo so” disse il ragazzo. “Ritorno subito. Prendi un altro caffè. Qui ci fanno credito.”</p>
+        <p>Uscì, scalzo sugli scogli di corallo, dirigendosi verso il frigorifero dov'erano riposte le esche.</p>
+        <p>Il vecchio bevette lentamente il caffè. Non avrebbe preso altro per tutto il giorno e sapeva che gli era indispensabile berlo. Da molto tempo non gli andava di mangiare e non portava mai la colazione con sé. Aveva una bottiglia d'acqua a prua della barca e non aveva bisogno di altro per tutto il giorno.</p>
+        <p>Il ragazzo ritornò con le sardine e le due esche avvolte in un giornale e scesero la stradicciola che conduceva alla barca, sentendosi la sabbia ghiaiosa sotto i piedi, e alzarono la barca e la misero in acqua.</p>
+        <p>“Buona fortuna, vecchio.”</p>
+        <p>“Buona fortuna” disse il vecchio. Adattò gli stroppi5 dei remi agli scalmi e sporgendosi avanti a spingere le pale nell'acqua, incominciò a remare al buio per uscire dal porto. Vi erano altre barche che prendevano il mare da altre spiagge e il vecchio udiva i tuffi e i colpi di remo pur non vedendoli ora che la luna era sotto le colline.</p>
+        <p>A volte, in una barca, qualcuno parlava. Ma quasi tutte le barche erano silenziose eccettuato il tuffo dei remi. Si allontanarono le une dalle altre appena uscite dall'imboccatura del porto e ciascuna si avviò in quella parte di oceano in cui sperava</p>
+        <p>5 Anelli di corda che legano i remi agli scalmi. [N.d. T. ]</p>
+        <p>8</p>
+        <p>di trovare pesci. Il vecchio intendeva dirigersi al largo e si lasciò l'odor della terra alle spalle e remò nel fresco odor dell'oceano del primo mattino. Vide la fosforescenza delle alghe del Golfo nell'acqua mentre remava in quella parte dell'oceano che i pescatori chiamavano il gran pozzo perché vi era un salto improvviso di più di mille metri in cui si adunavano pesci di ogni genere a causa del mulinello creato dalla corrente contro le pareti ripide del fondo dell'oceano. Si concentravano qui gamberetti e pesci da esca e a volte frotte di calamari nelle buche più profonde, che la notte salivano alla superficie a far da nutrimento a tutti i pesci che passavano.</p>
+        <p>Nell'oscurità il vecchio sentì giungere il mattino e mentre remava udì il suono tremolante dei pesci volanti che uscivano dall'acqua e il sibilo fatto dalle rigide ali tese mentre si allontanavano librate nel buio. I pesci volanti gli piacevano molto ed erano i suoi migliori amici, sull'oceano. Pensò con dolore agli uccelli, specialmente alle piccole, delicate sterne nere, che volavano sempre in cerca di qualcosa senza quasi mai trovar nulla e pensò: "La vita degli uccelli è più dura della nostra, tranne per gli uccelli da preda, pesanti e forti. Perché sono stati creati uccelli delicati e fini comequeste rondini di mare se l'oceano può essere tanto crudele? Ha molta dolcezza emolta bellezza. Ma può diventare tanto crudele e avviene così d'improvviso e questi uccelli che volano, tuffandosi per la caccia, con quelle vocette tristi, sono troppo delicati per il mare".</p>
+        <p>Pensava sempre al mare come a la mar, come lo chiamano in spagnolo quando lo amano. A volte coloro che l'amano ne parlano male, ma sempre come se parlassero di una donna. Alcuni fra i pescatori più giovani, di quelli che usavano gavitelli come galleggianti per le lenze e avevano le barche a motore, comprate quando il fegato di pescecane rendeva molto, ne parlavano come di el mar al maschile. Ne parlavano come di un rivale o di un luogo o perfino di un nemico. Ma il vecchio lo pensava sempre al femminile e come qualcosa che concedeva o rifiutava grandi favori e se faceva cose strane o malvagie era perché non poteva evitarle. La luna lo fa reagire come una donna, pensò.</p>
+        <p>Remava con regolarità e non faceva fatica perché non alterava la velocità, e la superficie dell'oceano era piatta tranne di quando in quando per qualche mulinello della corrente. Lasciava fare un terzo del lavoro alla corrente e allo spuntare dell'alba si accorse di essere già più al largo di quanto avesse sperato.</p>
+        <p>Ho lavorato nei pozzi profondi per una settimana e non ho combinato niente, pensò. Oggi voglio lavorare fuori dove ci sono i banchi di palamite e di alalonghe e forse lì in mezzo ci sarà qualcosa di grosso.</p>
+        <p>Prima che fosse giorno chiaro aveva gettato le esche e si lasciava trasportare dalla corrente. La prima esca giungeva a una profondità di quaranta tese.6 La seconda giungeva a settantacinque tese e la terza e la quarta erano affondate nell'acqua azzurra per cento e centoventicinque tese. Le esche pendevano a testa in giù col gambo dell'amo inserito nel pesce esca, legato e fissato solidamente, e tutta la parte ricurva dell'amo, il braccio e la punta, era coperta di sardine fresche. L'amo passava attraverso gli occhi delle sardine, che creavano così una mezza ghirlanda sull'acciaio</p>
+        <p>6 Antica misura che corrisponde all'apertura delle braccia. [N.d.T.]</p>
+        <p>9</p>
+        <p>ricurvo. Non c'era parte dell'amo che non sarebbe riuscita dolce, odorante e saporita per un bel pesce.</p>
+        <p>Il ragazzo gli aveva dato due piccoli tuna o alalonghe, freschi che stavano appesi alle due lenze più profonde come sonde e alle altre due aveva messo un grosso pesce azzurro e uno giallo che erano già stati usati; ma erano ancora in buone condizioni e le sardine buonissime li rendevano profumati e appetitosi. Ogni lenza, spessa come una grossa matita, era fissata a un bastoncino instabile in modo che ogni volta che l'esca veniva tirata o sfiorata il bastoncino cadeva, e per ogni lenza c'erano due duglie di quaranta tese che si potevano aggiungere ad altre duglie di riserva per cui, in caso di necessità, un pesce poteva avere a disposizione più di trecento tese di lenza.</p>
+        <p>Ora il vecchio vide cadere tre bastoncini fuori della barca e diede qualche colpo garbato di remo per tener le lenze ben verticali e alle profondità giuste. Era già chiaro, e da un momento all'altro poteva sorgere il sole.</p>
+        <p>Il sole sorse lieve dal mare e il vecchio vide le altre barche basse sull'acqua e vicino alla riva, sparse nel corso della corrente. Poi il sole divenne più luminoso e abbagliò l'acqua e poi, mentre sorgeva limpido, il mare liscio lo fece rimbalzare negli occhi del vecchio dandogli un dolore acuto, per cui continuò a remare senza guardarlo. Guardò giù nell'acqua e sorvegliò le lenze che scendevano diritte nel buio dell'acqua. Egli le teneva più diritte di tutti gli altri e così nel buio della corrente c'era un'esca in attesa a ogni livello, nel punto esatto in cui egli desiderava che si trovasse, per qualunque pesce potesse passare in quel punto. Altri le lasciavano in balìa della corrente e a volte erano a sessanta tese di profondità quando i pescatori credevano che fossero a cento.</p>
+        <p>Ma, pensò, io le tengo al posto giusto. Soltanto non ho più fortuna. Ma chissà? Forse oggi. Ogni giorno è un nuovo giorno. È meglio quando si ha fortuna. Ma io preferisco essere a posto. Così quando viene sono pronto.</p>
+        <p>Ora il sole era alto da due ore e non gli faceva più tanto male agli occhi guardare verso oriente. C'erano soltanto tre barche in vista, ora, ed erano molto basse e lontane verso la riva.</p>
+        <p>Il primo sole mi ha sempre fatto male agli occhi da quando sono al mondo, pensò. Però ho ancora gli occhi buoni. La sera posso guardarlo fisso senza veder nero. E la sera è anche più forte. Ma la mattina fa male.</p>
+        <p>Proprio in quel momento vide davanti a sé una fregata7 con le lunghe ali scure che roteava nel cielo. Si calò in fretta, scendendo obliqua sulle ali spinte indietro, e poi tornò a roteare.</p>
+        <p>“Ha trovato qualcosa” disse il vecchio ad alta voce. “Non sta soltanto a guardare.”</p>
+        <p>Si avviò remando adagio e con regolarità verso il punto in cui l'uccello stava roteando. Non si affrettò e tenne le lenze diritte. Ma forzò un poco la corrente, per cui pur continuando a pescare senza commettere errori, pescava più in fretta di quanto avrebbe fatto se non avesse avuto bisogno di servirsi della fregata.</p>
+        <p>7 Uccello marino. [N.d. T. ]</p>
+        <p>10</p>
+        <p>L'uccello si alzò più alto nell'aria e tornò a roteare con le ali immobili. Poi si tuffò d'improvviso e il vecchio vide un pesce volante schizzare fuori dell'acqua e procedere disperatamente sulla superficie.</p>
+        <p>“Delfini” disse il vecchio ad alta voce. “Grossi delfini.”</p>
+        <p>Disarmò i remi e prese una lenza piccola dalla prua. Aveva un bozzello8 di ferro e un amo di misura media e il vecchio lo innescò con una sardina. Lo gettò a mare e poi diede volta alla lenza su una bitta9 a poppa. Poi innescò un'altra lenza e la lasciò addugliata all'ombra della prua. Riprese a remare guardando l'uccello scuro dalle lunghe ali che, ora, agiva basso sull'acqua.</p>
+        <p>Mentre egli lo guardava, l'uccello calò di nuovo tendendo obliquamente le ali per il tuffo e poi sbattendole all'impazzata e inutilmente mentre seguiva il pesce volante. Il vecchio vedeva il contorno snello nell'acqua sollevata dai grandi delfini mentre inseguivano il pesce in fuga. I delfini filavano sotto il volo del pesce per trovarsi in acqua, a tutta velocità, quando il pesce si fosse rituffato. È una grande frotta di delfini, pensò. Sono molto scostati gli uni dagli altri e il pesce volante ha poche speranze. L'uccello non ha nulla da sperare. I pesci volanti sono troppo grossi per lui e vanno troppo in fretta.</p>
+        <p>Guardò il pesce volante saltar fuori dell'acqua più e più volte e i movimenti vani dell'uccello. Quella frotta se n'è andata, pensò. Vanno troppo in fretta e troppo lontano. Ma forse ne troverò uno disperso e forse il mio bel pesce è lì intorno. Il mio bel pesce dev'essere da qualche parte.</p>
+        <p>Ora le nuvole a terra si alzavano come montagne e la costa non era che una lunga linea verde davanti alle colline grigio-azzurre. L'acqua era di un azzurro scuro, adesso, così scuro che pareva violetto. Guardandovi dentro il vecchio vide il plancton rosso sparso nell'acqua scura e la strana luce prodotta ora dal sole. Guardò le lenze per vederle scendere diritte a perdita d'occhio nell'acqua e fu lieto di vedere tanto plancton perché questo significava pesci. La strana luce prodotta dal sole nell'acqua, ora che il sole era più alto, significava bel tempo, e così pure significava bel tempo la forma delle nuvole a terra. Ma la fregata ormai era quasi invisibile e nulla si mostrava sulla superficie dell'acqua tranne qualche chiazza gialla di sargassi sbiaditi dal sole e la bolla violetta, stilizzata, iridescente, di una caravella10 che seguiva da vicino la barca. Si voltò su un fianco e poi si raddrizzò. Galleggiava lietamente come una vescica trascinandosi dietro per un metro i lunghi filamenti violetti immobili nell'acqua.</p>
+        <p>“Agua mala” disse il vecchio. “Brutta puttana.”</p>
+        <p>Dalla posizione in cui si trovava, appoggiandosi lievemente ai remi guardò nell'acqua e vide i pesciolini, dello stesso colore dei filamenti trascinati, che nuotavano tra i filamenti e sotto l'ombra minuscola prodotta dalla bolla alla deriva. Erano immuni a quel veleno. Ma gli uomini non lo erano e se qualche filamento si</p>
+        <p>8 Carrucola ovoidale.</p>
+        <p>9 Colonnetta di legno o di ferro alla prua della nave o della barca o sulla banchina dei porti, per avvolgervi gomene o catene. [N.d.T.]</p>
+        <p>10 Animaletto del tipo dei celenterati al quale appartengono anche le meduse e il corallo. [N.d.T.]</p>
+        <p>11</p>
+        <p>fosse impigliato nella lenza e vi fosse rimasto, limaccioso e violetto mentre il vecchio stava lavorando su un pesce, gli sarebbero venute sulle braccia e sulle mani vesciche e piaghe come quelle prodotte dal veleno dell'edera e della quercia. Ma queste infezioni dell'agua mala venivano in fretta e colpivano come frustate.</p>
+        <p>Le bolle iridescenti erano belle. Ma erano le cose più false del mare e al vecchio piaceva vederle mangiare dalle grandi tartarughe marine. Le tartarughe le vedevano si avvicinavano a esse, poi chiudevano gli occhi, in modo da essere completamente protette dentro il guscio e le mangiavano, coi filamenti e tutto. A1 vecchio piaceva vederle mangiare dalle tartarughe e gli piaceva camminarvi sopra sulla riva dopo le tempeste e udirle esplodere quando le schiacciava con le piante incallite dei piedi.</p>
+        <p>Gli piacevano le testuggini verdi e le tartarughe embricate con la loro eleganza e velocità e il loro grande valore e provava un cordiale disprezzo per le enormi carette stupide, gialle nella corazza a scaglie, strane nel far l'amore e felici nel mangiare a occhi chiusi le caravelle.</p>
+        <p>Non aveva misticismi per le tartarughe anche se per molti anni era andato a pescarle. Lo addoloravano tutte, anche le grandi sfargidi lunghe come la barca, che pesavano una tonnellata. Molti sono spietati con le tartarughe perché il cuore della tartaruga batte per molte ore dopo che è stata tagliata e squartata. Ma il vecchio pensava: anch'io ho il cuore così e piedi e mani che assomigliano ai loro. Mangiava le uova bianche per darsi forza. Le mangiava per tutto maggio per essere forte a settembre e a ottobre per i pesci proprio grossi.</p>
+        <p>Beveva anche una tazza di olio di fegato di pescecane ogni giorno dal grande barile nella capanna dove molti pescatori tenevano le attrezzature. L'olio era lì per tutti i pescatori che lo volevano. La maggior parte dei pescatori ne detestavano il sapore. Ma non era peggiore dell'alzarsi alle ore in cui si alzavano e faceva molto bene per il raffreddore e l'influenza e faceva bene agli occhi.</p>
+        <p>Ora il vecchio alzò lo sguardo e vide che l'uccello aveva ricominciato a roteare.</p>
+        <p>“Ha trovato del pesce” disse ad alta voce. Nessun pesce volante disturbava la superficie dell'acqua e non vi erano pesci da esca sparsi. Ma mentre il vecchio guardava, un piccolo tuna si alzò nell'aria, si voltò e si gettò a capofitto nell'acqua. Il tuna splendette argenteo nel sole, e dopo che si fu tuffato nell’acqua ne balzarono fuori altri e altri e saltavano in ogni direzione, battendo l'acqua e gettandosi a lunghi balzi dietro l'esca. La stavano circondando e sospingendo.</p>
+        <p>Se non vanno troppo in fretta li raggiungo, pensò il vecchio e guardò la frotta che faceva diventar bianca l'acqua e la fregata che ora calava e si tuffava sui pesci esca costretti dal panico a restare alla superficie.</p>
+        <p>“Quell'uccello è di grande aiuto” disse il vecchio. Proprio in quel momento la lenza a poppa gli si irrigidì sotto il piede, dove ne aveva tenuto un giro, e il vecchio lasciò andare i remi e mentre teneva salda la lenza e incominciava a issare, sentì il peso del piccolo tuna che tirava vibrando. La vibrazione aumentò mentre il vecchio tirava e questi vide il dorso azzurro del pesce nell'acqua e i fianchi dorati prima di capovolgerlo nella barca. Rimase a poppa nel sole, compatto e a forma di palla con i</p>
+        <p>12</p>
+        <p>grandi occhi privi di intelligenza sbarrati mentre riversava la vita pulsante contro il fasciame della barca coi rapidi colpi vibranti della coda veloce, dai contorni precisi. Il vecchio per bontà lo colpì sulla testa e lo prese a calci, mentre il corpo ancora tremava all'ombra della poppa.</p>
+        <p>“Alalonga” disse ad alta voce. “Sarà una bella esca. Potrà pesare quattro chili e mezzo.”</p>
+        <p>Non ricordava quando avesse incominciato a parlar forte da solo. In passato quand'era solo cantava, e a volte cantava la notte quando era solo al timone nel suo turno sulle barche da tartaruga o sui barconi a vela da pesca. Probabilmente aveva incominciato a parlar forte da solo quando il ragazzo lo aveva lasciato. Ma non ricordava. Quando pescavano insieme, lui e il ragazzo, di solito parlavano soltanto quand'era necessario. Parlavano di notte o quando erano bloccati dalle burrasche. Era considerata una virtù non parlare se non in caso di necessità, sul mare, e il vecchio l'aveva considerata tale e l'aveva rispettata. Ma ora diceva spesso ad alta voce i suoi pensieri poiché non vi era nessuno che potesse esserne disturbato.</p>
+        <p>“Se gli altri mi sentissero parlare forte penserebbero che sono matto” disse ad alta voce. “Ma poiché non sono matto, non me ne importa niente. E quelli ricchi hanno la radio in barca che parla con loro e dà le notizie del baseball.”</p>
+        <p>Ora non è il momento di pensare al baseball, pensò. Ora è il momento di pensare a una sola cosa. Quella per cui sono nato. Forse ce n'è uno grosso dalle parti di quella frotta, pensò. Non ne ho preso che una, delle alalonghe. Ma stanno andando al largo o in fretta. Tutto quello che viene a galla oggi, va in fretta e verso nord-est. Che sia l'ora? O il tempo, qualche segno che non conosco?</p>
+        <p>Non vedeva più il verde della riva, ormai, ma soltanto le cime delle colline azzurre che si stendevano bianche come se fossero incappucciate di neve, e le nuvole, che sopra di esse parevano alte montagne nevose. Il mare era molto scuro e la luce creava prismi nell'acqua. Le chiazze innumerevoli di plancton erano ora cancellate dal sole alto ed erano soltanto i grandi prismiprofondi nell'acqua azzurra che il vecchio vedeva ora con le lenze diritte nell'acquaprofonda un miglio.</p>
+        <p>I tuna - i pescatori chiamavano così tutti i pesci di quella specie e li distinguevano coi veri nomi quando andavano a venderli o a scambiarli con esche - erano di nuovo scesi. Ora il sole era caldo e il vecchio lo sentiva sulla nuca e sentiva il sudore scorrergli nella schiena mentre remava.</p>
+        <p>Potrei farmi portare dalla corrente, pensò, e dormire e passarmi un doppino11 di lenza intorno al pollice per svegliarmi. Ma oggi sono ottantacinque giorni e devo fare una buona giornata di pesca.</p>
+        <p>Proprio in quel momento guardando le lenze vide tuffarsi di colpo uno dei bastoncini sporgenti.</p>
+        <p>“Sì” disse “sì” e disarmò i remi senza far sobbalzare la barca. Si sporse a prendere la lenza e la tenne con delicatezza tra il pollice e l'indice della mano destra. Non sentì né sforzo né peso e tenne la lenza con leggerezza. Poi venne di nuovo. Questa volta era uno strappo di prova, né forte né pesante, e il vecchio sapeva</p>
+        <p>11 Termine marinaro per designare una corda ripiegata a doppio su se stessa. [N.d. T. ]</p>
+        <p>13</p>
+        <p>esattamente che cos'era. A cento tese di profondità un marlin stava mangiando le sardine che coprivano la punta e il gambo dell'amo dove l'amo curvato a mano sporgeva dalla testa del piccolo tuna. Il vecchio tenne la lenza con delicatezza, e teneramente, con la mano sinistra, la sciolse dal bastoncino. Ora poteva lasciarla scorrere tra le dita senza che il pesce sentisse alcuna pressione.</p>
+        <p>Così al largo dev'essere enorme in questo mese, pensò. Mangiale, pesce. Mangiale. Mangiale, per favore. Sono belle fresche, e tu sei laggiù a cento tese in quell'acqua fredda al buio. Fai un altro giro al buio e torna indietro a mangiarle.</p>
+        <p>Sentì il lieve strappo delicato e poi uno strappo più forte quando la testa della sardina doveva esser stata più difficile da staccare dall'amo. Poi più nulla.</p>
+        <p>“Su” disse il vecchio ad alta voce. “Fai un altro giro. Vieni ad annusarle. Non sono belle? Ora mangiale per benino e poi c'è il tuna. Duro e fresco e bello. Non fare complimenti, pesce. Mangiale.”</p>
+        <p>Aspettò con la lenza tra il pollice e l'indice, osservandola senza trascurare le altre perché il pesce avrebbe potuto nuotare più in alto o più in basso. Poi sentì lo stesso lieve strappo delicato.</p>
+        <p>“Ora prende” disse il vecchio ad alta voce. “Voglia Dio che prenda.”</p>
+        <p>Invece non prese. Se ne andò e il vecchio non sentì più nulla.</p>
+        <p>“Non può essersene andato” disse. “Lo sa Cristo che non può essersene andato. Sta soltanto facendo un giro. Forse ha già abboccato una volta e se ne ricorda.”</p>
+        <p>Poi sentì il lieve strappo alla lenza e fu la felicità.</p>
+        <p>“Era soltanto un giro” disse. “Ora prende.”</p>
+        <p>Fu la felicità sentire lo strappo lieve e poi qualcosa di duro e incredibilmente pesante. Era il peso del pesce e il vecchio lasciò filare giù, giù, giù la lenza mentre si svolgeva la prima duglia di riserva. Mentre la lenza scendeva sdrucciolandogli lieve tra le dita, il vecchio continuava a sentire il gran peso, nonostante la pressione del pollice e dell'indice fosse quasi impercettibile.</p>
+        <p>“Che pesce” disse. “Lo tiene in bocca di traverso ora, e se lo sta portando via.”</p>
+        <p>Poi si volterà e lo inghiottirà, pensò. Non lo disse ad alta voce perché sapeva che a dirle, le cose belle non succedono. Sapeva com'era grosso questo pesce e lo immaginava mentre si allontanava nel buio col tuna tenuto di traverso in bocca. In quel momento sentì che il pesce si fermava ma il peso c'era ancora. Poi il peso aumentò e il vecchio diede altra lenza. Aumentò per un attimo la pressione del pollice e dell'indice e il peso crebbe e si diresse in profondità.</p>
+        <p>“L'ho preso” disse. “Ora glielo faccio mangiare per bene.”</p>
+        <p>Si lasciò scivolare la lenza fra le dita e intanto allungò 1a mano sinistra e annodò 1'estremità delle due duglie di riserva col cappio delle due duglie di riserva dell'altra lenza. Ora era pronto. Aveva tre duglie da quaranta tese di lenza di riserva, adesso, oltre alla duglia già incominciata.</p>
+        <p>“Mangiane ancora un po'” disse. “Mangia per bene.”</p>
+        <p>Mangia in modo che la punta dell'amo ti entri nel cuore e ti uccida, pensò. Sali con comodo e lascia che ti metta nel corpo la fiocina. Bene. Sei pronto? Ti sei fermato abbastanza a tavola?</p>
+        <p>14</p>
+        <p>“Ecco!” disse ad alta voce e diede uno strappo violento con tutt'e due le mani, ricuperò un metro di lenza e poi tornò a tirare più e più volte, abbattendo alternatamente le braccia sul cavo con tutta la forza delle braccia e il peso del corpo rotato.</p>
+        <p>Non accadde nulla. Il pesce si limitò ad allontanarsi lentamente e il vecchio non riuscì a sollevarlo di un centimetro. La lenza era forte e adatta ai pesci pesanti ed egli la resse con la schiena finché fu così tesa che ne schizzarono fuori alcune gocce d'acqua. Poi incominciò a fare un lieve rumore sibilante nell'acqua ed egli continuò a reggerla tenendosi in equilibrio contro il banco dei remi e curvandosi all'indietro per resistere alla pressione. La barca incominciò a muoversi lentamente in direzione nord-ovest.</p>
+        <p>Il pesce proseguì con regolarità e procedettero lentamente sull'acqua calma. Le altre esche erano ancora in acqua ma non c'era niente da fare.</p>
+        <p>“Come vorrei che ci fosse il ragazzo” disse il vecchio ad alta voce. “Sono rimorchiato da un pesce e io faccio da bitta. Potrei fermare la lenza. Ma allora lui potrebbe spezzarla. Bisogna che lo tenga più che posso e che gli dia lenza quando la vuole. Grazie a Dio sta andando avanti, non in giù.”</p>
+        <p>Che cosa farò se decide di andare a fondo, non lo so. Che cosa farò se affonda e muore non lo so proprio. Ma qualcosa farò. C'è un mucchio di cose da poter fare.</p>
+        <p>Continuò a reggere la lenza sulla schiena e ne osservò l'inclinazione nell'acqua e guardò la barca che si spostava con regolarità in direzione nord-ovest.</p>
+        <p>Così morirà, pensò il vecchio. Non può andare avanti così per sempre. Ma quattro ore dopo il pesce stava ancora nuotando con regolarità verso il largo, rimorchiando la barca, e il vecchio stava ancora saldamente in equilibrio con la lenza attraverso la schiena.</p>
+        <p>“Era mezzogiorno quando ha abboccato” disse. “E ancora non l'ho visto.”</p>
+        <p>Prima che il pesce abboccasse, il vecchio si era calzato bene in testa il cappello di paglia e ora si sentiva tagliare la fronte. Aveva anche sete e si chinò in ginocchio e stando attento a non urtare la lenza si spinse più avanti che poté a prua e prese con una mano la bottiglia dell'acqua. L'aprì e ne bevve un sorso. Poi si appoggiò alla prua. Si riposò sedendo sull'albero disarmato e cercò di non pensare e solamente resistere.</p>
+        <p>Poi si guardò alle spalle e vide che la terraferma era scomparsa. Non importa, pensò. Posso sempre rientrare con le luci dell'Avana. Ci sono ancora due ore prima che tramonti il sole e forse lui verrà fuori prima. Se no, forse verrà fuori con la luna. Se no, forse verrà fuori con l'alba. Non ho crampi e mi sento forte. È lui che ha l'amo in bocca. Ma che pesce, per tirare così. Deve avere la bocca stretta sul ferro. Mi piacerebbe vederlo. Mi piacerebbe vederlo un momento solo per sapere contro che cosa devo combattere.</p>
+        <p>Il pesce non cambiò mai percorso né direzione, per tutta quella notte, almeno per quanto poteva saperne il vecchio guardando le stelle. Dopo la calata del sole scese il freddo e il sudore del vecchio gli si asciugò sulla schiena e le braccia e le vecchie gambe. Durante il giorno aveva preso il sacco che copriva la tinozza delle esche e l'aveva steso al sole ad asciugare. Dopo la calata del sole se lo legò attorno al collo</p>
+        <p>15</p>
+        <p>facendoselo ricadere sulla schiena e lo fece passare con cautela sotto la lenza che ora gli attraversava le spalle. Il sacco faceva da cuscino sotto la lenza e il vecchio aveva trovato un modo di star piegato in avanti appoggiandosi alla prua che gli permetteva di stare quasi comodo. In realtà la posizione era soltanto un po' meno insopportabile; ma a lui pareva quasi comoda.</p>
+        <p>Non posso farci niente, e neanche lui può farci niente, pensò. Almeno fino a quando va avanti così.</p>
+        <p>Una volta si alzò in piedi e orinò fuori della barca e guardò le stelle e controllò la direzione. La lenza segnava nell'acqua una striscia fosforescente che partiva direttamente dalle sue spalle. Ora procedevano più lentamente e le luci dell'Avana non erano molto forti, per cui capì che la corrente li stava trascinando verso oriente. Se ci allontaniamo dalla luce dell'Avana, si vede che andiamo più verso oriente, pensò. Perché se la direzione del pesce non cambia devo vederla per molte altre ore. Chissà come andrà il baseball nelle grandi squadre quest’oggi, pensò. Sarebbe magnifico avere una radio. Poi pensò: non smettere di pensarci. Pensa a quello che stai facendo. Non devi fare stupidaggini.</p>
+        <p>Poi disse ad alta voce: “Come vorrei che ci fosse il ragazzo. Per potermi aiutare e per vedere questa cosa”.</p>
+        <p>Nessuno dovrebbe mai restar solo, da vecchio, pensò. Ma è inevitabile. Devo ricordarmi di mangiare il tuna prima che diventi cattivo, per mantenermi in forza. Ricordati che, voglia o non voglia, devi mangiarlo in mattinata. Ricordati, disse a se stesso.</p>
+        <p>Durante la notte, due focene si accostarono alla barca e il vecchio le udì rigirarsi e sbuffare. Riconosceva la differenza tra gli sbuffi rumorosi del maschio e quelli sospirosi della femmina.</p>
+        <p>“Sono buoni” disse. “Giocano e scherzano e fanno l'amore. Sono nostri fratelli come i pesci volanti.”</p>
+        <p>Poi cominciò ad avere pena del grande pesce che aveva abboccato. È meraviglioso e strano e chissà quanti anni ha, pensò. Non mi è mai capitato un pesce così forte e che si sia comportato in modo così strano. Forse è troppo saggio per saltare. Potrebbe uccidermi se saltasse o se si mettesse a correre forte. Ma forse ha già abboccato molte volte e sa che la sua battaglia va combattuta in questo modo. Non può sapere che c'è un uomo soltanto contro di lui, e che quest'uomo è un vecchio. Ma come dev'essere grosso, e chissà quanto ne farò al mercato se la carne è buona. Da come ha preso l'esca sembra un maschio e tira come un maschio e non c'è panico nella sua lotta. Chissà se ha qualche piano o se è disperato come me?</p>
+        <p>Ricordò una volta che era rimasta presa all'amo la femmina di una coppia di marlin che procedevano insieme. Il maschio lascia sempre nutrire prima la femmina, e la femmina quando abboccò si gettò in una lotta folle, disperata di panico, che presto la ridusse senza forze, e tutto il tempo il maschio le era rimasto accanto incrociando la lenza e roteando con lei sulla superficie. Era rimasto così vicino che il vecchio temeva di veder spezzare la lenza dalla coda tagliente come una falce e che della falce aveva quasi la stessa dimensione e forma. Quando il vecchio l’aveva</p>
+        <p>16</p>
+        <p>accostata con la gaffa e presa a mazzate, stringendo il rostro per l'estremità scabra e pestandola sulla sommità della testa finché il colore dell'animale divenne quasi simile a quello del rovescio degli specchi, e poi, con l'aiuto del ragazzo, l'aveva issata a bordo, il maschio era rimasto accanto alla barca. Poi, mentre il vecchio districava le lenze e preparava la fiocina, il maschio fece un gran balzo in aria accanto alla barca per vedere dov'era la femmina e poi si tuffò a fondo, con le ali color lavanda che erano le sue pinne pettorali ben distese e tutte le larghe strisce color lavanda in vista. Era bello, il vecchio lo ricordava, e non era scappato.</p>
+        <p>E stata la cosa più triste che abbia mai visto, pensò il vecchio. Anche il ragazzo era triste e le abbiamo chiesto scusa e l'abbiamo squartata senza indugi.</p>
+        <p>“Come vorrei che ci fosse il ragazzo” disse ad alta voce, e si sistemò sulle assi tonde della prua e dalla lenza che gli attraversava le spalle sentì la forza del grosso pesce che procedeva regolarmente nella direzione che aveva scelto.</p>
+        <p>Quando il mio inganno lo ha costretto a scegliere, pensò il vecchio.</p>
+        <p>Aveva scelto di restare nell'acqua profonda e scura al largo, fuori di tutte le trappole e le reti e gli inganni. La scelta mia era stata quella di andare laggiù a scoprirlo al di là di tutta la gente. Al di là di tutta la gente del mondo. Ora siamo legati l'uno all'altro e lo siamo da mezzogiorno. E nessuno dei due ha qualcuno ad aiutarlo.</p>
+        <p>Forse non avrei dovuto fare il pescatore, pensò. Ma è per questo che sono nato. Devo assolutamente ricordarmi di mangiare il tuna appena si fa giorno.</p>
+        <p>Un po' prima dell'alba qualcosa abboccò a una delle esche che gli stavano alle spalle. Udì il bastoncino che si spezzava e la lenza che incominciava a correre oltre il bordo della barca. Nel buio il vecchio estrasse il coltello dalla guaina e reggendo tutto il peso del pesce sulla spalla sinistra, si chinò indietro e tagliò la lenza contro la barchetta.12 Poi tagliò l'altra lenza che gli stava più vicina e, al buio, annodò le estremità delle duglie di riserva. Lavorò abilmente con una sola mano, e appoggiò il piede sulle duglie per tenerle ferme mentre stringeva i nodi. Ora aveva sei duglie di riserva. Ce n’erano due per ogni esca tagliata e le due dell'esca presa dal pesce ed erano tutte legate insieme.</p>
+        <p>Quando fa giorno, pensò, mi occuperò dell'esca di quaranta tese e taglierò anche quella e annoderò le due duglie di riserva. Vuol dire che avrò perso duecento tese di buon cordel catalano e gli ami e i bozzelli. È roba che si può sostituire. Ma chi sostituisce questo pesce, se abbocca qualche altro pesce e lo taglia fuori? Non so che pesce fosse quello che ha abboccato l'esca adesso. Poteva essere un marlin o un pesce spada o un pescecane. Non l'ho sentito tirare. Ho dovuto fare troppo in fretta a sbarazzarmene.</p>
+        <p>Ad alta voce disse: “Come vorrei che ci fosse il ragazzo”. Ma il ragazzo non c'è, pensò. Ci sei solamente tu, ed è meglio che ti occupi dell'ultima lenza adesso, buio o non buio, e che tu la tagli e annodi le due duglie di riserva.</p>
+        <p>Così fece. Era difficile al buio, e una volta il pesce fece un balzo che lo gettò a faccia in avanti causandogli un taglio sotto l'occhio. Il sangue gli scese lungo la</p>
+        <p>12 Orlo superiore dei fianchi nell'imbarcazione dove sono infissi gli scalmi. [N.d.T.]</p>
+        <p>17</p>
+        <p>guancia. Ma coagulò e si asciugò prima di giungere al mento e il vecchio si accostò faticosamente alla prua e si appoggiò al legno. Sistemò il sacco e spostò con cura la lenza in modo che si appoggiasse su un altro punto delle spalle e tenendola ferma con le spalle, tastò con cura la pressione del pesce e poi provò con la mano la velocità della barca nell'acqua.</p>
+        <p>Chissà perché ha dato quello scrollone, pensò. Forse il filo gli è scivolato sulla schiena. Certo la schiena non può fargli male come la mia. Ma non è possibile che tiri questa barca in eterno, per grosso che sia. Ora non c'è più niente che possa provocar guai e ho una gran riserva di lenza, quanta se ne può desiderare al mondo.</p>
+        <p>“Pesce” disse con sommessa voce “resterò con te fino alla morte.”</p>
+        <p>Anche lui resterà con me, pensò il vecchio, e aspettò che sorgesse la luce. Faceva freddo adesso, prima dell'alba, e il vecchio si strinse al legno per stare caldo. Ce la farò finché ce la farà lui, pensò. E alla prima luce la lenza era tesa lontana, profonda nell'acqua. La barca procedeva regolarmente e quando il primo sole sorse. fu sulla spalla destra del vecchio.</p>
+        <p>“È diretto a nord” disse il vecchio. La corrente ci avrebbe spinto in direzione est, pensò. Come vorrei che avesse voltato con la corrente. Avrebbe voluto dire che era stanco.</p>
+        <p>Quando il sole fu più alto, il vecchio si rese conto che il pesce non si stancava. Vi fu un unico segno favorevole. L'inclinazione della lenza rivelò che il pesce nuotava a una profondità minore. Questo non significava necessariamente che avrebbe fatto il salto. Ma poteva farlo.</p>
+        <p>“Dio, fa che salti” disse il vecchio. “Ho abbastanza lenza da dominarlo.”</p>
+        <p>Forse se aumento appena un tantino la tensione gli faccio male e lo faccio saltare, pensò. Ora che è giorno bisognerebbe farlo saltare, in modo che si riempia d'aria le sacche lungo la colonna vertebrale, e così non possa andare a morire a fondo.</p>
+        <p>Cercò di aumentare la tensione ma la lenza era stata tesa quasi fino a spezzarsi da quando il pesce aveva abboccato e il vecchio sentì la resistenza quando si chinò indietro per tirare e capì che non poteva aumentare lo sforzo. Non devo farla muovere pensò, Ogni movimento allarga il taglio fatto dall'amo e allora quando il pesce salta potrebbe liberarsi. Comunque mi sento meglio, ora che c'è il sole e una volta tanto non ho da guardarlo in faccia.</p>
+        <p>Vi erano alghe gialle sulla lenza, ma il vecchio sapeva che si limitavano a fare da freno e ne fu lieto. Erano le alghe gialle del Golfo che avevano emanato tanta fosforescenza durante la notte.</p>
+        <p>“Pesce” disse “ti voglio bene e ti rispetto molto. Ma ti avrò ammazzato prima che finisca questa giornata.”</p>
+        <p>Speriamo, pensò.</p>
+        <p>Un uccello minuscolo si avvicinò alla barca da nord. Era una silvia13 e volava molto basso sull'acqua. Il vecchio capì che era molto stanca.</p>
+        <p>L'uccello giunse sulla poppa della barca e vi si posò. Poi volò attorno alla testa del vecchio e si posò sulla lenza dove si senti più comodo.</p>
+        <p>13 Passeraceo. [N.d.T.]</p>
+        <p>18</p>
+        <p>“Quanti anni hai?” chiese il vecchio all'uccello. “È il primo viaggio che fai?”</p>
+        <p>L'uccello lo guardò, mentre il vecchio parlava. Era troppo stanco perfino per esaminare la lenza e barcollava mentre le zampe delicate la stringevano stretta.</p>
+        <p>“È ferma” gli disse il vecchio. “È troppo ferma. Non dovresti essere così stanco dopo una notte senza vento. Dove si dirigono gli uccelli?”</p>
+        <p>Verso i falchi, pensò, che vengono in mare per cercarli. Ma non parlò di questo all'uccello che comunque non l'avrebbe capito e avrebbe saputo fin troppo presto dei falchi.</p>
+        <p>“Riposati bene, uccellino” disse. “Poi vai e rischia quel che devi rischiare come qualsiasi uomo o uccello o pesce.”</p>
+        <p>Parlare gli dava coraggio, perché durante la notte la schiena gli si era irrigidita e ora gli faceva molto male.</p>
+        <p>“Fermati in casa mia se vuoi, uccello” disse. “Mi dispiace non poter issare la vela e trasportarti nel venticello che si sta alzando. Ma ho da fare con un amico.”</p>
+        <p>Proprio in quel momento il pesce diede uno strattone improvviso che fece cadere il vecchio sulla prua e l'avrebbe scaraventato a mare se non avesse ritrovato l'equilibrio e non avesse dato un po' di lenza.</p>
+        <p>L'uccello si era alzato in volo quando la lenza aveva sobbalzato e il vecchio non l'aveva neanche visto andarsene. Tastò la lenza con cura con la mano destra e si accorse di avere la mano insanguinata.</p>
+        <p>“Allora è stato ferito” disse ad alta voce, e ricominciò a tirare la lenza per vedere se riusciva a far voltare il pesce. Ma quando giunse al punto della massima tensione, si fermò e si rimise in equilibrio contro il peso della lenza.</p>
+        <p>“Incominci ad accorgertene, pesce” disse. “E Dio sa che me ne sto accorgendo anch'io.”</p>
+        <p>Si guardò attorno in cerca dell'uccello perché gli sarebbe piaciuto averlo per compagnia. L'uccello era scomparso.</p>
+        <p>Non ti sei fermato a lungo, pensò il vecchio. Ma sarà peggio dove andrai, finché non arrivi a spiaggia. Come ho potuto lasciare che il pesce mi ferisse con quello strattone? Si vede che sto diventando proprio stupido. O forse stavo guardando l'uccellino e mi ero distratto. Ora penserò al lavoro e poi devo mangiare il tuna perché non mi manchino le forze.</p>
+        <p>“Come vorrei che ci fosse il ragazzo, e come vorrei avere un po' di sale” disse ad alta voce.</p>
+        <p>Spostando il peso della lenza sulla spalla sinistra e inginocchiandosi con cautela, si lavò la mano in mare e ve la tenne immersa più di un minuto guardando la scia di sangue che si allontanava e il movimento regolare dell'acqua contro la mano mentre la barca procedeva.</p>
+        <p>“Ha rallentato molto” disse.</p>
+        <p>Il vecchio avrebbe voluto tenere più a lungo la mano nell'acqua salata, ma aveva paura di un altro strattone improvviso del pesce e si rizzò mettendosi in equilibrio e alzò la mano contro il sole. Era stata la lenza a fargli un taglio nella carne. Ma era in un punto della mano che doveva lavorare. Sapeva che avrebbe avuto</p>
+        <p>19</p>
+        <p>bisogno delle mani prima che tutto fosse finito, e non gli piaceva essersi tagliato prima di cominciare.</p>
+        <p>“Ecco” disse quando la mano si fu asciugata. “Ora devo mangiare il piccolo tuna. Posso prenderlo con la gaffa e mangiarlo qui comodamente.” Si inginocchiò e con la gaffa trovò il tuna a poppa e lo tirò verso di sé senza farlo impigliare tra le lenze addugliate. Reggendo di nuovo la lenza con la spalla sinistra e tenendosi in equilibrio sulla mano e il braccio sinistro, tolse il tuna dal gancio della gaffa e rimise la gaffa a posto. Posò un ginocchio sul pesce e tagliò strisce longitudinali di carne rosso scuro, dal fondo della testa alla coda. Erano strisce a forma di cuneo e ne tagliò dalla spina dorsale fino alla pancia. Quando ebbe tagliato sei strisce le distese sul legno della prua, si pulì il coltello sui calzoni e sollevò per la coda la carcassa del bonito per gettarla in mare.</p>
+        <p>“Non credo che riuscirò a mangiarne uno intero” disse, e con il coltello tagliò una striscia a metà. Sentiva la pressione forte e regolare della lenza e gli venne un crampo alla mano sinistra. Era stretta sul cavo pesante e il vecchio la guardò con disgusto.</p>
+        <p>“Che razza di mano è mai questa” disse. “Se vuoi un crampo tientelo. Diventa pure un artiglio. Non ti servirà a niente.”</p>
+        <p>Su, pensò, e guardò nell'acqua buia l'inclinazione della lenza. Adesso mangia, che ti darà forza alla mano. Non è colpa della mano. Sei rimasto troppe ore con questo pesce. Ma puoi restare con lui in eterno. Ora mangia il bonito.</p>
+        <p>Ne prese un pezzo e lo portò alla bocca e lo masticò lentamente. Non era sgradevole.</p>
+        <p>Masticalo bene, pensò, e spremine tutti i succhi. Non sarebbe cattivo, a mangiarlo con un po' di arancio o limone o sale.</p>
+        <p>“Come stai, mano?” chiese alla mano intorpidita, rigida come se fosse morta. “Ora ne mangio un po' per te.”</p>
+        <p>Mangiò l'altra parte del pezzo che aveva tagliato in due. La masticò con cura e poi sputò la pelle.</p>
+        <p>“Come va, mano? O è troppo presto per saperlo?”</p>
+        <p>Prese un altro pezzo e lo masticò.</p>
+        <p>È un bel pesce pieno di sangue, pensò. Ho avuto fortuna a trovar questo invece di un delfino. Il delfino è troppo dolce. Questo non è per niente dolce e ha ancora tutta la sostanza.</p>
+        <p>Bisogna essere pratici, non c'è altro che conta, pensò. Vorrei avere un po' di sale. E non so se il sole farà marcire o seccare quello che avanza, così è meglio che lo mangi tutto anche se non ho fame. Il pesce va con calma e regolarità. Lo mangerò tutto e poi sarò pronto.</p>
+        <p>“Abbi pazienza, mano” disse. “Lo faccio per te.”</p>
+        <p>Vorrei poter dar da mangiare al pesce, pensò. È mio fratello. Ma devo ucciderlo e mantenermi forte per farlo. Lentamente e coscienziosamente mangiò tutte le strisce appuntite di pesce.</p>
+        <p>Si rizzò pulendosi la mano sui calzoni.</p>
+        <p>20</p>
+        <p>“Ecco” disse. “Ora puoi lasciare andare la corda, mano, e mi occuperò di lui col braccio destro soltanto finché avrai finito questa storia.” Posò il piede sinistro sulla lenza pesante che era stata sorretta dalla mano sinistra, e la schiena si piegò sotto la pressione.</p>
+        <p>“Dio mi aiuti a farmi passare il crampo” disse. “Perché non so che cosa farà il pesce.”</p>
+        <p>Ma sembra calmo, pensò, come se seguisse un suo piano. Quale sarà il suo piano? pensò. E qual è il mio? Il mio devo improvvisarlo sul suo, per via della sua dimensione. Se fa un salto posso ucciderlo. Ma lui sta a fondo per sempre. Allora starò a fondo con lui per sempre.</p>
+        <p>Si stropicciò la mano intorpidita contro i calzoni e cercò di articolare le dita. Ma non si aprì. Forse si aprirà col sole, pensò. Forse si aprirà quando avrò digerito il tuna crudo. Se dovrò farlo, l'aprirò, costi quel che costi. Ma non voglio aprirla adesso per forza. È meglio che si apra da sé e si metta a posto per conto suo. Dopo tutto ne ho abusato molto questa notte quando ho dovuto sciogliere e legare tutte le lenze.</p>
+        <p>Guardò il mare e capì fino a che punto era solo, adesso. Ma vedeva i prismi nell'acqua scura profonda, e la lenza tesa in avanti e la strana ondulazione della bonaccia. Le nuvole ora si stavano formando sotto l'aliseo e guardando davanti a sé vide un branco di anatre selvatiche stagliarsi nel cielo sull'acqua, poi appannarsi, poi stagliarsi di nuovo; e capì che nessuno era mai solo sul mare.</p>
+        <p>Pensò a quelli che hanno paura di trovarsi lontano da terra su una barca a remi e sapeva che avevano ragione nei mesi dei piovaschi improvvisi. Ma ora erano i mesi delle burrasche e, quando non c'è burrasca, il clima dei mesi delle burrasche è il migliore dell'anno.</p>
+        <p>Quando c'è una burrasca se ne vedono i segni nel cielo giorni e giorni prima, quando si è in mare. A terra non si vedono perché non si sa che cosa guardare, pensò. E poi la terra deve rendere diversa la forma delle nuvole. Ma ora non c'è burrasca in vista.</p>
+        <p>Guardò il cielo e vide il cumulo bianco che pareva fatto di mucchietti cordiali di gelato e più in alto vi erano le piume delicate dei cirri sull'alto cielo di settembre.</p>
+        <p>“Brisa leggera” disse. “Tempo migliore per me che per te, pesce.”</p>
+        <p>La mano sinistra era ancora intorpidita, ma il vecchio la stava sciogliendo lentamente.</p>
+        <p>Li odio, i crampi, pensò. Sono un tradimento del corpo. È umiliante in presenza di altri avere una diarrea o vomitare per via di un avvelenamento. Ma un crampo - lo pensò come calambre - umilia, specialmente quando si è soli.</p>
+        <p>Se ci fosse il ragazzo mi stropiccerebbe la mano e me lo farebbe scendere giù dall'avambraccio, pensò. Ma scenderà da sé.</p>
+        <p>Poi con la mano destra tastò la differenza nella pressione della lenza prima di vedere il cambiamento dell'inclinazione nell'acqua. Poi mentre si chinava contro la lenza e si batteva la mano sinistra con energia e rapidità contro la coscia, vide che la lenza si inclinava lentamente verso la superficie dell'acqua.</p>
+        <p>“Sta salendo” disse. “Su, mano. Su, per favore.”</p>
+        <p>21</p>
+        <p>La lenza si alzò lentamente e regolarmente e poi la superficie dell'oceano si sollevò davanti alla barca e il pesce uscì. Uscì senza fine e l'acqua gli ricadde dai fianchi. Era lucente nel sole e la testa e la schiena erano di un rosso scuro e nel sole le strisce sui fianchi apparivano larghe, di un lavanda leggero. La spada era lunga come una mazza da baseball e appuntita come un'alabarda e il pesce si alzò in tutta la sua lunghezza dall'acqua e poi vi rientrò, dolcemente, come in un tuffo, e il vecchio vide la grande lama falcata della coda andare sott'acqua e la lenza incominciò a filare.</p>
+        <p>“È mezzo metro più lungo della barca” disse il vecchio. La lenza si allontanava in fretta ma regolarmente e il pesce non era preso dal panico. Il vecchio cercò con tutt'e due le mani di tenere la lenza in modo che non si spezzasse. Sapeva che se non riusciva a far rallentare il pesce con una pressione regolare, il pesce poteva prendere tutta la lenza e spezzarla.</p>
+        <p>E un pesce grosso e devo vincerlo, pensò. Devo impedirgli di rendersi conto della sua forza e di quello che potrebbe fare fuggendo. Se fossi al suo posto, è adesso che ce la darei tutta e andrei avanti finché si spaccasse qualcosa. Ma grazie a Dio non sono intelligenti come noi che li uccidiamo; anche se sono più nobili e più capaci.</p>
+        <p>Il vecchio aveva visto molti pesci grossi. Ne aveva visti molti che pesavano più di quattro quintali e mezzo e ne aveva già presi due di quelle dimensioni in vita sua, ma non era mai stato solo. Ora, da solo e in pieno mare aperto, era legato al pesce più grosso che avesse mai visto e di cui avesse perfino sentito parlare, e aveva la mano sinistra ancora serrata come la morsa degli artigli di un'aquila.</p>
+        <p>Ma certo si scioglie, pensò. Certo ora si scioglie per venire in aiuto alla mano destra. Sono in tre a essermi fratelli: il pesce, e le due mani. È necessario che si sciolga. È indegno di lei avere il crampo. Il pesce aveva di nuovo rallentato e procedeva all'andatura consueta.</p>
+        <p>Chissà perché ha fatto quel salto, pensò il vecchio. Pareva quasi che volesse farmi vedere com'era grosso. Comunque ora lo so, pensò. Vorrei potergli mostrare che tipo d'uomo sono io. Ma allora mi vedrebbe la mano col crampo. Facciamogli credere che sono più uomo di quanto non lo sia e cosi lo diventerò. Vorrei essere il pesce, pensò, con tutto quello che ha da contrapporre alla mia volontà e alla mia intelligenza, che sono l'unica cosa che ho io.</p>
+        <p>Si appoggiò comodo a1 legno e accettò le sofferenze così come gli venivano e il pesce continuò a nuotare regolarmente e la barca a spostarsi lentamente nell'acqua scura. Si alzò un po' di mare col vento che veniva da est e a mezzogiorno la mano del vecchio non aveva più il crampo.</p>
+        <p>“Cattive notizie per te, pesce” disse, e spostò la lenza sui sacchi che gli coprivano le spalle.</p>
+        <p>Era comodo ma soffriva, anche se non ammetteva di soffrire.</p>
+        <p>“Non sono religioso” disse “ma dirò dieci Pater Noster e dieci Ave Marie per prendere questo pesce, e se lo prendo, prometto di fare un pellegrinaggio alla Vergine de Cobre. È una promessa.”</p>
+        <p>Cominciò a recitare meccanicamente le preghiere.</p>
+        <p>22</p>
+        <p>Ogni tanto era così stanco che non riusciva a ricordare le parole e allora le diceva in fretta perché gli venissero meccanicamente. L'Ave Maria è più facile da dire del Pater Noster, pensò.</p>
+        <p>“Ave Maria piena di grazia, il Signore è con te. Benedetta sei tu fra le donne e benedetto è il frutto del ventre tuo, Gesù. Santa Maria, madre di Dio, prega per noi peccatori ora e nell'ora della morte nostra. Amen.” Poi aggiunse: “Vergine benedetta, prega per la morte di questo pesce. Per meraviglioso che sia”.</p>
+        <p>Dette le preghiere si sentì molto meglio, anche se soffriva esattamente come prima e forse un po' di più e si appoggiò al legno della prua e incominciò meccanicamente a muovere le dita della mano sinistra. Ora il sole era caldo nonostante la brezza si stesse alzando leggera.</p>
+        <p>“È meglio che rimetta l'esca alla lenza piccola a poppa” disse. “Se il pesce decide di resistere un'altra nottata, avrò di nuovo bisogno di mangiare e l'acqua nella bottiglia è quasi finita. Credo che non riuscirò a prendere che un delfino, in questo punto.</p>
+        <p>Ma se lo mangio abbastanza fresco non sarà cattivo. Come vorrei che stanotte mi venisse a bordo un pesce volante. Ma non ho luci per attirarlo. Un pesce volante è buonissimo da mangiar crudo, e non avrei bisogno di tagliarlo. Ora devo risparmiare tutte le forze. Cristo, non sapevo che fosse così grosso.”</p>
+        <p>“Però lo ucciderò” disse. “In tutta la sua grandezza e il suo splendore.”</p>
+        <p>Anche se è ingiusto, pensò. Ma gli farò vedere che cosa sa fare un uomo e che cosa sopporta un uomo.</p>
+        <p>“Ho detto al ragazzo che sono un vecchio strano” disse. “È questo il momento di dimostrarglielo.”</p>
+        <p>Le mille volte che già lo aveva dimostrato non avevano importanza. Ora lo stava dimostrando di nuovo. Ogni volta era una volta nuova, e non pensava mai al passato, quando lo faceva.</p>
+        <p>Vorrei che si addormentasse e che potessi dormire anch'io e sognare i leoni, pensò. Perché sono i leoni la cosa più importante che mi è rimasta? Non pensare, vecchio, disse a se stesso. Riposati piano piano ora sul legno e non pensare a nulla. Lui sta lavorando. Lavora meno che puoi.</p>
+        <p>Stava incominciando il pomeriggio e la barca continuava a spostarsi lentamente e regolarmente. Ma veniva un nuovo intralcio adesso dal vento che giungeva da est, e il vecchio procedeva piano con la maretta e il dolore della lenza sulla schiena gli giungeva facile e dolce.</p>
+        <p>Una volta nel pomeriggio la lenza ricominciò a salire. Ma il pesce si limitò a continuare a nuotare a un livello leggermente più alto. Il vecchio aveva il sole sul braccio e la spalla sinistra e sulla schiena. Così sapeva che il pesce aveva voltato a est da nord.</p>
+        <p>Ora che lo aveva visto, riusciva a immaginare il pesce mentre nuotava nell'acqua con le pinne pettorali violette spalancate come ali e la grande coda eretta che fendeva il buio. Chissà se riesce a vedere a quella profondità, pensò il vecchio.</p>
+        <p>23</p>
+        <p>Ha l'occhio enorme e i cavalli, che hanno gli occhi molto più piccoli, riescono a vedere al buio.</p>
+        <p>Una volta vedevo abbastanza bene al buio. Non nel buio assoluto. Ma quasi come un gatto.</p>
+        <p>Il sole e il movimento regolare delle dita ormai gli avevano sciolto completamente il crampo della mano sinistra e il vecchio incominciò a passarle una maggior quantità di peso e mosse i muscoli della schiena per spostare un poco il dolore della lenza.</p>
+        <p>“Se tu non sei stanco, pesce” disse ad alta voce “devi essere ben strano.”</p>
+        <p>Ora si sentiva molto stanco, e sapeva che presto sarebbe giunta la notte e cercava di pensare ad altro. Pensò alle Grandi Leghe, per lui erano le Grand Ligas, e sapeva che gli Yankees di New York giocavano contro i Tigers di Detroit.</p>
+        <p>E già il secondo giorno che non so il risultato dei juegos, pensò. Ma devo aver fiducia e devo esser degno del grande Di Maggio che fa sempre tutto alla perfezione anche col dolore del soprosso nel calcagno. Che cos'è un soprosso? si chiese. Una espuela de hueso.14 Noialtri non ne abbiamo. Farà male come lo sperone di un gallo da combattimento in un calcagno? Non credo che riuscirei a sopportarlo e neanche la perdita di un occhio e di tutti e due gli occhi e di continuare a combattere come fanno i galli da combattimento. L'uomo non è granché vicino ai grandi uccelli e alle bestie. Vorrei proprio essere quella bestia laggiù nel buio del mare.</p>
+        <p>“Purché non vengano i pescecani” disse ad alta voce. “Se vengono i pescecani, Dio abbia pietà di lui e di me.”</p>
+        <p>Credi che il grande Di Maggio resisterebbe con un pesce tutto il tempo che io resisterò con questo? pensò. Sono certo di sì, e ancora di più, dato che è giovane e forte. Anche suo padre faceva il pescatore. Ma il soprosso gli farebbe proprio male?</p>
+        <p>“Non lo so” disse ad alta voce. “Non ho mai avuto un soprosso.”</p>
+        <p>Quando il sole tramontò, per farsi coraggio ricordò che una volta in una taverna di Casablanca aveva giocato al braccio di ferro col grande negro di Cienfuegos che era l'uomo più forte del porto. Erano rimasti un giorno e una notte coi gomiti su una linea di gesso tracciata sul tavolo, e gli avambracci ritti e le mani serrate in una morsa. Ciascuno cercava di costringere la mano dell'altro ad abbattersi sul tavolo. Si erano fatte molte scommesse e la gente andava e veniva dalla stanza sotto le lampade a petrolio e il vecchio continuava a guardare il braccio e la mano del negro e la faccia del negro. Cambiavano gli arbitri ogni quattro ore dopo le prime otto perché gli arbitri potessero dormire. Usciva sangue da sotto alle unghie sue e del negro e si guardavano negli occhi e guardavano le mani e gli avambracci e gli scommettitori andavano e venivano per la stanza e si mettevano a sedere sui seggiolini lungo la parete e stavano a guardare. Le pareti erano dipinte di un azzurro vivace ed erano di legno e le lampade vi gettavano contro le loro ombre. L'ombra del negro era enorme e si muoveva sulla parete ogni volta che l’aria muoveva le lampade.</p>
+        <p>Le scommesse cambiarono e oscillarono tutta la notte e il negro venne nutrito col rum e a lui diedero sigarette già accese. Il negro, dopo il rum, faceva sforzi</p>
+        <p>14 Un osso che sporge</p>
+        <p>24</p>
+        <p>colossali e una volta aveva fatto perdere l'equilibrio di quasi otto centimetri al vecchio, che allora non era vecchio, ma Santiago El Campeon. Ma il vecchio aveva rialzato la mano rimettendola in pari. Fu certo, allora, che avrebbe battuto il negro, che era un uomo in gamba e un grande atleta. E all'alba, quando gli scommettitori chiedevano che si tirasse a sorte e l'arbitro scuoteva la testa, aveva sferrato il suo attacco e aveva forzato la mano del negro giù e giù finché si era appoggiata sul legno. La gara era incominciata una domenica mattina ed era finita il lunedì mattina. Molti scommettitori avevano chiesto che si tirasse a sorte perché dovevano andare a lavorare sui moli a caricare sacchi di zucchero o alla Avana Coal Company. Altrimenti tutti avrebbero voluto che giungesse alla fine. Ma lui comunque l'aveva finita e prima che la gente dovesse andare al lavoro.</p>
+        <p>Dopo, tutti l'avevano chiamato per molto tempo Il Campione e in primavera c'era stata la rivincita. Ma non vi erano state molte scommesse e aveva vinto molto facilmente perché quella prima gara aveva intaccato la fiducia del negro di Cienfuegos. Dopo quella volta aveva fatto ancora qualche gara e poi mai più. Decise che se proprio ne aveva voglia poteva battere chiunque e decise che gli faceva male alla mano destra, per la pesca. Aveva provato a fare qualche gara di allenamento con la mano sinistra. Ma la mano sinistra era sempre stata una traditrice e non faceva quello che doveva fare e il vecchio non se ne fidava.</p>
+        <p>Il sole ora l'abbrustolirà per bene, pensò. Non dovrebbe ritornarmi il crampo se durante la notte non viene troppo freddo. Chissà che cosa succederà stanotte.</p>
+        <p>In alto passò un aeroplano diretto a Miami e il vecchio ne osservò l'ombra che metteva paura alle frotte di pesci volanti.</p>
+        <p>“Con tutti questi pesci volanti dovrebbero esserci i delfini” disse, e fece forza contro la lenza per vedere se gli riusciva di ricuperarne un po'. Ma non riuscì, e la lenza rimase tesa e vibrante d'acqua come nel momento che precede lo strappo. La barca procedeva lentamente e il vecchio guardò l'aeroplano finché esso scomparve.</p>
+        <p>Dev'essere molto strano, in aeroplano, pensò. Chissà com'è il mare da quell'altezza? Dovrebbero veder bene il pesce, se non volano troppo alto. Mi piacerebbe volare molto adagio a duecento tese d'altezza e vedere il pesce dall'alto. Nelle barche per le tartarughe stavo sul pennone di parrocchetto e già da quell'altezza vedevo molto. I delfini sembrano più verdi di lassù, e si possono vedere le strisce e le macchie viola, e si può vedere tutto il branco mentre nuota. Chissà perché tutti quei pesci veloci che stanno nell'acqua buia hanno la schiena viola e per lo più strisce o macchie viola? Naturalmente il delfino sembra verde ma non lo è, perché in realtà è color dell'oro. Ma quando viene a mangiare, che è proprio affamato, sui fianchi gli si vedono strisce viola come sui marlin. Che sia la collera, o la velocità maggiore a farle venir fuori?</p>
+        <p>Poco prima che scendesse il buio, mentre oltrepassavano una grande isola di sargassi che si gonfiava e muoveva nel mare chiaro come se l'oceano facesse all'amore sotto una coperta gialla, alla lenza piccola abboccò un delfino. Il vecchio lo vide per la prima volta quando balzò nell'aria, proprio come l'oro nell'ultimo sole e prese a curvarsi e sbattere all'impazzata nell'aria. Continuò a balzare spinto dalla</p>
+        <p>25</p>
+        <p>paura e il vecchio ritornò a poppa e accoccolandosi e tenendo la lenza grande con la mano e il braccio destro, tirò il delfino con la mano sinistra posando il piede sinistro nudo sulla lenza ogni volta che ne conquistava un pezzo. Quando il pesce giunse a poppa, tuffandosi e rivoltandosi disperato, il vecchio si sporse fuori dalla poppa e sollevò a bordo il pesce d'oro brunito con le sue macchie viola. Le mascelle si contraevano convulse in morsi veloci sull'amo mentre il pesce batteva il fondo della barca col lungo corpo piatto, la coda e la testa, finché fu preso a mazzate sulla testa dorata scintillante e rabbrividì e rimase immobile.</p>
+        <p>Il vecchio tolse l'amo dal pesce, rimise un'altra sardina come esca alla lenza e la gettò in mare. Poi si avvicinò lentamente a prua. Si lavò la mano sinistra e se l'asciugò sui calzoni. Poi spostò la lenza pesante dalla mano destra alla sinistra e si lavò la mano destra mentre guardava il sole scendere nell'oceano e l'inclinazione del grande cavo.</p>
+        <p>“Non ha cambiato affatto” disse. Ma guardando il movimento dell'acqua sulla mano, si accorse che era visibilmente più lento.</p>
+        <p>“Legherò i due remi insieme attraverso la poppa e questo la farà rallentare durante la notte” disse. “È ancora in gamba per la nottata e lo sono anch'io.”</p>
+        <p>È meglio sventrare il delfino un po' più tardi perché gli resti il sangue nella carne, pensò. Lo farò più tardi, e intanto legherò i remi per frenare. È meglio che per ora lasci il pesce tranquillo e non lo disturbi troppo al tramonto. Il tramonto del sole è un momento difficile per tutti i pesci.</p>
+        <p>Si asciugò la mano all'aria, poi afferrò la lenza e si mise più a suo agio che poté, e si lasciò tirare in avanti contro il legno, in modo che la barca reggesse lo sforzo quanto e più di lui.</p>
+        <p>Sto imparando come fare, pensò. Almeno in questo. Poi ricordati che non ha mangiato da quando ha preso l'esca ed è enorme e ha bisogno di molto cibo. Io ho mangiato tutto il bonito. Domani mangerò il delfino. Lo chiamò dorado. Forse dovrei mangiarne un po' mentre lo pulisco. Sarà più duro da mangiare del bonito. Ma non c'è niente di facile.</p>
+        <p>“Come stai, pesce?” chiese ad alta voce. “Io sto bene e la mano sinistra va meglio e ho da mangiare per una notte e un giorno. Tira la barca, pesce.”</p>
+        <p>In realtà non si sentiva bene, perché il dolore della corda attraverso la schiena aveva quasi oltrepassato il dolore ed era diventato una monotonia che non gli ispirava fiducia. Ma mi è capitato di peggio, pensò. Nella mano non ho che un taglietto piccolo e nell'altra il crampo se n'è andato. Le gambe sono a posto. E poi adesso sono più forte di lui nella questione del cibo.</p>
+        <p>Ormai era buio come diventa buio in fretta quando tramonta il sole in settembre. Il vecchio si stese sul legno consunto della prua e si riposò più che poté. Spuntarono le prime stelle. Non sapeva che si chiamava Rigel,15 ma la vide e sapeva che presto sarebbero spuntate tutte e ci sarebbero stati tutti i suoi amici lontani.</p>
+        <p>“Anche il pesce è mio amico” disse ad</p>
+        <p>15 Stella della costellazione di Orione. [N.d.T.]</p>
+        <p>26</p>
+        <p>alta voce. “Non ho mai visto e non ho mai sentito parlare di un pesce simile. Ma devo ucciderlo. Sono contento che non dobbiamo cercar di uccidere le stelle.”</p>
+        <p>Pensa se ogni giorno un uomo dovesse cercar di uccidere la luna pensò. La luna scappa. Ma pensa se ogni giorno uno dovesse cercar di uccidere il sole. Siamo nati fortunati, pensò.</p>
+        <p>Poi gli dispiacque che il grosso pesce non avesse nulla da mangiare e il dispiacere non indebolì mai la decisione di ucciderlo. A quanta gente farà da cibo, pensò. Ma sono degni di mangiarlo? No, no di certo. Non c'è nessuno degno di mangiarlo, con questo suo nobile contegno e questa sua grande dignità.</p>
+        <p>Non capisco queste cose, pensò. Ma è una fortuna che non dobbiamo cercar di uccidere il sole o la luna o le stelle. Basta già vivere sul mare e uccidere i nostri veri fratelli.</p>
+        <p>Ora, pensò, devo pensare al freno. Presenta i suoi pericoli e i suoi vantaggi. Può darsi che mi faccia sprecare tanta lenza che finirò per perderlo, se sferra il suo attacco e il freno dei remi è a posto e la barca perde la leggerezza. Questa leggerezza prolunga a tutti e due la sofferenza, ma è la mia salvezza perché lui non ha ancora sfruttato tutta la velocità di cui è capace. Qualunque cosa succede devo sventrare il delfino perché non vada a male e devo mangiarne un po' per restare forte.</p>
+        <p>Ora riposerò un'altra oretta e sentirò che il pesce sia solido e regolare prima di andare a poppa al lavoro e a decidermi. Intanto posso vedere come agisce e se mostra qualche cambiamento. Quello dei remi è un buon trucco; ma è giunto il momento che deve diventare la salvezza. È ancora un gran pesce e ho visto che aveva l'amo nell'angolo della bocca e ha tenuto la bocca chiusa. La sconfitta dell'amo non è nulla. È la sconfitta della fame e il fatto di trovarsi contro qualcosa che non riesce a capire a essere tutto. Ora riposati, vecchio, e lascialo lavorare finché viene il tuo turno.</p>
+        <p>Riposò per quello che gli parvero due ore. La luna non si alzò fino a tardi e il vecchio non aveva modo di stabilire l'ora. Ora riposava davvero, sia pure relativamente. Reggeva ancora la pressione del pesce sulle spalle, ma posò la mano sinistra sulla falchetta della prua e affidò sempre più alla barca la resistenza del pesce.</p>
+        <p>Come sarebbe semplice se potessi dar di volta alla lenza, pensò.</p>
+        <p>Ma il primo strattone la potrebbe spezzare. Devo trattenere col corpo la pressione della lenza ed essere pronto da un momento all'altro a dare lenza con tutt'e due le mani.</p>
+        <p>“Ma tu non hai ancora dormito, vecchio” disse ad alta voce. “È da una mezza giornata e una nottata e ora un'altra giornata che non dormi. Devi inventare qualcosa per poter dormire un po' se lui sta quieto e tranquillo. Se non dormi, rischi di perdere la lucidità mentale.”</p>
+        <p>Sono lucido abbastanza nella mente, pensò. Troppo lucido. Sono lucido come le stelle che sono miei fratelli. Però devo dormire. Loro dormono e la luna e il sole dormono e perfino l'oceano dorme a volte, certi giorni che non c'è corrente e l'acqua è calma.</p>
+        <p>27</p>
+        <p>Ma ricorda di dormire, pensò. Fai in modo di riuscirvi e inventa qualcosa di semplice e sicuro per le lenze. Ora va a preparare il delfino. È troppo pericoloso armare i remi da freno se devi dormire.</p>
+        <p>Potrei resistere senza dormire, disse a se stesso. Ma sarebbe troppo pericoloso.</p>
+        <p>Si avviò verso poppa appoggiandosi alle mani e alle ginocchia, attento a non far sobbalzare il pesce. Può darsi che sia mezzo addormentato anche lui, pensò. Ma non voglio che si riposi. Deve tirare finché muore.</p>
+        <p>Arrivato a poppa si voltò in modo che la mano sinistra potesse reggere il peso della lenza sulle spalle e con la mano destra estrasse il coltello dalla guaina. Ora le stelle erano lucenti e il vecchio vide distintamente il delfino e gli immerse la lama del coltello nella testa e lo tirò fuori da sotto la poppa. Posò un piede sull'animale e lo tagliò in fretta dall'ano fino all'estremità della mascella inferiore. Poi posò il coltello e lo sventrò con la mano destra, raschiandolo per pulirlo e sgombrandogli le branchie. Sentì la pancia pesante e sdrucciolevole tra le mani e la spaccò. Vi erano due pesci volanti, dentro, freschi e sodi e li posò uno accanto all'altro e gettò gli intestini e le branchie in mare. Affondarono lasciando nell'acqua una traccia fosforescente. Il delfino era freddo e di un bianco grigiastro da lebbroso, ora, sotto la luce delle stelle, e il vecchio gli scuoiò un fianco tenendogli il piede destro sulla testa. Poi lo rivoltò e scuoiò l'altro fianco e tagliò i due fianchi dalla testa alla coda.</p>
+        <p>Fece scivolare la carcassa in mare e guardò per vedere se vi fosse qualche mulinello nell'acqua. Ma vi fu soltanto la luce della lenta discesa. Allora si voltò e pose i due pesci volanti tra i due filetti di pesce e dopo aver rimesso il coltello nella guaina ritornò lentamente a prua. Aveva la schiena curva sotto il peso della lenza e reggeva il pesce con la mano destra.</p>
+        <p>Ritornato a prua posò i due filetti di pesce sul legno, coi pesci volanti accanto. Poi si sistemò la lenza sulle spalle in un punto nuovo e tornò a reggerla appoggiando la mano sinistra sul bordo della barca. Si sporse verso l'acqua e lavò il pesce volante osservando la velocità dell'acqua contro la mano. La mano era fosforescente per aver scuoiato il delfino e il vecchio osservò l'acqua che vi scorreva sopra. L'acqua era più lenta e quando il vecchio strofinò il fianco della mano contro il fasciame della barca qualche particella di fosforo si staccò e galleggiò lentamente verso poppa.</p>
+        <p>“Si sta stancando, o forse sta riposando” disse il vecchio. “Ora bisogna che mangi questo delfino e mi riposi e dorma un po'.”</p>
+        <p>Sotto le stelle, e nella notte che diventava sempre più fredda, mangiò metà di un filetto di delfino e un pesce volante, sventrato e senza testa.</p>
+        <p>“Com'è buono il delfino da mangiare cotto” disse. “E com'è cattivo quand'è crudo. Non ritornerò mai più in barca senza sale o arancio.”</p>
+        <p>Se avessi un po' di cervello avrei versato un po' d'acqua sulla prua e asciugando avrebbe fatto il sale, pensò. Ma era quasi il tramonto, quando il delfino ha abboccato. Però non mi sono preparato abbastanza. Ma l'ho masticato bene, e non sono nauseato.</p>
+        <p>Il cielo si stava rannuvolando verso est e l'una dopo l'altra tutte le stelle note scomparvero. Pareva adesso che il vecchio procedesse in un gran canyon di nuvole e il vento era calato.</p>
+        <p>28</p>
+        <p>“Fra tre o quattro giorni sarà cattivo tempo” disse. “Ma domani e dopodomani non ancora. Equipaggiati adesso per dormire, vecchio, finché il pesce è calmo e tranquillo.”</p>
+        <p>Tenne la lenza tesa nella mano destra e poi spinse la coscia contro la mano destra mentre appoggiava tutto il peso contro il legno della prua. Poi fece passare la lenza un po' più in basso sulle spalle e la strinse con la mano sinistra.</p>
+        <p>La mano destra resisterà finché è sorretta, pensò. Se nel sonno si abbandona, la mano sinistra mi sveglierà quando la lenza incomincerà a svolgersi. È dura per la mano destra. Ma lei è abituata a soffrire. Anche se dormo venti minuti o mezz'ora non importa. Si distese in avanti rannicchiandosi contro la lenza con tutto il corpo, appoggiando tutto il peso alla mano destra, e si addormentò.</p>
+        <p>Non sognò i leoni ma una gran scuola di focene che si stendevano per otto o dieci miglia ed era il periodo del loro accoppiamento e balzavano alte nell'aria e si rituffavano in acqua prima che questa si fosse rinchiusa sul loro salto.</p>
+        <p>Poi sognò di essere al villaggio nel suo letto e c'era la tramontana e faceva molto freddo e gli si era addormentato il braccio destro perché la testa vi si era appoggiata usandolo da cuscino.</p>
+        <p>Poi incominciò a sognare la lunga spiaggia gialla e vide il primo leone giungervi sul fare del buio e poi giunsero gli altri leoni e lui stava col mento sul legno della prua dove la nave giaceva ancorata sotto il vento serale che veniva dal mare e aspettava di vedere se sarebbero venuti altri leoni ed era felice.</p>
+        <p>La luna si era levata da un pezzo, ma il vecchio continuò a dormire e il pesce continuò a tirare con regolarità e la barca procedette nella galleria di nuvole.</p>
+        <p>Si svegliò al sobbalzo del pugno destro che lo colpì in faccia mentre la lenza si svolgeva scottante nella mano destra. Non aveva sensibilità nella mano sinistra, ma frenò più che poté con la destra e la lenza filò via in fretta. Finalmente la mano sinistra trovò la lenza e il vecchio si fece forza contro la lenza che ora gli scottò la schiena e la mano sinistra, e la mano sinistra resse tutto il peso, che le produsse un taglio profondo. Il vecchio si voltò a guardare le duglie che si svolgevano dolcemente. Proprio in quel momento, il pesce saltò in una grande esplosione d'acqua e poi ricadde pesante. Poi tornò a saltare più e più volte, e la barca andava veloce nonostante la lenza che continuava a svolgersi e il vecchio continuava a portare la tensione al punto massimo. Era stato tirato giù contro la prua con la faccia nella fetta di delfino e non si poteva muovere.</p>
+        <p>E questo che stavamo aspettando, pensò. Dunque ora godiamocelo.</p>
+        <p>Fagliela pagare la lenza, pensò. Se vuole più lenza, fagliela pagare.</p>
+        <p>Non vedeva i salti del pesce, ma udiva il fendersi dell'oceano e il tonfo del pesce quando cadeva. La velocità della lenza gli faceva tagli profondi nelle mani, ma lui aveva sempre saputo che questo sarebbe successo e si sforzò di esporre ai tagli le parti callose e di non lasciar scivolare la lenza sul palmo della mano e di non tagliarsi le dita.</p>
+        <p>Se ci fosse il ragazzo bagnerebbe le duglie, pensò. Sì. Se ci fosse il ragazzo. Se ci fosse il ragazzo.</p>
+        <p>29</p>
+        <p>La lenza continuò a svolgersi e svolgersi e svolgersi, ma ora stava rallentando e il vecchio costringeva il pesce a conquistarsene ogni centimetro. Ora alzò la testa dal legno, fuori dalla fetta di pesce dove gli era affondata la guancia. Poi si alzò in ginocchio, e poi si alzò lentamente in piedi. Continuava a lasciar scorrere la lenza ma sempre più lentamente. Si sforzò di andare indietro fin dove potesse sentire col piede le duglie che non riusciva a vedere. Vi era ancora molta lenza, e ora il pesce doveva tirare l'attrito di tutta la lenza nuova nell'acqua.</p>
+        <p>Sì, pensò. E ora ha già fatto più di una decina di balzi e si è riempito d'aria le sacche della schiena e non può andare a morire a fondo senza lasciarsi tirare a galla. Presto incomincerà a rotare e allora devo mettermi al lavoro. Chissà cos'è stato a farlo balzare così d'improvviso? Che sia stata la fame, a renderlo così disperato? O che l'abbia spaventato qualcosa nella notte? Forse ha provato una paura improvvisa. Ma era un pesce così calmo, forte, e pareva così pieno di coraggio e di fiducia. È strano.</p>
+        <p>“È meglio che pensi tu ad avere coraggio e fiducia, vecchio” disse. “Lo stai tenendo di nuovo, ma non riesci a ricuperare la lenza. Presto deve mettersi a rotare.”</p>
+        <p>Il vecchio ora lo teneva con la sinistra e con le spalle e si curvò a raccogliere un po' d'acqua nella mano destra per togliersi dalla faccia la carne schiacciata del delfino. Aveva paura che potesse fargli venir nausea e allora avrebbe vomitato e avrebbe perso le forze. Quando si fu pulito la faccia si lavò la mano destra nell'acqua, e poi la lasciò nell'acqua salata mentre guardava spuntare la prima luce che precede l'alba. È diretto quasi verso est, pensò. Questo significa che è stanco e segue la corrente. Presto dovrà mettersi a rotare. Allora incomincia il lavoro vero.</p>
+        <p>Quando decise che la mano destra era rimasta abbastanza nell'acqua, la tirò fuori e la guardò.</p>
+        <p>“Non va così male” disse. “E il dolore non deve avere importanza per un uomo.”</p>
+        <p>Impugnò la lenza con cautela in modo che non si incastrasse nei tagli recenti e spostò il peso in modo da poter immergere nel mare la mano sinistra dall'altro lato della barca.</p>
+        <p>“Non te la sei cavata tanto male, per essere quel che sei” disse alla mano sinistra. “Ma c'è stato un momento che non sono riuscito a trovarti.”</p>
+        <p>Perché non sono nato con due mani buone? pensò. Forse è colpa mia che questa non l'ho addestrata bene. Ma Dio sa che ha avuto abbastanza occasioni per imparare. Durante la notte, però, non è andata tanto male, e il crampo le è venuto una volta soltanto. Se le ritorna il crampo la lascio tagliar via dalla lenza. Poi pensò che si accorgeva di non esser più lucido e pensò che doveva mangiare ancora un po' di delfino. Ma non posso, si disse. È meglio essere stordito che perdere la forza per la nausea. E so che non potrei evitarla se mangio, perché vi ho tenuto dentro la faccia. Lo conserverò in caso di bisogno finchè diventa cattivo. Ma è troppo tardi per cercare di acquistar forza nutrendomi. Che stupido, si disse. Mangia l'altro pesce volante.</p>
+        <p>Era lì, pulito e pronto, e il vecchio lo prese con la mano sinistra e lo mangiò masticando con cautela le ossa e mangiandolo tutto fino alla coda.</p>
+        <p>30</p>
+        <p>E più nutriente di qualunque altro pesce, pensò. Almeno del genere di nutrimento di cui ho bisogno. Ora ho fatto quello che potevo, pensò. Si metta pure a girare e incominci pure la lotta.</p>
+        <p>Quando il pesce incominciò a girare il sole si stava levando per la terza volta da quando il vecchio aveva preso il mare.</p>
+        <p>Non fu dall'inclinazione della lenza che il vecchio si accorse che il pesce stava girando. Era troppo presto, per questo. Ma sentì che la pressione della lenza diminuiva lievemente, e incominciò a tirarla piano con la mano destra. Si irrigidì come prima, ma proprio quando giunse al punto in cui avrebbe potuto spezzarsi, incominciò a cedere. Il vecchio fece passare le spalle e la testa sotto la lenza e incominciò a tirarla con regolarità e cautela. Usò tutt'e due le mani in un movimento oscillante e cercò di tirare più che poteva col corpo e le gambe. Le vecchie gambe e le vecchie spalle rotarono nell'oscillazione.</p>
+        <p>“È un giro molto largo” disse. “Ma sta girando.”</p>
+        <p>Poi la lenza non cedette più e il vecchio la tenne finché ne vide schizzar fuori le gocce sotto il sole. Poi ripartì e il vecchio si inginocchiò e la lasciò ritornare nell'acqua buia.</p>
+        <p>“È nel punto più lontano del giro” disse. “Devo tenerlo più che posso. Lo sforzo gli accorcerà sempre di più il giro. Forse tra un'ora riesco a vederlo. Ora devo domarlo e poi devo ucciderlo.”</p>
+        <p>Ma il pesce continuò a girare lentamente e due ore dopo il vecchio era bagnato di sudore e aveva le ossa molto stanche. Ma ora i giri erano molto più stretti e dall'inclinazione della lenza si capiva che il pesce era salito con regolarità mentre nuotava.</p>
+        <p>Da un'ora il vecchio si vedeva macchie nere davanti agli occhi e il sudore gli copriva di sale gli occhi e gli copriva di sale la ferita sull'occhio e sulla fronte. Non aveva paura delle macchie nere. Erano normali, data la tensione a cui stava sottoponendo la corda. Però due volte si era sentito debole e gli era venuto il capogiro, e questo lo aveva preoccupato.</p>
+        <p>“Non posso tradire me stesso e morire con un pesce come questo” disse. “Ora che sta venendo così bene, Dio mi aiuti a resistere. Dirò cento Pater Noster e cento Ave Marie. Ma non posso dirle adesso.”</p>
+        <p>Considerale come dette, pensò. Le dirò più tardi.</p>
+        <p>Proprio in quel momento sentì sobbalzare in uno scrollone improvviso la lenza stretta fra le due mani. La lenza era tagliente e dura e pesante.</p>
+        <p>Sta colpendo il bozzello con la spada, pensò. C'era da aspettarselo. Doveva farlo. Però questo lo farà saltare e ora preferirei che continuasse a girare. I salti erano necessari perché aspirasse l'aria. Ma ora ogni salto gli può allargare l'apertura della ferita dell'amo e farlo liberare dall'amo.</p>
+        <p>“Non saltare, pesce” disse. “Non saltare.”</p>
+        <p>Il pesce colpì parecchie altre volte il bozzello e ogni volta che scrollò la testa il vecchio gli lasciò un po' di lenza.</p>
+        <p>31</p>
+        <p>Non devo fargli aumentare il dolore, pensò. Il mio non importa. Posso controllarlo. Ma il suo dolore può farlo diventare matto.</p>
+        <p>Dopo un po' il pesce smise di battere il bozzello e ricominciò a girare lentamente. Il vecchio ora ricuperava con regolarità la lenza. Ma si sentiva di nuovo debole. Prese un po' d'acqua di mare con la mano sinistra e se la mise sulla testa. Poi ne prese ancora un po' e si stropicciò la nuca.</p>
+        <p>“Non ho crampi” disse. “Tra poco sarà qui, e ce la farò. Devo farcela. Non se ne parla neanche.”</p>
+        <p>Si inginocchiò contro la prua e per un momento si fece passare di nuovo la lenza sulla schiena. Ora mi riposo mentre allarga il giro e poi mi alzo e lo lavoro mentre si avvicina, decise.</p>
+        <p>Era una gran tentazione quella di riposarsi a prua e lasciare che il pesce facesse un giro da sé senza ricuperare la lenza. Ma quando la tensione rivelò che il pesce aveva svoltato per dirigersi verso la barca, il vecchio si alzò in piedi e incominciò le rotazioni e le oscillazioni che riportarono sulla barca tutta la lenza ricuperata.</p>
+        <p>Sono più stanco di quanto lo sia stato mai, pensò, e ora si alza l'aliseo. Ma questo sarà utile per farlo accostare. Ne ho molto bisogno.</p>
+        <p>Mi riposerò al prossimo giro mentre si allontana, si disse. Mi sento molto meglio. Poi in altre due o tre svolte sarà finita.</p>
+        <p>Il cappello di paglia gli era ricaduto in basso sulla nuca e il vecchio si lasciò sprofondare a prua sotto la spinta della lenza mentre sentiva girare il pesce.</p>
+        <p>Ora lavora, pesce, pensò. Ti prenderò alla svolta.</p>
+        <p>Il mare si era alzato parecchio. Ma c'era un'aria da bel tempo e il vecchio ne aveva bisogno per ritornare a casa.</p>
+        <p>“Basterà che mi diriga a sud e a ovest” disse. “Non ci si perde mai in mare, e l'isola è lunga.”</p>
+        <p>Fu alla terza svolta che vide il pesce per la prima volta. Lo vide dapprima come un'ombra scura che impiegò tanto tempo a passare sotto la barca da non far credere al vecchio che potesse essere tanto lunga.</p>
+        <p>“No” disse “non può essere così grosso.”</p>
+        <p>Ma lo era, così grosso, e alla fine del giro salì alla superficie a trenta metri soltanto di distanza e il vecchio gli vide la coda fuori dell'acqua. Era più alta della lama di una grossa falce e di un color lavanda molto pallido sull'acqua azzurro scuro. Tornò a immergersi e mentre il pesce nuotava poco sotto la superficie, il vecchio vide la mole enorme e le strisce viola che lo cingevano. La pinna dorsale era abbassata e quelle pettorali enormi erano spalancate.</p>
+        <p>In questo giro il vecchio riuscì a vedere l'occhio del pesce e le due remore grigie che gli nuotavano attorno. A volte gli si attaccavano addosso. A volte si scostavano. A volte nuotavano disinvolte nella sua ombra. Erano tutte e due lunghe quasi un metro e quando nuotavano in fretta sfrecciavano il corpo come anguille.</p>
+        <p>Il vecchio ora sudava per qualcosa che non era soltanto il sole. A ogni svolta calma, placida, del pesce ricuperava la lenza, ed era certo che in altre due svolte sarebbe riuscito a lanciare la fiocina.</p>
+        <p>32</p>
+        <p>Ma devo farlo venire vicino, vicino, vicino, pensò. Non devo mirare alla testa. Devo prendere il cuore.</p>
+        <p>“Sii calmo e forte, vecchio” disse. Al giro successivo la schiena del pesce si scoprì ma era un po' troppo lontano dalla barca. Al giro successivo era ancora troppo lontano ma era più scoperto e il vecchio era certo che ricuperando ancora un po' di lenza l'avrebbe avuto vicino.</p>
+        <p>Aveva attrezzato la fiocina da molto tempo e la duglia di sagola16 leggera era in una cesta rotonda e l'estremità era data di volta sulla bitta della prua.</p>
+        <p>Il pesce ora si avvicinava nel suo giro calmo e bello e muoveva soltanto la grande coda. Il vecchio tirò più che poté per avvicinarlo. Per un attimo il pesce si piegò un poco sul fianco. Poi si raddrizzò e incominciò un altro giro.</p>
+        <p>“L'ho fatto muovere” disse il vecchio. “Allora l'ho fatto muovere.”</p>
+        <p>Si sentì di nuovo debole, ora, ma mantenne sul grande pesce tutta la tensione che poté. L'ho fatto muovere, pensò. Forse questa volta riesco a prenderlo. Tirate, mani, pensò. Forza, gambe. Resisti per me, testa. Resisti per me. Non mi hai mai lasciato. Questa volta lo prendo.</p>
+        <p>Ma quando sferrò il suo attacco, iniziandolo</p>
+        <p>un bel tratto prima che il pesce si avvicinasse e tirando con tutta la sua forza, il pesce si piegò un poco e poi si raddrizzò e si allontanò.</p>
+        <p>“Pesce” disse il vecchio. “Pesce, dovrai pur morire in ogni caso. Vuoi uccidere anche me?”</p>
+        <p>Così non si combina niente, pensò. Aveva la bocca troppo asciutta per parlare, ma ora non riusciva ad arrivare a prendere la bottiglia dell'acqua. Devo farlo venir vicino questa volta, pensò. Non ce la farò con molte altre svolte.</p>
+        <p>Sì, ce la farai, disse a se stesso. Ce la farai sempre.</p>
+        <p>Alla prossima svolta l'aveva quasi preso. Ma di nuovo il pesce si rizzò e si allontanò lentamente.</p>
+        <p>Mi stai uccidendo, pesce, pensò il vecchio. Ma hai il diritto di farlo. Non ho mai visto nulla di grande e bello e calmo e nobile come te, fratello. Vieni a uccidermi. Non m'importa, chi sarà a uccidere l'altro.</p>
+        <p>Ora stai perdendo la testa, pensò. Devi tenere la testa lucida. Tieni la testa lucida e fa vedere come sa soffrire un uomo. O un pesce, penso.</p>
+        <p>“Ritorna in te” disse con una voce che riuscì a udire soltanto a stento. “Ritorna in te.”</p>
+        <p>Altre due volte avvenne lo stesso alle svolte del pesce.</p>
+        <p>Non lo so, pensò il vecchio. Ogni volta era stato sul punto di sentirsi svenire. Non lo so. Ma tenterò ancora una volta. Tentò ancora una volta e quando voltò il pesce si sentì svenire. Il pesce si raddrizzò e si allontanò lentamente sventolando in aria la grande coda.</p>
+        <p>Tenterò di nuovo, promise il vecchio, nonostante adesso le mani fossero molli e gli occhi vedessero soltanto tra i lampi.</p>
+        <p>16 Funicella di canapa. [N.d.T.]</p>
+        <p>33</p>
+        <p>Tentò di nuovo e accadde lo stesso. Ecco, pensò, e si sentì svenire prima di cominciare; tenterò di nuovo.</p>
+        <p>Raccolse tutto il dolore e ciò che gli restava della sua forza e dell'orgoglio da tanto tempo sopito e lo pose contro l'agonia del pesce e il pesce si accostò al suo fianco e nuotò con garbo sul fianco sfiorando quasi col rostro il fasciame della barca e si avviò a oltrepassarla, lungo, profondo, largo, argenteo e striato di viola e interminabile nell'acqua.</p>
+        <p>Il vecchio lasciò cadere la lenza e vi posò sopra il piede e alzò la fiocina più alta che poté e la lanciò con tutta la sua forza, e la nuova forza che aveva allora trovato, nel fianco del pesce, dietro alla grande pinna pettorale che si alzava nell'aria giungendo all'altezza del petto dell'uomo. Sentì il ferro conficcarsi e vi si appoggiò sopra e lo immerse più profondamente e poi lo spinse con tutto il peso del suo corpo.</p>
+        <p>Allora il pesce tornò in vita, recando in sé la sua morte, e si librò alto fuori dell'acqua mostrando tutta la grande lunghezza e larghezza e tutta la sua forza e la sua bellezza. Parve restare sospeso nell'aria sul vecchio nella barca. Poi precipitò in acqua in un crollo che coprì di spuma il vecchio e tutta la barca.</p>
+        <p>Il vecchio si sentiva debole e nauseato, e non riusciva a vedere. Ma districò la lenza della fiocina e la lasciò scorrere lentamente tra le mani sanguinanti, e, quando riuscì a vedere, vide che il pesce era sul dorso con la pancia argentea riversa. L'asta della fiocina sporgeva dalla spalla del pesce formando un angolo e il mare si colorava del sangue rosso che gli sgorgava dal cuore. Dapprima fu scuro come una secca nell'acqua azzurra, che era profonda più di un il pesce era argenteo e immobile e fluttuava con le onde.</p>
+        <p>Il vecchio guardò attentamente con quel po’ di vista che gli restava. Poi diede doppia volta alla lenza della fiocina sulla bitta a prua e si prese la testa fra le mani.</p>
+        <p>“ Tieni la testa lucida ” disse appoggiandosi al legno a prua. “ Sono un vecchio stanco. Ma ho ucciso questo pesce che è mio fratello e ora devo fare il lavoro da schiavo. ”</p>
+        <p>Ora devo preparare la gassa17 e il cavo per attraccarlo alla barca, pensò. Anche se fossimo in due e per issarlo a bordo la barca si riempisse d’acqua e dopo la si dovesse sgottare,18 il pesce non ci starebbe dentro. Devo preparare tutto, poi avvicinarlo, attraccarlo bene e armare l’albero e salpare verso terra.</p>
+        <p>Incominciò a tirare il pesce per metterlo affiancato alla barca in modo da poter passare una lenza attraverso le branchie e la bocca e legargli la testa e sentirlo. È la mia fortuna, pensò. Ma non è per questo che voglio sentirlo. Credo di aver già sentito il suo cuore, pensò. Quando ho spinto l'asta della fiocina la seconda volta. Ora accostalo e legalo e passagli la gassa sulla coda e un'altra sulla pancia per fissarlo alla barca.</p>
+        <p>“Al lavoro, vecchio” disse. Bevve un sorso molto piccolo d'acqua. “C'è molto lavoro da schiavo da fare, ora che la lotta è finita.”</p>
+        <p>17 Qualsiasi nodo marinaro. [N.d.T.] 18 Estrarre l'acqua penetrata nella barca; operazione che si fa con la gotazza o sessola. [N.d.T.]</p>
+        <p>34</p>
+        <p>Alzò gli occhi a guardare il cielo e poi li abbassò sul suo pesce. Guardò il sole attentamente. Non è passato da molto il mezzogiorno, pensò. E l'aliseo si sta alzando. Ormai le lenze non hanno più importanza. Il ragazzo e io le impiomberemo19 a casa.</p>
+        <p>“Su, pesce” disse. Ma il pesce non venne. Invece rimase disteso rollando nel mare e il vecchio gli si accostò con la barca.</p>
+        <p>Quando fu alla stessa altezza del pesce, e ne ebbe appoggiato la testa alla prua, non poté credere che fosse così grosso. Ma slegò il cavo della fiocina dalla bitta, lo passò attraverso le branchie del pesce facendoglielo uscire dalla mascella, lo fece girare una volta intorno alla spada, poi infilò il cavo nell'altra branchia, fece un altro giro intorno al rostro e annodò il doppio</p>
+        <p>cavo, e gli diede volta sulla bitta a prua. Poi tagliò il cavo e andò a poppa a fissare la coda. Il pesce era diventato d'argento, da argento e viola che era, e le strisce avevano</p>
+        <p>lo stesso color violetto pallido della coda. Erano più larghe di una mano d'uomo tenuta a dita distese e l'occhio del pesce pareva staccato come gli specchi in un periscopio o un santo in una processione.</p>
+        <p>“Era l'unico modo per ucciderlo” disse il vecchio. Si sentiva meglio dopo aver bevuto e sapeva che non sarebbe svenuto e aveva la testa lucida. Pesa quasi sette quintali così com'è, pensò. Forse di più. E se riuscissi a ricavarne i due terzi a sessanta cents al chilo?</p>
+        <p>“Ho bisogno di una matita per fare il conto” disse. “Non ho la testa abbastanza lucida. Ma credo che il grande Di Maggio sarebbe orgoglioso di me, oggi. Non avevo</p>
+        <p>il soprosso. Ma le mani e la schiena mi fanno male davvero.” Chissà che cos'è un soprosso, pensò. Forse l'abbiamo tutti senza saperlo.</p>
+        <p>Legò il pesce a prua e a poppa e al banco centrale. Era così grosso che fu come legare una barca più grossa affiancandola alla sua. Tagliò un pezzo di lenza e legò la mandibola inferiore del pesce al rostro in modo che non gli si aprisse la bocca e potessero navigare nel migliore dei modi. Poi armò l'albero e la vela rattoppata si rizzò, la barca si mise in moto e, mezzo sdraiato a poppa, il vecchio salpò in direzione sud-ovest.</p>
+        <p>Non aveva bisogno di una bussola per sapere dov’era il sud-ovest. Aveva bisogno soltanto di sentire l'aliseo e la pressione della vela. Bisognerà che metta in acqua una lenza con un amo a cucchiaio per cercar di procurarmi qualcosa da mangiare e da succhiare. Ma non riuscì a trovare il cucchiaio e le sardine erano marce. Così prese con la gaffa un po' di alghe gialle mentre passavano e le scrollò in modo che i gamberetti che vi erano attaccati cadessero sul fasciame della barca. Ve n'erano più di dodici e saltarono scalciando come pulci di mare. Il vecchio staccò loro la testa col pollice e l'indice e li mangiò masticando il guscio e la coda. Erano molto minuscoli, ma sapeva che erano nutrienti e avevano un buon sapore.</p>
+        <p>Il vecchio aveva ancora due sorsi d'acqua nella bottiglia e ne bevve mezzo sorso dopo aver mangiato i gamberetti. La barca procedeva bene tenuto conto del carico e il vecchio la pilotava tenendo la barra del timone sotto il braccio. Vedeva il</p>
+        <p>19 Impiombazione: unire due pezzi di corda intrecciandoli alle estremità per i rispettivi legnuoli. [N.d.T.]</p>
+        <p>35</p>
+        <p>pesce e gli bastava guardarsi le mani e sentirsi la schiena contro la poppa per sapere che tutto era veramente avvenuto e non era un sogno. Una volta, quando verso la fine stava così male, aveva pensato che forse era un sogno. voi quando aveva visto il pesce uscire dall'acqua e restare sospeso, immobile, nel cielo prima di cadere, era stato certo che qualcosa di molto strano stava succedendo, e non poteva crederci. Poi non aveva più veduto distintamente, anche se ora vedeva di nuovo come sempre.</p>
+        <p>Ora sapeva che c'era il pesce e le mani e la schiena non erano un sogno. Le mani guariscono in fretta, pensò. Ho fatto uscire il sangue vivo e l'acqua salata le curerà. L'acqua scura del vero golfo è il più grande medico che esista. La sola cosa che devo fare è di conservare la mente lucida. Le mani hanno fatto il loro dovere e navighiamo bene. Con la bocca chiusa e la coda ritta, navighiamo come fratelli. Poi la mente incominciò a confondersi un poco, e il vecchio pensò, è lui che porta me o sono io che porto lui? Se lo rimorchiassi a poppa non ci sarebbero dubbi. Neanche se il pesce fosse sulla barca, senza più dignità, ci sarebbero dubbi. Ma stavano navigando insieme legati a fianco a fianco e il vecchio pensava, sia pure lui che porta me, se gli fa piacere. Ho vinto io soltanto con l'inganno, e lui non voleva farmi del male.</p>
+        <p>Navigavano bene e il vecchio immerse le mani nell’acqua salata e cerco di conservare la mente lucida. Vi erano alti cumuli di nubi e abbastanza cirri sopra di essi, per cui il vecchio sapeva che il vento sarebbe durato tutta la notte. Il vecchio guardava continuamente il pesce per essere certo che fosse vero. Passò un'ora prima che il primo pescecane lo azzannasse.</p>
+        <p>Il pescecane non fu un caso. Era salito dal fondo del mare quando la nube scura di sangue si era allargata e dispersa nel mare profondo un miglio. Era salito così in fretta e con così assoluta mancanza di cautela che aveva aperto la superficie dell'acqua azzurra e si era esposto al sole. Poi era ricaduto in mare e aveva trovato la scia, e aveva incominciato a nuotare nella direzione tenuta dalla barca e dal pesce.</p>
+        <p>A volte perdeva la scia. Ma la ritrovava sempre, o almeno ne trovava le tracce, e nuotava veloce e resistente nella direzione giusta. Era un grossissimo pescecane Mako fatto per nuotare veloce come il pesce più veloce del mare ed era bello in ogni sua parte tranne nelle mascelle. La schiena era azzurra come quella di un pescespada, e la pancia era argentea e la pelle era liscia ed elegante. Aveva le forme di un pescespada a parte le mascelle enormi, serrate adesso che nuotava in fretta, appena sotto la superficie con l'alta pinna dorsale che fendeva l'acqua senza vibrazioni. Dentro il doppio labbro chiuso dalle mascelle, tutte le otto file di denti erano inclinate verso l'interno. Non avevano la solita forma piramidale che hanno i denti di quasi tutti i pescecani. Avevano la forma di dita umane contorte come artigli. Erano lunghi quasi come le dita del vecchio e avevano bordi taglienti affilati come rasoi su tutt'e due i lati. Questo era un pesce fatto per nutrirsi di tutti i pesci del mare tanto veloci e forti e ben armati da non conoscere altri nemici. Ora all'odore più fresco della scia accelerò l'andatura e l'azzurra pinna dorsale fendé l'acqua.</p>
+        <p>Quando il vecchio lo vide giungere capì che questo era un pescecane che non aveva la minima paura e avrebbe fatto esattamente tutto quello che voleva. Preparò la</p>
+        <p>36</p>
+        <p>fiocina e diede di volta alla sagola mentre osservava il pescecane avvicinarsi. La sagola era corta perché mancava il pezzo tagliato per legare il pesce.</p>
+        <p>Il vecchio ora aveva la mente lucida e pronta ed era ben deciso, ma aveva poca speranza. Era troppo bello per durare, pensò. Diede un'altra occhiata al grande pesce mentre guardava il pescecane che si avvicinava. Potrebbe anche essere stato un sogno, pensò. Non posso impedirgli di colpirmi ma forse riesco a prenderlo. Dentuso, pensò. Maledetta tua madre.</p>
+        <p>Il pescecane si accostò alla poppa e quando lo colpì il vecchio vide la bocca che si apriva e gli strani occhi e il colpo tintinnante dei denti quando si immersero nella carne poco sopra la coda. La testa del pescecane era fuori dell'acqua e la schiena ne sporgeva e il vecchio udì il rumore della pelle e della carne che si lacerava nel grosso pesce, quando scagliò la fiocina nella testa del pescecane in un punto in cui la linea tra gli occhi si intersecava con la linea che gli saliva dal naso. Queste linee non esistevano. Esistevano soltanto la pesante affilata testa azzurra e i grandi occhi e le tintinnanti mascelle sporgenti che inghiottivano ogni cosa. Ma quello era il punto in cui si trovava il cervello e il vecchio lo colpì. Lo colpì con le sanguinanti mani molli, lanciando una buona fiocina con tutta la sua forza. Colpì senza speranza ma con decisione e totale malevolenza.</p>
+        <p>Il pescecane si rivoltò e mostrò al vecchio l'occhio senza vita, e poi si rivoltò di nuovo avvolgendosi in due giri di sagola. Il vecchio sapeva che era condannato, ma non si sarebbe rassegnato. Poi, rivoltato sulla schiena, con la coda sferzante e le mascelle tintinnanti, il pescecane sbatté l'acqua come un motoscafo. L'acqua era bianca sotto i colpi della coda e per tre quarti il corpo era visibile sull'acqua quando la sagola si tese, vibrò e si spezzò. Il pescecane rimase disteso un momento sulla superficie, e il vecchio lo guardò. Poi affondò lentamente.</p>
+        <p>“Si è portato via quasi venti chili” disse il vecchio, ad alta voce. Si è portato via anche la fiocina e tutta la sagola, pensò, e ora il mio pesce perde di nuovo sangue e ne verranno degli altri.</p>
+        <p>Non gli piaceva più guardare il pesce da quando questo era stato mutilato. Quando il pesce era stato colpito fu come se fosse stato colpito lui stesso.</p>
+        <p>Ma ho ucciso il pescecane che ha colpito il mio pesce, pensò. Ed era il dentuso più grosso che abbia mai visto. E Dio sa che ne ho visto dei grossi.</p>
+        <p>Era troppo bello per durare, pensò. Ora vorrei che fosse stato un sogno e che non avessi preso il pesce e fossi solo nel mio letto coi giornali.</p>
+        <p>“Ma l'uomo non è fatto per la sconfitta” disse. “L'uomo può essere ucciso, ma non sconfitto.” Però mi dispiace di aver ucciso questo pesce, pensò. Ora comincia il brutto, e non ho neanche la fiocina. Il dentuso è crudele e capace e forte e intelligente. Ma io sono stato più intelligente di lui. Forse no, pensò. Forse ero soltanto armato meglio.</p>
+        <p>“Non pensare, vecchio” disse ad alta voce. “Naviga in questa direzione e preparati a quel che avverrà.”</p>
+        <p>Ma non posso non pensare, pensò. Perché non mi resta altro. Questo è il baseball. Chissà se sarebbe piaciuto al grande Di Maggio il modo come l’ho colpito</p>
+        <p>37</p>
+        <p>nel cervello? Non è stata una gran cosa, pensò. Chiunque avrebbe potuto farlo. Ma credi che le mie mani fossero un handicap importante come il soprosso? Non saprei dire. Non ho mai avuto niente di male ai calcagni, tranne quella volta che la pastinaca20 mi ha punto quando le sono passato addosso nuotando e mi ha paralizzato dal ginocchio in giù e mi ha fatto un male insopportabile.</p>
+        <p>“Pensa a qualcosa di allegro, vecchio” disse. “Ogni minuto che passa sei più vicino a casa. Vai più in fretta, ora che hai perso venti chili.”</p>
+        <p>Sapeva benissimo ciò che sarebbe successo quando fosse giunto nella parte più interna della corrente. Ma non c'era niente da fare per il momento.</p>
+        <p>“Sì, c'è qualche cosa” disse ad alta voce. “Posso legare il coltello all'impugnatura di un remo.”</p>
+        <p>Così fece, tenendosi la barra del timone sotto il braccio e la draglia21 della vela sotto il piede.</p>
+        <p>“Ecco” disse. “Sono ancora vecchio. Ma non sono disarmato.”</p>
+        <p>Ora il vento era fresco e la barca procedeva bene. Il vecchio guardava soltanto la parte anteriore del pesce e gli ritornò qualche speranza.</p>
+        <p>È stupido non sperare, pensò. E credo che sia peccato. Non pensare ai peccati, pensò. Ci sono abbastanza problemi adesso, senza i peccati. E poi non riesco a capirli.</p>
+        <p>Non riesco a capirli e non sono certo di credervi. Forse è stato un peccato uccidere il pesce. Credo proprio che sia così, anche se l'ho fatto per vivere e per nutrire molta gente. Ma allora tutto è un peccato. Non pensare ai peccati. È troppo tardi per pensarci e c'è chi è pagato apposta per farlo. Lascia che ci pensino loro. Tu sei nato per fare il pescatore e il pesce è nato per fare il pesce. San Pedro era un pescatore, e anche il padre del grande Di Maggio.</p>
+        <p>Ma gli piaceva pensare a tutte le cose che gli capitavano e poiché non c'era niente da leggere e non aveva la radio, pensò molto e continuò a pensare al peccato. Non hai ucciso il pesce soltanto per vivere e per venderlo come cibo, pensò. L'hai ucciso per orgoglio e perché sei un pescatore. Gli volevi bene quand'era vivo e gli hai voluto bene dopo. Se gli si vuol bene non è un peccato ucciderlo. O lo è ancora di più?</p>
+        <p>“Tu pensi troppo, vecchio” disse ad alta voce.</p>
+        <p>Ma ti ha fatto piacere uccidere il dentuso, pensò. Vive sui pesci vivi come te. Non è soltanto un divoratore di cadaveri o un mangiatutto come certi pescecani. È bello e nobile e non conosce paura di nulla.</p>
+        <p>“L'ho ucciso per autodifesa” disse il vecchio ad alta voce. “E l'ho ucciso bene.”</p>
+        <p>E poi, pensò, tutti uccidono tutti gli altri in un modo o nell'altro. La pesca mi uccide proprio come mi dà da vivere. È il ragazzo a darmi da vivere, pensò. Non devo esagerare a ingannare me stesso.</p>
+        <p>Si sporse dal fianco della barca e staccò un pezzo di carne dal pesce nel punto in cui il pescecane l'aveva azzannato. Lo masticò e ne apprezzò la qualità e il sapore. Era sodo e sugoso, come l'altra carne, ma non era rosso. Non era coriaceo e sapeva</p>
+        <p>20 Pesce simile alla razza. [N.d.T.]</p>
+        <p>21 Corda metallica sulla quale, sui velieri o barche a vela, si fa scorrere il fiocco. [N.d.T.]</p>
+        <p>38</p>
+        <p>che se ne sarebbe ricavato il prezzo più alto sul mercato. Ma non vi era modo di tenere la scia fuori dell'acqua, e il vecchio sapeva che stava per giungere un momento molto brutto.</p>
+        <p>Il vento era regolare. Aveva piegato un poco di più verso nord-est e il vecchio sapeva che questo significava che non sarebbe cessato. Il vecchio guardava davanti a sé ma non riuscì a scorgere vele né riuscì a scorgere scafo o fumo di qualche nave. Vi erano soltanto i pesci volanti che salivano dalla prua volando lungo i due fianchi e le chiazze gialle delle alghe. Non riuscì a scorgere neanche un uccello.</p>
+        <p>Era in navigazione da due ore, riposando a poppa e masticando ogni tanto un pezzetto di carne del marlin, cercando di riposare e di restare forte quando vide uno dei due pescecani.</p>
+        <p>“Ay” disse ad alta voce. Non esiste traduzione per questa parola e forse non è che un rumore come potrebbe emettere involontariamente chi si sentisse trafiggere le mani da un chiodo piantato nel legno.</p>
+        <p>“Galanos” disse ad alta voce. Ora aveva visto la seconda pinna salire dietro alla prima e li aveva identificati dalla bruna pinna triangolare e dai movimenti a sventola della coda. Avevano trovato la scia ed erano eccitati e nella stupidità della loro grande fame dall'eccitamento continuavano a perdere e ritrovare la scia. Ma continuavano a stare vicini.</p>
+        <p>Il vecchio diede volta alla draglia e bloccò la barra del timone. Poi afferrò il remo sul quale aveva legato il coltello. Lo sollevò più leggermente che poté perché le mani si ribellarono al dolore. Poi le aprì e le chiuse leggermente sul remo per scioglierle. Le richiuse saldamente in modo che ora accettassero il dolore e non gli venissero meno e osservò i pescecani che si avvicinavano. Ora poteva vederne la larga testa appiattita, appuntita come una pala e le larghe pinne pettorali dalla sommità bianca. Erano pescecani odiosi, puzzolenti, divoratori di cadaveri oltre che assassini e quando avevano fame azzannavano un remo o il timone delle barche. Erano questi pescecani che tagliavano le gambe e le natatoie delle tartarughe quando le tartarughe dormivano alla superficie e azzannavano un uomo in mare, se avevano fame, anche se l'uomo non aveva addosso odore di sangue di pesce né viscosità di pesce.</p>
+        <p>“Ay” disse il vecchio. “Galanos. Venite, galanos.”</p>
+        <p>Vennero, ma non vennero com'era venuto il Mako. Uno si voltò e scomparve sotto la barca e il vecchio sentì la barca tremare per gli strattoni che diede al pesce. L'altro guardò il vecchio dalle fessure degli occhi gialli e poi si avvicinò in fretta col semicerchio delle mandibole spalancate per azzannare il pesce nel punto in cui era stato colpito. La linea era chiaramente visibile in cima alla testa bruna e giù dove il cervello si congiungeva al midollo spinale e il vecchio spinse il coltello legato al remo nel punto di congiuntura, lo ritirò, e tornò a immergerlo negli occhi gialli da gatto dello squalo. Lo squalo lasciò la presa del pesce e affondò, inghiottendo mentre moriva ciò che aveva rubato.</p>
+        <p>La barca era ancora scrollata dalla rovina che l'altro squalo stava compiendo sul pesce, e il vecchio mollò la draglia in modo che la barca bordeggiando facesse</p>
+        <p>39</p>
+        <p>uscire lo squalo da sotto lo scafo. Quando vide lo squalo si sporse dalla barca e lo colpì. Colse soltanto la carne e la pelle era dura e il coltello vi penetrò appena. La botta non gli fece male soltanto alle mani ma anche alla spalla. Ma lo squalo salì in fretta scoprendo la testa e il vecchio lo colse esattamente nel centro della testa appiattita nel momento in cui il naso uscì dall'acqua e si posò sul pesce. Il vecchio ritirò la lama e tornò a colpire lo squalo esattamente nello stesso punto. Lo squalo rimase attaccato al pesce con le mascelle chiuse e il vecchio lo pugnalò nell'occhio sinistro. Lo squalo continuò a tenere la presa.</p>
+        <p>“No?” disse il vecchio, e spinse la lama tra le vertebre e il cervello. Ora il colpo era facile e sentì la cartilagine che si apriva. Il vecchio rovesciò il remo e mise la lama tra le mascelle dello squalo per aprirle. Girò la lama e quando lo squalo affondò disse: “Vai pure, galano. Affonda per un miglio. Va a trovare il tuo amico, se non era tua madre”.</p>
+        <p>Il vecchio pulì la lama del coltello e posò il remo. Poi riprese la draglia e la vela si gonfiò e la barca ritornò nella direzione giusta.</p>
+        <p>“Devono averne preso più di un quarto, e della parte migliore” disse ad alta voce. “Come vorrei che fosse un sogno e che non avesse mai abboccato. Perdonami, pesce. Così diventa tutto sbagliato.” Si interruppe e non volle guardare il pesce, ora. Senza sangue e risciacquato aveva il colore del fondo d'argento di uno specchio e le strisce continuavano a essere visibili.</p>
+        <p>“Non avrei dovuto andare così al largo” disse. “Né per te né per me. Perdonami, pesce.”</p>
+        <p>Su, disse a se stesso. Guarda la legatura del coltello e vedi che non si sia strappata. Poi tieni la mano in ordine perché il più deve ancora avvenire. “Avrei bisogno di una pietra, per il coltello” disse il vecchio dopo avere esaminato la legatura sull'impugnatura del remo. “Avrei dovuto portare una pietra.” Avresti dovuto portare molte cose, pensò. Ma non le hai portate, vecchio. Ora non è il momento di pensare a quello che non hai. Pensa a quello che puoi fare con quello che hai.</p>
+        <p>“Mi dài un po' troppi buoni consigli” disse ad alta voce. “Mi hai seccato.”</p>
+        <p>Tenne la barra del timone sotto il braccio e immerse tutt'e due le mani nell'acqua mentre la barca procedeva.</p>
+        <p>“Dio sa quanto ne ha preso quell'ultimo” disse. “Ma ora la barca è molto più leggera.” Non voleva pensare alla pancia mutilata del pesce. Sapeva che ogni strattone dello squalo significava un pezzo di carne strappata e che ora il pesce lasciava nel mare una scia larga come una strada maestra a tutti gli squali.</p>
+        <p>Era un pesce che bastava a mantenere un uomo per tutto l'inverno, pensò. Non ci pensare. Riposati e cerca di tenerti le mani in forma per difendere quanto ne è rimasto. L'odore di sangue delle mie mani non importa più ormai, con tutta quella scia nell'acqua. E poi non sanguinano molto. Non ci sono tagli profondi. Può darsi che se mi esce sangue non mi venga il crampo.</p>
+        <p>A che cosa posso pensare, adesso? pensò. A niente. Non devo pensare a niente e aspettare che arrivino i prossimi. Vorrei proprio che fosse stato un sogno, pensò. Ma chissà? Avrebbe potuto finir bene.</p>
+        <p>40</p>
+        <p>Il prossimo squalo che arrivò era un galano isolato. Arrivò come un maiale al truogolo, se un maiale avesse una bocca così grande da potervi metter dentro una testa d'uomo. Il vecchio lasciò che azzannasse il pesce e poi gli immerse a fondo nel cervello il coltello legato al remo. Ma lo squalo fece un balzo all'indietro mentre si girava, e la lama del coltello si spaccò.</p>
+        <p>Il vecchio si rimise al timone. Non guardò neanche il grosso squalo che affondava lentamente nell'acqua mostrandosi prima a grandezza naturale, poi piccolo, poi minuscolo. Era una cosa che affascinava sempre il vecchio. Ma ora non lo guardò neanche.</p>
+        <p>“Ho ancora la gaffa” disse. “Ma non servirà a niente. Ho due remi e la barra del timone e la mazza.”</p>
+        <p>Ormai hanno vinto loro, pensò. Sono troppo vecchio per uccidere gli squali a mazzate. Ma cercherò di farlo finché avrò i remi e la mazza e la barra del timone.</p>
+        <p>Immerse le mani nell'acqua per bagnarle. Era pomeriggio avanzato e non si vedeva che il mare e il cielo. Nel cielo vi era più vento di prima e il arecchio sperò di veder presto terra.</p>
+        <p>“Sei stanco, vecchio” disse. “Sei stanco dentro.”</p>
+        <p>Gli squali non lo azzannarono più fino al tramonto.</p>
+        <p>Il vecchio vide le pinne brune seguire la vasta scia che il pesce doveva aver fatto nell'acqua. Non indugiarono neanche sulla scia. Puntavano direttamente sulla barca, nuotando l'uno accanto all'altro.</p>
+        <p>Il vecchio bloccò la barra del timone, diede volta alla draglia e si allungò a poppa a cercare la mazza. Era l'impugnatura di un remo spezzato segata a un'ottantina di centimetri di lunghezza. Poteva venir usata con efficacia con una mano sola a causa della forma dell'impugnatura, e il vecchio l'afferrò con la mano destra, flettendovi sopra la mano mentre guardava gli squali che si avvicinavano. Erano tutti e due galanos.</p>
+        <p>Devo lasciare che il primo si attacchi e poi colpirlo sulla punta del naso o proprio in cima alla testa, pensò.</p>
+        <p>I due squali si accostarono insieme e quando vide quello più vicino aprire le mascelle e affondarle nel fianco argenteo del pesce, il vecchio levò alta la mazza e l'abbatté pesante picchiando sulla testa dello squalo. Sentì la solidità elastica quando vi calò la mazza. Ma sentì anche la rigidità dell'osso e colpì di nuovo, forte sul muso, lo squalo, mentre questo si staccava scivolando dal pesce.</p>
+        <p>L'altro squalo si era allontanato e ora si riaccostò con le mascelle spalancate. Il vecchio vide qualche pezzetto della carne del pesce sporgere bianca dall'angolo delle mascelle dello squalo, quando questo azzannò il pesce e chiuse le mascelle. Il vecchio si voltò verso di lui e colpì soltanto la testa e lo squalo lo guardò e strappò il pezzo di carne. Il vecchio gli abbatté di nuovo addosso la mazza mentre si staccava per inghiottire e colpì soltanto la pesante, solida elasticità.</p>
+        <p>“Su, galano” disse il vecchio. “Ricomincia.”</p>
+        <p>Lo squalo si accostò con violenza e il vecchio lo colpì mentre chiudeva le mascelle. Lo colpì con solidità e da tutta l'altezza cui riuscì ad alzare la mazza. Questa</p>
+        <p>41</p>
+        <p>volta sentì l'osso alla base del cervello e tornò a colpire nello stesso punto mentre lo squalo strappava la carne lentamente e si staccava scivolando dal pesce.</p>
+        <p>Il vecchio attese che ritornasse, ma nessuno dei due squali si mostrò. Poi ne vide uno che nuotava a cerchi sulla superficie. Non vide la pinna dell'altro.</p>
+        <p>Non potevo aspettarmi di ucciderli, pensò. Avrei potuto farlo ai miei tempi. Ma li ho feriti tutti e due gravemente e né l'uno né l'altro deve sentirsi molto bene. Se avessi potuto usare una mazza a due mani, il primo lo avrei ucciso di sicuro. Anche adesso, pensò.</p>
+        <p>Non volle guardare il pesce. Sapeva che una metà ne era stata distrutta. Mentre combatteva con gli squali, il sole era tramontato.</p>
+        <p>“Presto sarà buio” disse. “Allora dovrei vedere le luci di Avana. Se sono troppo a est vedrò le luci di una delle spiagge nuove.”</p>
+        <p>Non posso essere tanto al largo, adesso, pensò. Spero che nessuno sia stato in pensiero per me. Naturalmente c'è soltanto il ragazzo, a stare in pensiero. Ma sono certo che ha avuto fiducia. Qualche vecchio pescatore sarà in pensiero. Anche molti altri, pensò. La mia città è buona.</p>
+        <p>Non poteva più parlare col pesce perché il pesce era stato troppo mutilato. Poi gli venne qualcosa in mente.</p>
+        <p>“Mezzo pesce” disse. “Tu che sei stato un pesce. Perdonami di essere andato troppo al largo. Ho mandato in malora tutti e due. Ma abbiamo ucciso molti squali, tu e io, e ne abbiamo mandato in malora molti altri. Quanti ne hai uccisi tu, vecchio pesce? Non hai certo quella spada sulla testa per niente.”</p>
+        <p>Gli piaceva pensare al pesce e a ciò che avrebbe potuto fare a uno squalo se avesse potuto nuotare. Avrei dovuto staccargli il rostro, per combattere contro di loro, pensò. Ma non c'era una scure e non c'era un coltello.</p>
+        <p>Ma se l'avessi, e avessi potuto legarlo all'impugnatura di un remo, che arma. Allora avremmo potuto combatterli insieme.</p>
+        <p>Che cosa farai adesso, se vengono durante la notte? Che cosa puoi fare?</p>
+        <p>“Combatterli” disse. “Li combatterò fino alla morte.”</p>
+        <p>Ma ora, nel buio, e senza luci in vista e senza chiarori, e soltanto col vento e la spinta regolare della vela, gli parve di essere già morto, forse. Congiunse le mani e si tastò le palme. Non erano morte e gli bastava aprirle e chiuderle per risuscitare il dolore della vita. Appoggiò la schiena a poppa e capì che non era morto. Glielo dissero le spalle.</p>
+        <p>Devo dire tutte quelle preghiere che ho promesso se riuscivo a prendere il pesce, pensò. Ma sono troppo stanco per dirle adesso. È meglio che mi metta il sacco sulle spalle.</p>
+        <p>Si distese a poppa e girò il timone e cercò il chiarore che doveva apparirgli nel cielo. Ne ho una metà, pensò. Forse avrò la fortuna di portare a casa la metà anteriore. Devo avere anch'io un po' di fortuna. No, disse. Hai violato la tua fortuna quando sei andato troppo al largo.</p>
+        <p>“Non fare lo stupido” disse ad alta voce.</p>
+        <p>42</p>
+        <p>“E resta sveglio e bada al timone. Può darsi che tu abbia ancora molta “fortuna.”</p>
+        <p>“Mi piacerebbe comprarne un po', se c'è qualche posto dove la vendono” disse.</p>
+        <p>Con che cosa potrei comprarla? si chiese. Potrei comprarla con una fiocina perduta e un coltello rotto e due mani ferite?</p>
+        <p>“Forse” disse. “Hai cercato di comprarla con ottantaquattro giorni di mare. E quasi te l'avevano venduta.”</p>
+        <p>Bisogna che non pensi sciocchezze, penso. La fortuna è una cosa che viene in molte forme e chi sa riconoscerla? Però ne comprerei un po' in qualsiasi forma e pagherei quel che mi chiedono. Come vorrei vedere il riflesso delle luci, pensò. Vorrei troppe cose. Ma questa è la cosa che vorrei adesso. Cercò di sistemarsi più comodamente al timone e dal dolore capì che non era morto.</p>
+        <p>Vide il riflesso delle luci della città quando avrebbero dovuto essere le dieci di quella sera. Dapprima erano visibili soltanto come la luce nel cielo prima che si levi la luna. Poi si videro chiaramente attraverso l'oceano, increspato adesso da una brezza crescente. Girò il timone in direzione della luce e pensò che presto, ormai, sarebbe giunto al limite della corrente.</p>
+        <p>Ormai è finita, pensò. Probabilmente mi attaccheranno di nuovo. Ma che cosa può fare contro di loro un uomo disarmato, al buio?</p>
+        <p>Ora era rigido e indolenzito, e le ferite e tutte le parti stanche del corpo gli facevano male nel freddo della notte. Spero di non dover tornare a combattere, pensò. Spero tanto di non dover tornare a combattere.</p>
+        <p>Ma verso mezzanotte combatté e questa volta sapeva che il combattimento era inutile. Giunsero in una frotta, e il vecchio riuscì a vedere soltanto le linee fatte nell'acqua dalle pinne e la loro fosforescenza quando si gettarono sul pesce. Prese a mazzate le teste e udì le mascelle serrarsi e la barca scrollata mentre gli squali attaccavano da sotto. Colpì disperatamente qualcosa che si poteva soltanto sentire e udire e sentì qualcosa impadronirsi della mazza e la mazza scomparve.</p>
+        <p>Strappò dal timone la barra e ricominciò a sferrare mazzate, stringendola con tutt'e due le mani e abbattendola più volte. Ma ormai erano già arrivati a prua e si ammassavano l'uno dopo l'altro e tutti insieme, e mentre si voltavano per ritornare subito, i pezzi di carne strappati si vedevano luminosi sott'acqua.</p>
+        <p>Alla fine, uno giunse alla testa e il vecchio capì che era finita. Abbatté la barra sulla testa dello squalo mentre le mascelle erano serrate nella testa del pesce, che non si lasciava staccare. Colpì una e due e più volte. Udì la barra che si spezzava e batté lo squalo con l'impugnatura scheggiata. La sentì penetrare e sapendo che era tagliente, la immerse di nuovo. Lo squalo lasciò la presa e si staccò rivoltandosi. Fu l'ultimo squalo della schiera ad avvicinarsi. Non c'era più niente da mangiare, per loro.</p>
+        <p>Il vecchio ora respirava a stento, e sentiva un sapore strano in bocca. Era dolciastro e ramoso e per un momento ne ebbe paura. Ma durò poco.</p>
+        <p>Sputò nell'oceano e disse: “Mangiate anche questo, galanos. E sognate di aver ucciso un uomo”.</p>
+        <p>43</p>
+        <p>Sapeva di essere sconfitto ormai definitivamente e senza rimedio e ritornò a poppa e vide che l'estremità scheggiata della barra riusciva a entrare nel suo foro abbastanza da permettergli di pilotare la barca. Si mise il sacco sulle spalle e raddrizzò la direzione. Navigava senza fatica, adesso, e il vecchio non aveva pensieri né sensazioni di alcun genere. Ormai era al di là di tutto e pilotava la barca per ritornare al suo porto meglio e con più intelligenza che poteva. Durante la notte gli squali azzannarono la carcassa come si possono raccogliere le briciole sulla tavola. Il vecchio non vi badò e non badò a nulla fuori che al timone. Notò soltanto come navigava leggera e bene la barca, adesso che non aveva quel gran peso accanto.</p>
+        <p>È una buona barca, pensò. È solida e non è danneggiata, a parte la barra del timone. Questa è facile sostituirla.</p>
+        <p>Sentì che era dentro la corrente ora e vide le luci dei villaggi rivieraschi lungo la spiaggia. Ora sapeva dov'era e non era nulla tornare a casa.</p>
+        <p>Certo il vento è un nostro amico, pensò. Poi soggiunse: a volte. È il grande mare coi nostri amici e i nostri nemici. È il letto, pensò. Il letto è il mio amico. Soltanto il letto, pensò. Il letto sarà una grande cosa. È facile quando si è battuti, pensò. Non avevo mai provato com'è facile. E che cos'è stato a batterti, pensò.</p>
+        <p>“Niente” disse ad alta voce. “Sono andato troppo al largo.”</p>
+        <p>Quando entrò nel piccolo porto le luci della Terrazza erano spente e il vecchio sapeva che tutti erano a letto. La brezza aveva continuato ad alzarsi, e ora soffiava forte. Però il porto era tranquillo e il vecchio approdò nel piccolo tratto di pietre sotto gli scogli. Non c'era nessuno ad aiutarlo, così issò la barca meglio che poté. Poi scese e la legò a uno scoglio.</p>
+        <p>Disarmò l'albero e serrò la vela e la legò. Poi si mise in spalla l'albero e si avviò verso la salita. Fu allora che capì la profondità della sua stanchezza. Si fermò un momento e si voltò a guardare e vide alla luce delle lampade sulla strada la grande coda del pesce, che sorgeva ritta dietro alla poppa della barca. Vide la bianca linea nuda della colonna vertebrale e la massa scura della testa col rostro sporgente e tutta la nudità in mezzo.</p>
+        <p>Riprese la salita e giunto in cima cadde e rimase un momento disteso con l'albero sulla spalla. Cercò di alzarsi. Ma era troppo difficile, e rimase lì seduto con l'albero sulla spalla e guardò la strada. Sull'altro lato della strada passò un gatto a fare gli affari suoi e il vecchio lo guardò. Poi guardò soltanto la strada.</p>
+        <p>Alla fine posò l'albero a terra e si alzò.</p>
+        <p>Raccolse l'albero e se lo mise in spalla e si avviò per la strada. Dovette sedere cinque volte prima di arrivare alla sua capanna.</p>
+        <p>Nella capanna appoggiò l'albero alla parete. Nel buio trovò una bottiglia d'acqua e bevve un sorso. Poi si distese sul letto. Si tirò la coperta sulle spalle e poi sulla schiena e sulle gambe e dormì a faccia in giù sui giornali con le braccia tese e le palme delle mani girate.</p>
+        <p>Dormiva ancora quando il ragazzo si affacciò alla porta la mattina. Il vento era così forte che le paranze non potevano uscire, e il ragazzo aveva dormito fino a tardi e poi era venuto alla capanna del vecchio come faceva ogni mattina. Il ragazzo vide che</p>
+        <p>44</p>
+        <p>il vecchio respirava e poi vide le mani del vecchio e si mise a piangere. Uscì senza far rumore per andare a prendere un po' di caffè e lungo tutta la strada continuò a piangere.</p>
+        <p>C'erano molti pescatori intorno alla barca intenti a guardare ciò che le era legato accanto, e uno era nell'acqua, coi calzoni arrotolati, e misurava lo scheletro con un pezzo di lenza.</p>
+        <p>Il ragazzo non scese. Vi era già stato e un pescatore custodiva la barca per lui.</p>
+        <p>“Come sta?” gridò un pescatore.</p>
+        <p>“Dorme” rispose il ragazzo. Non gli importava che lo vedessero piangere. “Non disturbatelo. Nessuno.”</p>
+        <p>“Era lungo cinque metri e mezzo dal muso alla coda” gridò il pescatore che lo stava misurando.</p>
+        <p>“Lo credo” disse il ragazzo.</p>
+        <p>Andò alla Terrazza e chiese una lattina di caffè.</p>
+        <p>“Caldo e con molto latte e zucchero.”</p>
+        <p>“Nient'altro?”</p>
+        <p>“No. Più tardi vedrò che cosa può mangiare.”</p>
+        <p>“Che pesce” disse il proprietario. “Non ho mai visto un pesce simile. Erano due bei pesci anche quelli che hai preso tu ieri.”</p>
+        <p>“Accidenti ai miei pesci” disse il ragazzo. E ricominciò a piangere.</p>
+        <p>“Vuoi bere qualcosa?” chiese il proprietario.</p>
+        <p>“No” disse il ragazzo. “Di' che non disturbino Santiago. Poi ritorno.”</p>
+        <p>“Digli che mi dispiace.”</p>
+        <p>“Grazie” disse il ragazzo.</p>
+        <p>Il ragazzo portò la lattina di caffè caldo nella capanna del vecchio e gli sedette accanto aspettando che si svegliasse. Una volta parve che stesse per svegliarsi. Ma era ripiombato in un sonno pesante e il ragazzo aveva attraversato la strada a farsi prestare un po' di legna per scaldare il caffè.</p>
+        <p>Finalmente il vecchio si svegliò.</p>
+        <p>“Resta sdraiato” disse il ragazzo. “Bevi questo.” Gli versò un po' di caffè in un bicchiere. Il vecchio lo prese e lo bevve.</p>
+        <p>“Mi hanno battuto, Manolin” disse. “Mi hanno proprio battuto.”</p>
+        <p>“Ma non ti ha battuto lui. Il pesce.”</p>
+        <p>“No. Davvero. È stato dopo.”</p>
+        <p>“Pedrico sta pensando alla barca e all'attrezzatura. Che cosa vuoi fare della testa?”</p>
+        <p>“Di' a Pedrico che la tagli e l'adoperi nelle trappole.”</p>
+        <p>“E la spada?”</p>
+        <p>“Tienila tu, se la vuoi.”</p>
+        <p>“Certo che la voglio” disse il ragazzo. “Ora dobbiamo pensare a fare i nostri piani per tutto il resto.”</p>
+        <p>“Sono venuti a cercarmi?”</p>
+        <p>“Certo. Col guardiacoste e gli aeroplani.”</p>
+        <p>45</p>
+        <p>“L'oceano è molto grande, e una barca è piccola e difficile da vedere” disse il vecchio. Si accorse di com'era piacevole avere qualcuno con cui parlare invece di parlare soltanto a se stesso e al mare: “Mi sei mancato” disse. “Che cosa hai preso?”</p>
+        <p>“Uno il primo giorno. Uno il secondo e due il terzo.”</p>
+        <p>“Bravo.”</p>
+        <p>“Ora torniamo a pescare insieme.”</p>
+        <p>“No. Io non ho fortuna. Non ho più fortuna.”</p>
+        <p>“Al diavolo la fortuna” disse il ragazzo.</p>
+        <p>“La fortuna te la porto io.”</p>
+        <p>“Che cosa diranno i tuoi?”</p>
+        <p>“Non me ne importa. Ieri ne ho presi due. Ma ora andremo a pesca insieme perché ho ancora molto da imparare.”</p>
+        <p>“Dobbiamo procurarci una buona lancia e tenerla sempre a bordo. Si può fare la lama con un foglio di balestra di una vecchia Ford. Possiamo farla affilare a Guanabacoa. Dev'essere affilata e non temprata, in modo che non si rompa. Il mio coltello si è rotto.”</p>
+        <p>“Mi procurerò un altro coltello e farò affilare la balestra. Quanti giorni durerà la brisa forte?”</p>
+        <p>“Forse tre. Forse di più.”</p>
+        <p>“Sarà tutto in ordine” disse il ragazzo. “Tu mettiti a posto le mani, vecchio.”</p>
+        <p>“So come curarle. Questa notte ho sputato una cosa strana e ho sentito che mi si è rotto qualcosa nel petto.”</p>
+        <p>“Mettiti a posto anche quello” disse il ragazzo. “Sdraiati, vecchio, che ora ti porto la camicia pulita. E qualcosa da mangiare.”</p>
+        <p>“Porta tutti i giornali dei giorni che non c'ero” disse il vecchio.</p>
+        <p>“Devi metterti a posto in fretta, perché ho ancora molto da imparare, e tu puoi insegnarmi tutto. Sei stato male?”</p>
+        <p>“Parecchio” disse il vecchio.</p>
+        <p>“Ti porterò il cibo e i giornali” disse il ragazzo. “Riposati, vecchio. Ti porterò della roba dalla farmacia, per le mani.”</p>
+        <p>“Non dimenticarti di dire a Pedrico che la testa è sua.”</p>
+        <p>“No. Mi ricorderò.”</p>
+        <p>Quando il ragazzo uscì dalla porta e scese la strada rocciosa di coralli consunti, ricominciò a piangere.</p>
+        <p>Quel pomeriggio arrivò una comitiva di turisti alla Terrazza, e mentre guardavano nell'acqua tra le latte vuote di birra e le barracudas morte, una donna vide una lunga, grande spina dorsale bianca con una coda enorme, che si alzava e dondolava con la corrente mentre il vento di Levante sollevava un gran mare pesante fuori dell'ingresso al porto.</p>
+        <p>“Che cos'è?” chiese al cameriere, indicando la lunga colonna vertebrale del grande pesce, ormai spazzatura che aspettava di essere portata via dalla corrente.</p>
+        <p>“Tiburon” disse il cameriere. “Pescecane.” Voleva spiegare cos'era successo.</p>
+        <p>“Non sapevo che i pescecani avessero la coda così bella, così ben fatta.”</p>
+        <p>46</p>
+        <p>“Neanch'io” rispose il suo compagno.</p>
+        <p>In cima alla strada, nella capanna, il vecchio si era riaddormentato. Dormiva ancora bocconi e il ragazzo gli sedeva accanto e lo guardava. Il vecchio sognava i leoni.</p>
+        <p>47</p>
+        </div>
+    </div>
+
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div><footer class="footer-sito">
+  <p>© 2025 — Tutti i diritti riservati</p>
+  <p>Sito realizzato da Nicola Manzi • 3P</p>
+</footer>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+  const colori = [
+    "#dbe9ff", // azzurro cielo più intenso
+    "#e6f7ee", // verde menta più vivo
+    "#fef9f0", // crema calda (più contrasto del beige)
+    "#f8f2fc", // lilla tenue ma visibile
+    "#f0f5ff", // blu notte chiaro
+    "#faf8f0", // avorio dorato
+    "#e6f0fa", // celeste classico (già presente, ma utile)
+    "#f9f3f8", // rosa polvere delicato
+    "#f0f9f4", // verde salvia morbido
+    "#f0f8ff"  // azzurro latte, molto leggibile
+  ];
+  return colori[Math.floor(Math.random() * colori.length)];
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const blocchi = document.querySelectorAll(".immagine-didascalia");
+  blocchi.forEach(blocco => {
+    blocco.style.backgroundColor = generaColoreMorbido();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Aggiusta il posizionamento delle note vicino al bordo destro
+    const note = document.querySelectorAll(".nota");
+    note.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        const rect = el.getBoundingClientRect();
+        const tooltip = el.querySelector(".tooltip");
+        if (tooltip) {
+          // Se la nota è troppo a destra (>80% dello schermo), allinea a sinistra
+          if (rect.right > window.innerWidth * 0.8) {
+            el.classList.add("right-edge");
+          } else {
+            el.classList.remove("right-edge");
+          }
+        }
+      });
+    });
+  });
+  </script>
+</body>
+</html>

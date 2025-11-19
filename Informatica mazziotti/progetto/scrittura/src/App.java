@@ -1,18 +1,30 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class App {
-    public static void main(String[] args) {
-        String filePath = "progetti/utenti.csv";
+    public static void main(String[] args) throws Exception {
+        if (args.length != 3) {
+            System.err.println("Errore: Nome, Cognome, Età richiesti");
+            System.exit(1);
+        }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                System.out.println(linea);
-            }
+        String nome = args[0];
+        String cognome = args[1];
+        String eta = args[2];
+        
+        String rigaUtente = nome + ";" + cognome + ";" + eta;
+
+        try (
+            FileWriter fw = new FileWriter("Informatica mazziotti\\progetto\\utenti.csv", true);
+            PrintWriter out = new PrintWriter(fw)
+        ) {
+            out.println(rigaUtente); 
+            
+            System.out.println("Utente " + nome + " salvato");
+            
         } catch (IOException e) {
-            System.out.println("Errore durante la lettura del file: " + e.getMessage());
+            System.err.println("Errore durante la scrittura sul file: " + e.getMessage());
         }
     }
 }

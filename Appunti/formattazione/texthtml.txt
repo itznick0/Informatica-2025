@@ -1,7 +1,834 @@
 <div id="allinea">
-<p>A   |    B   |    C    |   S</p>
-<p>0   |    0   |    OFF  |   OFF</p>
-<p>0   |    1   |    ON   |   OFF</p>
-<p>1   |    0   |    ON   |   OFF</p>
-<p>1   |    1   |    OFF  |   ON</p>
+<p>CANTO PRIMO</p>
+<p></p>
+<p></p>
+<p>1</p>
+<p>     Le donne, i cavallier, l’arme, gli amori,</p>
+<p>le cortesie, l’audaci imprese io canto,</p>
+<p>che furo al tempo che passaro i Mori</p>
+<p>d’Africa il mare, e in Francia nocquer tanto,</p>
+<p>seguendo l’ire e i giovenil furori</p>
+<p>d’Agramante lor re, che si diè vanto</p>
+<p>di vendicar la morte di Troiano</p>
+<p>sopra re Carlo imperator romano.</p>
+<p></p>
+<p>2</p>
+<p>     Dirò d’Orlando in un medesmo tratto</p>
+<p>cosa non detta in prosa mai né in rima:</p>
+<p>che per amor venne in furore e matto,</p>
+<p>d’uom che sí saggio era stimato prima;</p>
+<p>se da colei che tal quasi m’ha fatto,</p>
+<p>che ’l poco ingegno ad or ad or mi lima,</p>
+<p>me ne sará però tanto concesso,</p>
+<p>che mi basti a finir quanto ho promesso.</p>
+<p></p>
+<p>3</p>
+<p>     Piacciavi, generosa Erculea prole,</p>
+<p>ornamento e splendor del secol nostro,</p>
+<p>Ippolito, aggradir questo che vuole</p>
+<p>e darvi sol può l’umil servo vostro.</p>
+<p>Quel ch’io vi debbo, posso di parole</p>
+<p>pagare in parte e d’opera d’inchiostro;</p>
+<p>né che poco io vi dia da imputar sono,</p>
+<p>che quanto io posso dar, tutto vi dono.</p>
+<p></p>
+<p></p>
+<p>4</p>
+<p>     Voi sentirete fra i piú degni eroi,</p>
+<p>che nominar con laude m’apparecchio,</p>
+<p>ricordar quel Ruggier, che fu di voi</p>
+<p>e de’ vostri avi illustri il ceppo vecchio.</p>
+<p>L’alto valore e’ chiari gesti suoi</p>
+<p>vi farò udir, se voi mi date orecchio,</p>
+<p>e vostri alti pensier cedino un poco,</p>
+<p>sí che tra lor miei versi abbiano loco.</p>
+<p></p>
+<p>5</p>
+<p>     Orlando, che gran tempo inamorato</p>
+<p>fu de la bella Angelica, e per lei</p>
+<p>in India, in Media, in Tartaria lasciato</p>
+<p>avea infiniti et immortal trofei,</p>
+<p>in Ponente con essa era tornato,</p>
+<p>dove sotto i gran monti Pirenei</p>
+<p>con la gente di Francia e de Lamagna</p>
+<p>re Carlo era attendato alla campagna,</p>
+<p></p>
+<p>6</p>
+<p>     per far al re Marsilio e al re Agramante</p>
+<p>battersi ancor del folle ardir la guancia,</p>
+<p>d’aver condotto, l’un, d’Africa quante</p>
+<p>genti erano atte a portar spada e lancia;</p>
+<p>l’altro, d’aver spinta la Spagna inante</p>
+<p>a destruzion del bel regno di Francia.</p>
+<p>E cosí Orlando arrivò quivi a punto:</p>
+<p>ma tosto si pentí d’esservi giunto;</p>
+<p></p>
+<p>7</p>
+<p>     che vi fu tolta la sua donna poi:</p>
+<p>ecco il giudicio uman come spesso erra!</p>
+<p>Quella che dagli esperii ai liti eoi</p>
+<p>avea difesa con sí lunga guerra,</p>
+<p>or tolta gli è fra tanti amici suoi,</p>
+<p>senza spada adoprar, ne la sua terra.</p>
+<p>Il savio imperator, ch’estinguer volse</p>
+<p>un grave incendio, fu che gli la tolse.</p>
+<p></p>
+<p></p>
+<p>8</p>
+<p>     Nata pochi dí inanzi era una gara</p>
+<p>tra il conte Orlando e il suo cugin Rinaldo,</p>
+<p>che ambi avean per la bellezza rara</p>
+<p>d’amoroso disio l’animo caldo.</p>
+<p>Carlo, che non avea tal lite cara,</p>
+<p>che gli rendea l’aiuto lor men saldo,</p>
+<p>questa donzella, che la causa n’era,</p>
+<p>tolse, e diè in mano al duca di Bavera;</p>
+<p></p>
+<p>9</p>
+<p>     in premio promettendola a quel d’essi</p>
+<p>ch’in quel conflitto, in quella gran giornata,</p>
+<p>degli infideli piú copia uccidessi,</p>
+<p>e di sua man prestassi opra piú grata.</p>
+<p>Contrari ai voti poi furo i successi;</p>
+<p>ch’in fuga andò la gente battezzata,</p>
+<p>e con molti altri fu ’l duca prigione,</p>
+<p>e restò abbandonato il padiglione.</p>
+<p></p>
+<p>10</p>
+<p>     Dove, poi che rimase la donzella</p>
+<p>ch’esser dovea del vincitor mercede,</p>
+<p>inanzi al caso era salita in sella,</p>
+<p>e quando bisognò le spalle diede,</p>
+<p>presaga che quel giorno esser rubella</p>
+<p>dovea Fortuna alla cristiana fede:</p>
+<p>entrò in un bosco, e ne la stretta via</p>
+<p>rincontrò un cavallier ch’a piè venía.</p>
+<p></p>
+<p>11</p>
+<p>     Indosso la corazza, l’elmo in testa,</p>
+<p>la spada al fianco, e in braccio avea lo scudo;</p>
+<p>e piú leggier correa per la foresta,</p>
+<p>ch’al pallio rosso il villan mezzo ignudo.</p>
+<p>Timida pastorella mai sí presta</p>
+<p>non volse piede inanzi a serpe crudo,</p>
+<p>come Angelica tosto il freno torse,</p>
+<p>che del guerrier, ch’a piè venía, s’accorse.</p>
+<p></p>
+<p></p>
+<p>12</p>
+<p>     Era costui quel paladin gagliardo,</p>
+<p>figliuol d’Amon, signor di Montalbano,</p>
+<p>a cui pur dianzi il suo destrier Baiardo</p>
+<p>per strano caso uscito era di mano.</p>
+<p>Come alla donna egli drizzò lo sguardo,</p>
+<p>riconobbe, quantunque di lontano,</p>
+<p>l’angelico sembiante e quel bel volto</p>
+<p>ch’all’amorose reti il tenea involto.</p>
+<p></p>
+<p>13</p>
+<p>     La donna il palafreno a dietro volta,</p>
+<p>e per la selva a tutta briglia il caccia;</p>
+<p>né per la rara piú che per la folta,</p>
+<p>la piú sicura e miglior via procaccia:</p>
+<p>ma pallida, tremando, e di sé tolta,</p>
+<p>lascia cura al destrier che la via faccia.</p>
+<p>Di su di giú, ne l’alta selva fiera</p>
+<p>tanto girò, che venne a una riviera.</p>
+<p></p>
+<p>14</p>
+<p>     Su la riviera Ferraú trovosse</p>
+<p>di sudor pieno e tutto polveroso.</p>
+<p>Da la battaglia dianzi lo rimosse</p>
+<p>un gran disio di bere e di riposo;</p>
+<p>e poi, mal grado suo, quivi fermosse,</p>
+<p>perché, de l’acqua ingordo e frettoloso,</p>
+<p>l’elmo nel fiume si lasciò cadere,</p>
+<p>né l’avea potuto anco riavere.</p>
+<p></p>
+<p>15</p>
+<p>     Quanto potea piú forte, ne veniva</p>
+<p>gridando la donzella ispaventata.</p>
+<p>A quella voce salta in su la riva</p>
+<p>il Saracino, e nel viso la guata;</p>
+<p>e la conosce subito ch’arriva,</p>
+<p>ben che di timor pallida e turbata,</p>
+<p>e sien piú di che non n’udí novella,</p>
+<p>che senza dubbio ell’è Angelica bella.</p>
+<p></p>
+<p></p>
+<p>16</p>
+<p>     E perché era cortese, e n’avea forse</p>
+<p>non men dei dui cugini il petto caldo,</p>
+<p>l’aiuto che potea tutto le porse,</p>
+<p>pur come avesse l’elmo, ardito e baldo:</p>
+<p>trasse la spada, e minacciando corse</p>
+<p>dove poco di lui temea Rinaldo.</p>
+<p>Piú volte s’eran giá non pur veduti,</p>
+<p>ma ’l paragon de l’arme conosciuti.</p>
+<p></p>
+<p>17</p>
+<p>     Cominciâr quivi una crudel battaglia,</p>
+<p>come a piè si trovâr, coi brandi ignudi:</p>
+<p>non che le piastre e la minuta maglia,</p>
+<p>ma ai colpi lor non reggerian gl’incudi.</p>
+<p>Or, mentre l’un con l’altro si travaglia,</p>
+<p>bisogna al palafren che ’l passo studi;</p>
+<p>che quanto può menar de le calcagna,</p>
+<p>colei lo caccia al bosco e alla campagna.</p>
+<p></p>
+<p>18</p>
+<p>     Poi che s’affaticâr gran pezzo invano</p>
+<p>i duo guerrier per por l’un l’altro sotto,</p>
+<p>quando non meno era con l’arme in mano</p>
+<p>questo di quel, né quel di questo dotto;</p>
+<p>fu primiero il signor di Montalbano,</p>
+<p>ch’al cavallier di Spagna fece motto,</p>
+<p>sí come quel c’ha nel cor tanto fuoco,</p>
+<p>che tutto n’arde e non ritrova loco.</p>
+<p></p>
+<p>19</p>
+<p>     Disse al pagan: — Me sol creduto avrai,</p>
+<p>e pur avrai te meco ancora offeso:</p>
+<p>se questo avvien perché i fulgenti rai</p>
+<p>del nuovo sol t’abbino il petto acceso,</p>
+<p>di farmi qui tardar che guadagno hai?</p>
+<p>che quando ancor tu m’abbi morto o preso,</p>
+<p>non però tua la bella donna fia,</p>
+<p>che, mentre noi tardian, se ne va via.</p>
+<p></p>
+<p></p>
+<p>20</p>
+<p>     Quanto fia meglio, amandola tu ancora,</p>
+<p>che tu le venga a traversar la strada,</p>
+<p>a ritenerla e farle far dimora,</p>
+<p>prima che piú lontana se ne vada!</p>
+<p>Come l’avremo in potestate, allora</p>
+<p>di ch’esser de’ si provi con la spada:</p>
+<p>non so altrimenti, dopo un lungo affanno,</p>
+<p>che possa riuscirci altro che danno. —</p>
+<p></p>
+<p>21</p>
+<p>     Al pagan la proposta non dispiacque:</p>
+<p>cosí fu differita la tenzone;</p>
+<p>e tal tregua tra lor subito nacque,</p>
+<p>sí l’odio e l’ira va in oblivïone,</p>
+<p>che ’l pagano al partir da le fresche acque</p>
+<p>non lasciò a piedi il buon figliol d’Amone:</p>
+<p>con preghi invita, et al fin toglie in groppa,</p>
+<p>e per l’orme d’Angelica galoppa.</p>
+<p></p>
+<p>22</p>
+<p>     Oh gran bontá de’ cavallieri antiqui!</p>
+<p>Eran rivali, eran di fé diversi,</p>
+<p>e si sentian degli aspri colpi iniqui</p>
+<p>per tutta la persona anco dolersi;</p>
+<p>e pur per selve oscure e calli obliqui</p>
+<p>insieme van senza sospetto aversi.</p>
+<p>Da quattro sproni il destrier punto arriva</p>
+<p>ove una strada in due si dipartiva.</p>
+<p></p>
+<p>23</p>
+<p>     E come quei che non sapean se l’una</p>
+<p>o l’altra via facesse la donzella</p>
+<p>(però che senza differenzia alcuna</p>
+<p>apparia in amendue l’orma novella),</p>
+<p>si messero ad arbitrio di fortuna,</p>
+<p>Rinaldo a questa, il Saracino a quella.</p>
+<p>Pel bosco Ferraú molto s’avvolse,</p>
+<p>e ritrovossi al fine onde si tolse.</p>
+<p></p>
+<p></p>
+<p>24</p>
+<p>     Pur si ritrova ancor su la riviera,</p>
+<p>lá dove l’elmo gli cascò ne l’onde.</p>
+<p>Poi che la donna ritrovar non spera,</p>
+<p>per aver l’elmo che ’l fiume gli asconde,</p>
+<p>in quella parte onde caduto gli era</p>
+<p>discende ne l’estreme umide sponde:</p>
+<p>ma quello era sí fitto ne la sabbia,</p>
+<p>che molto avrá da far prima che l’abbia.</p>
+<p></p>
+<p>25</p>
+<p>     Con un gran ramo d’albero rimondo,</p>
+<p>di ch’avea fatto una pertica lunga,</p>
+<p>tenta il fiume e ricerca sino al fondo,</p>
+<p>né loco lascia ove non batta e punga.</p>
+<p>Mentre con la maggior stizza del mondo</p>
+<p>tanto l’indugio suo quivi prolunga,</p>
+<p>vede di mezzo il fiume un cavalliero</p>
+<p>insino al petto uscir, d’aspetto fiero.</p>
+<p></p>
+<p>26</p>
+<p>     Era, fuor che la testa, tutto armato,</p>
+<p>et avea un elmo ne la destra mano:</p>
+<p>avea il medesimo elmo che cercato</p>
+<p>da Ferraú fu lungamente invano.</p>
+<p>A Ferraú parlò come adirato,</p>
+<p>e disse: — Ah mancator di fé, marano!</p>
+<p>perché di lasciar l’elmo anche t’aggrevi,</p>
+<p>che render giá gran tempo mi dovevi?</p>
+<p></p>
+<p>27</p>
+<p>     Ricordati, pagan, quando uccidesti</p>
+<p>d’Angelica il fratel (che son quell’io),</p>
+<p>dietro all’altr’arme tu mi promettesti</p>
+<p>gittar fra pochi dí l’elmo nel rio.</p>
+<p>Or se Fortuna (quel che non volesti</p>
+<p>far tu) pone ad effetto il voler mio,</p>
+<p>non ti turbare; e se turbar ti déi,</p>
+<p>turbati che di fé mancato sei.</p>
+<p></p>
+<p></p>
+<p>28</p>
+<p>     Ma se desir pur hai d’un elmo fino,</p>
+<p>trovane un altro, et abbil con piú onore;</p>
+<p>un tal ne porta Orlando paladino,</p>
+<p>un tal Rinaldo, e forse anco migliore:</p>
+<p>l’un fu d’Almonte, e l’altro di Mambrino:</p>
+<p>acquista un di quei duo col tuo valore:</p>
+<p>e questo, c’hai giá di lasciarmi detto,</p>
+<p>farai bene a lasciarmi con effetto. —</p>
+<p></p>
+<p>29</p>
+<p>     All’apparir che fece all’improviso</p>
+<p>de l’acqua l’ombra, ogni pelo arricciossi,</p>
+<p>e scolorossi al Saracino il viso;</p>
+<p>la voce, ch’era per uscir, fermossi.</p>
+<p>Udendo poi da l’Argalia, ch’ucciso</p>
+<p>quivi avea giá (che l’Argalia nomossi),</p>
+<p>la rotta fede cosí improverarse,</p>
+<p>di scorno e d’ira dentro e di fuor arse.</p>
+<p></p>
+<p>30</p>
+<p>     Né tempo avendo a pensar altra scusa,</p>
+<p>e conoscendo ben che ’l ver gli disse,</p>
+<p>restò senza risposta a bocca chiusa;</p>
+<p>ma la vergogna il cor sí gli traffisse,</p>
+<p>che giurò per la vita di Lanfusa</p>
+<p>non voler mai ch’altro elmo lo coprisse,</p>
+<p>se non quel buono che giá in Aspramonte</p>
+<p>trasse del capo Orlando al fiero Almonte.</p>
+<p></p>
+<p>31</p>
+<p>     E servò meglio questo giuramento,</p>
+<p>che non avea quell’altro fatto prima.</p>
+<p>Quindi si parte tanto malcontento,</p>
+<p>che molti giorni poi si rode e lima.</p>
+<p>Sol di cercare è il paladino intento</p>
+<p>di qua di lá, dove trovarlo stima.</p>
+<p>Altra ventura al buon Rinaldo accade,</p>
+<p>che da costui tenea diverse strade.</p>
+<p></p>
+<p></p>
+<p>32</p>
+<p>     Non molto va Rinaldo, che si vede</p>
+<p>saltare inanzi il suo destrier feroce:</p>
+<p>— Ferma, Baiardo mio, deh, ferma il piede!</p>
+<p>che l’esser senza te troppo mi nuoce. —</p>
+<p>Per questo il destrier sordo a lui non riede,</p>
+<p>anzi piú se ne va sempre veloce.</p>
+<p>Segue Rinaldo, e d’ira si distrugge:</p>
+<p>ma seguitiamo Angelica che fugge.</p>
+<p></p>
+<p>33</p>
+<p>     Fugge tra selve spaventose e scure,</p>
+<p>per lochi inabitati, ermi e selvaggi.</p>
+<p>Il mover de le frondi e di verzure,</p>
+<p>che di cerri sentia, d’olmi e di faggi,</p>
+<p>fatto le avea con subite paure</p>
+<p>trovar di qua di lá strani vïaggi;</p>
+<p>ch’ad ogni ombra veduta o in monte o in valle,</p>
+<p>temea Rinaldo aver sempre alle spalle.</p>
+<p></p>
+<p>34</p>
+<p>     Qual pargoletta o damma o capriuola,</p>
+<p>che tra le fronde del natio boschetto</p>
+<p>alla madre veduta abbia la gola</p>
+<p>stringer dal pardo, o aprirle ’l fianco o ’l petto,</p>
+<p>di selva in selva dal crudel s’invola,</p>
+<p>e di paura triema e di sospetto:</p>
+<p>ad ogni sterpo che passando tocca,</p>
+<p>esser si crede all’empia fera in bocca.</p>
+<p></p>
+<p>35</p>
+<p>     Quel dí e la notte e mezzo l’altro giorno</p>
+<p>s’andò aggirando, e non sapeva dove.</p>
+<p>Trovossi al fine in un boschetto adorno,</p>
+<p>che lievemente la fresca aura muove.</p>
+<p>Duo chiari rivi, mormorando intorno,</p>
+<p>sempre l’erbe vi fan tenere e nuove;</p>
+<p>e rendea ad ascoltar dolce concento,</p>
+<p>rotto tra picciol sassi, il correr lento.</p>
+<p></p>
+<p></p>
+<p>36</p>
+<p>     Quivi parendo a lei d’esser sicura</p>
+<p>e lontana a Rinaldo mille miglia,</p>
+<p>da la via stanca e da l’estiva arsura,</p>
+<p>di riposare alquanto si consiglia:</p>
+<p>tra’ fiori smonta, e lascia alla pastura</p>
+<p>andare il palafren senza la briglia;</p>
+<p>e quel va errando intorno alle chiare onde,</p>
+<p>che di fresca erba avean piene le sponde.</p>
+<p></p>
+<p>37</p>
+<p>     Ecco non lungi un bel cespuglio vede</p>
+<p>di prun fioriti e di vermiglie rose,</p>
+<p>che de le liquide onde al specchio siede,</p>
+<p>chiuso dal sol fra l’alte quercie ombrose:</p>
+<p>cosí vòto nel mezzo, che concede</p>
+<p>fresca stanza fra l’ombre piú nascose:</p>
+<p>e la foglia coi rami in modo è mista,</p>
+<p>che ’l sol non v’entra, non che minor vista.</p>
+<p></p>
+<p>38</p>
+<p>     Dentro letto vi fan tenere erbette,</p>
+<p>ch’invitano a posar chi s’appresenta.</p>
+<p>La bella donna in mezzo a quel si mette,</p>
+<p>ivi si corca et ivi s’addormenta.</p>
+<p>Ma non per lungo spazio cosí stette,</p>
+<p>che un calpestio le par che venir senta:</p>
+<p>cheta si leva, e appresso alla riviera</p>
+<p>vede ch’armato un cavallier giunt’era.</p>
+<p></p>
+<p>39</p>
+<p>     Se gli è amico o nemico non comprende:</p>
+<p>tema e speranza il dubbio cuor le scuote:</p>
+<p>e di quella aventura il fine attende,</p>
+<p>né pur d’un sol sospir l’aria percuote.</p>
+<p>Il cavalliero in riva al fiume scende</p>
+<p>sopra l’un braccio a riposar le gote:</p>
+<p>e in un suo gran pensier tanto penètra,</p>
+<p>che par cangiato in insensibil pietra.</p>
+<p></p>
+<p></p>
+<p>40</p>
+<p>     Pensoso piú d’un’ora a capo basso</p>
+<p>stette, Signore, il cavallier dolente;</p>
+<p>poi cominciò con suono afflitto e lasso</p>
+<p>a lamentarsi sí soavemente,</p>
+<p>ch’avrebbe di pietá spezzato un sasso,</p>
+<p>una tigre crudel fatta clemente.</p>
+<p>Sospirando piangea, tal ch’un ruscello</p>
+<p>parean le guancie, e ’l petto un Mongibello.</p>
+<p></p>
+<p>41</p>
+<p>     — Pensier (dicea) che’l cor m’aggiacci et ardi,</p>
+<p>e causi il duol che sempre il rode e lima,</p>
+<p>che debbo far, poi ch’io son giunto tardi,</p>
+<p>e ch’altri a côrre il frutto è andato prima?</p>
+<p>a pena avuto io n’ho parole e sguardi,</p>
+<p>et altri n’ha tutta la spoglia opima.</p>
+<p>Se non ne tocca a me frutto né fiore,</p>
+<p>perché affliger per lei mi vuo’ piú il core?</p>
+<p></p>
+<p>42</p>
+<p>     La verginella è simile alla rosa,</p>
+<p>ch’in bel giardin su la nativa spina</p>
+<p>mentre sola e sicura si riposa,</p>
+<p>né gregge né pastor se le avicina;</p>
+<p>l’aura soave e l’alba rugiadosa,</p>
+<p>l’acqua, la terra al suo favor s’inchina:</p>
+<p>gioveni vaghi e donne inamorate</p>
+<p>amano averne e seni e tempie ornate.</p>
+<p></p>
+<p>43</p>
+<p>     Ma non sí tosto dal materno stelo</p>
+<p>rimossa viene e dal suo ceppo verde,</p>
+<p>che quanto avea dagli uomini e dal cielo</p>
+<p>favor, grazia e bellezza, tutto perde.</p>
+<p>La vergine che ’l fior, di che piú zelo</p>
+<p>che de’ begli occhi e de la vita aver de’,</p>
+<p>lascia altrui côrre, il pregio ch’avea inanti</p>
+<p>perde nel cor di tutti gli altri amanti.</p>
+<p></p>
+<p></p>
+<p>44</p>
+<p>     Sia vile agli altri, e da quel solo amata</p>
+<p>a cui di sé fece sí larga copia.</p>
+<p>Ah, Fortuna crudel, Fortuna ingrata!</p>
+<p>trionfan gli altri, e ne moro io d’inopia.</p>
+<p>Dunque esser può che non mi sia piú grata?</p>
+<p>dunque io posso lasciar mia vita propia?</p>
+<p>Ah piú tosto oggi manchino i dí miei,</p>
+<p>ch’io viva piú, s’amar non debbo lei! —</p>
+<p></p>
+<p>45</p>
+<p>     Se mi domanda alcun chi costui sia,</p>
+<p>che versa sopra il rio lacrime tante,</p>
+<p>io dirò ch’egli è il re di Circassia,</p>
+<p>quel d’amor travagliato Sacripante;</p>
+<p>io dirò ancor, che di sua pena ria</p>
+<p>sia prima e sola causa essere amante,</p>
+<p>e pur un degli amanti di costei:</p>
+<p>e ben riconosciuto fu da lei.</p>
+<p></p>
+<p>46</p>
+<p>     Appresso ove il sol cade, per suo amore</p>
+<p>venuto era dal capo d’Orïente;</p>
+<p>che seppe in India con suo gran dolore,</p>
+<p>come ella Orlando sequitò in Ponente:</p>
+<p>poi seppe in Francia che l’imperatore</p>
+<p>sequestrata l’avea da l’altra gente,</p>
+<p>per darla all’un de’ duo che contra il Moro</p>
+<p>piú quel giorno aiutasse i Gigli d’oro.</p>
+<p></p>
+<p>47</p>
+<p>     Stato era in campo, e inteso avea di quella</p>
+<p>rotta crudel che dianzi ebbe re Carlo:</p>
+<p>cercò vestigio d’Angelica bella,</p>
+<p>né potuto avea ancora ritrovarlo.</p>
+<p>Questa è dunque la trista e ria novella</p>
+<p>che d’amorosa doglia fa penarlo,</p>
+<p>affligger, lamentare e dir parole</p>
+<p>che di pietá potrian fermare il sole.</p>
+<p></p>
+<p></p>
+<p>48</p>
+<p>     Mentre costui cosí s’affligge e duole,</p>
+<p>e fa degli occhi suoi tepida fonte,</p>
+<p>e dice queste e molte altre parole,</p>
+<p>che non mi par bisogno esser racconte;</p>
+<p>l’aventurosa sua fortuna vuole</p>
+<p>ch’alle orecchie d’Angelica sian conte:</p>
+<p>e cosí quel ne viene a un’ora, a un punto,</p>
+<p>ch’in mille anni o mai piú non è raggiunto.</p>
+<p></p>
+<p>49</p>
+<p>     Con molta attenzion la bella donna</p>
+<p>al pianto, alle parole, al modo attende</p>
+<p>di colui ch’in amarla non assonna;</p>
+<p>né questo è il primo dí ch’ella l’intende:</p>
+<p>ma dura e fredda piú d’una colonna,</p>
+<p>ad averne pietá non però scende,</p>
+<p>come colei c’ha tutto il mondo a sdegno,</p>
+<p>e non le par ch’alcun sia di lei degno.</p>
+<p></p>
+<p>50</p>
+<p>     Pur tra quei boschi il ritrovarsi sola</p>
+<p>le fa pensar di tor costui per guida;</p>
+<p>che chi ne l’acqua sta fin alla gola,</p>
+<p>ben è ostinato se mercé non grida.</p>
+<p>Se questa occasïone or se l’invola,</p>
+<p>non troverá mai piú scorta sí fida;</p>
+<p>ch’a lunga prova conosciuto inante</p>
+<p>s’avea quel re fedel sopra ogni amante.</p>
+<p></p>
+<p>51</p>
+<p>     Ma non però disegna de l’affanno</p>
+<p>che lo distrugge alleggierir chi l’ama,</p>
+<p>e ristorar d’ogni passato danno</p>
+<p>con quel piacer ch’ogni amator piú brama:</p>
+<p>ma alcuna finzione, alcuno inganno</p>
+<p>di tenerlo in speranza ordisce e trama;</p>
+<p>tanto ch’a quel bisogno se ne serva,</p>
+<p>poi torni all’uso suo dura e proterva.</p>
+<p></p>
+<p></p>
+<p>52</p>
+<p>     E fuor di quel cespuglio oscuro e cieco</p>
+<p>fa di sé bella et improvisa mostra,</p>
+<p>come di selva o fuor d’ombroso speco</p>
+<p>Dïana in scena o Citerea si mostra;</p>
+<p>e dice all’apparir: — Pace sia teco;</p>
+<p>teco difenda Dio la fama nostra,</p>
+<p>e non comporti, contra ogni ragione,</p>
+<p>ch’abbi di me sí falsa opinïone. —</p>
+<p></p>
+<p>53</p>
+<p>     Non mai con tanto gaudio o stupor tanto</p>
+<p>levò gli occhi al figliuolo alcuna madre,</p>
+<p>ch’avea per morto sospirato e pianto,</p>
+<p>poi che senza esso udí tornar le squadre;</p>
+<p>con quanto gaudio il Saracin, con quanto</p>
+<p>stupor l’alta presenza e le leggiadre</p>
+<p>maniere e il vero angelico sembiante,</p>
+<p>improviso apparir si vide inante.</p>
+<p></p>
+<p>54</p>
+<p>     Pieno di dolce e d’amoroso affetto,</p>
+<p>alla sua donna, alla sua diva corse,</p>
+<p>che con le braccia al collo il tenne stretto,</p>
+<p>quel ch’al Catai non avria fatto forse.</p>
+<p>Al patrio regno, al suo natio ricetto,</p>
+<p>seco avendo costui, l’animo torse:</p>
+<p>subito in lei s’avviva la speranza</p>
+<p>di tosto riveder sua ricca stanza.</p>
+<p></p>
+<p>55</p>
+<p>     Ella gli rende conto pienamente</p>
+<p>dal giorno che mandato fu da lei</p>
+<p>a domandar soccorso in Orïente</p>
+<p>al re de’ Sericani Nabatei;</p>
+<p>e come Orlando la guardò sovente</p>
+<p>da morte, da disnor, da casi rei:</p>
+<p>e che ’l fior virginal cosí avea salvo,</p>
+<p>come se lo portò del materno alvo.</p>
+<p></p>
+<p></p>
+<p>56</p>
+<p>     Forse era ver, ma non però credibile</p>
+<p>a chi del senso suo fosse signore;</p>
+<p>ma parve facilmente a lui possibile,</p>
+<p>ch’era perduto in via piú grave errore.</p>
+<p>Quel che l’uom vede, Amor gli fa invisibile,</p>
+<p>e l’invisibil fa vedere Amore.</p>
+<p>Questo creduto fu; che ’l miser suole</p>
+<p>dar facile credenza a quel che vuole.</p>
+<p></p>
+<p>57</p>
+<p>     — Se mal si seppe il cavallier d’Anglante</p>
+<p>pigliar per sua sciochezza il tempo buono,</p>
+<p>il danno se ne avrá; che da qui inante</p>
+<p>nol chiamerá Fortuna a sí gran dono</p>
+<p>(tra sé tacito parla Sacripante):</p>
+<p>ma io per imitarlo giá non sono,</p>
+<p>che lasci tanto ben che m’è concesso,</p>
+<p>e ch’a doler poi m’abbia di me stesso.</p>
+<p></p>
+<p>58</p>
+<p>     Corrò la fresca e matutina rosa,</p>
+<p>che, tardando, stagion perder potria.</p>
+<p>So ben ch’a donna non si può far cosa</p>
+<p>che piú soave e piú piacevol sia,</p>
+<p>ancor che se ne mostri disdegnosa,</p>
+<p>e talor mesta e flebil se ne stia:</p>
+<p>non starò per repulsa o finto sdegno,</p>
+<p>ch’io non adombri e incarni il mio disegno. —</p>
+<p></p>
+<p>59</p>
+<p>     Cosí dice egli; e mentre s’apparecchia</p>
+<p>al dolce assalto, un gran rumor che suona</p>
+<p>dal vicin bosco gl’intruona l’orecchia,</p>
+<p>sí che mal grado l’impresa abbandona:</p>
+<p>e si pon l’elmo (ch’avea usanza vecchia</p>
+<p>di portar sempre armata la persona),</p>
+<p>viene al destriero e gli ripon la briglia,</p>
+<p>rimonta in sella e la sua lancia piglia.</p>
+<p></p>
+<p></p>
+<p>60</p>
+<p>     Ecco pel bosco un cavallier venire,</p>
+<p>il cui sembiante è d’uom gagliardo e fiero:</p>
+<p>candido come nieve è il suo vestire,</p>
+<p>un bianco pennoncello ha per cimiero.</p>
+<p>Re Sacripante, che non può patire</p>
+<p>che quel con l’importuno suo sentiero</p>
+<p>gli abbia interrotto il gran piacer ch’avea,</p>
+<p>con vista il guarda disdegnosa e rea.</p>
+<p></p>
+<p>61</p>
+<p>     Come è piú presso, lo sfida a battaglia;</p>
+<p>che crede ben fargli votar l’arcione.</p>
+<p>Quel che di lui non stimo giá che vaglia</p>
+<p>un grano meno, e ne fa paragone,</p>
+<p>l’orgogliose minaccie a mezzo taglia,</p>
+<p>sprona a un tempo, e la lancia in resta pone.</p>
+<p>Sacripante ritorna con tempesta,</p>
+<p>e corronsi a ferir testa per testa.</p>
+<p></p>
+<p>61</p>
+<p>     Non si vanno i leoni o i tori in salto</p>
+<p>a dar di petto, ad accozzar sí crudi,</p>
+<p>sí come i duo guerrieri al fiero assalto,</p>
+<p>che parimente si passâr gli scudi.</p>
+<p>Fe’ lo scontro tremar dal basso all’alto</p>
+<p>l’erbose valli insino ai poggi ignudi;</p>
+<p>e ben giovò che fur buoni e perfetti</p>
+<p>gli osberghi sí, che lor salvaro i petti.</p>
+<p></p>
+<p>63</p>
+<p>     Giá non fêro i cavalli un correr torto,</p>
+<p>anzi cozzaro a guisa di montoni:</p>
+<p>quel del guerrier pagan morí di corto,</p>
+<p>ch’era vivendo in numero de’ buoni;</p>
+<p>quell’altro cadde ancor, ma fu risorto</p>
+<p>tosto ch’al fianco si sentí gli sproni.</p>
+<p>Quel del re saracin restò disteso</p>
+<p>adosso al suo signor con tutto il peso.</p>
+<p></p>
+<p></p>
+<p>64</p>
+<p>     L’incognito campion che restò ritto,</p>
+<p>e vide l’altro col cavallo in terra,</p>
+<p>stimando avere assai di quel conflitto,</p>
+<p>non si curò di rinovar la guerra;</p>
+<p>ma dove per la selva è il camin dritto,</p>
+<p>correndo a tutta briglia si disserra;</p>
+<p>e prima che di briga esca il pagano,</p>
+<p>un miglio o poco meno è giá lontano.</p>
+<p></p>
+<p>65</p>
+<p>     Qual istordito e stupido aratore,</p>
+<p>poi ch’è passato il fulmine, si leva</p>
+<p>di lá dove l’altissimo fragore</p>
+<p>appresso ai morti buoi steso l’aveva;</p>
+<p>che mira senza fronde e senza onore</p>
+<p>il pin che di lontan veder soleva:</p>
+<p>tal si levò il pagano a piè rimaso,</p>
+<p>Angelica presente al duro caso.</p>
+<p></p>
+<p>66</p>
+<p>     Sospira e geme, non perché l’annoi</p>
+<p>che piede o braccia s’abbi rotto o mosso,</p>
+<p>ma per vergogna sola, onde a’ dí suoi</p>
+<p>né pria né dopo il viso ebbe sí rosso:</p>
+<p>e piú, ch’oltre al cader, sua donna poi</p>
+<p>fu che gli tolse il gran peso d’adosso.</p>
+<p>Muto restava, mi cred’io, se quella</p>
+<p>non gli rendea la voce e la favella.</p>
+<p></p>
+<p>67</p>
+<p>     — Deh! (diss’ella) signor, non vi rincresca!</p>
+<p>che del cader non è la colpa vostra,</p>
+<p>ma del cavallo, a cui riposo et esca</p>
+<p>meglio si convenia che nuova giostra.</p>
+<p>Né perciò quel guerrier sua gloria accresca;</p>
+<p>che d’esser stato il perditor dimostra:</p>
+<p>cosí, per quel ch’io me ne sappia, stimo,</p>
+<p>quando a lasciare il campo è stato primo. —</p>
+<p></p>
+<p></p>
+<p>68</p>
+<p>     Mentre costei conforta il Saracino,</p>
+<p>ecco col corno e con la tasca al fianco,</p>
+<p>galoppando venir sopra un ronzino</p>
+<p>un messaggier che parea afflitto e stanco;</p>
+<p>che come a Sacripante fu vicino,</p>
+<p>gli domandò se con un scudo bianco</p>
+<p>e con un bianco pennoncello in testa</p>
+<p>vide un guerrier passar per la foresta.</p>
+<p></p>
+<p>69</p>
+<p>     Rispose Sacripante: — Come vedi,</p>
+<p>m’ha qui abbattuto, e se ne parte or ora;</p>
+<p>e perch’io sappia chi m’ha messo a piedi,</p>
+<p>fa che per nome io lo conosca ancora. —</p>
+<p>Et egli a lui: — Di quel che tu mi chiedi</p>
+<p>io ti satisfarò senza dimora:</p>
+<p>tu déi saper che ti levò di sella</p>
+<p>l’alto valor d’una gentil donzella.</p>
+<p></p>
+<p>70</p>
+<p>     Ella è gagliarda et è piú bella molto;</p>
+<p>né il suo famoso nome anco t’ascondo:</p>
+<p>fu Bradamante quella che t’ha tolto</p>
+<p>quanto onor mai tu guadagnasti al mondo. —</p>
+<p>Poi ch’ebbe cosí detto, a freno sciolto</p>
+<p>il Saracin lasciò poco giocondo,</p>
+<p>che non sa che si dica o che si faccia,</p>
+<p>tutto avvampato di vergogna in faccia.</p>
+<p></p>
+<p>71</p>
+<p>     Poi che gran pezzo al caso intervenuto</p>
+<p>ebbe pensato invano, e finalmente</p>
+<p>si trovò da una femina abbattuto,</p>
+<p>che pensandovi piú, piú dolor sente;</p>
+<p>montò l’altro destrier, tacito e muto:</p>
+<p>e senza far parola, chetamente</p>
+<p>tolse Angelica in groppa, e differilla</p>
+<p>a piú lieto uso, a stanza piú tranquilla.</p>
+<p></p>
+<p></p>
+<p>72</p>
+<p>     Non furo iti duo miglia, che sonare</p>
+<p>odon la selva che li cinge intorno,</p>
+<p>con tal rumore e strepito, che pare</p>
+<p>che triemi la foresta d’ogn’intorno;</p>
+<p>e poco dopo un gran destrier n’appare,</p>
+<p>d’oro guernito e riccamente adorno,</p>
+<p>che salta macchie e rivi, et a fracasso</p>
+<p>arbori mena e ciò che vieta il passo.</p>
+<p></p>
+<p>73</p>
+<p>     — Se l’intricati rami e l’aer fosco</p>
+<p>(disse la donna) agli occhi non contende,</p>
+<p>Baiardo è quel destrier ch’in mezzo il bosco</p>
+<p>con tal rumor la chiusa via si fende.</p>
+<p>Questo è certo Baiardo, io ’l riconosco:</p>
+<p>deh, come ben nostro bisogno intende!</p>
+<p>ch’un sol ronzin per dui saria mal atto,</p>
+<p>e ne viene egli a satisfarci ratto. —</p>
+<p></p>
+<p>74</p>
+<p>     Smonta il Circasso et al destrier s’accosta,</p>
+<p>e si pensava dar di mano al freno.</p>
+<p>Colle groppe il destrier gli fa risposta,</p>
+<p>che fu presto a girar come un baleno;</p>
+<p>ma non arriva dove i calci apposta:</p>
+<p>misero il cavallier se giungea a pieno!</p>
+<p>che nei calci tal possa avea il cavallo,</p>
+<p>ch’avria spezzato un monte di metallo.</p>
+<p></p>
+<p>75</p>
+<p>     Indi va mansueto alla donzella,</p>
+<p>con umile sembiante e gesto umano,</p>
+<p>come intorno al padrone il can saltella,</p>
+<p>che sia duo giorni o tre stato lontano.</p>
+<p>Baiardo ancora avea memoria d’ella,</p>
+<p>ch’in Albracca il servia giá di sua mano</p>
+<p>nel tempo che da lei tanto era amato</p>
+<p>Rinaldo, allor crudele, allor ingrato.</p>
+<p></p>
+<p></p>
+<p>76</p>
+<p>     Con la sinistra man prende la briglia,</p>
+<p>con l’altra tocca e palpa il collo e ’l petto:</p>
+<p>quel destrier, ch’avea ingegno a maraviglia,</p>
+<p>a lei, come un agnel, si fa suggetto.</p>
+<p>Intanto Sacripante il tempo piglia:</p>
+<p>monta Baiardo, e l’urta e lo tien stretto.</p>
+<p>Del ronzin disgravato la donzella</p>
+<p>lascia la groppa, e si ripone in sella.</p>
+<p></p>
+<p>77</p>
+<p>     Poi rivolgendo a caso gli occhi, mira</p>
+<p>venir sonando d’arme un gran pedone.</p>
+<p>Tutta s’avvampa di dispetto e d’ira;</p>
+<p>che conosce il figliuol del duca Amone.</p>
+<p>Piú che sua vita l’ama egli e desira;</p>
+<p>l’odia e fugge ella piú che gru falcone.</p>
+<p>Giá fu ch’esso odiò lei piú che la morte;</p>
+<p>ella amò lui: or han cangiato sorte.</p>
+<p></p>
+<p>78</p>
+<p>     E questo hanno causato due fontane</p>
+<p>che di diverso effetto hanno liquore,</p>
+<p>ambe in Ardenna, e non sono lontane:</p>
+<p>d’amoroso disio l’una empie il core;</p>
+<p>chi bee de l’altra, senza amor rimane,</p>
+<p>e volge tutto in ghiaccio il primo ardore.</p>
+<p>Rinaldo gustò d’una, e amor lo strugge;</p>
+<p>Angelica de l’altra, e l’odia e fugge.</p>
+<p></p>
+<p>79</p>
+<p>     Quel liquor di secreto venen misto,</p>
+<p>che muta in odio l’amorosa cura,</p>
+<p>fa che la donna che Rinaldo ha visto,</p>
+<p>nei sereni occhi subito s’oscura;</p>
+<p>e con voce tremante e viso tristo</p>
+<p>supplica Sacripante e lo scongiura</p>
+<p>che quel guerrier piú appresso non attenda,</p>
+<p>ma ch’insieme con lei la fuga prenda.</p>
+<p></p>
+<p></p>
+<p>80</p>
+<p>     — Son dunque (disse il Saracino), sono</p>
+<p>dunque in sí poco credito con vui,</p>
+<p>che mi stimiate inutile e non buono</p>
+<p>da potervi difender da costui?</p>
+<p>Le battaglie d’Albracca giá vi sono</p>
+<p>di mente uscite, e la notte ch’io fui</p>
+<p>per la salute vostra, solo e nudo,</p>
+<p>contra Agricane e tutto il campo, scudo? —</p>
+<p></p>
+<p>81</p>
+<p>     Non risponde ella, e non sa che si faccia,</p>
+<p>perché Rinaldo ormai l’è troppo appresso,</p>
+<p>che da lontano al Saracin minaccia,</p>
+<p>come vide il cavallo e conobbe esso,</p>
+<p>e riconobbe l’angelica faccia</p>
+<p>che l’amoroso incendio in cor gli ha messo.</p>
+<p>Quel che seguí tra questi duo superbi</p>
+<p>vo’ che per l’altro canto si riserbi.</p>
 </div>

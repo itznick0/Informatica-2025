@@ -1,0 +1,14 @@
+[Andrea]
+ Hey everyone! Today we’re talking about the very first video games ever made. Back in the 50s and 60s, most games were experiments on huge university computers and only scientists or students could play them.
+[Nicola]
+ One of the first well-known games was Spacewar! in 1962, where two spaceships battled on a computer screen. These early games were creative but very different from the video games we know today.
+[Sergiu]
+ Later, text-based games appeared, like Colossal Cave Adventure, where players typed commands to explore virtual worlds. Educational games also emerged, such as The Oregon Trail, which taught both history and managing resources.
+[Andrei]
+ By the 1970s, arcade games became popular. Pong in 1972 attracted many players, and people went to bars or arcades to play together. The first home consoles like the Magnavox Odyssey brought games into living rooms, and portable devices like Nintendo’s Game & Watch let players enjoy games anywhere.
+[Andrea]
+ From early experiments to text adventures, arcades, and home consoles, video gaming evolved quickly, starting with very simple ideas on screens.
+[Nicola]
+ And that’s the story of the first video games! I guess that’s all for today, see you next time!
+[Everyone]
+ Byeee!

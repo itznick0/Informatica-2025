@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parco Massari – Ferrara | Verde, Storia e Cultura</title>
+  <meta name="description" content="Scopri il Parco Massari a Ferrara: un’ex villa nobiliare trasformata in parco pubblico, cuore verde della città rinascimentale.">
+  <link rel="icon" href="../logo.png" type="image/png">
+  <!-- Google Fonts: sobrio e colto -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #3a5f40;     /* verde bosco (simbolo del parco) */
+      --secondary: #e6d3a7;   /* tono carta antica */
+      --accent: #8c6d46;      /* terra/mattone */
+      --light: #fdfbf6;
+      --dark: #222;
+      --title: #8ab491;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    #title {
+      color: var(--title);
+      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('1/1.png') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    .nav-links a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s, left 0.3s;
+      transform: translateX(-50%);
+    }
+    .nav-links a:hover::after {
+      width: 80%;
+    }
+
+    section {
+      padding: 4rem 0;
+      scroll-margin-top: 70px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 0.6rem auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .content-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.4s;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    .img-box {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .highlight {
+      background-color: #f8f4ed;
+      padding: 2rem;
+      border-left: 4px solid var(--accent);
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="title">Parco Massari</h1>
+    <p>Il polmone verde di Ferrara: tra storia, natura e comunità</p>
+  </header>
+
+  <nav>
+    <div class="nav-links">
+      <a href="#storia">Storia</a>
+      <a href="#funzione">Funzione</a>
+      <a href="#attività">Attività</a>
+      <a href="#gestione">Gestione</a>
+    </div>
+  </nav>
+
+  <section id="storia">
+    <div class="container">
+      <h2 class="section-title">Da Villa Nobiliare a Parco Pubblico</h2>
+      
+      <div class="content-grid">
+        <div>
+          <p>Il Parco Massari occupa l’area dell’antica <strong>Villa Massari</strong>, costruita nel XVIII secolo dalla nobile famiglia Massari, originaria di Ferrara sin dal Medioevo.</p>
+          <p>Il nome “Massari” deriva probabilmente dal termine latino <em>massarius</em> (amministratore di beni), indicando una funzione agraria originaria della famiglia.</p>
+          <p>Dopo secoli di proprietà privata, la villa e i suoi giardini furono acquisiti dal <strong>Comune di Ferrara</strong> nel 1972 e trasformati gradualmente in parco pubblico, aperto alla cittadinanza.</p>
+        </div>
+        <div class="img-box" style="background-image: url('1/2.png');"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funzione" style="background-color: #f9f7f3;">
+    <div class="container">
+      <h2 class="section-title">Funzione: ieri e oggi</h2>
+      
+      <div class="highlight">
+        <strong>Allora</strong>: residenza estiva, luogo di rappresentanza, centro agricolo con frutteti, vigneti e serre.<br>
+        <strong>Oggi</strong>: spazio verde pubblico, luogo di incontro, laboratorio di sostenibilità e cultura.
+      </div>
+
+      <div class="content-grid">
+        <div class="card">
+          <h3>Passato (XVIII–XIX sec.)</h3>
+          <ul style="padding-left: 1.2rem; margin-top: 0.8rem;">
+            <li>Residenza di villeggiatura</li>
+            <li>Coltivazioni pregiate (agrumi, piante esotiche)</li>
+            <li>Giardino all’italiana con statue e giochi d’acqua</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Oggi (dal 1972)</h3>
+          <ul style="padding-left: 1.2rem; margin-top: 0.8rem;">
+            <li>Parco urbano aperto gratuitamente</li>
+            <li>Orto botanico didattico</li>
+            <li>Spazio per eventi culturali e sociali</li>
+            <li>Area di tutela per biodiversità locale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="attività">
+    <div class="container">
+      <h2 class="section-title">Attività ed Eventi</h2>
+      
+      <p style="text-align:center; max-width:800px; margin:0 auto 2rem;">
+        Il Parco Massari è vivo tutto l’anno grazie a iniziative che uniscono natura, storia e partecipazione civica.
+      </p>
+
+      <div class="content-grid">
+        <div class="card">
+          <div class="img-box" style="background-image: url('1/3.png'); height: 180px;"></div>
+          <h3>Eventi Culturali</h3>
+          <p>L’estate vede concerti all’aperto, letture poetiche (“Parco in versi”) e mostre di fotografia naturalistica, spesso in collaborazione con l’Università di Ferrara.</p>
+        </div>
+        <div class="card">
+          <div class="img-box" style="background-image: url('1/4.png'); height: 180px;"></div>
+          <h3>Laboratori & Didattica</h3>
+          <p>Scuole e famiglie partecipano a laboratori su orticoltura, api urbane, riconoscimento piante spontanee. Presente un <strong>orto condiviso</strong gestito da volontari.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; text-align:center;">
+        <p>➡️ <em>Il parco è uno dei pochi a Ferrara ad accogliere anche cani senza guinzaglio in aree dedicate.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gestione" style="background-color: #f0ebe2;">
+    <div class="container">
+      <h2 class="section-title">Gestione e Valorizzazione</h2>
+      
+      <p>Il Parco Massari è gestito direttamente dal <strong>Comune di Ferrara</strong> (Settore Ambiente e Verde Pubblico), con il supporto di:</p>
+      
+      <ul style="max-width:800px; margin:1.5rem auto; padding-left:1.5rem;">
+        <li><strong>Associazioni locali</strong> (es. “Amici del Parco Massari”)</li>
+        <li><strong>Volontari</strong> per pulizie, manutenzione orto, eventi</li>
+        <li><strong>Università di Ferrara</strong> (progetti di monitoraggio biodiversità)</li>
+      </ul>
+
+      <div class="highlight" style="background:#e8e0d1;">
+        ✅ Nessun biglietto d’ingresso — accesso libero tutti i giorni, dall’alba al tramonto.<br>
+        ✅ Wi-Fi gratuito in prossimità dell’ingresso principale.<br>
+        ✅ Percorsi accessibili per persone con mobilità ridotta (ghiaia compattata).
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>©2025 NM Digital Lab - All rights reserved</p>
+      <p>Ferrara | Patrimonio UNESCO | Città del Rinascimento</p>
+      <p style="margin-top:0.6rem; font-size:0.9rem;">
+        Info: <a href="mailto:nicola.manzi@iticopernico.it" style="color:#ddd;">nicola.manzi@iticopernico.it</a> &nbsp;|&nbsp; 
+        <a href="https://www.comune.ferrara.it/it/ricerca?searchtext=parco+massari&TAG_107=on&TAG_132=on&TAG_134=on&TAG_91=on&TAG_136=on&TAG_144=on&TAG_89=on&TAG_92=on&TAG_145=on&TAG_147=on&TAG_146=on&TAG_148=on&TAG_95=on&TAG_150=on&TAG_151=on&TAG_97=on&TAG_101=on&TAG_152=on&TAG_153=on&TAG_154=on&TAG_155=on&TAG_156=on&TAG_157=on&TAG_158=on&TAG_159=on&TAG_160=on&TAG_111=on&TAG_93=on&TAG_161=on&TAG_104=on&TAG_162=on&TAG_103=on&TAG_96=on&TAG_102=on&TAG_163=on&TAG_105=on&TAG_164=on&TAG_165=on&TAG_182=on&TAG_98=on&TAG_224=on&TAG_167=on&TAG_168=on&TAG_169=on&TAG_223=on&TAG_170=on&TAG_171=on&TAG_173=on&TAG_174=on&TAG_94=on&TAG_108=on&TAG_99=on&TAG_90=on&TAG_109=on&TAG_175=on&TAG_176=on&TAG_110=on&TAG_177=on&TAG_178=on&TAG_106=on&TAG_100=on&TAG_179=on&TAG_180=on&TAG_181=on" style="color:#ddd;">comune.fe.it/parco-massari</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

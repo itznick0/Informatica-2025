@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documento Personalizzato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .date, .subject {
+      font-size: 1.1rem;
+      color: #4a5568;
+      background: #f0f4f8;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stili per i paragrafi personalizzati */
+    .content p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Classi di stile */
+    .grassetto { font-weight: bold !important; }
+    .corsivo { font-style: italic !important; }
+    .sottolineato { text-decoration: underline !important; }
+    .barrato { text-decoration: line-through !important; }
+    .evidenziato { background-color: #fff9c4; padding: 2px 4px; border-radius: 3px; }
+    .grande { font-size: 1.4rem !important; line-height: 1.6; }
+    .piccolo { font-size: 0.9rem !important; line-height: 1.6; }
+
+    /* 🔥 TITOLO APPARISCENTE */
+    #titoloparagrafo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin: 30px 0 24px 0;
+      color: #0d3b66;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    /* Decorazione sotto il titolo */
+    #titoloparagrafo::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #4a6fa5, #6b8cbc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sezione allinea (centrata) */
+    #allinea p {
+      text-align: center;
+      margin: 8px 0;
+    }
+
+/* ✨ DUE COLONNE 50% - 50% */
+.due-colonne {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne > div {
+  flex: 1;
+}
+
+/* ✨ DUE COLONNE 25% - 75% */
+.due-colonne-25-75 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-25-75 > div:first-child {
+  flex: 1;
+}
+
+.due-colonne-25-75 > div:last-child {
+  flex: 3;
+}
+
+/* ✨ DUE COLONNE 75% - 25% */
+.due-colonne-75-25 {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.due-colonne-75-25 > div:first-child {
+  flex: 3;
+}
+
+.due-colonne-75-25 > div:last-child {
+  flex: 1;
+}
+
+/* ✨ Stile comune per tutte le colonne (opzionale ma consigliato) */
+.due-colonne > div,
+.due-colonne-25-75 > div,
+.due-colonne-75-25 > div {
+  background: #fafcff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #edf2f7;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2d3b4a;
+}
+
+/* ✨ Responsive: su mobile tutte le colonne diventano verticali */
+@media (max-width: 768px) {
+  .due-colonne,
+  .due-colonne-25-75,
+  .due-colonne-75-25 {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+    /* Sezione immagini */
+    .images-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .images-section h2 {
+      font-size: 1.4rem;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .images-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .images-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f6df5, #7a5ef8);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Stile per la sezione immagine + didascalia */
+    #immaginedidascalia {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #immaginedidascalia img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    #immaginedidascalia .didascalia {
+      font-size: 1.05rem;
+      color: #2d3748;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bottone PDF */
+    #pdf-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #1976d2, #42a5f5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    #pdf-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+    }
+
+    @media print {
+      #pdf-button {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 30px 20px; }
+      h1 { font-size: 2.2rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .images-container { flex-direction: column; align-items: center; }
+      #titoloparagrafo {
+        font-size: 1.5rem;
+        margin: 24px 0 20px 0;
+      }
+    }
+
+        /* ✨ Stile per elenco con pallini usando <p> */
+.elenco p {
+  position: relative;
+  padding-left: 24px; /* spazio per il pallino */
+  margin-bottom: 1px; /* meno spazio rispetto ai 20px originali */
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+/* Pallino personalizzato */
+.elenco p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4f6df5; /* colore del pallino (coerente con il tuo tema) */
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.sottotitolo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #2c5aa0;
+  margin: 18px 0 12px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+⌄
+/* ✨ Tabella a 3 colonne */
+.tabella-3-colonne {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.tabella-3-colonne th,
+.tabella-3-colonne td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* Intestazione */
+.tabella-3-colonne th {
+  background: linear-gradient(to bottom, #eef4ff, #dbe9ff);
+  color: #1a3a5f;
+  font-weight: 600;
+  font-size: 1.15rem;
+  position: sticky;
+  top: 0;
+}
+
+/* Righe pari/dispari per leggibilità */
+.tabella-3-colonne tbody tr:nth-child(even) {
+  background-color: #fafcff;
+}
+
+.tabella-3-colonne tbody tr:hover {
+  background-color: #f0f7ff;
+  transition: background-color 0.2s;
+}
+
+/* Ultima riga: rimuovi il bordo inferiore */
+.tabella-3-colonne tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive: su mobile la tabella diventa a colonne verticali */
+@media (max-width: 600px) {
+  .tabella-3-colonne,
+  .tabella-3-colonne thead,
+  .tabella-3-colonne tbody,
+  .tabella-3-colonne th,
+  .tabella-3-colonne td,
+  .tabella-3-colonne tr {
+    display: block;
+  }
+
+  .tabella-3-colonne thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .tabella-3-colonne tr {
+    border: 1px solid #edf2f7;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .tabella-3-colonne td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .tabella-3-colonne td::before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 16px;
+    width: 45%;
+    font-weight: 600;
+    color: #2c5aa0;
+  }
+}
+
+/* ✨ Griglia 3x3 immagini — stile coerente con il sito */
+.griglia-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.immagine-didascalia {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.immagine-didascalia:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.immagine-didascalia img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+  /* Opzionale: se vuoi un bordo sottile sull’immagine */
+  /* border: 1px solid #edf2f7; */
+}
+
+.immagine-didascalia .didascalia {
+  font-size: 1.05rem;
+  color: #2d3748;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ✨ Colore casuale di sfondo (come nel tuo script) */
+.immagine-didascalia.sfondo-colorato {
+  /* lo script JS imposterà background-color */
+}
+
+/* ✨ Responsive: coerente con il tuo media query */
+@media (max-width: 768px) {
+  .griglia-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .griglia-3x3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .immagine-didascalia {
+    padding: 18px;
+  }
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+
+/* ✨ Footer elegante */
+.footer-sito {
+  margin-top: 60px;
+  padding: 24px 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.footer-sito p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.footer-sito p:first-child {
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Opzionale: un tocco di separazione visiva */
+.footer-sito::before {
+  content: '';
+  display: block;
+  width: 600px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #55585d, transparent);
+  margin: 0 auto 16px;
+}
+
+/* ✨ Stile per le parole con nota */
+.nota {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #4f6df5;
+  color: #2c5aa0;
+  font-weight: 500;
+}
+
+.nota:hover {
+  background-color: rgba(79, 109, 245, 0.05);
+}
+
+/* ✨ Tooltip (nota esplicativa) */
+.nota .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Mostra la nota al passaggio del mouse */
+.nota:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+/* Freccetta sotto la nota (opzionale ma elegante) */
+.nota .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* ✨ Stile per immagine nella nota (opzionale) */
+.nota .tooltip img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: block;
+}
+
+/* ✨ Se la nota è vicina al bordo destro, spostala a sinistra */
+.nota.right-edge .tooltip {
+  left: auto;
+  right: 0;
+  transform: translateY(-12px);
+}
+
+.nota.right-edge .tooltip::after {
+  left: 16px;
+}
+  </style>
+</head>
+<body>
+  <button id="pdf-button" onclick="window.print()">📄 Scarica come PDF</button>
+
+  <div class="container">
+    <div class="header">
+      <h1>Titolo documento</h1>
+      <div class="meta">
+        <p class="date">15 Ottobre 2025</p>
+        <p class="subject">Materia: Italiano</p>
+      </div>
+    </div>
+
+<div class="content">
+<!-- class: grassetto, corsivo, sottolineato,titoloparagrafo, grande, piccolo, evidenziato, barrato, misto senza spazi[due-colonne colonna-destra colonna sinistra] -->
+    <p id="titoloparagrafo">Onde sinusoidali</p>
+    <p>Le onde sinusoidali sono fondamentali nello studio delle telecomunicazioni e dell'elettronica. Una onda sinusoidale può essere descritta matematicamente dalla funzione:</p>
+    <p>Ha valore medio NULLO</p>
+</div>
+
+<p>È periodico (si ripete sempre uguale nel tempo)</p>
+<p>T è il periodo </p>
+    <!-- Sezione immagini -->
+    <div class="images-section">
+      <h2>Immagini</h2>
+      <div class="images-container">
+        <!-- Aggiungi qui le tue immagini -->
+        <!-- <img src="immagine.jpg" alt="Descrizione"> -->
+      </div>
+    </div><footer class="footer-sito">
+  <p>© 2025 — Tutti i diritti riservati</p>
+  <p>Sito realizzato da Nicola Manzi • 3P</p>
+</footer>
+  </div>
+
+  <script>
+    console.log("Documento con stili personalizzati caricato!");
+
+    function generaColoreMorbido() {
+  const colori = [
+    "#dbe9ff", // azzurro cielo più intenso
+    "#e6f7ee", // verde menta più vivo
+    "#fef9f0", // crema calda (più contrasto del beige)
+    "#f8f2fc", // lilla tenue ma visibile
+    "#f0f5ff", // blu notte chiaro
+    "#faf8f0", // avorio dorato
+    "#e6f0fa", // celeste classico (già presente, ma utile)
+    "#f9f3f8", // rosa polvere delicato
+    "#f0f9f4", // verde salvia morbido
+    "#f0f8ff"  // azzurro latte, molto leggibile
+  ];
+  return colori[Math.floor(Math.random() * colori.length)];
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const blocchi = document.querySelectorAll(".immagine-didascalia");
+  blocchi.forEach(blocco => {
+    blocco.style.backgroundColor = generaColoreMorbido();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Aggiusta il posizionamento delle note vicino al bordo destro
+    const note = document.querySelectorAll(".nota");
+    note.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        const rect = el.getBoundingClientRect();
+        const tooltip = el.querySelector(".tooltip");
+        if (tooltip) {
+          // Se la nota è troppo a destra (>80% dello schermo), allinea a sinistra
+          if (rect.right > window.innerWidth * 0.8) {
+            el.classList.add("right-edge");
+          } else {
+            el.classList.remove("right-edge");
+          }
+        }
+      });
+    });
+  });
+  </script>
+</body>
+</html>
